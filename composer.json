@@ -1,8 +1,11 @@
 {
-    "name": "pedro.rhoden/cadeia",
+    "name": "3ti/cadeia",
+    "description": "Sistema Cadeia",
     "autoload": {
         "psr-4": {
-            "db\\": "src/db"
+            "db\\": "src/db",
+            "classes\\" : "src/classes",
+            "enums\\" : "src/enums" 
         }
     },
     "authors": [
