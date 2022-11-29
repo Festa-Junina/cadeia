@@ -1,7 +1,7 @@
 <?php
 if(isset($_POST['botao'])){
     require_once __DIR__."/vendor/autoload.php";
-    $u = new Funcionario($_POST['nome'],$_POST['email'],$_POST['senha']);
+    $u = new Policial($_POST['nome'],$_POST['email'],$_POST['senha']);
     $u->save();
     header("location: index.php");
 }
@@ -12,7 +12,6 @@ if(isset($_POST['botao'])){
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.login.css">
     <title>Register User</title>
 </head>
 <body>
