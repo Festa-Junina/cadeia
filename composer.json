@@ -2,12 +2,89 @@
     "name": "pedro.rhoden/cadeia",
     "autoload": {
         "psr-4": {
-            "PedroRhoden\\Cadeia\\": "src/"
+            "db\\": "src/db"
         }
     },
     "authors": [
         {
-            "name": "pkp"
+            "name": "ALLANA DOS SANTOS MORGENSTERN",
+            "email": "allana.morgenstern@aluno.feliz.ifrs.edu.br"
+        },
+        {
+            "name": "CAMILA EHRIG ZANDONÁ",
+            "email": "camila.zandona@aluno.feliz.ifrs.edu.br"
+        },
+        {
+            "name": "CAUÊ MAYOLO DA SILVEIRA",
+            "email": "caue.silveira@aluno.feliz.ifrs.edu.br"
+        },
+        {
+            "name": "DIOGO MAURER",
+            "email": "diogo.maurer@aluno.feliz.ifrs.edu.br"
+        },
+        {
+            "name": "FÁBIO JÚNIOR NIELSSON BASTIAN",
+            "email": "fabio.bastian@aluno.feliz.ifrs.edu.br"
+        },
+        {
+            "name": "JEAN LUCAS HOFFELDER",
+            "email": "jean.hoffelder@aluno.feliz.ifrs.edu.br"
+        },
+        {
+            "name": "JÉSSICA GABRIELI SCHMITZ HAHN",
+            "email": "jessica.hahn@aluno.feliz.ifrs.edu.br"
+        },
+        {
+            "name": "KELVIN FELIPE KREUZ",
+            "email": "kelvin.kreuz@aluno.feliz.ifrs.edu.br"
+        },
+        {
+            "name": "LEONARDO HAAS PIES",
+            "email": "leonardo.pies@aluno.feliz.ifrs.edu.br"
+        },
+        {
+            "name": "LUANA BRUCH MAURER",
+            "email": "luana.maurer@aluno.feliz.ifrs.edu.br"
+        },
+        {
+            "name": "LUCAS EDUARDO BECKER BERLANDE",
+            "email": "lucas.berlande@aluno.feliz.ifrs.edu.br"
+        },
+        {
+            "name": "LUIS FELIPE ASSMANN",
+            "email": "luis.assmann@aluno.feliz.ifrs.edu.br"
+        },
+        {
+            "name": "MARCELO JOSÉ GRIEBLER OST",
+            "email": "marcelo.ost@aluno.feliz.ifrs.edu.br"
+        },
+        {
+            "name": "MARCELO SCHNEIDER DALCIN",
+            "email": "marcelo.dalcin@aluno.feliz.ifrs.edu.br"
+        },
+        {
+            "name": "MATHEUS PERSCH",
+            "email": "matheus.persch@aluno.feliz.ifrs.edu.br"
+        },
+        {
+            "name": "MURILO MOUTINHO DA SILVA",
+            "email": "murilo.silva@aluno.feliz.ifrs.edu.br"
+        },
+        {
+            "name": "NÍCOLAS AUGUSTO KÖHLER AREND",
+            "email": "nicolas.arend@aluno.feliz.ifrs.edu.br"
+        },
+        {
+            "name": "OTÁVIO JOÃO MALDANER",
+            "email": "otavio.maldaner@aluno.feliz.ifrs.edu.br"
+        },
+        {
+            "name": "PAULO HENRIQUE ANESI GIACOMELLI",
+            "email": "paulo.giacomelli@aluno.feliz.ifrs.edu.br"
+        },
+        {
+            "name": "PEDRO KONZEN RHODEN",
+            "email": "pedro.rhoden@aluno.feliz.ifrs.edu.br"
         }
     ],
     "require": {}
