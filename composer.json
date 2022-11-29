@@ -1,14 +1,14 @@
 {
     "name": "caue.silveira/cadeia",
+    "autoload": {
+        "psr-4": {
+            "CaueSilveira\\Cadeia\\": "src/"
+        }
+    },
     "authors": [
         {
-            "name": "caue"
+            "name": "cdl"
         }
     ],
-    "require": {},
-    "autoload":{
-        "psr-4": {
-            "":"src/"
-        }
-    }
+    "require": {}
 }
