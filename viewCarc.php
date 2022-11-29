@@ -26,11 +26,12 @@
                     <div class='div-tel-carc'>
                         <h3>{$carc->gettelCarc()}</h3>
                     </div>
+                    <a href='editCarc.php'>Editar</a>
                 </div>
                 ";
                 ?>
         </div>
     </main>
-    
+
 </body>
 </html>
