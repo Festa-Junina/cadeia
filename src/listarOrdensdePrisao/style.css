@@ -129,6 +129,10 @@ body{
     content: "+";
 }
 
+.responsible{
+    padding: .3rem 0;
+}
+
 
 .ball{
     width: 12px;
