@@ -1,0 +1,76 @@
+@import '../globalStyles.css';
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+.login-page {
+    background-color: var(--gray);
+    width: 100vw;
+    height: 100vh;
+}
+.login-page-util {
+    width: 80%;
+    margin: auto;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.login-form {
+    border: 2px solid var(--primaryVariant);
+    background-color: var(--white);
+    width: 100%;
+    max-width: 500px;
+    height: fit-content;
+    margin: auto;
+    border-radius: 0.6rem;
+    box-shadow: 0 0 7px var(--green);
+}
+.login-form form {
+    display: flex;
+    flex-direction: column;
+    padding: 1rem;
+    font-family: var(--main-font);
+}
+.login-form-camps {
+    display: flex;
+    flex-direction: column;
+}
+.login-page form h1 {
+    padding: 10px 0;
+}
+.login-input {
+    border: 2px solid var(--primaryVariant);
+    border-radius: 0.4rem;
+    padding: 5px;
+    outline-color: var(--green);
+    margin: 10px 0;
+    font-family: var(--main-font);
+}
+.login-input::placeholder {
+    font-family: var(--main-font);
+    color: var(--black);
+}
+.form-submit-button {
+    padding: 10px 0;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+}
+.submit-button {
+    background-color: var(--green);
+    border: 1px solid var(--green);
+    border-radius: 8px;
+    margin-top: 0.7rem;
+    padding: 0.35rem;
+    text-align: center;
+    color: var(--white);
+    transition: all ease .2s;
+    font-size: 15px;
+    font-family: var(--main-font);
+}
+.submit-button:hover {
+    cursor: pointer;
+    transform: translateY(-3px);
+}
