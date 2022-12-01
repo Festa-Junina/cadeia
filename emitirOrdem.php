@@ -27,9 +27,7 @@
 
 <body>
     <div class="centro">
-        <form action="" method="post">
-            <label for="ticket">Insira seu Ticket</label>
-            <input type="number" id="ticket" required>
+        <form action="emitirOrdem.php" method="post">
 
             <label for="nomeMeliante">Nome do Meliante:</label>
             <input type="text" id="nomeMeliante" required>
