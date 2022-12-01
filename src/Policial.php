@@ -4,36 +4,29 @@ require_once __DIR__."/MySQL.php";
 
 class Policial implements ActiveRecord{
 
-    private int $id_policial;
+    private int $idUsuario;
     
     public function __construct(
-        private string $email,
+        private string $login,
         private string $senha,
-        private string $nome){
+        private string $funcao,
+        private string $status){
     }
 
-    public function setIdPolicial(int $id_policial):void{
-        $this->id_policial = $id_policial;
+    public function setIdUsuario(int $idUsuario):void{
+        $this->idUsuario = $idUsuario;
     }
 
-    public function getIdPolicial():int{
-        return $this->id_policial;
+    public function getIdUsuario():int{
+        return $this->idUsuario;
     }
 
-    public function setNome(string $nome):void{
-        $this->nome = $nome;
+    public function setLogin(string $login):void{
+        $this->login = $login;
     }
 
-    public function getNome():string{
-        return $this->nome;
-    }
-
-    public function setEmail(string $email):void{
-        $this->email = $email;
-    }
-
-    public function getEmail():string{
-        return $this->email;
+    public function getLogin():string{
+        return $this->login;
     }
 
     public function setSenha(string $senha):void{
@@ -44,40 +37,56 @@ class Policial implements ActiveRecord{
         return $this->senha;
     }
 
+    public function setFuncao(string $funcao):void{
+        $this->funcao = $funcao;
+    }
+
+    public function getFuncao():string{
+        return $this->funcao;
+    }
+
+    public function setStatus(string $status):void{
+        $this->status = $status;
+    }
+
+    public function getStatus():string{
+        return $this->status;
+    }
+
     public function save():bool{
         $conexao = new MySQL();
         $this->senha = password_hash($this->senha,PASSWORD_BCRYPT); 
-        if(isset($this->id_policial)){
-            $sql = "UPDATE policiais SET nome = '{$this->nome}' email = '{$this->email}' ,senha = '{$this->senha}' WHERE id_policial = {$this->id_policial}";
+        if(isset($this->idUsuario)){
+            $sql = "UPDATE usuario SET login = '{$this->login}', senha = '{$this->senha}' WHERE idUsuario = {$this->idUsuario}";
         }else{
-            $sql = "INSERT INTO policiais (nome,email,senha) VALUES ('{$this->nome}','{$this->email}','{$this->senha}')";
+            $sql = "INSERT INTO usuario (login,senha,funcao,status) VALUES ('{$this->login}','{$this->senha}', 'Policial', 'Ativo')";
         }
         return $conexao->executa($sql);
     }
 
-    public static function find($id_policial):Policial{
+    public static function find($idUsuario):Policial{
         $conexao = new MySQL();
-        $sql = "SELECT * FROM policiais WHERE id_policial = {$id_policial}";
+        $sql = "SELECT * FROM usuario WHERE idUsuario = {$idUsuario}";
         $resultado = $conexao->consulta($sql);
-        $u = new Policial($resultado[0]['nome'],$resultado[0]['email'],$resultado[0]['senha']);
-        $u->setIdPolicial($resultado[0]['id_policial']);
+        $u = new Policial($resultado[0]['login'],$resultado[0]['senha'],$resultado[0]['funcao'],$resultado[0]['funcao']);
+        $u->setIdPolicial($resultado[0]['idUsuario']);
         return $u;
     }
 
     public function delete():bool{
         $conexao = new MySQL();
-        $sql = "DELETE FROM policiais WHERE id_policial = {$this->id_policial}";
+        $sql = "DELETE FROM usuario WHERE idUsuario = {$this->idUsuario}";
         return $conexao->executa($sql);
     }
 
     public static function findall():array{
         $conexao = new MySQL();
-        $sql = "SELECT * FROM policiais";
+        $sql = "SELECT * FROM usuario";
         $resultados = $conexao->consulta($sql);
         $policial = array();
         foreach($resultados as $resultado){
-            $u = new Policial($resultado['nome'],$resultado['email'],$resultado['senha']);
-            $u->setIdPolicial($resultado['id_policial']);
+            $u = new Policial($resultado['funcao'],$resultado['login'],$resultado['senha'],$resultado['status']);
+            $u->setIdPolicial($resultado['idUsuario']);
             $policial[] = $u;
         }
         return $policial;
@@ -85,13 +94,13 @@ class Policial implements ActiveRecord{
 
     public function authenticate():bool{
         $conexao = new MySQL();
-        $sql = "SELECT id_policial, senha FROM policiais WHERE email = '{$this->email}'";
+        $sql = "SELECT idUsuario, senha FROM usuario WHERE login = '{$this->login}'";
         $resultados = $conexao->consulta($sql);
         if(password_verify($this->senha,$resultados[0]['senha'])){
             session_start();
-            $_SESSION['id_policial'] = $resultados[0]['id_policial'];
-            $_SESSION['nome'] = $resultados[0]['nome'];
-            $_SESSION['email'] = $resultados[0]['email'];
+            $_SESSION['idUsuario'] = $resultados[0]['idUsuario'];
+            $_SESSION['senha'] = $resultados[0]['senha'];
+            $_SESSION['login'] = $resultados[0]['login'];
             return true;
         }else{
             return false;

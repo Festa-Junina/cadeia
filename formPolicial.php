@@ -1,7 +1,7 @@
 <?php
 if(isset($_POST['botao'])){
     require_once __DIR__."/vendor/autoload.php";
-    $u = new Policial($_POST['nome'],$_POST['email'],$_POST['senha']);
+    $u = new Policial($_POST['email'],$_POST['senha']);
     $u->save();
     header("location: index.php");
 }
@@ -16,9 +16,6 @@ if(isset($_POST['botao'])){
 </head>
 <body>
     <p>Registrar policial</p>
-
-    <label for='nome'>Nome:</label>
-    <input type='text' name='nome' id='nome' required>
 
     <label for='email'>E-mail:</label>
     <input type='email' name='email' id='email' required>

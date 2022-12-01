@@ -16,17 +16,19 @@ $policiais = Policial::findall();
     <article>
     <table class="table">
     <tr>
-        <th>Nome</th>
+        <th>funcao</th>
         <th>Email</th>
+        <th>Status</th>
     </tr>
     <?php
     foreach($policiais as $policial){
         echo "<tr>";
-        echo "<td>{$policial->getNome()}</td>";
-        echo "<td>{$policial->getemail()}</td>";
+        echo "<td>{$policial->getFuncao()}</td>";
+        echo "<td>{$policial->getEmail()}</td>";
+        echo "<td>{$policial->getStatus()}</td>";
         echo "<td>
-                <a href='formEdit.php?id={$policial->getIdPolicial()}'>Editar</a>
-                <a href='excluir.php?id={$policial->getIdPolicial()}'>Excluir</a> 
+                <a href='formEdit.php?id={$policial->getIdUsuario()}'>Editar</a>
+                <a href='excluir.php?id={$policial->getIdUsuario()}'>Excluir</a> 
              </td>";
         echo "</tr>";
     }
