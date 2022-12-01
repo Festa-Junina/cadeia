@@ -35,19 +35,31 @@
             <label for="tipoMeliante">Tipo do Meliante:</label>
             <select name="tipoMeliante" id="tipoMeliante" required>
                 <option value="" disabled selected>Escolha um tipo</option>
-                <option value="0">Aluno</option>
-                <option value="1">Servidor</option>
-                <option value="2">Visitante</option>
+
+                    <?php 
+                        $conexao = new MySQL();
+                        $sql = "SELECT * FROM tipomeliante";
+                        $tiposMeliantes = $conexao->consulta($sql);
+                        foreach($tiposMeliantes as $tipo){
+                            echo "<option value='{$tipo['idTipoMeliante']}'> {$tipo['nome']} </option>";
+                        }
+                    ?>  
             </select>
 
             <!-- SO ABRE SE FOR ALUNO -->
             <label for="turmaMeliante">Turma do Meliante:</label>
             <select name="turmaMeliante" id="turmaMeliante" required>
                 <option value="" disabled selected>Escolha uma turma</option>
-                <option value="0">TI 1</option>
-                <option value="1">TI 2</option>
-                <option value="2">TI 3</option>
-                <option value="3">...</option>
+   
+                <?php 
+                    $conexao = new MySQL();
+                    $sql = "SELECT * FROM turmameliante";
+                    $turmaMeliantes = $conexao->consulta($sql);
+                    foreach($turmaMeliantes as $turma){
+                        echo "<option value='{$turma['idTurmaMeliante']}'> {$turma['nome']} </option>";
+                    }
+                ?> 
+
             </select>
             <!--  -->
 
