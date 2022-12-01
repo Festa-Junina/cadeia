@@ -1,7 +1,9 @@
 <?php
 
-    enum StatusOrdem{
-        case EmAberto;
-        case EmPerseguicao;
-        case Finalizada;
-    }
+    namespace enum;
+
+    // enum StatusOrdem{
+    //     case EmAberto;
+    //     case EmPerseguicao;
+    //     case Finalizada;
+    // }
