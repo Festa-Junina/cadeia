@@ -1,8 +1,8 @@
 <?php
 if(isset($_POST['botao'])){
     require_once __DIR__."/vendor/autoload.php";
-    $c = new Carcereiro($_POST['email'],$_POST['senha']);
-    if($c->authenticate()){
+    $carc = new Carcereiro($_POST['email'],$_POST['senha']);
+    if($carc->authenticate()){
         header("location: restrita.php");
     }else{
         header("location: index.php");
