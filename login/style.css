@@ -16,6 +16,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    flex-direction: column;
 }
 .login-form {
     border: 2px solid var(--primaryVariant);
@@ -73,4 +74,21 @@
 .submit-button:hover {
     cursor: pointer;
     transform: translateY(-3px);
+}
+.recover-password-area {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.recover-password-area a {
+    text-decoration: none;
+    color: #00f;
+}
+.login-page-footer {
+    height: 50px;
+    /* width: 100vh; */
+    background-color: var(--gray);
+}
+.footer-login-util-area {
+    /* filter: blur(3px); */
 }
