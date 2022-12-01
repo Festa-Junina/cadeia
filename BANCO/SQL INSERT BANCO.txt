@@ -1,0 +1,91 @@
+insert into funcao(idFuncao, nome) values
+(0, "Administrador"),
+(1, "Carcereiro"),
+(2, "Policial");
+
+insert into tipoMeliante(idTipomeliante, nome) values
+(0, "Aluno"),
+(1, "Servidor"),
+(2, "Visitante");
+
+insert into turmaMeliante(idTurmaMeliante, nome) values
+(0, "TI-1"),
+(1, "TI-2"),
+(2, "TI-3"),
+(3, "TI-4"),
+(4, "TQ-1"),
+(5, "TQ-2"),
+(6, "TQ-3"),
+(7, "TQ-4"),
+(8, "TMA-1"),
+(9, "TMA-2"),
+(10, "TMA-3"),
+(11, "TMA-4"),
+(12, "TA-1"),
+(13, "TA-2"),
+(14, "TA-3"),
+(15, "TA-4");
+
+insert into statusOrdem(idStatusOrdem, nome) values
+(0, "Aberto"),
+(1, "Perseguição"),
+(2, "Preso");
+
+insert into statusPrisao(idStatusPrisao, nome) values
+(0, "Ativo"),
+(1, "Aguardando Pergunta 1"),
+(2, "Aguardando Resposta 1"),
+(3, "Aguardando Pergunta 2"),
+(4, "Aguardando Resposta 2"),
+(5, "Aguardando Pergunta 3"),
+(6, "Aguardando Resposta 3"),
+(7, "Respondeu Corretamente");
+
+insert into perguntaCategoria(idCategoria, nome) values
+(0, "Matemática"),
+(1, "Português"),
+(2, "Biologia"),
+(3, "Física"),
+(4, "História"),
+(5, "Inglês"),
+(6, "Química"),
+(7, "Informática"),
+(8, "Lógica"),
+(9, "Filosofia"),
+(10, "Sociologia"),
+(11, "Geografia"),
+(12, "IFRS");
+
+
+
+#NÃO PRECISA, NÃO É OBRIGATORIO, SOMENTE PARA FINS DE TESTE
+
+insert into ticket(ticket, valido) values
+(0, true),
+(1, true),
+(2, true),
+(3, true),
+(4, true),
+(5, true),
+(6, true);
+
+
+insert into usuario(idFuncao, login, senha) values
+(0, "administrador@teste123.com", "teste123"),
+(1, "carcereiro@teste123.com", "teste123"),
+(2, "policial@teste123.com", "teste123");
+
+
+insert into pergunta(idCategoria, enunciado, resposta, alternativa1, alternativa2, alternativa3) values
+(8, "Quem veio primeiro ?", "A galinha", "O ovo", "O galo", "O pinto"),
+(0, "Quanto é 1 + 1 ?", "2", "3", "1", "11"),
+(1, "(FCC) A ocorrência de interferências ___ -nos a concluir que ___ uma relação profunda entre homem e sociedade que os ___ mutuamente dependentes", "leva, existe, torna", "levam, existe, tornam", "levam, existem, tornam", "levam, existem, torna");
+
+
+insert into ordemPrisao(idTicket, idStatusOrdem, idTipoMeliante, idTurmaMeliante, nomeMeliante, descricaoMeliante, localVisto, nomeDenunciante, telefoneDenunciante, horaOrdem) values
+(5, 0, 0, 0, "shaolin matador de porco", "menino forte, 1.80, moreno de 22 anos", "na sua casa", "Luisa Mell", "0800-776", current_time),
+(6, 2, 2, null, "Diogo Defante", "Youtuber, humorista, repórter doidão, humor escrachado e nonsense que faz pegadinhas e entrevistas inusitadas com quem passa nas ruas.", "Qatar", "Hamad bin Khalifa", "0800-999", current_time);
+
+
+insert into prisao(idOrdemPrisao, idStatusPrisao, quantidadePerguntasRespondidas, horaPrisao) values
+(2, 3, 1, current_time);
