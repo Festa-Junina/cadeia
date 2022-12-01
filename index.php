@@ -19,6 +19,21 @@ if(isset($_POST['botao'])){
     <title>Carcereiro</title>
 </head>
 <body>
-    
+    <div class="formulario1">
+        <form action="index.php" method='post'>
+                <label for='email'>E-mail:</label>
+                <br>
+                <input type='email' name='email' id='email' required>
+                <br>
+                <label for='password'>Password:</label>
+                <br>
+                <input type='password' name='password' id='password' required>
+                <br>
+                <input type='submit' name='botao' value='Sign in'>
+                <br>
+            </form>
+            <div class="botao">
+                <a href="formCad.php">Sign Up</a>
+            </div>
 </body>
 </html>
