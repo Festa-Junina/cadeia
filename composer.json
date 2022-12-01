@@ -1,13 +1,9 @@
 {
-    "name": "pedro.rhoden/cadeia",
-    "autoload": {
-        "psr-4": {
-            "PedroRhoden\\Cadeia\\": "src/"
-        }
-    },
+    "name": "jean.hoffelder/cadeia",
     "authors": [
         {
-            "name": "pkp"
+            "name": "jeanHoffelder",
+            "email": "104578531+jeanHoffelder@users.noreply.github.com"
         }
     ],
     "require": {}
