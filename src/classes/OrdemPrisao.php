@@ -3,7 +3,7 @@ namespace classes;
 
 use db\ActiveRecord;
 use db\MySQL;
-use enum;
+use db\enum;
 
 class OrdemPrisao implements ActiveRecord
 {
