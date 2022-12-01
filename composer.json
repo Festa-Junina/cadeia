@@ -1,0 +1,14 @@
+{
+    "name": "pedro.rhoden/cadeia",
+    "autoload": {
+        "psr-4": {
+            "PedroRhoden\\Cadeia\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "pkp"
+        }
+    ],
+    "require": {}
+}
