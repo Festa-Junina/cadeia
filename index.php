@@ -24,7 +24,7 @@ $policiais = Policial::findall();
     foreach($policiais as $policial){
         echo "<tr>";
         echo "<td>{$policial->getFuncao()}</td>";
-        echo "<td>{$policial->getEmail()}</td>";
+        echo "<td>{$policial->getLogin()}</td>";
         echo "<td>{$policial->getStatus()}</td>";
         echo "<td>
                 <a href='formEdit.php?id={$policial->getIdUsuario()}'>Editar</a>
