@@ -27,7 +27,7 @@ if(isset($_POST['botao'])){
                 <br>
                 <label for='senha'>Senha:</label>
                 <br>
-                <input type='senha' name='senha' id='senha' required>
+                <input type='password' name='senha' id='senha' required>
                 <br>
                 <input type='submit' name='botao' value='Entrar'>
                 <br>
