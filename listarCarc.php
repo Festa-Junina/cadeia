@@ -24,8 +24,8 @@ $carcereiros = Carcereiro::findall();
         echo "<td>{$carcereiros->getNome()}</td>";
         echo "<td>{$carcereiros->getEmail()}</td>";
         echo "<td>
-                <a href='formEdit.php?id={$carcereiros->getId()}'>Editar</a>
-                <a href='excluir.php?id={$carcereiros->getId()}'>Excluir</a> 
+                <a href='editCarc.php?id={$carcereiros->getId()}'>Editar</a>
+                <a href='excluirCarc.php?id={$carcereiros->getId()}'>Excluir</a> 
              </td>";
         echo "</tr>";
     }
