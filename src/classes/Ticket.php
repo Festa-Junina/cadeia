@@ -1,6 +1,7 @@
 <?php
 
-require_once __DIR__."\MySQL.php";
+
+require_once "../db/MySQL.php";
 
 class Ticket{
 
@@ -18,21 +19,26 @@ class Ticket{
     public function autenticar():bool{
         $conexao = new MySQL();
 
-        $sql = "SELECT valido FROM ticket WHERE ticket = '{$this->ticket}'";
+        $sql = "SELECT idTicket,valido FROM ticket WHERE ticket = '{$this->ticket}'";
 
         $ticketValido = $conexao->consulta($sql);
 
-
         if(!empty($ticketValido)){
-            if($ticketValido['0']['valido'] == 0){
+            if($ticketValido['0']['valido'] == false){
+
+//echo"ticket ja utilizado"; 
+
                 return false;
             }
 
-            $sql = "UPDATE ticket SET valido = '0'";
             $conexao->executa($sql);
 
+            session_start();
+            $_SESSION['idTicket'] = $ticketValido['0']['idTicket'];
             return true;
         }
+        
+//echo"ticket nao existe";  
 
         return false;
     }

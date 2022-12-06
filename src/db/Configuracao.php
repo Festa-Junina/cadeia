@@ -2,5 +2,5 @@
     define("HOST","localhost");
     define("USUARIO","root");
     define("SENHA","");
-    define("BANCO","  ");
+    define("BANCO","cadeia-app");
 ?>

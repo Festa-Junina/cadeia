@@ -1,9 +1,8 @@
 <?php
-namespace classes;
 
-use db\ActiveRecord;
-use db\MySQL;
-use enum;
+require_once "../db/MySQL.php";
+require_once "../db/ActiveRecord.php";
+
 
 class OrdemPrisao implements ActiveRecord
 {
@@ -12,7 +11,8 @@ class OrdemPrisao implements ActiveRecord
     private int $idTicket;	
     private int $idTipoMeliante;
     private int $idTurmaMeliante;	
-    private StatusOrdem $idStatusOrdem;	
+    private int $idStatusOrdem;	
+    private int $horaOrdem;
     
     public function __construct(
         private string $nomeMeliante,
@@ -20,7 +20,6 @@ class OrdemPrisao implements ActiveRecord
         private string $localVisto,
         private string $nomeDenunciante,
         private string $telefoneDenunciante,
-        private int $horaOrdem
   ) {
   }
   #region idOrdem
@@ -82,7 +81,6 @@ class OrdemPrisao implements ActiveRecord
     return $this->idStatusOrdem;
   }
   #endregion
-
 
   #region nomeMeliante 
   public function setNomeMeliante(string $nomeMeliante): void
@@ -160,29 +158,33 @@ class OrdemPrisao implements ActiveRecord
   {
     $conexao = new MySQL();
 
-    $this->senha = password_hash($this->senha, PASSWORD_BCRYPT);
-    if (isset($this->id)) {
-      $sql = "UPDATE usuario SET 
-        nome = '{$this->nome}' ,
-        email = '{$this->email}',
-        senha = '{$this->senha}' ,
-        contato = '{$this->contato}' ,
-        tipo = '{$this->tipo}' ,
-        idCurso = '{$this->idCurso}' ,
-        fotoPerfil = 'noimage.png' WHERE id = {$this->id}";
-    } else {
-      $sql = "INSERT INTO usuario (nome,email,senha,contato,tipo,idCurso,fotoPerfil) 
+      $sql = "INSERT INTO ordemprisao (idTicket, idTipoMeliante, idTurmaMeliante, nomeMeliante, descricaoMeliante, localVisto, nomeDenunciante, telefoneDenunciante, idStatusOrdem, horaOrdem) 
       VALUES (
-          '{$this->nome}',
-          '{$this->email}',
-          '{$this->senha}' ,
-          '{$this->contato}' ,
-          '{$this->tipo}' ,
-          '{$this->idCurso}' ,
-          'noimage.png')";
-    }
-    return $conexao->executa($sql);
+          '{$this->idTicket}',
+          '{$this->idTipoMeliante}',
+          '{$this->idTurmaMeliante}' ,
+          '{$this->nomeMeliante}' ,
+          '{$this->descricaoMeliante}' ,
+          '{$this->localVisto}' ,
+          '{$this->nomeDenunciante}' ,
+          '{$this->telefoneDenunciante}' ,
+            0 ,
+          CURRENT_TIMESTAMP())";
+
+
+   // TRIGGER NO BANCO $sql = "UPDATE ticket SET valido = false WHERE idTicket = '{$this->idTicket}'";
+   
+   return $conexao->executa($sql);
+
   }
+  
+  
+
+
+
+
+
+  
 
   public function delete(): bool
   {
@@ -244,5 +246,7 @@ class OrdemPrisao implements ActiveRecord
       return false;
     }
   }
+  
+  
 
 }

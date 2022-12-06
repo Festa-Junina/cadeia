@@ -1,3 +1,28 @@
+<?php 
+
+    require_once "../db/MySQL.php";
+    require_once "../classes/OrdemPrisao.php";
+    session_start();
+
+    if(isset($_POST['submit'])){
+        $ordemPrisao = new OrdemPrisao($_POST['nomeMeliante'],$_POST['descricaoMeliante'],$_POST['localVisto'],$_POST['nomeDenunciante'],$_POST['telefoneDenunciante']);
+        
+        $ordemPrisao->setIdTicket($_SESSION['idTicket']);
+        
+        $ordemPrisao->setIdTipoMeliante($_POST['tipoMeliante']);
+        $ordemPrisao->setIdTurmaMeliante($_POST['turmaMeliante']);
+
+        $ordemPrisao->save();
+
+        header("location: ../../index.html");
+
+    }
+
+
+    
+?>
+
+
 <!DOCTYPE html>
 <html lang="pt-br">
 
@@ -5,7 +30,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Emitir Ordem de Prisão</title>
 </head>
     <!-- remover style teste-->
     <style>
@@ -18,6 +43,8 @@
             height: 100vh;
             display: grid;
             place-items: center;
+            color: white;
+            background-color:black;
         }
         form{
             display: flex;
@@ -30,7 +57,7 @@
         <form action="emitirOrdem.php" method="post">
 
             <label for="nomeMeliante">Nome do Meliante:</label>
-            <input type="text" id="nomeMeliante" required>
+            <input type="text" name="nomeMeliante" id="nomeMeliante" required>
 
             <label for="tipoMeliante">Tipo do Meliante:</label>
             <select name="tipoMeliante" id="tipoMeliante" required>
@@ -64,17 +91,17 @@
             <!--  -->
 
 
-            <label for="descMeliante">Descrição do Meliante:</label>
-            <textarea name="descMeliante" id="descMeliante" cols="30" rows="10" required></textarea>
+            <label for="descricaoMeliante">Descrição do Meliante:</label>
+            <textarea name="descricaoMeliante" id="descricaoMeliante" cols="30" rows="10" required></textarea>
 
-            <label for="ultimoLocal">Ultimo local visto:</label>
-            <input type="text" id="ultimoLocal" required>
+            <label for="localVisto">Ultimo local visto:</label>
+            <input type="text" name="localVisto" id="localVisto" required>
 
             <label for="nomeDenunciante">Seu nome:</label>
-            <input type="text" id="nomeDenunciante" required>
+            <input type="text" name="nomeDenunciante" id="nomeDenunciante" required>
 
-            <label for="telDenunciante">Seu telefone:</label>
-            <input type="tel" id="telDenunciante" required>
+            <label for="telefoneDenunciante">Seu telefone:</label>
+            <input type="tel" name="telefoneDenunciante" id="telefoneDenunciante" required>
 
             <input type="submit" name="submit" value="Enviar">
 

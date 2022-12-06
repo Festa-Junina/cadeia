@@ -1,14 +1,16 @@
 <?php 
 
- require_once "src/Ticket.php";
+
+require_once "../classes/Ticket.php";
 
 if(isset($_POST['submit'])){
     $ticket = new Ticket($_POST['ticket']);
     
     if($ticket->autenticar()){
         header("location: emitirOrdem.php");
+    }else{
+        echo "Ticket invalido ou já utilizado";
     }
-    //insira um ticket valido
 }
 ?>
 
