@@ -1,3 +1,20 @@
+<?php 
+
+require_once "../classes/Ticket.php";
+
+if(isset($_POST['submit'])){
+    $ticket = new Ticket($_POST['ticket']);
+    $resultado = $ticket->consultar();
+    if($resultado != false){
+
+        header("location: emitirOrdem.php?nome={$resultado['nomeMeliante']}&status={$resultado['statusOrdem']}&andamento={$resultado['andamento']}");
+        
+    }else{
+        echo "Ticket inválido";
+    }
+}
+?>
+
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
@@ -13,10 +30,11 @@
             <input type="number" id="ticket" name="ticket" required>
             <input type="submit" value="Consultar Ordem" name="submit">
         </form>
-        <p>Nome: </p>
-        <p>Status: </p>
-        <p>Tempo de Cadeia: </p>
-        <p>Andamento das Perguntas: </p>
+
+        <?php 
+        
+        
+        ?>
     </main>
 </body>
 </html>

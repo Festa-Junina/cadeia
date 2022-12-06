@@ -1,0 +1,23 @@
+@font-face {
+  font-family: "Mulish";
+  src: url("./src/assets/fonts/Mulish.ttf");
+}
+
+:root{
+  --primary: #3CC47C;
+  --primaryVariant: #2FBF77;
+  --gray: #EDEDED;
+  --gray2: #D9D9D9;
+  --white: #fafafafa;
+  --green: #165735;
+  --darkGreen: #104228;
+  --black: #000000;
+  --blackOpacity: #00000035;
+  --blue: blue;
+  --yellow: yellow;
+  --red: red;
+}
+
+body{
+  font-family: "Mulish";
+}
