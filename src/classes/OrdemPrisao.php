@@ -158,19 +158,35 @@ class OrdemPrisao implements ActiveRecord
   {
     $conexao = new MySQL();
 
-      $sql = "INSERT INTO ordemprisao (idTicket, idTipoMeliante, idTurmaMeliante, nomeMeliante, descricaoMeliante, localVisto, nomeDenunciante, telefoneDenunciante, idStatusOrdem, horaOrdem) 
-      VALUES (
-          '{$this->idTicket}',
-          '{$this->idTipoMeliante}',
-          '{$this->idTurmaMeliante}' ,
-          '{$this->nomeMeliante}' ,
-          '{$this->descricaoMeliante}' ,
-          '{$this->localVisto}' ,
-          '{$this->nomeDenunciante}' ,
-          '{$this->telefoneDenunciante}' ,
-            0 ,
-          CURRENT_TIMESTAMP())";
 
+      if(isset($this->idTurmaMeliante)){
+        $sql = "INSERT INTO ordemprisao (idTicket, idTipoMeliante, idTurmaMeliante, nomeMeliante, descricaoMeliante, localVisto, nomeDenunciante, telefoneDenunciante, idStatusOrdem, horaOrdem) 
+        VALUES (
+            '{$this->idTicket}',
+            '{$this->idTipoMeliante}',
+            '{$this->idTurmaMeliante}' ,
+            '{$this->nomeMeliante}' ,
+            '{$this->descricaoMeliante}' ,
+            '{$this->localVisto}' ,
+            '{$this->nomeDenunciante}' ,
+            '{$this->telefoneDenunciante}' ,
+              0 ,
+            CURRENT_TIMESTAMP())";
+      }else{
+        $sql = "INSERT INTO ordemprisao (idTicket, idTipoMeliante, nomeMeliante, descricaoMeliante, localVisto, nomeDenunciante, telefoneDenunciante, idStatusOrdem, horaOrdem) 
+        VALUES (
+            '{$this->idTicket}',
+            '{$this->idTipoMeliante}',
+            '{$this->nomeMeliante}' ,
+            '{$this->descricaoMeliante}' ,
+            '{$this->localVisto}' ,
+            '{$this->nomeDenunciante}' ,
+            '{$this->telefoneDenunciante}' ,
+              0 ,
+            CURRENT_TIMESTAMP())";
+      }
+      
+      session_destroy();
 
    // TRIGGER NO BANCO $sql = "UPDATE ticket SET valido = false WHERE idTicket = '{$this->idTicket}'";
    

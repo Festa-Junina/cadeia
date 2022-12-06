@@ -5,15 +5,20 @@
     session_start();
 
     if(isset($_POST['submit'])){
+
         $ordemPrisao = new OrdemPrisao($_POST['nomeMeliante'],$_POST['descricaoMeliante'],$_POST['localVisto'],$_POST['nomeDenunciante'],$_POST['telefoneDenunciante']);
         
         $ordemPrisao->setIdTicket($_SESSION['idTicket']);
         
         $ordemPrisao->setIdTipoMeliante($_POST['tipoMeliante']);
-        $ordemPrisao->setIdTurmaMeliante($_POST['turmaMeliante']);
+
+        if(isset($_POST['turmaMeliante'])){
+            $ordemPrisao->setIdTurmaMeliante($_POST['turmaMeliante']);
+        }
 
         $ordemPrisao->save();
 
+        //mensagem de sucesso?
         header("location: ../../index.html");
 
     }
@@ -30,27 +35,13 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="../../reset.css">
+    <link rel="stylesheet" href="../../globalStyles.css">
+
     <title>Emitir Ordem de Prisão</title>
 </head>
-    <!-- remover style teste-->
-    <style>
-        *{
-            margin: 0px;
-            padding: 0px;
-            box-sizing: border-box;
-        }
-        body{
-            height: 100vh;
-            display: grid;
-            place-items: center;
-            color: white;
-            background-color:black;
-        }
-        form{
-            display: flex;
-            flex-direction: column;
-        }
-    </style>
 
 <body>
     <div class="centro">
@@ -74,9 +65,9 @@
             </select>
 
             <!-- SO ABRE SE FOR ALUNO -->
-            <label for="turmaMeliante">Turma do Meliante:</label>
-            <select name="turmaMeliante" id="turmaMeliante" required>
-                <option value="" disabled selected>Escolha uma turma</option>
+            <label for="turmaMeliante">Turma do Meliante: (Se for aluno)</label>
+            <select name="turmaMeliante" id="turmaMeliante">
+                <option value="NULL" disabled selected>Escolha uma turma</option>
    
                 <?php 
                     $conexao = new MySQL();
