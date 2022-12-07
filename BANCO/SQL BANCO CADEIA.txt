@@ -57,7 +57,7 @@ CREATE TABLE ordemPrisao (
     idOrdem INT PRIMARY KEY AUTO_INCREMENT,
     idTicket INT not null,
     idTipoMeliante INT not null,
-    idTurmaMeliante INT not null,
+    idTurmaMeliante INT,
     idStatusOrdem INT not null,
     nomeMeliante VARCHAR(100) not null,
     descricaoMeliante VARCHAR(200) not null,
