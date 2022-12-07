@@ -30,7 +30,7 @@
         </div>
         <footer class="login-page-footer">
             <div class="footer-login-util-area">
-
+                <h1 class="login-page-footer-text">Feito pelo 3º ano do curso Técnico em Informática de 2022</h1>
             </div>
         </footer>
     </div>
