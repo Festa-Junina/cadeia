@@ -21,26 +21,40 @@ if(isset($_POST['botao'])){
     <title>Edita policial</title>
 </head>
 <body>
-    <form action='formEdit.php' method='POST'>
-        <?php
-            echo "Titulo: <input name='login' value='{$policial->getLogin()}' type='text' required>";
-            echo "<br>";
-            echo "Autora: <input name='senha' type='password' required>";
-            echo "<br>";
-            echo "Status: 
-            <select name='status' id='status'> 
-                <option value='Ativo'>Ativo</option>
-                <option value='Inativo'>Inativo</option>
-            </select>";
-            echo "Status: 
-            <select name='funcao' id='funcao'> 
-                <option value='Policial'>Policial</option>
-            </select>";
-            echo "<br>";
-            echo "<input name='id' value={$policial->getIdUsuario()} type='hidden'>";
-        ?>
+    <section>   
+        <div class="divTitulo">
+            <h1 class="titulo">Editar policial</h1><br>
+        </div>
+    </section>
         <br>
-        <input type='submit' name='botao'>
+    <section class="formulario"> 
+        <div class="divform">
+            <form class="formCad" action="formPolicial.php" method="POST">
+                <?php
+                    echo "<label for='email'>E-mail:</label><br>";
+                    echo "<input name='login' value='{$policial->getLogin()}' type='text' required>";
+                    echo "<br>";
+                    echo "<input name='id' value={$policial->getIdUsuario()} type='hidden'>";
+                ?>
+                <label for='senha'>Senha:</label><br>
+                <input type='password' name='senha' id='senha' required><br>
+                <div class="selects">
+                    <label for="funcao">Função:</label><br>
+                    <select name="funcao" id="funcao">
+                        <option value="Policial">Policial</option>
+                    </select><br>
+                    <label for="status">Status:</label><br>
+                    <select name="status" id="status">
+                        <option value="Ativo">Ativo</option>
+                    </select><br>
+                </div>
+                <div class="botaoCad">
+                    <button name='botao' value='Cadastrar'>Cadastrar</button>
+                </div>
+            </form>
+            <a href='index.php'>voltar ao inicio </a>
+        </div>
+    </section>
     </form>
 </body>
 </html>

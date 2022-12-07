@@ -29,20 +29,23 @@ if(isset($_POST['botao'])){
                 <input type='email' name='email' id='email' required><br>
                 <label for='senha'>Senha:</label><br>
                 <input type='password' name='senha' id='senha' required><br>
-                <select name="funcao" id="funcao">
-                    <option value="Policial">Policial</option>
-                </select><br>
-                <select name="status" id="status">
-                    <option value="Ativo">Ativo</option>
-                </select><br>
-                <input  type='submit' name='botao' value='Cadastrar'>
+                <div class="selects">
+                    <label for="funcao">Função:</label><br>
+                    <select name="funcao" id="funcao">
+                        <option value="Policial">Policial</option>
+                    </select><br>
+                    <label for="status">Status:</label><br>
+                    <select name="status" id="status">
+                        <option value="Ativo">Ativo</option>
+                    </select><br>
+                </div>
+                <div class="botaoCad">
+                    <button name='botao' value='Cadastrar'>Cadastrar</button>
+                </div>
             </form>
+            <a href='index.php'>voltar ao inicio </a>
         </div>
     </section>
-
-
-    <a href='index.php'>voltar ao inicio </a>
-
 </body>
 </html>
 

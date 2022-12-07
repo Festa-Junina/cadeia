@@ -4,14 +4,18 @@
     box-sizing: border-box;
 }
 
+body{
+     background-image: linear-gradient(to left, rgb(0, 0, 0), rgb(255, 255, 255));
+}
+
 .formulario{
     display: grid;
     justify-content: center;
-    align-items: center;
     width: 100%;
 }
 
 .divTitulo{
+    margin-top: 50px;
     text-align: center;
 }
 
@@ -21,11 +25,15 @@
 }
 
 .divform{
+    margin-top: 50px;
     align-items: center;
+    background-color: rgb(180, 180, 180);
+    border: solid 5px black;
+    border-radius: 20px;
 }
 
 .formCad{
-
+    padding: 35px 50px;
 }
 
 label{
@@ -39,10 +47,29 @@ input{
     width: 250px;
     height: 30px;
     border: 2px solid black;
-    border-radius: 5    px;
+    border-radius: 10px;
+}
+.selects{
+    margin-top: 15px;
 }
 
+select{
+    margin-bottom: 10px;
+    margin-left: 12px;
+    width: 125px;
+    height: 30px;
+    border-radius: 10px;
+    text-align: center;
+}
 
+.botaoCad{
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+}
 
-
-
+button{
+    width: 75px;
+    height: 30px;
+    border-radius: 5px;
+}
