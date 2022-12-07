@@ -10,5 +10,7 @@
             "name": "cdl"
         }
     ],
-    "require": {}
+    "require": {
+        "twbs/bootstrap": "^5.2"
+    }
 }

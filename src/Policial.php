@@ -10,7 +10,8 @@ class Policial implements ActiveRecord{
         private string $login,
         private string $senha,
         private string $funcao,
-        private string $status){
+        private string $status
+        ){
     }
 
     public function setIdUsuario(int $idUsuario):void{
@@ -59,7 +60,7 @@ class Policial implements ActiveRecord{
         if(isset($this->idUsuario)){
             $sql = "UPDATE policial SET login = '{$this->login}', senha = '{$this->senha}' WHERE idUsuario = {$this->idUsuario}";
         }else{
-            $sql = "INSERT INTO policial (login,senha,funcao,status) VALUES ('{$this->login}','{$this->senha}', 'Policial', 'Ativo')";
+            $sql = "INSERT INTO policial (login,senha,funcao,status) VALUES ('{$this->login}','{$this->senha}','{$this->funcao}','{$this->status}')";
         }
         return $conexao->executa($sql);
     }
@@ -68,7 +69,7 @@ class Policial implements ActiveRecord{
         $conexao = new MySQL();
         $sql = "SELECT * FROM policial WHERE idUsuario = {$idUsuario}";
         $resultado = $conexao->consulta($sql);
-        $u = new Policial($resultado[0]['login'],$resultado[0]['senha'],$resultado[0]['funcao'],$resultado[0]['status']);
+        $u = new Policial($resultado[0]['login'],$resultado[0]['senha']);
         $u->setIdUsuario($resultado[0]['idUsuario']);
         return $u;
     }
@@ -85,7 +86,7 @@ class Policial implements ActiveRecord{
         $resultados = $conexao->consulta($sql);
         $policial = array();
         foreach($resultados as $resultado){
-            $u = new Policial($resultado['funcao'],$resultado['login'],$resultado['senha'],$resultado['status']);
+            $u = new Policial($resultado['login'],$resultado['senha'],$resultado['funcao'],$resultado['status']);
             $u->setIdUsuario($resultado['idUsuario']);
             $policial[] = $u;
         }
