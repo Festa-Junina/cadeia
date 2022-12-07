@@ -94,14 +94,14 @@ class Usuario implements  ActiveRecord
         $sql = "DELETE FROM usuario WHERE idUsuario = {$this->idUsuario}";
 
 
-        return $connection->execute($sql);
+        return $connection->executa($sql);
     }
 
     public static function find($id): Usuario
     {
         $connection = new MySQL();
         $sql = "SELECT * FROM usuario WHERE idUsuario = {$id}";
-        $res = $connection->query($sql);
+        $res = $connection->consulta($sql);
         $user = new Usuario();
         $user->constructorCreate(
             $res[0]['idUsuario'],
@@ -119,7 +119,7 @@ class Usuario implements  ActiveRecord
     {
         $connection = new MySQL();
         $sql = "SELECT * FROM user";
-        $results = $connection->query($sql);
+        $results = $connection->consulta($sql);
         $users = array();
 
         foreach($results as $result) {
@@ -142,7 +142,7 @@ class Usuario implements  ActiveRecord
     {
         $connection = new MySQL();
         $sql = "SELECT idUsuario, login, idFuncao, password FROM usuario WHERE login = '{$this->login}'";
-        $results = $connection->query($sql);
+        $results = $connection->consulta($sql);
 
         if (password_verify($this->senha, $results[0]["senha"])) {
             session_start();
