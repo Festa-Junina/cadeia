@@ -23,10 +23,13 @@ if(isset($_POST['botao'])){
     <label for='senha'>Senha:</label>
     <input type='password' name='senha' id='senha' required>
 
-    <input style="display: hidden;" type="text" value="Policial" id="funcao" name="funcao">
+    <select name="funcao" id="funcao">
+        <option value="funcao">Policial</option>
+    </select>
 
-    <input style="display: hidden;" type="text" value="Ativo" id="status" name="status">
-
+    <select name="status" id="status">
+        <option value="status">Ativo</option>
+    </select>
 
     <input  type='submit' name='botao' value='Cadastrar'>
 

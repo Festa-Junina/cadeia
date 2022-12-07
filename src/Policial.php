@@ -58,7 +58,7 @@ class Policial implements ActiveRecord{
         $conexao = new MySQL();
         $this->senha = password_hash($this->senha,PASSWORD_BCRYPT); 
         if(isset($this->idUsuario)){
-            $sql = "UPDATE policial SET login = '{$this->login}', senha = '{$this->senha}' WHERE idUsuario = {$this->idUsuario}";
+            $sql = "UPDATE policial SET login = '{$this->login}', senha = '{$this->senha}', funcao = '{$this->funcao}', status = '{$this->status}' WHERE idUsuario = {$this->idUsuario}";
         }else{
             $sql = "INSERT INTO policial (login,senha,funcao,status) VALUES ('{$this->login}','{$this->senha}','{$this->funcao}','{$this->status}')";
         }
@@ -86,7 +86,7 @@ class Policial implements ActiveRecord{
         $resultados = $conexao->consulta($sql);
         $policial = array();
         foreach($resultados as $resultado){
-            $u = new Policial($resultado['login'],$resultado['senha'],$resultado['funcao'],$resultado['status']);
+            $u = new Policial($resultado['login'],$resultado['senha']);
             $u->setIdUsuario($resultado['idUsuario']);
             $policial[] = $u;
         }
