@@ -69,7 +69,7 @@ class Policial implements ActiveRecord{
         $conexao = new MySQL();
         $sql = "SELECT * FROM policial WHERE idUsuario = {$idUsuario}";
         $resultado = $conexao->consulta($sql);
-        $u = new Policial($resultado[0]['login'],$resultado[0]['senha']);
+        $u = new Policial($resultado[0]['login'],$resultado[0]['senha'],$resultado[0]['funcao'],$resultado[0]['status']);
         $u->setIdUsuario($resultado[0]['idUsuario']);
         return $u;
     }
