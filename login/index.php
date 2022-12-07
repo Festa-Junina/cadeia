@@ -23,7 +23,7 @@
                         </a>
                     </div>
                     <div class="form-submit-button">
-                        <input type="submit" value="Enviar" class="submit-button">
+                        <input type="submit" value="Enviar" name="botao" class="submit-button">
                     </div>
                 </form>
             </div>
