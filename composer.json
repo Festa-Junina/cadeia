@@ -4,8 +4,7 @@
     "autoload": {
         "psr-4": {
             "db\\": "src/db",
-            "classes\\" : "src/classes",
-            "enums\\" : "src/enums" 
+            "classes\\" : "src/classes"
         }
     },
     "authors": [

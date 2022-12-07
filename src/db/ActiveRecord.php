@@ -1,5 +1,7 @@
 <?php
 
+namespace db;
+
 interface ActiveRecord{
 
     public function save():bool;

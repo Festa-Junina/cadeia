@@ -1,3 +1,13 @@
+<?php
+
+    require_once("../../vendor/autoload.php");
+    
+    use classes\OrdemPrisao;
+
+    $ordens = OrdemPrisao::findall();
+    var_dump($ordens);
+
+?>
 <!DOCTYPE html>
 <html lang="pt-BR">
 

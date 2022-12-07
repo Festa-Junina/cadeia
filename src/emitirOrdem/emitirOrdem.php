@@ -1,7 +1,8 @@
-<?php 
+<?php
 
-    require_once "../db/MySQL.php";
-    require_once "../classes/OrdemPrisao.php";
+    use db\MySQL;
+    use classes\OrdemPrisao;
+    
     session_start();
 
     if(isset($_POST['submit'])){

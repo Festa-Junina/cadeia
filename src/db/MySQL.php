@@ -1,5 +1,7 @@
 <?php
 
+namespace db;
+
 require_once __DIR__."\Configuracao.php";
 
 class MySQL{

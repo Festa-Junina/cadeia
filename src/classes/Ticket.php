@@ -1,7 +1,6 @@
 <?php
 
-
-require_once "../db/MySQL.php";
+use db\MySQL;
 
 class Ticket{
 
