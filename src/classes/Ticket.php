@@ -26,8 +26,6 @@ class Ticket{
         if(!empty($ticketValido)){
             if($ticketValido['0']['valido'] == false){
 
-//echo"ticket ja utilizado"; 
-
                 return false;
             }
 
@@ -38,11 +36,10 @@ class Ticket{
             return true;
         }
         
-//echo"ticket nao existe";  
 
         return false;
     }
-}
+
 
 
 
@@ -50,9 +47,13 @@ class Ticket{
 public function findOrdem(){
     $conexao = new MySQL();
 
-    $sql = "SELECT statusprisao.nome
-    FROM ordemprisao JOIN statusprisao ON statusprisao.idStatusPrisao = ordemprisao.idStatusOrdem
-    WHERE ordemprisao.idTicket = {$this->ticket}'";
+    $sql = "select ordemprisao.nomeMeliante, statusordem.nome as 'statusOrdem', 
+    IF(ordemprisao.idStatusOrdem = 2, statusprisao.nome, 'Ainda não foi preso') as 'statusprisao'
+    from ordemprisao
+    inner join statusordem on statusordem.idStatusOrdem = ordemprisao.idStatusOrdem
+    left join prisao on prisao.idOrdemPrisao = ordemprisao.idOrdem
+    left join statusprisao on statusprisao.idStatusPrisao = prisao.idStatusPrisao
+    where ordemprisao.idTicket = {$this->ticket}"; 
 
     $status = $conexao->consulta($sql);
 
@@ -64,4 +65,6 @@ public function findOrdem(){
 
         return false;
     }
+}
+
 }
