@@ -86,7 +86,7 @@ class Policial implements ActiveRecord{
         $resultados = $conexao->consulta($sql);
         $policial = array();
         foreach($resultados as $resultado){
-            $u = new Policial($resultado['login'],$resultado['senha']);
+            $u = new Policial($resultado['login'],$resultado['senha'],$resultado['funcao'],$resultado['status']);
             $u->setIdUsuario($resultado['idUsuario']);
             $policial[] = $u;
         }
