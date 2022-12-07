@@ -13,6 +13,8 @@ class OrdemPrisao implements ActiveRecord
     private int $idTurmaMeliante;	
     private int $idStatusOrdem;	
     private int $horaOrdem;
+    private int $assumidaPor; 
+    private int $presoPor; 
     
     public function __construct(
         private string $nomeMeliante,
@@ -151,6 +153,30 @@ class OrdemPrisao implements ActiveRecord
   public function getHoraOrdem(): int
   {
     return $this->horaOrdem;
+  }
+  #endregion
+
+  #region assumidaPor
+  public function setAssumidaPor(string $assumidaPor): void
+  {
+    $this->assumidaPor = $assumidaPor;
+  }
+
+  public function getAssumidaPor(): int
+  {
+    return $this->assumidaPor;
+  }
+  #endregion
+
+  #region presoPor
+  public function setPresoPor(string $presoPor): void
+  {
+    $this->presoPor = $presoPor;
+  }
+
+  public function getPresoPor(): int
+  {
+    return $this->presoPor;
   }
   #endregion
 
