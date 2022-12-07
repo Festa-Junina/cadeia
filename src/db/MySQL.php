@@ -2,7 +2,7 @@
 
 namespace db;
 
-require_once __DIR__."\Configuracao.php";
+require_once("./Configuracao.php");
 
 class MySQL{
 	

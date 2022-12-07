@@ -1,13 +1,16 @@
-<?php 
+<?php
 
 
-require_once "../classes/Ticket.php";
+use classes\Ticket;
 
 if(isset($_POST['submit'])){
     $ticket = new Ticket($_POST['ticket']);
     
     if($ticket->autenticar()){
         header("location: emitirOrdem.php");
+        //vai ser assim?
+        session_start();
+        $_SESSION['ticket'] = $ticket->getTicket(); 
     }else{
         echo "Ticket invalido ou já utilizado";
     }

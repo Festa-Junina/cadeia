@@ -1,4 +1,5 @@
 <?php
+namespace classes;
 
 use db\MySQL;
 

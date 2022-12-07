@@ -1,4 +1,5 @@
 @import url("../../globalStyles.css");
+@import url("../../reset.css");
 
 body{
     color: var(--white);
