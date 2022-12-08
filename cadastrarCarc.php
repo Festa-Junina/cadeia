@@ -9,7 +9,7 @@ if(isset($_POST['submit'])){
     $carc = new Carcereiro();
     $carc->setnomeCarc($_POST['name']);
     $carc->setemailCarc($_POST['email']);
-    $carc->settelCarc($_POST['varchar']);
+    $carc->settelCarc($_POST['int']);
     $carc->setcodCarc($_POST['int']);
     $carc->save();
 }
