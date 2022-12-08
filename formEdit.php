@@ -29,10 +29,10 @@ if(isset($_POST['botao'])){
         <br>
     <section class="formulario"> 
         <div class="divform">
-            <form class="formCad" action="formPolicial.php" method="POST">
+            <form class="formCad" action="formEdit.php" method="POST">
                 <?php
                     echo "<label for='email'>E-mail:</label><br>";
-                    echo "<input name='login' value='{$policial->getLogin()}' type='text' required>";
+                    echo "<input name='login' id='login' value='{$policial->getLogin()}' type='text' required>";
                     echo "<br>";
                     echo "<input name='id' value={$policial->getIdUsuario()} type='hidden'>";
                 ?>
