@@ -32,7 +32,7 @@ if(isset($_POST['submit'])){
                 <input type='email' name='emailCarc' id='email' required><br>
                 <label for='senha'>Senha:</label><br>
                 <input type='password' name='senha' id='senha' required><br>
-                <label for='telefone'>Senha:</label><br>
+                <label for='telefone'>Telefone:</label><br>
                 <input type='int' name='telCarc' id='telCarc' required><br>
                 </div>
                 <div class="botaoCad">
