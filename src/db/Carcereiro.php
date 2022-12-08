@@ -98,6 +98,19 @@ class Carcereiro implements ActiveRecord{
         }
         return $carcereiros;
     }
-
+    public function authenticate():bool{
+        $conexao = new MySQL();
+        $sql = "SELECT emailCarc, senhaCarc FROM carcereiros WHERE codCarc = '{$this->codCarc}'";
+        $resultados = $conexao->consulta($sql);
+        if(password_verify($this->senhaCarc,$resultados[0]['senhaCarc'])){
+            session_start();
+            $_SESSION['codCarc'] = $resultados[0]['codCarc'];
+            $_SESSION['senhaCarc'] = $resultados[0]['senhaCarc'];
+            $_SESSION['emailCarc'] = $resultados[0]['emailCarc'];
+            return true;
+        }else{
+            return false;
+        }
+    }
     
 }
