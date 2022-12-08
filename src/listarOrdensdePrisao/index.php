@@ -1,12 +1,9 @@
 <?php
-
     require_once("../../vendor/autoload.php");
-    
+
     use classes\OrdemPrisao;
 
-    $ordens = OrdemPrisao::findall();
-    var_dump($ordens);
-
+    
 ?>
 <!DOCTYPE html>
 <html lang="pt-BR">
@@ -47,7 +44,10 @@
             <div class="order-list">
                 <div class="order">
                     <div class="order-content">
-                        <h2>Nome do Meliante</h2>
+                        <div class="order-header">
+                            <h2>Nome do Meliante</h2>
+                            <h3>02:30</h3>
+                        </div>
                         <div class="order-type">
                             <div class="ball" id="ball1"></div>
                             <p>Servidor</p>
@@ -55,14 +55,14 @@
                         <h4>Localização do meliante...</h4>
 
                         <a href="#tips1" rel="modal:open">
-                            <p>&nbsp;Caracteríscias</p>
+                            <p>&nbsp;Características</p>
                         </a>
                         
                         
                         <h4 class="responsible">Responsável: Kelvin😎</h4>
                         <!-- Modal -->
                         <div id="tips1" class="modal">
-                            <p>Caracterisicas do meliante aqui!</p>
+                            <p>Características do meliante aqui!</p>
                             <!-- <a href="#" rel="modal:close">Fechar</a> -->
                         </div>
                     </div>
@@ -82,19 +82,19 @@
 
 
                         <a href="#tips2" rel="modal:open">
-                            <p>&nbsp;Caracteríscias</p>
+                            <p>&nbsp;Características</p>
                         </a>
 
 
                         <!-- Modal -->
                         <div id="tips2" class="modal">
-                            <p>Caracterisicas do meliante aqui!</p>
-                            <p>Caracterisicas do meliante aqui!</p>
+                            <p>Características do meliante aqui!</p>
+                            <p>Características do meliante aqui!</p>
                             <!-- <a href="#" rel="modal:close">Fechar</a> -->
                         </div>
                     </div>
                     <div class="order-btn">
-                        <h2>Assumir mandado</h2>
+                        <h2>Assumir</h2>
                     </div>
                 </div>
 
@@ -109,20 +109,20 @@
 
 
                         <a href="#tips3" rel="modal:open">
-                            <p>&nbsp;Caracteríscias</p>
+                            <p>&nbsp;Características</p>
                         </a>
 
 
                         <!-- Modal -->
                         <div id="tips3" class="modal">
-                            <p>Caracterisicas do meliante aqui!</p>
-                            <p>Caracterisicas do meliante aqui!</p>
-                            <p>Caracterisicas do meliante aqui!</p>
+                            <p>Características do meliante aqui!</p>
+                            <p>Características do meliante aqui!</p>
+                            <p>Características do meliante aqui!</p>
                             <!-- <a href="#" rel="modal:close">Fechar</a> -->
                         </div>
                     </div>
                     <div class="order-btn">
-                        <h2>Assumir mandado</h2>
+                        <h2>Assumir</h2>
                     </div>
                 </div>
 

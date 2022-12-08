@@ -114,10 +114,18 @@ body{
     gap: .4rem;
 }
 
-.order-content > h2{
+.order-header{
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    align-items: flex-end;
+}
+
+.order-header > h2{
     font-size: 130%;
     font-weight: bold;
 }
+
 .order-content > a{
     display: flex;
     align-items: center;
