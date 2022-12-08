@@ -5,6 +5,7 @@ class Carcereiro implements ActiveRecord{
     private int $codCarc;
     private string $nomeCarc;
     private string $emailCarc;
+    private int $senhaCarc;
     private int $telCarc;
 
     public function __construct(private string $email){
@@ -34,6 +35,14 @@ class Carcereiro implements ActiveRecord{
         return $this->emailCarc;
     }
 
+    public function setSenhaCarc(int $senhaCarc):void{
+        $this->senhaCarc = $senhaCarc;
+    }
+
+    public function getSenhaCarc():int{
+        return $this->senhaCarc;
+    }
+
     public function setTelcarc(string $telCarc):void{
         $this->telCarc = $telCarc;
     }
@@ -46,9 +55,9 @@ class Carcereiro implements ActiveRecord{
         $conexao = new MySQL();
         
         if(isset($this->id)){
-            $sql = "UPDATE carcereiros SET nomeCarc = '{$this->nomeCarc}', emailCarc = '{$this->emailCarc}', telCarc = '{$this->telCarc}' WHERE codCarc = {$this->codCarc}";
+            $sql = "UPDATE carcereiros SET nomeCarc = '{$this->nomeCarc}', emailCarc = '{$this->emailCarc}', senhaCarc = '{$this->senhaCarc}' telCarc = '{$this->telCarc}' WHERE codCarc = {$this->codCarc}";
         }else{
-            $sql = "INSERT INTO carcereiros (nomeCarc, emailCarc, telCarc) VALUES ('{$this->nomeCarc}', '{$this->emailCarc}', '{$this->telCarc}')";
+            $sql = "INSERT INTO carcereiros (nomeCarc, emailCarc, senhaCarc telCarc) VALUES ('{$this->nomeCarc}', '{$this->emailCarc}', '{$this->senhaCarc}' '{$this->telCarc}')";
         }
         return $conexao->executa($sql);
         
@@ -67,6 +76,7 @@ class Carcereiro implements ActiveRecord{
         $p->setCodcarc($resultado[0]['codCarc']);
         $p->setNomeCarc($resultado[0]['nomeCarc']);
         $p->setEmailCarc($resultado[0]['emailCarc']);
+        $p->setSenhaCarc($resultado[0]['senhaCarc']);
         $p->setTelCarc($resultado[0]['telCarc']);
         return $p;
     }
@@ -82,6 +92,7 @@ class Carcereiro implements ActiveRecord{
         $p->setCodcarc($resultado['codCarc']);
         $p->setNomeCarc($resultado['nomeCarc']);
         $p->setEmailCarc($resultado['emailCarc']);
+        $p->setSenhaCarc($resultado['senhaCarc']);
         $p->setTelCarc($resultado['telCarc']);
             $carcereiros[] = $p;
         }
