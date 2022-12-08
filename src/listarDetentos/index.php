@@ -13,14 +13,12 @@ use classes\OrdemPrisao;
 $detentos = Detento::findall();
 $ordens = array();
 
-var_dump(OrdemPrisao::findall());
-die();
-
 foreach ($detentos as $detento) {
     $ordens[] = OrdemPrisao::find($detento->getIdOrdemPrisao());
 }
 
-
+var_dump($ordens);
+die();
 ?>
 
 <!DOCTYPE html>
