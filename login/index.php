@@ -1,7 +1,5 @@
 <?php
 
-echo "<script>console.log('Testando...')</script>";
-
 ?>
 
 <!DOCTYPE html>

@@ -1,8 +1,9 @@
 <?php
 
-require_once "../db/MySQL.php";
-require_once "../db/ActiveRecord.php";
+namespace classes;
 
+use db\ActiveRecord;
+use db\MySQL;
 
 class Detento implements ActiveRecord
 {

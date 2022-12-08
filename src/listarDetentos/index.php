@@ -7,6 +7,12 @@ if (!isset($_SESSION["idUsuario"]) && $_SESSION["funcao"] != "Carcereiro") {
     header("location: ../../login");
 }
 
+use classes\Detento;
+use classes\OrdemPrisao;
+
+/*
+ * TODO: Mostrar detentos na página.
+ */
 ?>
 
 <!DOCTYPE html>
@@ -37,7 +43,7 @@ if (!isset($_SESSION["idUsuario"]) && $_SESSION["funcao"] != "Carcereiro") {
                     local_police
                 </span>
             <div class="user-opt">
-                <a href="#">Solturas (Coming soon)</a>
+                <a href="#">Solturas</a>
                 <a href="../../login/logout.php">Sair</a>
             </div>
         </div>
@@ -49,7 +55,7 @@ if (!isset($_SESSION["idUsuario"]) && $_SESSION["funcao"] != "Carcereiro") {
 
             <div class="order">
                 <div class="order-content">
-                    <h2>Reinaldo Manoel da Silva</h2>
+                    <h2>Exemplo de nome</h2>
 
                     <div class="tipo-status">
                         <div class="order-type">

@@ -189,6 +189,9 @@ body{
     background: #fff;
 }
 
+.acertou {
+    background-color: var(--primary);
+}
 .errou {
     background-color: var(--red);
 }
