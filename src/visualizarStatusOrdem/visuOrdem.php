@@ -36,6 +36,7 @@ if(isset($_POST['submit'])){
                         <span>Nome Meliante: {$resultado['nomeMeliante']}</span>
                         <span>Status Ordem: {$resultado['statusOrdem']}</span>
                         <span>Status Prisão: {$resultado['statusprisao']}</span>
+                        <span>Tempo de Prisão: {$resultado['tempoPreso']}</span>
                     </div>        
                 ";
     
