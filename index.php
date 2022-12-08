@@ -17,7 +17,7 @@ $policiais = Policial::findall();
 <body>
     <article>
         <div>
-            <a class="link-cadastro" href='formPolicial.php'>Registrar policail</a>
+            <a class="link-cadastro" href='formPolicial.php'>Registrar policial</a>
         </div>
     </article>
     <article>
@@ -25,7 +25,7 @@ $policiais = Policial::findall();
             <thead>
                 <tr>
                     <th>Email</th>
-                    <th>funcao</th>
+                    <th>Funcão</th>
                     <th>Status</th>
                     <th>Ações</th>
                 </tr>
