@@ -1,4 +1,5 @@
 @import url("../../globalStyles.css");
+@import url("../../reset.css");
 
 body{
     color: var(--white);
@@ -127,6 +128,10 @@ body{
 
 .order-content > a::before{
     content: "+";
+}
+
+.responsible{
+    padding: .3rem 0;
 }
 
 

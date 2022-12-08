@@ -1,5 +1,15 @@
+<?php
+
+    require_once("../../vendor/autoload.php");
+    
+    use classes\OrdemPrisao;
+
+    $ordens = OrdemPrisao::findall();
+    var_dump($ordens);
+
+?>
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-BR">
 
 <head>
     <meta charset="UTF-8">
@@ -27,7 +37,6 @@
                 </span>
                 <div class="user-opt">
                     <a href="#">Minhas prisões</a>
-                    <a href="#">Meus mandados</a>
                     <a href="#">Sair</a>
                 </div>
             </div>
@@ -45,12 +54,12 @@
                         </div>
                         <h4>Localização do meliante...</h4>
 
-
                         <a href="#tips1" rel="modal:open">
                             <p>&nbsp;Caracteríscias</p>
                         </a>
-
-
+                        
+                        
+                        <h4 class="responsible">Responsável: Kelvin😎</h4>
                         <!-- Modal -->
                         <div id="tips1" class="modal">
                             <p>Caracterisicas do meliante aqui!</p>
@@ -58,7 +67,7 @@
                         </div>
                     </div>
                     <div class="order-btn">
-                        <h2>Assumir mandado</h2>
+                        <h2>Confirmar Prisão</h2>
                     </div>
                 </div>
 
@@ -126,6 +135,7 @@
     <script>
         $('.user').on("click", function () {
             $('.user-opt').toggleClass('displayed');
+            console.log(this);
         });
     </script>
 </body>
