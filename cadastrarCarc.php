@@ -4,6 +4,7 @@ if(isset($_POST['submit'])){
     $carc = new Carcereiro($_POST['email']);
     $carc->setcodCarc($_POST['codCarc']);
     $carc->setnomeCarc($_POST['nomeCarc']);
+    $carc->setnomeSenhaCarc($_POST['senhaCarc']);
     $carc->settelCarc($_POST['telCarc']);
     $carc->save();
 }
@@ -24,6 +25,8 @@ if(isset($_POST['submit'])){
         Nome do Carcereiro: <input name='nomeCarc' type='String' required>
         <br>
         E-mail do Carcereiro: <input name='emailCarc' type='email' required>
+        <br>
+        Senha do Carceireiro: <input name='senha' type='password' required>
         <br>
         Telefone do Carcereiro: <input name='telCarc' type='int' required>
         <input type="submit" value="Registrar Carcereiro" name='submit'>
