@@ -2,8 +2,13 @@
     require_once("../../vendor/autoload.php");
 
     use classes\OrdemPrisao;
+    use classes\TipoMeliante;
 
-    
+    $ordens = OrdemPrisao::findall();
+   
+    foreach ($ordens as $ordem) {
+        
+    }
 ?>
 <!DOCTYPE html>
 <html lang="pt-BR">
@@ -33,7 +38,6 @@
                     local_police
                 </span>
                 <div class="user-opt">
-                    <a href="#">Minhas prisões</a>
                     <a href="#">Sair</a>
                 </div>
             </div>
@@ -42,6 +46,43 @@
         <div class="main-content">
 
             <div class="order-list">
+
+            <?php
+                foreach ($ordens as $ordem) {
+                    $tipoMeliante = TipoMeliante::find($ordem->getIdTipoMeliante())->getNome();
+
+                    $template="
+                    <div class='order'>
+                    <div class='order-content'>
+                        <div class='order-header'>
+                            <h2>{$ordem->getNomeMeliante()}</h2>
+                            <h3>02:30</h3>
+                        </div>
+                        <div class='order-type'>
+                            <div class='ball' id='ball1'></div>
+                            <p>{$tipoMeliante}</p>
+                        </div>
+                        <h4>Localização do meliante...</h4>
+
+                        <a href='#tips1' rel='modal:open'>
+                            <p>&nbsp;Características</p>
+                        </a>
+                        
+                        
+                        <h4 class='responsible'>Responsável: Kelvin😎</h4>
+                        <!-- Modal -->
+                        <div id='tips1' class='modal'>
+                            <p>Características do meliante aqui!</p>
+                        </div>
+                    </div>
+                    <div class='order-btn'>
+                        <h2>Confirmar Prisão</h2>
+                    </div>
+                </div>";
+
+                echo $template;
+                }
+            ?>
                 <div class="order">
                     <div class="order-content">
                         <div class="order-header">
