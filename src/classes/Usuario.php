@@ -3,7 +3,6 @@ namespace classes;
 
 use db\ActiveRecord;
 use db\MySQL;
-use enum;
 
 class Usuario implements  ActiveRecord
 {

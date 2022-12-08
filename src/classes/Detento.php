@@ -154,6 +154,20 @@ class Detento implements ActiveRecord
         return $prisoes;
     }
 
+    public static function PresoAtivo(): bool
+    {
+        $conexao = new MySQL();
+        $sql = "SELECT COUNT(idOrdemPrisao) from prisao
+                WHERE idStatusPrisao != 7";
+        $resultado = $conexao->consulta($sql);
+        if ($resultado = 0){
+            return false;
+        }else{
+            return true;
+        }
+
+    }
+
 
 
 
