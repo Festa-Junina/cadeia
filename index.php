@@ -34,6 +34,6 @@ if(isset($_POST['botao'])){
             </form>
             <div class="botao">
                 <a href="formCad.php">Cadastrar</a>
-            </div>
+            </div> 
 </body>
 </html>
