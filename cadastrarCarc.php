@@ -48,15 +48,15 @@ if(isset($_POST['submit'])){
     </section>
     <section class="formulario"> 
         <div class="divform">
-            <form class="formCad" action="formPolicial.php" method="POST">
+            <form class="formCad" action="formCad.php" method="POST">
                 <label for='email'>E-mail:</label><br>
-                <input type='email' name='email' id='email' required><br>
+                <input type='email' name='emailCarc' id='email' required><br>
                 <label for='senha'>Senha:</label><br>
                 <input type='password' name='senha' id='senha' required><br>
                 <div class="selects">
                     <label for="funcao">Função:</label><br>
                     <select name="funcao" id="funcao">
-                        <option value="Policial">Policial</option>
+                        <option value="Carcereiro">Carcereiro</option>
                     </select><br>
                     <label for="status">Status:</label><br>
                     <select name="status" id="status">
