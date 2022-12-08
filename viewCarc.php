@@ -15,16 +15,16 @@
 
                 <div>
                     <div class='div-nome-carc'>
-                        <h2>{$carc->getnome()}</h1>
+                        <h2>{$carc->getNomeCarc()}</h1>
                     </div>
                     <div class='div-id-carc'>
-                        <h4>{$carc->getidFuncao()}</h4>
+                        <h4>{$carc->getcodCarc()}</h4>
                     </div>
                     <div class='div-email-carc'>
-                        <h3>{$carc->getlogin()}</h3>
+                        <h3>{$carc->getLogin()}</h3>
                     </div>
                     <div class='div-tel-carc'>
-                        <h3>{$carc->gettelefone()}</h3>
+                        <h3>{$carc->getTelefone()}</h3>
                     </div>
                     <a href='editCarc.php'>Editar</a>
                 </div>
