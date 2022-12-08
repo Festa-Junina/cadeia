@@ -154,12 +154,37 @@ body{
     border-radius: 8px;
     color: var(--white);
 }
+.order-btn1{
+    background-color: var(--blackOpacity);
+    margin-top: .7rem;
+    padding: .35rem;
+    text-align: center;
+    border-radius: 8px;
+    color: var(--black);
+}
+
+.order-btn2{
+    background-color: var(--darkGreen);
+    margin-top: .3rem;
+    padding: .35rem;
+    text-align: center;
+    border-radius: 8px;
+    color: var(--white);
+}
 
 .order-btn:hover{
     cursor: pointer;
     background-color: var(--darkGreen);
 }
 
+.order-btn2:hover{
+    cursor: pointer;
+    background-color: var(--gray2);
+}
+/* .order-btn2:hover{
+    cursor: pointer;
+    background-color: var(--darkGreen);
+} */
 
 .modal{
     color: var(--black);
