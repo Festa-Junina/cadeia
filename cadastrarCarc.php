@@ -2,10 +2,10 @@
 require_once __DIR__."/vendor/autoload.php";
 if(isset($_POST['submit'])){
     $carc = new Carcereiro($_POST['email']);
-    $carc->setcodCarc($_POST['codCarc']);
-    $carc->setnomeCarc($_POST['nomeCarc']);
-    $carc->setnomeSenhaCarc($_POST['senhaCarc']);
-    $carc->settelCarc($_POST['telCarc']);
+    $carc->setCodCarc($_POST['codCarc']);
+    $carc->setNomeCarc($_POST['nomeCarc']);
+    $carc->setSenhaCarc($_POST['senhaCarc']);
+    $carc->setTelCarc($_POST['telCarc']);
     $carc->save();
 }
 ?>
