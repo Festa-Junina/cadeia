@@ -1,4 +1,6 @@
+
 <?php
+$carcereiro = 0;
 if(isset($_GET['id'])){
     require_once __DIR__."/src/Carcereiro.php";
     $carcereiro = Carcereiro::find($_GET['id']);
