@@ -3,7 +3,7 @@ if(isset($_POST['botao'])){
     require_once __DIR__."/vendor/autoload.php";
     $carc = new Carcereiro($_POST['email'],$_POST['senha']);
     if($carc->authenticate()){
-        header("location: restrita.php");
+        header("location: listarCarc.php");
     }else{
         header("location: index.php");
     }
@@ -19,16 +19,21 @@ if(isset($_POST['botao'])){
     <title>Carcereiro</title>
 </head>
 <body>
-    <a href="https://www.vittude.com/blog/wp-content/uploads/desespero-1200x799.png"><img src="https://www.vittude.com/blog/wp-content/uploads/desespero-1200x799.png" alt=""></a>
-    <style>
-        img{
-            width: 20em;
-            filter: opacity(0);
-        }
-        img:hover{
-            filter: opacity(100);
-            border: solid 3px red;
-        }
-    </style>
+    <div class="formulario">
+        <form action="index.php" method='post'>
+                <label for='email'>E-mail:</label>
+                <br>
+                <input type='email' name='email' id='email' required>
+                <br>
+                <label for='senha'>Senha:</label>
+                <br>
+                <input type='password' name='senha' id='senha' required>
+                <br>
+                <input type='submit' name='botao' value='Entrar'>
+                <br>
+            </form>
+            <div class="botao">
+                <a href="formCad.php">Cadastrar</a>
+            </div> 
 </body>
 </html>
