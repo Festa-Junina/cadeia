@@ -1,7 +1,8 @@
 <?php
 if(isset($_POST['botao'])){
     require_once __DIR__."/vendor/autoload.php";
-    $carc = new Carcereiro($_POST['email'],$_POST['senha']);
+    $carc = new Carcereiro($_POST['email']);
+    $carc->setSenhaCarc($_POST['senhaCarc']);
     if($carc->authenticate()){
         header("location: listarCarc.php");
     }else{
@@ -33,7 +34,7 @@ if(isset($_POST['botao'])){
                 <br>
             </form>
             <div class="botao">
-                <a href="formCad.php">Cadastrar</a>
+                <a href="CadastrarCarc.php">Cadastrar</a>
             </div> 
 </body>
 </html>
