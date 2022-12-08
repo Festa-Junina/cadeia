@@ -1,7 +1,6 @@
 <?php
 require_once __DIR__."/vendor/autoload.php";
 if(isset($_POST['submit'])){
-    
     $carc = new Carcereiro($_POST['email']);
     $carc->setcodCarc($_POST['codCarc']);
     $carc->setnomeCarc($_POST['nomeCarc']);
