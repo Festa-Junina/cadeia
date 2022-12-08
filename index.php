@@ -25,8 +25,8 @@ $policiais = Policial::findall();
             <thead>
                 <tr>
                     <th>Email</th>
-                    <th>Funcão</th>
-                    <th>Status</th>
+                    <th>Telefone</th>
+                    <th>Nome</th>
                     <th>Ações</th>
                 </tr>
             </thead>
@@ -35,8 +35,8 @@ $policiais = Policial::findall();
                 foreach($policiais as $policial){
                     echo "<tr>";
                     echo "<td>{$policial->getLogin()}</td>";
-                    echo "<td>{$policial->getFuncao()}</td>";
-                    echo "<td>{$policial->getStatus()}</td>";
+                    echo "<td>{$policial->getTelefone()}</td>";
+                    echo "<td>{$policial->getNome()}</td>";
                     echo "<td>
                             <a href='formEdit.php?id={$policial->getIdUsuario()}'>Editar</a>
                             <a href='excluir.php?id={$policial->getIdUsuario()}'>Excluir</a> 

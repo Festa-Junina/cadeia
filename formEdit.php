@@ -5,7 +5,7 @@ if(isset($_GET['id'])){
 }
 if(isset($_POST['botao'])){
     require_once __DIR__."/src/Policial.php";
-    $policial = new Policial($_POST['login'],$_POST['senha'],$_POST['status'],$_POST['funcao']);
+    $policial = new Policial($_POST['login'],$_POST['senha'],$_POST['telefone'],$_POST['nome']);
     $policial->setIdUsuario($_POST['id']);
     $policial->save();
     header("location: index.php");
@@ -34,20 +34,16 @@ if(isset($_POST['botao'])){
                     echo "<label for='email'>E-mail:</label><br>";
                     echo "<input name='login' id='login' value='{$policial->getLogin()}' type='text' required>";
                     echo "<br>";
+                    echo "<label for='email:</label><br>";
+                    echo "<input name='telefone' id='telefone' value='{$policial->getTelefone()}' type='text' required>";
+                    echo "<br>";
+                    echo "<label for='email'>Nome:</label><br>";
+                    echo "<input name='nome' id='nome' value='{$policial->getNome()}' type='text' required>";
+                    echo "<br>";
                     echo "<input name='id' value={$policial->getIdUsuario()} type='hidden'>";
                 ?>
                 <label for='senha'>Senha:</label><br>
                 <input type='password' name='senha' id='senha' required><br>
-                <div class="selects">
-                    <label for="funcao">Função:</label><br>
-                    <select name="funcao" id="funcao">
-                        <option value="Policial">Policial</option>
-                    </select><br>
-                    <label for="status">Status:</label><br>
-                    <select name="status" id="status">
-                        <option value="Ativo">Ativo</option>
-                    </select><br>
-                </div>
                 <div class="botaoCad">
                     <button name='botao' value='Cadastrar'>Cadastrar</button>
                 </div>

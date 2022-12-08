@@ -31,8 +31,7 @@ CREATE TABLE `policial` (
   `idUsuario` int(10) NOT NULL,
   `login` varchar(200) NOT NULL,
   `senha` varchar(200) NOT NULL,
-  `funcao` varchar(200) NOT NULL,
-  `status` varchar(100) NOT NULL
+  `telefone` varchar(50) NULL,
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
