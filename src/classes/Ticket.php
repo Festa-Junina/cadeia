@@ -35,6 +35,7 @@ class Ticket{
 
             session_start();
             $_SESSION['idTicket'] = $ticketValido['0']['idTicket'];
+            $_SESSION['ticket'] = $this->ticket;
             return true;
         }
         

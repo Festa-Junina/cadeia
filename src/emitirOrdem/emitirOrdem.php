@@ -33,69 +33,18 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../../reset.css">
+    <link rel="stylesheet" href="styleEmitirOrdem.css">
     <link rel="stylesheet" href="../../globalStyles.css">
     <title>Emitir Ordem de Prisão</title>
-    <style>
-        body{
-            width: 100vw;
-            height: 100vh;
-            color: var(--gray);
-            background-color: var(--primary);
-        }
-        .container{
-            margin: 0 auto;
-            width: 90%;
-            max-width: 480px;
-        }
-        .header{
-            position: sticky;
-            left: 0;
-            top: 0;
-            width: 100%;
-            height: 10%;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-        }
-        .main{
-            display: flex;
-            height: 90%;
-            flex-direction: column;
-            justify-content: space-around;
-        }
-        .form{
-            height: 100%;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: space-around;
-        }
-        .button{
-            height: 3em;
-            background-color: var(--green);
-            display: flex;
-            border-radius: 5px;
-            align-items: center;
-            justify-content: center;
-            min-width: 120px;
-        }
-        .button-header{
-            height: 2em;
-            background-color: var(--primaryVariant);
-        }
-        input{
-            border-radius: 3px;
-        }
-        /*DETALHES*/
-        h1{
-            color: var(--white);
-        }
-    </style>
+
 </head>
 
 <body class="container">
     <header class="header">
         <h1>Emitir Ordem de Prisão</h1>
+        <?php
+        echo "<span>Ticket: {$_SESSION['ticket']}</span>";
+        ?>
     </header>
     <main class="main">
         <form action="emitirOrdem.php" method="post" class="form">
@@ -118,9 +67,9 @@
             </select>
 
             <!-- SO ABRE SE FOR ALUNO -->
-            <label for="turmaMeliante">Turma do Meliante: (Se for aluno)</label>
-            <select name="turmaMeliante" id="turmaMeliante">
-                <option value="NULL" disabled selected>Escolha uma turma</option>
+            <label for="turmaMeliante">Turma do Meliante: </label>
+            <select name="turmaMeliante" required id="turmaMeliante">
+                <option value="" disabled selected>Escolha uma turma</option>
    
                 <?php 
                     $conexao = new MySQL();
@@ -135,18 +84,9 @@
             <!--  -->
 
             <label for="descricaoMeliante">Descrição do Meliante:</label>
-            <textarea name="descricaoMeliante" id="descricaoMeliante" cols="30" rows="10" required>
-ex-cabelo: 
+            <textarea name="descricaoMeliante" id="descricaoMeliante" placeholder="Use esse espaço para descrever características físicas do meliante" cols="30" rows="10" required></textarea>
 
-ex-parte superior: 
-
-ex-parte inferior: 
-
-ex-tênis: 
-
-            </textarea>
-
-            <label for="localVisto">Ultimo local visto:</label>
+            <label for="localVisto">Último local visto:</label>
             <input type="text" name="localVisto" id="localVisto" placeholder="ex: Em frete a praça principal" required>
 
             <label for="nomeDenunciante">Seu nome:</label>
@@ -159,5 +99,6 @@ ex-tênis:
 
         </form>
     </main>
+    <script src="script.js"></script>
 </body>
 </html>
