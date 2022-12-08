@@ -4,6 +4,7 @@ if(isset($_POST['submit'])){
     $carc = new Carcereiro($_POST['email']);
     $carc->setcodCarc($_POST['codCarc']);
     $carc->setnomeCarc($_POST['nomeCarc']);
+    $carc->setnomeSenhaCarc($_POST['senhaCarc']);
     $carc->settelCarc($_POST['telCarc']);
     $carc->save();
 }
@@ -24,6 +25,8 @@ if(isset($_POST['submit'])){
         Nome do Carcereiro: <input name='nomeCarc' type='String' required>
         <br>
         E-mail do Carcereiro: <input name='emailCarc' type='email' required>
+        <br>
+        Senha do Carceireiro: <input name='senha' type='password' required>
         <br>
         Telefone do Carcereiro: <input name='telCarc' type='int' required>
         <input type="submit" value="Registrar Carcereiro" name='submit'>
@@ -48,15 +51,15 @@ if(isset($_POST['submit'])){
     </section>
     <section class="formulario"> 
         <div class="divform">
-            <form class="formCad" action="formPolicial.php" method="POST">
+            <form class="formCad" action="formCad.php" method="POST">
                 <label for='email'>E-mail:</label><br>
-                <input type='email' name='email' id='email' required><br>
+                <input type='email' name='emailCarc' id='email' required><br>
                 <label for='senha'>Senha:</label><br>
                 <input type='password' name='senha' id='senha' required><br>
                 <div class="selects">
                     <label for="funcao">Função:</label><br>
                     <select name="funcao" id="funcao">
-                        <option value="Policial">Policial</option>
+                        <option value="Carcereiro">Carcereiro</option>
                     </select><br>
                     <label for="status">Status:</label><br>
                     <select name="status" id="status">
