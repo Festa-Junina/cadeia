@@ -1,9 +1,12 @@
 <?php
+require_once __DIR__ . "/../../vendor/autoload.php";
 
-/* TODO:
-    - See if the user who access this page does actually have
-      the session authenticated.
-*/
+session_start();
+
+if (!isset($_SESSION["idUsuario"]) && $_SESSION["funcao"] != "Carcereiro") {
+    header("location: ../../login");
+}
+
 ?>
 
 <!DOCTYPE html>
@@ -34,8 +37,8 @@
                     local_police
                 </span>
             <div class="user-opt">
-                <a href="#">Solturas</a>
-                <a href="#">Sair</a>
+                <a href="#">Solturas (Coming soon)</a>
+                <a href="../../login/logout.php">Sair</a>
             </div>
         </div>
     </div>
