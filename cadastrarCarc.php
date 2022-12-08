@@ -1,6 +1,6 @@
 <?php
 require_once __DIR__."/vendor/autoload.php";
-if(isset($_POST['submit'])){
+if(isset($_POST['botao'])){
     $carc = new Carcereiro($_POST['emailCarc']);
     $carc->setNomeCarc($_POST['nomeCarc']);
     $carc->setSenhaCarc($_POST['senhaCarc']);
@@ -31,7 +31,7 @@ if(isset($_POST['submit'])){
                 <label for='email'>E-mail:</label><br>
                 <input type='email' name='emailCarc' id='email' required><br>
                 <label for='senha'>Senha:</label><br>
-                <input type='password' name='senha' id='senha' required><br>
+                <input type='password' name='senhaCarc' id='senhaCarc' required><br>
                 <label for='telefone'>Telefone:</label><br>
                 <input type='int' name='telCarc' id='telCarc' required><br>
                 </div>
