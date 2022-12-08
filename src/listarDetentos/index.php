@@ -26,16 +26,15 @@
 <div class="container">
     <div class="header">
         <div class="logo">
-            Ordens de Prisão
+            Detentos
         </div>
         <div class="user">
-            <p>Policial</p>
+            <p>Carcereiro</p>
             <span class="material-symbols-outlined">
                     local_police
                 </span>
             <div class="user-opt">
-                <a href="#">Minhas prisões</a>
-                <a href="#">Meus mandados</a>
+                <a href="#">Solturas</a>
                 <a href="#">Sair</a>
             </div>
         </div>
@@ -44,71 +43,26 @@
     <div class="main-content">
 
         <div class="order-list">
-            <div class="order">
-                <div class="order-content">
-                    <h2>Nome do Meliante</h2>
-                    <div class="order-type">
-                        <div class="ball" id="ball1"></div>
-                        <p>Servidor</p>
-                    </div>
-                    <h4>Localização do meliante...</h4>
-
-
-                    <a href="#tips1" rel="modal:open">
-                        <p>&nbsp;Caracteríscias</p>
-                    </a>
-
-
-                    <!-- Modal -->
-                    <div id="tips1" class="modal">
-                        <p>Caracterisicas do meliante aqui!</p>
-                        <!-- <a href="#" rel="modal:close">Fechar</a> -->
-                    </div>
-                </div>
-                <div class="order-btn">
-                    <h2>Assumir mandado</h2>
-                </div>
-            </div>
 
             <div class="order">
                 <div class="order-content">
-                    <h2>Nome do Meliante</h2>
-                    <div class="order-type">
-                        <div class="ball" id="ball2"></div>
-                        <p>Aluno</p>
+                    <h2>Reinaldo Manoel da Silva</h2>
+
+                    <div class="tipo-status">
+                        <div class="order-type">
+                            <div class="ball" id="ball3"></div>
+                            <p>Visitante</p>
+                        </div>
+
+                        <div class="questions-status">
+                            <div class="question-1 errou"></div>
+                            <div class="question-2 pode-responder"></div>
+                            <div class="question-3"></div>
+                        </div>
                     </div>
-                    <h4>Localização do meliante...</h4>
-
-
-                    <a href="#tips2" rel="modal:open">
-                        <p>&nbsp;Caracteríscias</p>
-                    </a>
-
-
-                    <!-- Modal -->
-                    <div id="tips2" class="modal">
-                        <p>Caracterisicas do meliante aqui!</p>
-                        <p>Caracterisicas do meliante aqui!</p>
-                        <!-- <a href="#" rel="modal:close">Fechar</a> -->
-                    </div>
-                </div>
-                <div class="order-btn">
-                    <h2>Assumir mandado</h2>
-                </div>
-            </div>
-
-            <div class="order">
-                <div class="order-content">
-                    <h2>Nome do Meliante</h2>
-                    <div class="order-type">
-                        <div class="ball" id="ball3"></div>
-                        <p>Visitante</p>
-                    </div>
-                    <h4>Localização do meliante...</h4>
-
 
                     <a href="#tips3" rel="modal:open">
-                        <p>&nbsp;Caracteríscias</p>
+                        <p>&nbsp;Características</p>
                     </a>
 
 
@@ -120,9 +74,8 @@
                         <!-- <a href="#" rel="modal:close">Fechar</a> -->
                     </div>
                 </div>
-                <div class="order-btn">
-                    <h2>Assumir mandado</h2>
-                </div>
+
+                <p style="text-align: right; font-size: 14px">Preso há X minutos...</p>
             </div>
 
         </div>

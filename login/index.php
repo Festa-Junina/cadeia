@@ -1,3 +1,9 @@
+<?php
+
+echo "<script>console.log('Testando...')</script>";
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -11,11 +17,11 @@
     <div class="login-page">
         <div class="login-page-util">
             <div class="login-form">
-                <form action="">
+                <form action="login.php" method="post">
                     <h1>Login</h1>
                     <div class="login-form-camps">
                         <input type="text" name="login" id="login" placeholder="Insira o seu login" class="login-input">
-                        <input type="password" name="password" id="passeord" placeholder="Insira a sua senha" class="login-input">
+                        <input type="password" name="password" id="password" placeholder="Insira a sua senha" class="login-input">
                     </div>
                     <div class="recover-password-area">
                         <a href="#">
@@ -23,7 +29,7 @@
                         </a>
                     </div>
                     <div class="form-submit-button">
-                        <input type="submit" value="Enviar" class="submit-button">
+                        <input type="submit" value="Enviar" name="button" id="button" class="submit-button">
                     </div>
                 </form>
             </div>

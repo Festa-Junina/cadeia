@@ -1,12 +1,25 @@
 <?php
 
-// TODO: Develop the authentication of the login.
+require_once __DIR__ . "/../vendor/autoload.php";
+
+use classes\Usuario;
+
 if (isset($_POST["button"])) {
-    $user = new User();
-    $user->constructLogin($_POST["email"], $_POST["password"]);
+    $user = new Usuario();
+    $user->constructLogin($_POST["login"], $_POST["password"]);
     
     if ($user->authenticate()) {
-        header("location: ../home");
+
+        if ($_SESSION["funcao"] == "Carcereiro") {
+            header("location: ../src/listarDetentos");
+        }
+        elseif ($_SESSION["funcao"] == "Policial") {
+            header("location: ../src/listarOrdensdePrisao");
+        }
+        elseif ($_SESSION["funcao"] == "Administrador") {
+            header("location: ../");
+        }
+
     } else {
         header("location: index.php");
     }

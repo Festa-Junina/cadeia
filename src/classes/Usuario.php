@@ -141,14 +141,18 @@ class Usuario implements  ActiveRecord
     public function authenticate(): bool
     {
         $connection = new MySQL();
-        $sql = "SELECT idUsuario, login, idFuncao, password FROM usuario WHERE login = '{$this->login}'";
+        $sql = "SELECT idUsuario, login, idFuncao, senha FROM usuario WHERE login = '{$this->login}'";
         $results = $connection->consulta($sql);
+
+        $funcao_sql = "SELECT nome FROM funcao WHERE idFuncao = {$results[0]["idFuncao"]}";
+        $funcao_nome = $connection->consulta($funcao_sql);
 
         if (password_verify($this->senha, $results[0]["senha"])) {
             session_start();
             $_SESSION['idUsuario'] = $results[0]['idUsuario'];
             $_SESSION['login'] = $results[0]['login'];
             $_SESSION['senha'] = $results[0]['senha'];
+            $_SESSION['funcao'] = $funcao_nome[0]["nome"];
             return true;
         } else {
             return false;
