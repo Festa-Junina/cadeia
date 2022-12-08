@@ -234,29 +234,29 @@ class OrdemPrisao implements ActiveRecord
     return $conexao->executa($sql);
   }
 
-  public static function find($id): OrdemPrisao
+  public static function find($idOrdem): OrdemPrisao
   {
     $conexao = new MySQL();
-    $sql = "SELECT * FROM usuario WHERE id = {$id}";
+    $sql = "SELECT * FROM ordemprisao WHERE idOrdem = {$idOrdem}";
     $resultado = $conexao->consulta($sql);
     $p = new OrdemPrisao(
-      $resultado['nomeMeliante'],
-        $resultado['descricaoMeliante'],
-        $resultado['localVisto'],
-        $resultado['nomeDenunciante'],
-        $resultado['telefoneDenunciante']
+      $resultado[0]['nomeMeliante'],
+        $resultado[0]['descricaoMeliante'],
+        $resultado[0]['localVisto'],
+        $resultado[0]['nomeDenunciante'],
+        $resultado[0]['telefoneDenunciante']
     );
-    $p->setIdTicket($resultado['idTicket']);
-    $p->setIdTipoMeliante($resultado['idTipoMeliante']);
-    $p->setIdStatusOrdem($resultado['idStatusOrdem']);
-    $p->setHoraOrdem($resultado['horaOrdem']);
+    $p->setIdTicket($resultado[0]['idTicket']);
+    $p->setIdTipoMeliante($resultado[0]['idTipoMeliante']);
+    $p->setIdStatusOrdem($resultado[0]['idStatusOrdem']);
+    $p->setHoraOrdem($resultado[0]['horaOrdem']);
 
     // if ($resultado['idTurmaMeliante'] != 0) {
     // }
     $p->setIdTurmaMeliante(0);
-    $p->setIdOrdem($resultado['idOrdem']);
-    $p->setAssumidaPor($resultado['assumidaPor']);
-    $p->setPresoPor($resultado['presoPor']);
+    $p->setIdOrdem($resultado[0]['idOrdem']);
+    $p->setAssumidaPor($resultado[0]['assumidaPor']);
+    $p->setPresoPor($resultado[0]['presoPor']);
     return $p;
   }
 
@@ -285,7 +285,11 @@ class OrdemPrisao implements ActiveRecord
       $p->setIdTurmaMeliante(0);
       $p->setIdOrdem($resultado['idOrdem']);
       $p->setAssumidaPor($resultado['assumidaPor']);
-      $p->setPresoPor($resultado['presoPor']);
+      if (isset($resultado["presoPor"])) {
+          $p->setPresoPor($resultado['presoPor']);
+      } else {
+          $p->setPresoPor(0);
+      }
 
       $usuarios[] = $p;
     }
