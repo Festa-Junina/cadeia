@@ -10,9 +10,17 @@ if (!isset($_SESSION["idUsuario"]) && $_SESSION["funcao"] != "Carcereiro") {
 use classes\Detento;
 use classes\OrdemPrisao;
 
-/*
- * TODO: Mostrar detentos na página.
- */
+$detentos = Detento::findall();
+$ordens = array();
+
+var_dump(OrdemPrisao::findall());
+die();
+
+foreach ($detentos as $detento) {
+    $ordens[] = OrdemPrisao::find($detento->getIdOrdemPrisao());
+}
+
+
 ?>
 
 <!DOCTYPE html>
