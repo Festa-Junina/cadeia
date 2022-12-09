@@ -219,14 +219,6 @@ class OrdemPrisao implements ActiveRecord
     return $conexao->executa($sql);
   }
 
-
-
-
-
-
-
-
-
   public function delete(): bool
   {
     $conexao = new MySQL();
@@ -291,6 +283,7 @@ class OrdemPrisao implements ActiveRecord
       } else {
         $p->setAssumidaPor(0);
       }
+      
       if (isset($resultado["presoPor"])) {
         $p->setPresoPor($resultado['presoPor']);
       } else {

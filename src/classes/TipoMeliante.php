@@ -6,13 +6,11 @@ use db\MySQL;
 
 class TipoMeliante
 {
-
-    private int $idTipoMeliante;
-    private string $nome;
-
     public function __construct(
-    ) {
-    }
+        public int $idTipoMeliante,
+        public string $nome
+    ) { }
+
     #region idTipoMeliante
     public function setIdTipoMeliante(int $idTipoMeliante): void
     {
@@ -41,11 +39,9 @@ class TipoMeliante
     public static function find($id): TipoMeliante
     {
         $conexao = new MySQL();
-        $sql = "SELECT * FROM tipomeliante WHERE idTipoMeliante = {$id}";
+        $sql = "SELECT * FROM tipoMeliante WHERE idTipoMeliante = {$id}";
         $resultado = $conexao->consulta($sql);
-        $u = new TipoMeliante();
-        $u->setIdTipoMeliante($resultado[0]['idTipoMeliante']);
-        $u->setNome($resultado[0]['nome']);
+        $u = new TipoMeliante($resultado[0]['idTipoMeliante'],$resultado[0]['nome']);
         return $u;
     }
 

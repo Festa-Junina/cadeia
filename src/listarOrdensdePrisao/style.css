@@ -93,6 +93,10 @@ body{
     box-shadow: 0 0 8px var(--blackOpacity);
     
 }
+.order a{
+    text-decoration: none;
+    color: var(--white);
+}
 
 .order-type{
     display: flex;
@@ -190,6 +194,12 @@ body{
     display: flex;
 }
 
+.disabled{
+    background-color: gray;
+}
+.disabled:hover{
+    background-color: gray;
+}
 @media screen and (max-width: 425px){
     .user > p{
         display: none;
