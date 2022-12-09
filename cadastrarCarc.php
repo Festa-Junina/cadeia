@@ -27,13 +27,13 @@ if(isset($_POST['botao'])){
                 <br>
                 Email: <input name='emailCarc' type='email' required>
                 <br>
-                Senha: <input name='senhaCarc' type="password">
+                Senha: <input name='senhaCarc' type="password" required>
                 <br>
-                Telefone: <input name='telCarc' type="int">
+                Telefone: <input name='telCarc' type="int" required>
                 <br>
     </div>
         <div class="botaoCad">
-            <button name='botao' value='Cadastrar'>Cadastrar</button>
+        <input type='submit' name='botao'>
         </div>
         </form>
         <a href='index.php'>voltar ao inicio </a>
