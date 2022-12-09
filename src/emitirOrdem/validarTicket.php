@@ -13,10 +13,12 @@
 
 </head>
 <body class="container">
-    <header class="header">
-        <!-- ALGO -->
-    </header>
     <main class="main">
+    <div class="containerMeio">
+
+
+    <h1 class="insira">Insira seu <br> Ticket</h1>
+    <div class="meio">
         <form action="validarTicket.php" method="post" class="form">
 
             <?php 
@@ -33,10 +35,12 @@
             }
             ?>
 
-            <label for="ticket" class="insira">Insira seu Ticket</label>
             <input type="number" id="ticket" name="ticket" required>
             <input type="submit" value="Validar Ticket" name="submit" class="button">
         </form>
+    </div>
+
+</div>
     </main>
 </body>
 </html>
