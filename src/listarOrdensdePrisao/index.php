@@ -46,18 +46,19 @@ foreach ($ordens as $ordem) {
             <div class="order-list">
 
                 <?php
+                $cont = 1;
                 foreach ($ordens as $ordem) {
                     $tipoMeliante = TipoMeliante::find($ordem->getIdTipoMeliante())->getNome();
                     $time = date('i:s', $ordem->getHoraOrdem());
                     $responsavel = "";
                     $btnText =  'Assumir';
+                    $modalText = 'Tem certeza que deseja assumir esta ordem de prisão?';
                     if ($ordem->getAssumidaPor() != 0) {
                         $policial = 'Teste';
                         $responsavel = "<h4 class='responsible'>Responsável: $policial</h4>";
                         $btnText = "Confirmar Prisão";
+                        $modalText = 'Tem certeza que deseja confirmar a prisão?';
                     }
-
-                    
 
 
                     $template = "<div class='order'>
@@ -72,20 +73,26 @@ foreach ($ordens as $ordem) {
                         </div>
                         <h4>📌{$ordem->getLocalVisto()}</h4>
 
-                        <a href='#tips1' rel='modal:open'>
+                        <a href='#tips{$cont}' rel='modal:open'>
                             <p>&nbsp;Características</p>
                         </a>
                         {$responsavel}
-                        <div id='tips1' class='modal'>
-                        <h1 class='modal-title'>Características do Meliante</h1>
+                        <div id='tips{$cont}' class='modal'>
+                            <h1 class='modal-title'>Características do Meliante</h1>
                             <p>{$ordem->getDescricaoMeliante()}</p>
                         </div>
                     </div>
                     <div class='order-btn'>
-                        <h2>{$btnText}</h2>
+                        <a href='#modal{$cont}' rel='modal:open'>
+                            <h2>{$btnText}</h2>
+                        </a>
+                    </div>
+                    <div id='modal{$cont}' class='modal'>
+                            <p>{$modalText}</p>
                     </div>
                 </div>";
 
+                    $cont++;
                     echo $template;
                 }
                 ?>
