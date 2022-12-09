@@ -1,5 +1,8 @@
 <?php
 require_once __DIR__."/vendor/autoload.php";
+
+require_once __DIR__."/src/Carcereiro.php";
+
 $carcereiros = Carcereiro::findall();
 ?>
 <!DOCTYPE html>
@@ -26,9 +29,9 @@ $carcereiros = Carcereiro::findall();
     <?php
     foreach($carcereiros as $carcereiro){
         echo "<tr>";
-        echo "<td>{$carcereiro->getNomeCarc()}</td>";
-        echo "<td>{$carcereiro->getTelCarc()}</td>";
-        echo "<td>{$carcereiro->getEmailCarc()}</td>";
+        echo "<td>{$carcereiro->getNome()}</td>";
+        echo "<td>{$carcereiro->getTelefone()}</td>";
+        echo "<td>{$carcereiro->getLogin()}</td>";
         echo "</tr>";
     }
     ?>
@@ -42,9 +45,5 @@ $carcereiros = Carcereiro::findall();
 </div>
 </body>
 </html>
-
-
-
-
 
 
