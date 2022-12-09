@@ -97,3 +97,16 @@ CREATE TABLE prisao (
     FOREIGN key (idStatusPrisao) REFERENCES
     statusPrisao(idStatusPrisao)
 );
+
+
+
+#TRIGGERS
+
+DELIMITER $$
+CREATE TRIGGER tr_desvalidarTicket 
+AFTER INSERT ON ordemprisao
+ FOR EACH ROW 
+BEGIN
+	UPDATE ticket SET valido=false WHERE idTicket = NEW.idTicket;
+END$$
+DELIMITER ;
