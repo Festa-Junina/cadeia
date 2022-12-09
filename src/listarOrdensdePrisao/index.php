@@ -1,5 +1,12 @@
+<?php
+    require_once("../../vendor/autoload.php");
+
+    use classes\OrdemPrisao;
+
+    
+?>
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-BR">
 
 <head>
     <meta charset="UTF-8">
@@ -27,7 +34,6 @@
                 </span>
                 <div class="user-opt">
                     <a href="#">Minhas prisões</a>
-                    <a href="#">Meus mandados</a>
                     <a href="#">Sair</a>
                 </div>
             </div>
@@ -38,19 +44,22 @@
             <div class="order-list">
                 <div class="order">
                     <div class="order-content">
-                        <h2>Nome do Meliante</h2>
+                        <div class="order-header">
+                            <h2>Nome do Meliante</h2>
+                            <h3>02:30</h3>
+                        </div>
                         <div class="order-type">
                             <div class="ball" id="ball1"></div>
                             <p>Servidor</p>
                         </div>
                         <h4>Localização do meliante...</h4>
 
-
                         <a href="#tips1" rel="modal:open">
                             <p>&nbsp;Características</p>
                         </a>
-
-
+                        
+                        
+                        <h4 class="responsible">Responsável: Kelvin😎</h4>
                         <!-- Modal -->
                         <div id="tips1" class="modal">
                             <p>Características do meliante aqui!</p>
@@ -58,7 +67,7 @@
                         </div>
                     </div>
                     <div class="order-btn">
-                        <h2>Assumir mandado</h2>
+                        <h2>Confirmar Prisão</h2>
                     </div>
                 </div>
 
@@ -116,7 +125,7 @@
                         </div>
                     </div>
                     <div class="order-btn">
-                        <h2>Assumir mandado</h2>
+                        <h2>Assumir</h2>
                     </div>
                 </div>
 
@@ -129,6 +138,7 @@
     <script>
         $('.user').on("click", function () {
             $('.user-opt').toggleClass('displayed');
+            console.log(this);
         });
     </script>
 </body>

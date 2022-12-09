@@ -1,5 +1,5 @@
-@import url("../../globalStyles.css");
-@import url("../../reset.css");
+@import "../../globalStyles.css";
+@import "../../reset.css";
 
 body{
     color: var(--white);
@@ -53,7 +53,7 @@ body{
     box-shadow: 0 0 10px var(--blackOpacity);
     padding: 15px 10px;
     border-radius: 10px;
-    width: 150px;    
+    width: 150px;
 }
 
 .user-opt > a{
@@ -91,7 +91,7 @@ body{
     border-radius: .6rem;
     border: 2px solid var(--primaryVariant);
     box-shadow: 0 0 8px var(--blackOpacity);
-    
+
 }
 
 .order-type{
@@ -114,18 +114,10 @@ body{
     gap: .4rem;
 }
 
-.order-header{
-    display: flex;
-    width: 100%;
-    justify-content: space-between;
-    align-items: flex-end;
-}
-
-.order-header > h2{
+.order-content > h2{
     font-size: 130%;
     font-weight: bold;
 }
-
 .order-content > a{
     display: flex;
     align-items: center;
@@ -138,14 +130,10 @@ body{
     content: "+";
 }
 
-.responsible{
-    padding: .3rem 0;
-}
-
 
 .ball{
-    width: 12px;
-    height: 12px;
+    width: 18px;
+    height: 18px;
     border-radius: 50%;
 }
 
@@ -167,37 +155,12 @@ body{
     border-radius: 8px;
     color: var(--white);
 }
-.order-btn1{
-    background-color: var(--blackOpacity);
-    margin-top: .7rem;
-    padding: .35rem;
-    text-align: center;
-    border-radius: 8px;
-    color: var(--black);
-}
-
-.order-btn2{
-    background-color: var(--darkGreen);
-    margin-top: .3rem;
-    padding: .35rem;
-    text-align: center;
-    border-radius: 8px;
-    color: var(--white);
-}
 
 .order-btn:hover{
     cursor: pointer;
     background-color: var(--darkGreen);
 }
 
-.order-btn2:hover{
-    cursor: pointer;
-    background-color: var(--gray2);
-}
-/* .order-btn2:hover{
-    cursor: pointer;
-    background-color: var(--darkGreen);
-} */
 
 .modal{
     color: var(--black);
@@ -205,6 +168,54 @@ body{
 
 .displayed{
     display: flex;
+}
+
+.questions-status {
+    display: flex;
+    background-color:var(--gray2);
+    padding: 7px;
+    border-radius: 15px;
+    width: fit-content;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 10px;
+    font-weight: bold;
+}
+
+.question-1, .question-2, .question-3 {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: #fff;
+}
+
+.acertou {
+    background-color: var(--primary);
+}
+.errou {
+    background-color: var(--red);
+}
+.pode-responder {
+    background-color: var(--yellow);
+    animation: blink-animation 0.5s steps(5, start) infinite;
+    -webkit-animation: blink-animation 0.5s steps(5, start) infinite;
+}
+@keyframes blink-animation {
+    to {
+        visibility: hidden;
+    }
+}
+@-webkit-keyframes blink-animation {
+    to {
+        visibility: hidden;
+    }
+}
+
+.tipo-status {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    padding: 10px 0;
 }
 
 @media screen and (max-width: 425px){
