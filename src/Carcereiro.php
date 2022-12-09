@@ -6,7 +6,7 @@ class Carcereiro implements ActiveRecord{
     private string $login;
     private string $senha;
     private string $nome;
-    private int $telefone;
+    private  $telefone;
     private string $ativo;
 
 
@@ -58,11 +58,12 @@ class Carcereiro implements ActiveRecord{
     }
 
 
-    public function setTelefone(int $telefone):void{
+    public function setTelefone( $telefone):void{
         $this->telefone = $telefone;
     }
     
-    public function getTelefone():int{  
+
+    public function getTelefone(){
         return $this->telefone;
     }
 
