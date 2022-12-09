@@ -2,6 +2,7 @@
 
 class Carcereiro implements ActiveRecord{
 
+    
     private int $codCarc;
     private string $nomeCarc;
     private string $emailCarc;
