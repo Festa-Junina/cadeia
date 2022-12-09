@@ -4,6 +4,7 @@ if(isset($_POST['botao'])){
     require_once __DIR__."/vendor/autoload.php";
     $carcereiro = new Carcereiro($_POST['emailCarc'],$_POST['nomeCarc'],$_POST['senhaCarc'],$_POST['telCarc']);
     $carcereiro->save();
+    header("location: index.php");
 }
 ?>
 
@@ -22,14 +23,14 @@ if(isset($_POST['botao'])){
 <h1>Página Cadastrar - Carcereiro</h1>
 <hr>
     <div>
-        <form action="formCad.php" method="POST">
-                Nome: <input name='nomeCarc' type="text" required>
+        <form action="cadastrarCarc.php" method="POST">
+                Nome: <input name='nome' type="text" required>
                 <br>
-                Email: <input name='emailCarc' type='email' required>
+                Email: <input name='login' type='email' required>
                 <br>
-                Senha: <input name='senhaCarc' type="password" required>
+                Senha: <input name='senha' type="password" required>
                 <br>
-                Telefone: <input name='telCarc' type="int" required>
+                Telefone: <input name='telefone' type="int" required>
                 <br>
     </div>
         <div class="botaoCad">

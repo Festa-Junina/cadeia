@@ -1,6 +1,6 @@
 <?php
 require_once __DIR__."/vendor/autoload.php";
-$carcereiros = [];
+$carcereiros = Carcereiro::findall();
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -48,6 +48,3 @@ $carcereiros = [];
 
 
 
-<?php
-$carcereiros = Carcereiro::findall();
-?>

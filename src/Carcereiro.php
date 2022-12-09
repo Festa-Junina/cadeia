@@ -62,7 +62,7 @@ class Carcereiro implements ActiveRecord{
         $this->telefone = $telefone;
     }
     
-    public function getTelefone():int{
+    public function getTelefone():int{  
         return $this->telefone;
     }
 
