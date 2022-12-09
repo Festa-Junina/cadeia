@@ -1,6 +1,6 @@
 <?php
 require_once __DIR__."/vendor/autoload.php";
-$carcereiros = Carcereiro::findall();
+$carcereiros = [];
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -29,6 +29,7 @@ $carcereiros = Carcereiro::findall();
         echo "<td>{$carcereiro->getNomeCarc()}</td>";
         echo "<td>{$carcereiro->getTelCarc()}</td>";
         echo "<td>{$carcereiro->getEmailCarc()}</td>";
+        echo "</tr>";
     }
     ?>
 </table>
@@ -47,3 +48,6 @@ $carcereiros = Carcereiro::findall();
 
 
 
+<?php
+$carcereiros = Carcereiro::findall();
+?>

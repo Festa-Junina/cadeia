@@ -1,11 +1,9 @@
 <?php
-require_once __DIR__."/vendor/autoload.php";
+
 if(isset($_POST['botao'])){
-    $carc = new Carcereiro($_POST['emailCarc']);
-    $carc->setNomeCarc($_POST['nomeCarc']);
-    $carc->setSenhaCarc($_POST['senhaCarc']);
-    $carc->setTelCarc($_POST['telCarc']);
-    $carc->save();
+    require_once __DIR__."/vendor/autoload.php";
+    $carcereiro = new Carcereiro($_POST['emailCarc'],$_POST['nomeCarc'],$_POST['senhaCarc'],$_POST['telCarc']);
+    $carcereiro->save();
 }
 ?>
 
@@ -20,28 +18,27 @@ if(isset($_POST['botao'])){
 </head>
 
 <body>
-    <section>
-        <div class="divTitulo">
-            <h1 class="titulo">Registrar carcereiro</h1><br>
+<hr>
+<h1>Página Cadastrar - Carcereiro</h1>
+<hr>
+    <div>
+        <form action="formCad.php" method="POST">
+                Nome: <input name='nomeCarc' type="text" required>
+                <br>
+                Email: <input name='emailCarc' type='email' required>
+                <br>
+                Senha: <input name='senhaCarc' type="password">
+                <br>
+                Telefone: <input name='telCarc' type="int">
+                <br>
+    </div>
+        <div class="botaoCad">
+            <button name='botao' value='Cadastrar'>Cadastrar</button>
         </div>
-    </section>
-    <section class="formulario"> 
-        <div class="divform">
-            <form class="formCad" action="formCad.php" method="POST">
-                <label for='email'>E-mail:</label><br>
-                <input type='email' name='emailCarc' id='email' required><br>
-                <label for='senha'>Senha:</label><br>
-                <input type='password' name='senhaCarc' id='senhaCarc' required><br>
-                <label for='telefone'>Telefone:</label><br>
-                <input type='int' name='telCarc' id='telCarc' required><br>
-                </div>
-                <div class="botaoCad">
-                    <button name='botao' value='Cadastrar'>Cadastrar</button>
-                </div>
-            </form>
-            <a href='index.php'>voltar ao inicio </a>
-        </div>
-    </section>
+        </form>
+        <a href='index.php'>voltar ao inicio </a>
+    </div>
+
 </body>
 </html>
 
