@@ -56,6 +56,7 @@ if (isset($_POST['submit'])) {
 
         <form action="emitirOrdem.php" method="post" class="form">
 
+            <h2>Dados do Meliante</h2>
             <label for="nomeMeliante">Nome do Meliante:</label>
             <input type="text" name="nomeMeliante" id="nomeMeliante" placeholder="ex: João da Silva Morais" required>
 
@@ -96,6 +97,7 @@ if (isset($_POST['submit'])) {
             <label for="localVisto">Último local visto:</label>
             <input type="text" name="localVisto" id="localVisto" placeholder="ex: Em frete a praça principal" required>
 
+            <h2>Dados do Denunciante</h2>
             <label for="nomeDenunciante">Seu nome:</label>
             <input type="text" name="nomeDenunciante" id="nomeDenunciante" placeholder="ex: Elías dos Anjos" required>
 
