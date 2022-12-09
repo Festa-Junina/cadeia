@@ -69,10 +69,6 @@ if(isset($_POST['submit'])){
             justify-content: center;
             min-width: 120px;
         }
-        .button-header{
-            height: 2em;
-            background-color: var(--primaryVariant);
-        }
         input{
             border-radius: 3px;
         }
@@ -90,7 +86,7 @@ if(isset($_POST['submit'])){
         <form action ="visuOrdem.php" method="post" class="form">
             <label for="ticket">Insira o Ticket para a Consulta</label>
             <input type="number" id="ticket" name="ticket" required>
-            <input type="submit" value="Consultar Ordem" name="submit">
+            <input type="submit" value="Consultar" name="submit" class="button">
         </form>
 
         <?php 
@@ -108,7 +104,7 @@ if(isset($_POST['submit'])){
                 ";
     
             }else{
-                echo "Ticket inválido";
+                echo "<span>Ticket inválido</span>";
             }
         }
         ?>
