@@ -66,6 +66,15 @@ class Carcereiro implements ActiveRecord{
         return $this->telefone;
     }
 
+
+    public function setAtivo(int $ativo):void{
+        $this->ativo = $ativo;
+    }
+    
+    public function getAtivo():int{
+        return $this->ativo;
+    }
+
     public function save():bool{
         $conexao = new MySQL();
         
