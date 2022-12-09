@@ -154,6 +154,7 @@ body{
     text-align: center;
     border-radius: 8px;
     color: var(--white);
+    width: 100%;
 }
 
 .order-btn:hover{

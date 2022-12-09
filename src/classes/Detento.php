@@ -11,7 +11,7 @@ class Detento implements ActiveRecord
     private int $idOrdemPrisao;
     private int $idPrisao;
     private int $idStatusPrisao;
-    private int $horaPrisao;
+    private string $horaPrisao;
     private int $quantidadePerguntasRespondidas;
 
     public function __construct(
@@ -61,10 +61,10 @@ class Detento implements ActiveRecord
     #region horaPrisao
     public function setHoraPrisao(string $horaPrisao): void
     {
-        $this->horaPrisao = time();
+        $this->horaPrisao = $horaPrisao;
     }
 
-    public function getHoraPrisao(): int
+    public function getHoraPrisao(): string
     {
         return $this->horaPrisao;
     }
