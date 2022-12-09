@@ -1,7 +1,7 @@
 <?php
 if(isset($_POST['botao'])){
     require_once __DIR__."/src/Policial.php";
-    $u = new Policial($_POST['email'],$_POST['senha'],$_POST['telefone'],$_POST['nome']);
+    $u = new Policial($_POST['email'],$_POST['senha'],$_POST['telefone'],$_POST['nome'],$_POST['idFuncao'],$_POST['ativo']);
     $u->save();
     header("location: index.php");
 }
@@ -33,6 +33,18 @@ if(isset($_POST['botao'])){
                 <input type='text' name='telefone' id='telefone' required><br>
                 <label for='nome'>Nome</label><br>
                 <input type='text' name='nome' id='nome' required><br>
+                <div class='selects'>
+                    <select name="idFuncao" id="idFuncao">
+                        <option value="0">Administrador</option>
+                        <option value="1">Carcereiro</option>
+                        <option value="2">Policial</option>
+                    </select>
+                    <select name="ativo" id="ativo">
+                        <option value="1">Ativo</option>
+                        <option value="0">Inativo</option>
+                    </select>
+                </div>
+
                 <div class="botaoCad">
                     <button name='botao' value='Cadastrar'>Cadastrar</button>
                 </div>
