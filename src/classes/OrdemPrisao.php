@@ -241,10 +241,10 @@ class OrdemPrisao implements ActiveRecord
     $resultado = $conexao->consulta($sql);
     $p = new OrdemPrisao(
       $resultado[0]['nomeMeliante'],
-        $resultado[0]['descricaoMeliante'],
-        $resultado[0]['localVisto'],
-        $resultado[0]['nomeDenunciante'],
-        $resultado[0]['telefoneDenunciante']
+      $resultado[0]['descricaoMeliante'],
+      $resultado[0]['localVisto'],
+      $resultado[0]['nomeDenunciante'],
+      $resultado[0]['telefoneDenunciante']
     );
     $p->setIdTicket($resultado[0]['idTicket']);
     $p->setIdTipoMeliante($resultado[0]['idTipoMeliante']);
@@ -284,11 +284,17 @@ class OrdemPrisao implements ActiveRecord
       // }
       $p->setIdTurmaMeliante(0);
       $p->setIdOrdem($resultado['idOrdem']);
-      $p->setAssumidaPor($resultado['assumidaPor']);
-      if (isset($resultado["presoPor"])) {
-          $p->setPresoPor($resultado['presoPor']);
+
+
+      if (isset($resultado['assumidaPor'])) {
+        $p->setAssumidaPor($resultado['assumidaPor']);
       } else {
-          $p->setPresoPor(0);
+        $p->setAssumidaPor(0);
+      }
+      if (isset($resultado["presoPor"])) {
+        $p->setPresoPor($resultado['presoPor']);
+      } else {
+        $p->setPresoPor(0);
       }
 
       $usuarios[] = $p;
