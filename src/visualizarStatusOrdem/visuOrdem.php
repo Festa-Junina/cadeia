@@ -17,75 +17,20 @@ if(isset($_POST['submit'])){
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../../reset.css">
     <link rel="stylesheet" href="../../globalStyles.css">
+    <link rel="stylesheet" href="style.css">
     <title>Visualizar Ordem de Prisão</title>
-    <style>
-        body{
-            width: 100vw;
-            height: 100vh;
-            color: var(--gray);
-            background-color: var(--primary);
-        }
-        .container{
-            margin: 0 auto;
-            width: 90%;
-            max-width: 480px;
-        }
-        .header{
-            position: sticky;
-            left: 0;
-            top: 0;
-            width: 100%;
-            height: 10%;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-        }
-        .main{
-            display: flex;
-            height: 90%;
-            flex-direction: column;
-            justify-content: space-around;
-        }
-        .form{
-            height: 50%;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: space-around;
-        }
-        .statusOrdem{
-            height: 50%;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: space-around;
-        }
-        .button{
-            height: 3em;
-            background-color: var(--green);
-            display: flex;
-            border-radius: 5px;
-            align-items: center;
-            justify-content: center;
-            min-width: 120px;
-        }
-        input{
-            border-radius: 3px;
-        }
-        /*DETALHES*/
-        h1{
-            color: var(--white);
-        }
-    </style>
+
 </head>
-<body class="container">
+<body>
     <header class="header">
-        <h1>Visualizar Ordem de Prisão</h1>
+        <div class="container">
+            <h1>Visualizar Ordem de Prisão</h1>
+        </div>
     </header>
-    <main class="main">
+    <main class="main container">
         <form action ="visuOrdem.php" method="post" class="form">
             <label for="ticket">Insira o Ticket para a Consulta</label>
-            <input type="number" id="ticket" name="ticket" required>
+            <input type="number" id="ticket" name="ticket" placeholder="XXXXXX" required>
             <input type="submit" value="Consultar" name="submit" class="button">
         </form>
 
@@ -96,15 +41,19 @@ if(isset($_POST['submit'])){
 
                 echo "
                     <div class='statusOrdem'>
-                        <span>Nome Meliante: {$resultado['nomeMeliante']}</span>
-                        <span>Status Ordem: {$resultado['statusOrdem']}</span>
-                        <span>Status Prisão: {$resultado['statusprisao']}</span>
-                        <span>Tempo de Prisão: {$resultado['tempoPreso']}</span>
+                        <h2>Nome Meliante</h2>
+                        <span>{$resultado['nomeMeliante']}</span>
+                        <h2>Status Ordem</h2>
+                        <span>{$resultado['statusOrdem']}</span>
+                        <h2>Status Prisão</h2>
+                        <span>{$resultado['statusprisao']}</span>
+                        <h2>Tempo Prisão</h2>
+                        <span>{$resultado['tempoPreso']}</span>
                     </div>        
                 ";
     
             }else{
-                echo "<span>Ticket inválido</span>";
+                echo "<span class='mensagemErro'>Ticket inválido</span>";
             }
         }
         ?>
