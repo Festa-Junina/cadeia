@@ -34,7 +34,7 @@ body{
 }
 .button{
     height: 3em;
-    background-color: var(--green);
+    background-color: var(--white);
     display: flex;
     border-radius: 5px;
     align-items: center;
@@ -44,4 +44,21 @@ body{
 /*DETALHES*/
 h1{
     color: var(--white);
+}
+
+/*Aplica para todos os input porem os inputs que são submit nao se aplica*/
+input:not(input[type="submit"]){
+    outline: none;
+    border-radius: 0.4rem;
+    height: 2.3em;
+    padding: 0.5em;
+    border: 2px solid var(--primaryVariant);
+    }
+    .mensagemErro{
+    align-self: center;
+    color: var(--red);
+    }
+
+.insira{
+    font-size: 50px;
 }

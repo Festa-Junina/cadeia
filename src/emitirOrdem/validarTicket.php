@@ -28,14 +28,14 @@
                 if($ticket->autenticar()){
                     header("location: emitirOrdem.php");
                 }else{
-                    echo "Ticket invalido ou já utilizado";
+                    echo "<span class='mensagemErro'>Ticket invalido ou já utilizado</span>";
                 }
             }
             ?>
 
-            <label for="ticket">Insira seu Ticket</label>
+            <label for="ticket" class="insira">Insira seu Ticket</label>
             <input type="number" id="ticket" name="ticket" required>
-            <input type="submit" value="Validar Ticket" name="submit">
+            <input type="submit" value="Validar Ticket" name="submit" class="button">
         </form>
     </main>
 </body>
