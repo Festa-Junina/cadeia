@@ -30,7 +30,7 @@ session_start();
 
                             <div class="mb-3">
                                 <label>Nome</label>
-                                <input type="text" name="nome" class="form-control">
+                                <input type="text" name="categ_nome" class="form-control">
                             </div>
                             <div class="mb-3">
                                 <button type="submit" name="cadastrarcategoria" class="btn btn-primary">Cadastrar categoria</button>

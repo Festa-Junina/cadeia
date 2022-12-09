@@ -32,7 +32,7 @@ require 'dbcon.php';
                         if(isset($_GET['idCategoria']))
                         {
                             $idCategoria = mysqli_real_escape_string($con, $_GET['idCategoria']);
-                            $query = "SELECT * FROM perguntacategoria WHERE idCategoria = {$_GET['idCategoria']}";
+                            $query = "SELECT * FROM categoria WHERE idCategoria = {$_GET['idCategoria']}";
                             $query_run = mysqli_query($con, $query);
 
                             if(mysqli_num_rows($query_run) > 0)
@@ -44,7 +44,7 @@ require 'dbcon.php';
 
                                     <div class="mb-3">
                                         <label>Nome</label>
-                                        <input type="text" name="nome" value="<?=$categoria['nome'];?>" class="form-control">
+                                        <input type="text" name="categ_nome" value="<?=$categoria['categ_nome'];?>" class="form-control">
                                     </div>
                                     <div class="mb-3">
                                         

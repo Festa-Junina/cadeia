@@ -5,7 +5,7 @@ require 'dbcon.php';
 if(isset($_GET['idCategoria']))
 {
 
-    $query = "DELETE FROM perguntacategoria WHERE idCategoria = {$_GET['idCategoria']}";
+    $query = "DELETE FROM categoria WHERE idCategoria = {$_GET['idCategoria']}";
 
     $query_run = mysqli_query($con, $query);
 
@@ -25,9 +25,9 @@ if(isset($_GET['idCategoria']))
 
 if(isset($_POST['editarcategoria']))
 {
-    $nome = mysqli_real_escape_string($con, $_POST['nome']);
+    $nome = mysqli_real_escape_string($con, $_POST['categ_nome']);
     
-    $query = "UPDATE perguntacategoria SET nome = '{$nome}' WHERE idCategoria = {$_POST['idCategoria']}";
+    $query = "UPDATE categoria SET categ_nome = '{$nome}' WHERE idCategoria = {$_POST['idCategoria']}";
 
     $query_run = mysqli_query($con, $query);
 
@@ -48,9 +48,9 @@ if(isset($_POST['editarcategoria']))
 
 if(isset($_POST['cadastrarcategoria']))
 {
-    $nome = mysqli_real_escape_string($con, $_POST['nome']);
+    $nome = mysqli_real_escape_string($con, $_POST['categ_nome']);
        
-    $query = "INSERT INTO perguntacategoria (nome) VALUES ('$nome')";
+    $query = "INSERT INTO categoria (categ_nome) VALUES ('$nome')";
     
     $query_run = mysqli_query($con, $query);
     if($query_run)

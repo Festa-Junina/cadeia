@@ -23,20 +23,8 @@
                 <div class="card">
                     <div class="card-header">
                         <h4>Categorias
-                            <a href="cadastrar.php" class="btn btn-primary float-end">Cadastrar categoria</a>
-                        </h4>
-                    </div>
-                    <div class="card-body">
-
-                        <table class="table table-bordered table-striped">
-                            <thead>
-                                <tr>
-                                    <th>Nome</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <?php 
-                                    $query = "SELECT * FROM perguntacategoria ORDER BY nome ASC";
+                        <?php 
+                                    $query = "SELECT COUNT(IdCategoria) categorias FROM categoria;";
                                     $query_run = mysqli_query($con, $query);
 
                                     if(mysqli_num_rows($query_run) > 0)
@@ -45,14 +33,47 @@
                                         {
                                             ?>
                                             <tr>
-                                                <td><?= $categoria['nome']; ?></td>
-                                                <td>
-                                                <?php echo $query = "SELECT COUNT(idCategoria) FROM perguntacategoria;"; ?>
-                                            </td>
+                                                <?php echo "(";?>
+                                                <td><?= $categoria['categorias']; ?></td>
+                                                <?php echo ")";?>
+                                            <?php
+                                        }
+                                    }
+                                    else{
+                                        echo "<h5> 0 </h5>";}
+                                    ?>
+
+                            <a href="cadastrar.php" class="btn btn-primary float-end">Cadastrar categoria</a>
+                        </h4>
+
+                    </div>
+                    <div class="card-body">
+
+                        <table class="table table-bordered table-striped">
+                            <thead>
+                                <tr>
+                                    <th>Nome</th>
+                                    <th>Quantidade de perguntas</th>
+                                    <th></th>
+                                </tr>
+                            </thead>
+                            
+                            <tbody>
+                                <?php 
+                                    $query = "SELECT c.categ_nome, c.idCategoria, COUNT(p.IdPergunta)perguntas FROM categoria c LEFT JOIN pergunta p ON c.idCategoria = p.idCategoria GROUP BY c.idCategoria;";
+                                    $query_run = mysqli_query($con, $query);
+
+                                    if(mysqli_num_rows($query_run) > 0)
+                                    {
+                                        foreach($query_run as $categoria)
+                                        {
+                                            ?>
+                                            <tr>
+                                                <td><?= $categoria['categ_nome']; ?></td>
+                                                <td><?= $categoria['perguntas']; ?></td>
                                                 <td>
                                                     <a href="editar.php?idCategoria=<?=$categoria['idCategoria']; ?>" class="btn btn-success btn-sm">Editar</a>
                                                     <a href="code.php?idCategoria=<?=$categoria['idCategoria']; ?>" class="btn btn-success btn-sm">Excluir</a>
-
                                                 </td>
                                             </tr>
                                             <?php

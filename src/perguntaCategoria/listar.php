@@ -28,7 +28,7 @@ require 'dbcon.php';
                         if(isset($_GET['idCategoria']))
                         {
                             $idCategoria = mysqli_real_escape_string($con, $_GET['idCategoria']);
-                            $query = "SELECT idCategoria, nome FROM perguntacategoria";
+                            $query = "SELECT idCategoria, categ_nome FROM perguntacategoria";
                             $query_run = mysqli_query($con, $query);
 
                             if(mysqli_num_rows($query_run) > 0)
@@ -39,7 +39,7 @@ require 'dbcon.php';
                                     <div class="mb-3">
                                         <label>Nome</label>
                                         <p class="form-control">
-                                            <?=$categoria['nome'];?>
+                                            <?=$categoria['categ_nome'];?>
                                         </p>
                                     </div>
 
