@@ -1,8 +1,6 @@
 body{
-    width: 100vw;
-    height: 100vh;
-    color: var(--gray);
-    background-color: var(--primary);
+    color: var(--black);
+    background-color: var(--gray2);
 }
 .container{
     margin: 0 auto;
@@ -10,27 +8,29 @@ body{
     max-width: 480px;
 }
 .header{
-    position: sticky;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 10%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+    height: 3em;
+    background-color: var(--primary);
+}
+.header > div{
     display: flex;
     align-items: center;
     justify-content: space-between;
 }
-.main{
-    display: flex;
-    height: 90%;
-    flex-direction: column;
-    justify-content: space-around;
+.links{
+    color: var(--darkGreen);
 }
 .form{
-    height: 100%;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: space-around;
+}
+.form h2{
+    font-size: 1.6em;
 }
 .button{
     height: 3em;

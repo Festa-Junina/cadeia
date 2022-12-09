@@ -39,14 +39,21 @@ if (isset($_POST['submit'])) {
 
 </head>
 
-<body class="container">
+<body >
     <header class="header">
-        <h1>Emitir Ordem de Prisão</h1>
-        <?php
+        <div class='container'>
+            <h1>Emitir Ordem de Prisão</h1>
+            <?php
         echo "<span>Ticket: {$_SESSION['ticket']}</span>";
         ?>
+        </div>
     </header>
-    <main class="main">
+    <main>
+        <div class='container'>
+
+        <a href="../../index.html" class='links'>🡄 Voltar à tela inicial</a>
+<p>Preencha todos os campos para efetuar um mandado de prisão.</p>
+
         <form action="emitirOrdem.php" method="post" class="form">
 
             <label for="nomeMeliante">Nome do Meliante:</label>
@@ -98,7 +105,9 @@ if (isset($_POST['submit'])) {
             <input type="submit" name="submit" value="Enviar" class="button">
 
         </form>
+        </div>
     </main>
+
     <script src="script.js"></script>
     <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.12/jquery.mask.js"></script>
