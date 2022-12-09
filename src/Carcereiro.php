@@ -1,7 +1,4 @@
 <?php
-require_once __DIR__."/ActiveRecord.php";
-require_once __DIR__."/MySQL.php";
-
 class Carcereiro implements ActiveRecord{
 
     private int $idUsuario;
