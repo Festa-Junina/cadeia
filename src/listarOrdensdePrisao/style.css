@@ -109,7 +109,9 @@ body{
     gap: 5px;
     font-weight: bold;
 }
-
+.order-type > p{
+    text-transform: capitalize;
+}
 
 .order-content{
     display: flex;
@@ -155,13 +157,13 @@ body{
     border-radius: 50%;
 }
 
-#ball1{
+#ball-aluno{
     background-color: var(--blue);
 }
-#ball2{
+#ball-visitante{
     background-color: var(--red);
 }
-#ball3{
+#ball-servidor{
     background-color: var(--yellow);
 }
 

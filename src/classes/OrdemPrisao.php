@@ -257,9 +257,9 @@ class OrdemPrisao implements ActiveRecord
     $conexao = new MySQL();
     $sql = "SELECT * FROM ordemPrisao";
     $resultados = $conexao->consulta($sql);
-    $usuarios = array();
+    $ordens = array();
     foreach ($resultados as $resultado) {
-      $p = new OrdemPrisao(
+      $o = new OrdemPrisao(
         $resultado['nomeMeliante'],
         $resultado['descricaoMeliante'],
         $resultado['localVisto'],
@@ -267,31 +267,31 @@ class OrdemPrisao implements ActiveRecord
         $resultado['telefoneDenunciante']
       );
 
-      $p->setIdTicket($resultado['idTicket']);
-      $p->setIdTipoMeliante($resultado['idTipoMeliante']);
-      $p->setIdStatusOrdem($resultado['idStatusOrdem']);
-      $p->setHoraOrdem($resultado['horaOrdem']);
+      $o->setIdTicket($resultado['idTicket']);
+      $o->setIdTipoMeliante($resultado['idTipoMeliante']);
+      $o->setIdStatusOrdem($resultado['idStatusOrdem']);
+      $o->setHoraOrdem($resultado['horaOrdem']);
 
       // if ($resultado['idTurmaMeliante'] != 0) {
       // }
-      $p->setIdTurmaMeliante(0);
-      $p->setIdOrdem($resultado['idOrdem']);
+      $o->setIdTurmaMeliante(0);
+      $o->setIdOrdem($resultado['idOrdem']);
 
 
       if (isset($resultado['assumidaPor'])) {
-        $p->setAssumidaPor($resultado['assumidaPor']);
+        $o->setAssumidaPor($resultado['assumidaPor']);
       } else {
-        $p->setAssumidaPor(0);
+        $o->setAssumidaPor(0);
       }
       
       if (isset($resultado["presoPor"])) {
-        $p->setPresoPor($resultado['presoPor']);
+        $o->setPresoPor($resultado['presoPor']);
       } else {
-        $p->setPresoPor(0);
+        $o->setPresoPor(0);
       }
 
-      $usuarios[] = $p;
+      $ordens[] = $o;
     }
-    return $usuarios;
+    return $ordens;
   }
 }

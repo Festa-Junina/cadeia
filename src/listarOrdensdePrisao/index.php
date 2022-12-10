@@ -48,7 +48,7 @@ $ordens = OrdemPrisao::findall();
                 foreach ($ordens as $ordem) {
                     //$tipoMeliante = TipoMeliante::find($ordem->getIdTipoMeliante());
                     $tipoMeliante = TipoMeliante::find($ordem->getIdTipoMeliante());
-                    $nomeMeliante = $tipoMeliante->getNome();
+                    $nomeTipoMeliante = strtolower($tipoMeliante->getNome());
                     $idMeliante = $tipoMeliante->getIdTipoMeliante();
                     $time = date('i:s', $ordem->getHoraOrdem());
                     $policial = "";
@@ -70,8 +70,8 @@ $ordens = OrdemPrisao::findall();
                             <h3>{$time}</h3>
                         </div>
                         <div class='order-type'>
-                            <div class='ball' id='ball1'></div>
-                            <p>{$nomeMeliante}</p>
+                            <div class='ball' id='ball-{$nomeTipoMeliante}'></div>
+                            <p>{$nomeTipoMeliante}</p>
                         </div>
                         <h4>📌{$ordem->getLocalVisto()}</h4>
 
@@ -91,7 +91,16 @@ $ordens = OrdemPrisao::findall();
                 </div>
 
                 <div id='confirm{$cont}' class='modal'>
-                    <p>Tem certeza que deseja confirmar a prisão?</p>
+                    <p>Tem certeza que deseja confirmar a prisão de {$ordem->getNomeMeliante()}?</p>
+                    <div class='btn-modal confirm-btn'>
+                        <form action='confirmaPrisao.php' method='post'>
+                            <input type='hidden' name='idOrdemPrisao' value='{$ordem->getIdOrdem()}'>
+                            <input name='confirm' type='submit' value='Sim'>
+                        </form>
+                    </div>
+                    <div class='btn-modal cancel-btn'>
+                        <a rel='modal:close'>Não</a>
+                    </div>
                 </div>
                 </div>";
 
@@ -120,7 +129,15 @@ $ordens = OrdemPrisao::findall();
                         <!-- Modal -->
                         <div id="tips1" class="modal">
                             <p>Características do meliante aqui!</p>
-                            <!-- <a href="#" rel="modal:close">Fechar</a> -->
+                            <div class='btn-modal confirm-btn'>
+                                <form action='confirmaPrisao.php' method='post'>
+                                    <input type='hidden' name='idOrdemPrisao' value='{$ordem}'>
+                                    <input name='confirm' type='submit' value='Sim'>
+                                </form>
+                            </div>
+                            <div class='btn-modal cancel-btn'>
+                                <a rel='modal:close'>Não</a>
+                            </div>
                         </div>
                     </div>
                     <div class="order-btn">

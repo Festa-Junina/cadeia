@@ -84,7 +84,7 @@ class Usuario implements  ActiveRecord
         }else{
             $sql = "INSERT INTO usuario (idUsuario,idFuncao,login, senha, telefone) VALUES ('{$this->idUsuario}','{$this->idFuncao}','{$this->login}','{$this->senha}','{$this->telefone}')";
         }
-        return $connection->execute($sql);
+        return $connection->executa($sql);
     }
 
     public function delete(): bool
