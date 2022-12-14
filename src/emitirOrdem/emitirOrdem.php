@@ -41,72 +41,71 @@ if (isset($_POST['submit'])) {
 
 <body >
     <header class="header">
-        <div class='container'>
-            <h1>Emitir Ordem de Prisão</h1>
+        <div class="container container-header">
+            <h1>Visualizar Ordem de Prisão</h1>
             <?php
-        echo "<span>Ticket: {$_SESSION['ticket']}</span>";
-        ?>
+                echo "<span>Ticket: {$_SESSION['ticket']}</span>";
+            ?>
         </div>
     </header>
-    <main>
-        <div class='container'>
+    <main class="main">
+        <div class='container container-main'>
+            <section class="section">
+                <a href="../../index.html" class='links'>🡄 Voltar à tela inicial</a>
+                <p>Preencha todos os campos para efetuar um mandado de prisão.</p>
+            </section>
+            
+            <form action="emitirOrdem.php" method="post" class="form">
+                <h2>Dados do Meliante</h2>
+                <label for="nomeMeliante">Nome do Meliante:</label>
+                <input type="text" name="nomeMeliante" id="nomeMeliante" placeholder="ex: João da Silva Morais" required>
 
-        <a href="../../index.html" class='links'>🡄 Voltar à tela inicial</a>
-<p>Preencha todos os campos para efetuar um mandado de prisão.</p>
+                <label for="tipoMeliante">Tipo do Meliante:</label>
+                <select name="tipoMeliante" id="tipoMeliante" required>
+                    <option value="" disabled selected>Escolha um tipo</option>
 
-        <form action="emitirOrdem.php" method="post" class="form">
+                    <?php
+                    $conexao = new MySQL();
+                    $sql = "SELECT * FROM tipomeliante";
+                    $tiposMeliantes = $conexao->consulta($sql);
+                    foreach ($tiposMeliantes as $tipo) {
+                        echo "<option value='{$tipo['idTipoMeliante']}'> {$tipo['nome']} </option>";
+                    }
+                    ?>
+                </select>
 
-            <h2>Dados do Meliante</h2>
-            <label for="nomeMeliante">Nome do Meliante:</label>
-            <input type="text" name="nomeMeliante" id="nomeMeliante" placeholder="ex: João da Silva Morais" required>
+                <!-- SO ABRE SE FOR ALUNO -->
+                <label for="turmaMeliante">Turma do Meliante: </label>
+                <select name="turmaMeliante" required id="turmaMeliante">
+                    <option value="" disabled selected>Escolha uma turma</option>
 
-            <label for="tipoMeliante">Tipo do Meliante:</label>
-            <select name="tipoMeliante" id="tipoMeliante" required>
-                <option value="" disabled selected>Escolha um tipo</option>
+                    <?php
+                    $conexao = new MySQL();
+                    $sql = "SELECT * FROM turmameliante";
+                    $turmaMeliantes = $conexao->consulta($sql);
+                    foreach ($turmaMeliantes as $turma) {
+                        echo "<option value='{$turma['idTurmaMeliante']}'> {$turma['nome']} </option>";
+                    }
+                    ?>
 
-                <?php
-                $conexao = new MySQL();
-                $sql = "SELECT * FROM tipomeliante";
-                $tiposMeliantes = $conexao->consulta($sql);
-                foreach ($tiposMeliantes as $tipo) {
-                    echo "<option value='{$tipo['idTipoMeliante']}'> {$tipo['nome']} </option>";
-                }
-                ?>
-            </select>
+                </select>
 
-            <!-- SO ABRE SE FOR ALUNO -->
-            <label for="turmaMeliante">Turma do Meliante: </label>
-            <select name="turmaMeliante" required id="turmaMeliante">
-                <option value="" disabled selected>Escolha uma turma</option>
+                <label for="descricaoMeliante">Descrição do Meliante:</label>
+                <textarea name="descricaoMeliante" id="descricaoMeliante" placeholder="Use esse espaço para descrever   características físicas do meliante" cols="30" rows="10" required></textarea>
 
-                <?php
-                $conexao = new MySQL();
-                $sql = "SELECT * FROM turmameliante";
-                $turmaMeliantes = $conexao->consulta($sql);
-                foreach ($turmaMeliantes as $turma) {
-                    echo "<option value='{$turma['idTurmaMeliante']}'> {$turma['nome']} </option>";
-                }
-                ?>
+                <label for="localVisto">Último local visto:</label>
+                <input type="text" name="localVisto" id="localVisto" placeholder="ex: Em frete a praça principal" required>
 
-            </select>
-            <!--  -->
+                <h2>Dados do Denunciante</h2>
+                <label for="nomeDenunciante">Seu nome:</label>
+                <input type="text" name="nomeDenunciante" id="nomeDenunciante" placeholder="ex: Elías dos Anjos" required>
 
-            <label for="descricaoMeliante">Descrição do Meliante:</label>
-            <textarea name="descricaoMeliante" id="descricaoMeliante" placeholder="Use esse espaço para descrever características físicas do meliante" cols="30" rows="10" required></textarea>
+                <label for="telefoneDenunciante">Seu telefone:</label>
+                <input type="tel" name="telefoneDenunciante" id="telefoneDenunciante" placeholder="(51) 9 98536256"     required>
 
-            <label for="localVisto">Último local visto:</label>
-            <input type="text" name="localVisto" id="localVisto" placeholder="ex: Em frete a praça principal" required>
+                <input type="submit" name="submit" value="Enviar" class="button">
 
-            <h2>Dados do Denunciante</h2>
-            <label for="nomeDenunciante">Seu nome:</label>
-            <input type="text" name="nomeDenunciante" id="nomeDenunciante" placeholder="ex: Elías dos Anjos" required>
-
-            <label for="telefoneDenunciante">Seu telefone:</label>
-            <input type="tel" name="telefoneDenunciante" id="telefoneDenunciante" placeholder="(51) 9 98536256" required>
-
-            <input type="submit" name="submit" value="Enviar" class="button">
-
-        </form>
+            </form>
         </div>
     </main>
 

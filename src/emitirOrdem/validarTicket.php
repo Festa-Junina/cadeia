@@ -11,22 +11,21 @@
     <link rel="stylesheet" href="../../globalStyles.css">
     <title>Insira seu Ticket</title>
 
-</head>
-<body class="container">
-    <main class="main">
-    <div class="containerMeio">
-
-
-    <h1 class="insira">Insira seu <br> Ticket</h1>
-    <div class="meio">
+    </head>
+<body>
+    <header class="header">
+        <div class="container">
+            <h1>Validar Ticket</h1>
+        </div>
+    </header>
+    <main class="main container">
+        <a href="../../index.html" class='links'>🡄 Voltar à tela inicial</a>
+        <img src="ticket.png" alt="ticket imagem" class="ticket-img">
         <form action="validarTicket.php" method="post" class="form">
-
             <?php 
             require_once "../classes/Ticket.php";
-
             if(isset($_POST['submit'])){
                 $ticket = new Ticket($_POST['ticket']);
-
                 if($ticket->autenticar()){
                     header("location: emitirOrdem.php");
                 }else{
@@ -34,13 +33,10 @@
                 }
             }
             ?>
-
-            <input type="number" id="ticket" name="ticket" required>
-            <input type="submit" value="Validar Ticket" name="submit" class="button">
+            <label for="ticket">Insira seu Ticket</label>
+            <input type="number" id="ticket" name="ticket" placeholder="XXXXXX" required>
+            <input type="submit" value="Validar" name="submit" class="button">
         </form>
-    </div>
-
-</div>
     </main>
 </body>
 </html>
