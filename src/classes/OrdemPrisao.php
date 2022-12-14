@@ -185,24 +185,23 @@ class OrdemPrisao implements ActiveRecord
   {
     $conexao = new MySQL();
     $horaOrdemF = date("Y-m-d H:i:s", $this->horaOrdem);
-    if (!isset($this->idTurmaMeliante)) {
-        $this->idTurmaMeliante = null;
-    }
-    var_dump($this->idTurmaMeliante);
+    $idTurma = isset($this->idTurmaMeliante) ? $this->idTurmaMeliante : 'null';
+    $assumidaPor = isset($this->assumidaPor) ? $this->assumidaPor : 'null';
+    
+
     if (isset($this->idOrdem)) {
       $sql = "UPDATE ordemprisao SET 
-          idTicket = '{$this->idTicket}',
           idTipoMeliante = '{$this->idTipoMeliante}',
-          idTurmaMeliante = '{$this->idTurmaMeliante}',
+          idTurmaMeliante = {$idTurma},
+          idStatusOrdem = '{$this->idStatusOrdem}',
           nomeMeliante = '{$this->nomeMeliante}',
           descricaoMeliante = '{$this->descricaoMeliante}',
           localVisto = '{$this->localVisto}',
           nomeDenunciante = '{$this->nomeDenunciante}',
           telefoneDenunciante = '{$this->telefoneDenunciante}',
-          idStatusOrdem = '{$this->idStatusOrdem}',
-          horaOrdem = '{$horaOrdemF}',
-          assumidaPor = '{$this->assumidaPor}',
-          presoPor = '{$this->presoPor}'
+          assumidaPor = {$assumidaPor},
+          presoPor = '{$this->presoPor}',
+          horaOrdem = '{$horaOrdemF}'
           WHERE idOrdem = {$this->idOrdem}";
     } else {
       $sql = "INSERT INTO ordemprisao (idTicket, idTipoMeliante, nomeMeliante, descricaoMeliante, localVisto, nomeDenunciante, telefoneDenunciante, idStatusOrdem, horaOrdem) 
@@ -214,10 +213,10 @@ class OrdemPrisao implements ActiveRecord
             '{$this->localVisto}' ,
             '{$this->nomeDenunciante}' ,
             '{$this->telefoneDenunciante}' ,
-              0 ,
+             ,
             CURRENT_TIMESTAMP())";
     }
-
+    var_dump($sql);
     session_destroy();
 
     // TRIGGER NO BANCO $sql = "UPDATE ticket SET valido = false WHERE idTicket = '{$this->idTicket}'";
@@ -248,19 +247,19 @@ class OrdemPrisao implements ActiveRecord
     $p->setIdStatusOrdem($resultado[0]['idStatusOrdem']);
     $p->setHoraOrdem($resultado[0]['horaOrdem']);
 
-    if (isset($resultado[0]['idTurmaMeliante'])) {
+    if (!isset($resultado[0]['idTurmaMeliante'])) {
       $p->setIdTurmaMeliante($resultado[0]['idTurmaMeliante']);
     } else{
       $p->setIdTurmaMeliante(null);
     }
 
-    if (isset($resultado[0]['assumidaPor'])) {
+    if (!isset($resultado[0]['assumidaPor'])) {
       $p->setAssumidaPor($resultado[0]['assumidaPor']);
     } else{
       $p->setAssumidaPor(null);
     }
 
-    if (isset($resultado[0]['presoPor'])) {
+    if (!isset($resultado[0]['presoPor'])) {
       $p->setPresoPor($resultado[0]['presoPor']);
     } else{
       $p->setPresoPor(null);
@@ -296,7 +295,7 @@ class OrdemPrisao implements ActiveRecord
         $o->setidTurmaMeliante(null);
       }
 
-      if (isset($resultado['assumidaPor'])) {
+      if ($resultado['assumidaPor'] == "") {
         $o->setAssumidaPor($resultado['assumidaPor']);
       } else{
         $o->setAssumidaPor(null);
