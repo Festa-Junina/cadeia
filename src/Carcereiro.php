@@ -3,17 +3,17 @@ require_once __DIR__."/ActiveRecord.php";
 require_once __DIR__."/MySQL.php";
 
 class Carcereiro implements ActiveRecord{
-
+    
+    
     private int $idUsuario;
-    private int $idFuncao;
-    private string $login;
-    private string $senha;
-    private string $nome;
-    private  $telefone;
-    private string $ativo;
 
-
-    public function __construct(private string $email){
+    public function __construct(
+        private string $login,
+        private string $senha,
+        private string $nome,
+        private  $telefone,
+        private int $idFuncao,
+        private string $ativo){
     }
 
     public function setIdUsuario(int $idUsuario):void{
@@ -80,8 +80,8 @@ class Carcereiro implements ActiveRecord{
 
     public function save():bool{
         $conexao = new MySQL();
-        
-        if(isset($this->id)){
+        $this->senha = password_hash($this->senha,PASSWORD_BCRYPT); 
+        if(isset($this->idUsuario)){
             $sql = "UPDATE usuario SET usuario.login = '{$this->login}', senha = '{$this->senha}', nome = '{$this->nome}', telefone = '{$this->telefone}', ativo = '{$this->ativo}' WHERE idUsuario = {$this->idUsuario}";
         }else{
             $sql = "INSERT INTO usuario (idFuncao, login, senha, nome, telefone, ativo) VALUES (1,'{$this->login}', '{$this->senha}', '{$this->nome}', '{$this->telefone}', '{$this->telefone}', '{$this->ativo}')";
