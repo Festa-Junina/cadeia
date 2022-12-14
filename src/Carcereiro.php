@@ -61,7 +61,7 @@ class Carcereiro implements ActiveRecord{
     }
 
 
-    public function setTelefone( $telefone):void{
+    public function setTelefone($telefone):void{
         $this->telefone = $telefone;
     }
     
@@ -84,7 +84,7 @@ class Carcereiro implements ActiveRecord{
         if(isset($this->id)){
             $sql = "UPDATE usuario SET usuario.login = '{$this->login}', senha = '{$this->senha}', nome = '{$this->nome}', telefone = '{$this->telefone}', ativo = '{$this->ativo}' WHERE idUsuario = {$this->idUsuario}";
         }else{
-            $sql = "INSERT INTO usuario (idFuncao, login, senha, nome, telefone, ativo) VALUES (1,'{$this->login}', '{$this->senha}', '{$this->nome}', '{$this->telefone}', '{$this->telefone}')";
+            $sql = "INSERT INTO usuario (idFuncao, login, senha, nome, telefone, ativo) VALUES (1,'{$this->login}', '{$this->senha}', '{$this->nome}', '{$this->telefone}', '{$this->telefone}', '{$this->ativo}')";
         }
         return $conexao->executa($sql);
         
@@ -99,30 +99,26 @@ class Carcereiro implements ActiveRecord{
         $conexao = new MySQL();
         $sql = "SELECT * FROM usuario WHERE idUsuario = {$idUsuario}";
         $resultado = $conexao->consulta($sql);
-        $p = new Carcereiro($resultado[0]['login']);
+        $p = new Carcereiro($resultado[0]['login'],$resultado[0]['senha'],$resultado[0]['telefone'],$resultado[0]['nome'],$resultado[0]['ativo']);
         $p->setIdUsuario($resultado[0]['idUsuario']);
-        $p->setNome($resultado[0]['nome']);
-        $p->setSenha($resultado[0]['senha']);
-        $p->setTelefone($resultado[0]['telefone']);
         return $p;
     }
+    
+
+
     public static function findall():array{
         $conexao = new MySQL();
-        $sql = "SELECT * FROM usuario";
+        $sql = "SELECT * FROM usuario where idFuncao=1";
         $resultados = $conexao->consulta($sql);
-        
-        $carcereiros = array();
+        $carcereiro = array();
         foreach($resultados as $resultado){
-            $p = new Carcereiro($resultado['login']);
+            $p = new Carcereiro($resultado['login'],$resultado['senha'],$resultado['telefone'],$resultado['nome'],$resultado['ativo']);
             $p->setIdUsuario($resultado['idUsuario']);
-            $p->setNome($resultado['nome']);
-            $p->setLogin($resultado['login']);
-            $p->setSenha($resultado['senha']);
-            $p->setTelefone($resultado['telefone']);
-            $carcereiros[] = $p;
+            $carcereiro[] = $p;
         }
-        return $carcereiros;
+        return $carcereiro;
     }
+
 
     public function authenticate():bool{
         $conexao = new MySQL();
