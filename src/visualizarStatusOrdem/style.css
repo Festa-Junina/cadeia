@@ -72,3 +72,7 @@ input:not(input[type="submit"]){
 h2{
     font-weight: bold;
 }
+a{
+    color: initial;
+    text-decoration: none;
+}
