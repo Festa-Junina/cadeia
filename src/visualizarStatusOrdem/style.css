@@ -23,9 +23,10 @@ body{
 }
 .main{
     display: flex;
-    height: 90%;
+    height: 85%;
     flex-direction: column;
-    justify-content: space-around;
+    padding: 0.8em 0em;
+    gap: 2em;
 }
 .form{
     height: 30%;
@@ -33,6 +34,7 @@ body{
     flex-direction: column;
     align-items: center;
     justify-content: space-around;
+    gap: 1em;
 }
 .statusOrdem{
     height: 50%;
