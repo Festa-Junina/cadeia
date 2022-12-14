@@ -202,6 +202,36 @@ body{
 .disabled:hover{
     background-color: gray;
 }
+
+.opt-btns{
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    gap: 1.5rem;
+}
+
+.opt-btns > .confirm-btn > form > input[type='submit']{
+    background-color: green;
+    border: none;
+    padding: .5rem;
+    border-radius: .4rem;
+    font-size: 100%;
+    color: white;
+}
+.opt-btns > .cancel-btn > a{
+    background-color: red;
+    border-radius: .4rem;
+    padding: .5rem;
+    font-size: 100%;
+    color: white;
+}
+
+.opt-btns > .confirm-btn > form > input[type='submit']:hover,
+.opt-btns > .cancel-btn > a:hover{
+    cursor: pointer;
+}
+
 @media screen and (max-width: 425px){
     .user > p{
         display: none;

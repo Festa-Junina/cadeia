@@ -5,7 +5,9 @@ use classes\OrdemPrisao;
 use classes\TipoMeliante;
 
 $ordens = OrdemPrisao::findall();
-
+foreach ($ordens as $ordem) {
+    var_dump($ordem->getIdTurmaMeliante());
+}
 ?>
 <!DOCTYPE html>
 <html lang="pt-BR">
@@ -47,6 +49,7 @@ $ordens = OrdemPrisao::findall();
                 $cont = 1;
                 foreach ($ordens as $ordem) {
                     //$tipoMeliante = TipoMeliante::find($ordem->getIdTipoMeliante());
+                    
                     $tipoMeliante = TipoMeliante::find($ordem->getIdTipoMeliante());
                     $nomeTipoMeliante = strtolower($tipoMeliante->getNome());
                     $idMeliante = $tipoMeliante->getIdTipoMeliante();
@@ -80,7 +83,11 @@ $ordens = OrdemPrisao::findall();
                     </a>
                     <div id='tips{$cont}' class='modal'>
                         <h1 class='modal-title'>Características do Meliante</h1>
-                        <p>{$ordem->getDescricaoMeliante()}</p>
+                        <p>{$ordem->getDescricaoMeliante()}
+                        <br>
+                        {$ordem->getIdTurmaMeliante()}</p>
+
+                        
                     </div>
                 </div>
                 {$btnResponsavel}
@@ -91,15 +98,17 @@ $ordens = OrdemPrisao::findall();
                 </div>
 
                 <div id='confirm{$cont}' class='modal'>
-                    <p>Tem certeza que deseja confirmar a prisão de {$ordem->getNomeMeliante()}?</p>
-                    <div class='btn-modal confirm-btn'>
-                        <form action='confirmaPrisao.php' method='post'>
-                            <input type='hidden' name='idOrdemPrisao' value='{$ordem->getIdOrdem()}'>
-                            <input name='confirm' type='submit' value='Sim'>
-                        </form>
-                    </div>
-                    <div class='btn-modal cancel-btn'>
-                        <a rel='modal:close'>Não</a>
+                    <h1 class='modal-title'>Tem certeza que deseja confirmar a prisão de {$ordem->getNomeMeliante()}?</h1>
+                    <div class='opt-btns'>
+                        <div class='btn-modal confirm-btn'>
+                            <form action='confirmaPrisao.php' method='post'>
+                                <input type='hidden' name='idOrdemPrisao' value='{$ordem->getIdOrdem()}'>
+                                <input name='confirm' type='submit' value='Sim'>
+                            </form>
+                        </div>
+                        <div class='btn-modal cancel-btn'>
+                            <a rel='modal:close'>Não</a>
+                        </div>
                     </div>
                 </div>
                 </div>";
