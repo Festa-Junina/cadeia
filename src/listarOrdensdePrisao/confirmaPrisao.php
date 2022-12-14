@@ -9,14 +9,13 @@
         // $ordem->setPresoPor($_SESSION['idUsuario']);
         $ordem = OrdemPrisao::find($_POST['idOrdemPrisao']);
         $ordem->setPresoPor(1);
-        $ordem->save();
-        // if ($ordem->getIdTurmaMeliante() == "undefined") {
-        //     $ordem->setIdTurmaMeliante(null);
-        // }
+        $ordem->save(); 
+        var_dump($ordem);
+
         // $prisao = new Prisao();
         // $prisao->setIdOrdemPrisao($_POST['idOrdemPrisao']);
         // $prisao->setIdStatusPrisao(0);
         // $prisao->setQuantidadePerguntasRespondidas(0);
         // $prisao->save();
-        header('Location: index.php');
+        // header('Location: index.php');
     }

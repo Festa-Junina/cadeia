@@ -184,8 +184,11 @@ class OrdemPrisao implements ActiveRecord
   public function save(): bool
   {
     $conexao = new MySQL();
-
-
+    $horaOrdemF = date("Y-m-d H:i:s", $this->horaOrdem);
+    if (!isset($this->idTurmaMeliante)) {
+        $this->idTurmaMeliante = null;
+    }
+    var_dump($this->idTurmaMeliante);
     if (isset($this->idOrdem)) {
       $sql = "UPDATE ordemprisao SET 
           idTicket = '{$this->idTicket}',
@@ -197,7 +200,7 @@ class OrdemPrisao implements ActiveRecord
           nomeDenunciante = '{$this->nomeDenunciante}',
           telefoneDenunciante = '{$this->telefoneDenunciante}',
           idStatusOrdem = '{$this->idStatusOrdem}',
-          horaOrdem = '{$this->horaOrdem}',
+          horaOrdem = '{$horaOrdemF}',
           assumidaPor = '{$this->assumidaPor}',
           presoPor = '{$this->presoPor}'
           WHERE idOrdem = {$this->idOrdem}";
@@ -263,9 +266,7 @@ class OrdemPrisao implements ActiveRecord
       $p->setPresoPor(null);
     }
     $p->setIdOrdem($resultado[0]['idOrdem']); 
-    // $p->setIdTurmaMeliante(0);
-    // $p->setAssumidaPor($resultado[0]['assumidaPor']);
-    // $p->setPresoPor($resultado[0]['presoPor']);
+    
     return $p;
   }
 
@@ -289,7 +290,7 @@ class OrdemPrisao implements ActiveRecord
       $o->setIdStatusOrdem($resultado['idStatusOrdem']);
       $o->setHoraOrdem($resultado['horaOrdem']);
 
-      if ($resultado['idTurmaMeliante'] !== 'undefined') {
+      if (isset($resultado['idTurmaMeliante'])) {
         $o->setidTurmaMeliante($resultado['idTurmaMeliante']);
       } else{
         $o->setidTurmaMeliante(null);
@@ -307,13 +308,7 @@ class OrdemPrisao implements ActiveRecord
         $o->setPresoPor(null);
       }
 
-      $o->setIdOrdem($resultado['idOrdem']);
-      
-      // $o->setAssumidaPor($resultado['assumidaPor']);
-      // $o->setPresoPor($resultado['presoPor']);
-
-
-
+      $o->setIdOrdem($resultado['idOrdem']);      
       $ordens[] = $o;
     }
     return $ordens;
