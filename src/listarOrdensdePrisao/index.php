@@ -5,9 +5,9 @@ use classes\OrdemPrisao;
 use classes\TipoMeliante;
 
 $ordens = OrdemPrisao::findall();
-foreach ($ordens as $ordem) {
-    var_dump($ordem->getIdTurmaMeliante());
-}
+// foreach ($ordens as $ordem) {
+//     var_dump($ordem->getIdTurmaMeliante());
+// }
 ?>
 <!DOCTYPE html>
 <html lang="pt-BR">
@@ -46,23 +46,26 @@ foreach ($ordens as $ordem) {
             <div class="order-list">
 
                 <?php
-                $cont = 1;
                 foreach ($ordens as $ordem) {
-                    //$tipoMeliante = TipoMeliante::find($ordem->getIdTipoMeliante());
-                    
+
+                    $ordemId = $ordem->getIdOrdem();
                     $tipoMeliante = TipoMeliante::find($ordem->getIdTipoMeliante());
                     $nomeTipoMeliante = strtolower($tipoMeliante->getNome());
                     $idMeliante = $tipoMeliante->getIdTipoMeliante();
                     $time = date('i:s', $ordem->getHoraOrdem());
-                    $policial = "";
-                    $btnConfirmar =  "<div class='order-btn'><a href='#confirm{$cont}' rel='modal:open'><h2>Confirmar</h2></a></div>";
-                    $modalText = 'Tem certeza que deseja assumir esta ordem de prisão?';
-                    $btnResponsavel = "<div class='order-btn'><a href='#modal{$cont}' rel='modal:open'><h2>Assumir</h2></a></div>";
-                    if ($ordem->getAssumidaPor() != null) {
-                        $policial = 'Teste';
-                        $btnResponsavel = "<div class='order-btn disabled'><h2>Assumido por {$policial}</h2></div>";
-                        $btnConfirmar = "<div class='order-btn'><a href='#confirm{$cont}' rel='modal:open'><h2>Confirmar</h2></a></div>";
-                        $modalText = 'Tem certeza que deseja confirmar a prisão?';
+                    $assumidoPor = "";
+                    $presoPor = "";
+                    $btnConfirmar =  "<div class='order-btn'><a href='#confirm{$ordemId}' rel='modal:open'><h2>Confirmar</h2></a></div>";
+                    $btnResponsavel = "<div class='order-btn'><a href='#assumir{$ordemId}' rel='modal:open'><h2>Assumir</h2></a></div>";
+
+                    if (!is_null($ordem->getAssumidaPor())) {
+                        $assumidoPor = 'Teste';
+                        $btnResponsavel = "<div class='order-btn disabled'><h2>Assumido por {$assumidoPor}</h2></div>";
+                    }
+
+                    if(!is_null($ordem->getPresoPor())){
+                        $presoPor = 'Policial';
+                        $btnConfirmar = "<div class='order-btn disabled'><h2>Preso por {$presoPor}</h2></div>";
                     }
 
 
@@ -78,10 +81,10 @@ foreach ($ordens as $ordem) {
                         </div>
                         <h4>📌{$ordem->getLocalVisto()}</h4>
 
-                        <a href='#tips{$cont}' rel='modal:open'>
+                        <a href='#tips{$ordemId}' rel='modal:open'>
                         <p>&nbsp;Características</p>
                     </a>
-                    <div id='tips{$cont}' class='modal'>
+                    <div id='tips{$ordemId}' class='modal'>
                         <h1 class='modal-title'>Características do Meliante</h1>
                         <p>{$ordem->getDescricaoMeliante()}
                         <br>
@@ -92,12 +95,23 @@ foreach ($ordens as $ordem) {
                 </div>
                 {$btnResponsavel}
                 {$btnConfirmar}
-
-                <div id='modal{$cont}' class='modal'>
-                    Tem certeza que deseja assumir esta ordem de prisão?
+                
+                <div id='assumir{$ordemId}' class='modal'>
+                    <h1 class='modal-title'>Tem certeza que deseja assumir a ordem de prisão de {$ordem->getNomeMeliante()}?</h1>
+                    <div class='opt-btns'>
+                        <div class='btn-modal confirm-btn'>
+                            <form action='assumirPrisao.php' method='post'>
+                                <input type='hidden' name='idOrdemPrisao' value='{$ordem->getIdOrdem()}'>
+                                <input name='assumir' type='submit' value='Sim'>
+                            </form>
+                        </div>
+                        <div class='btn-modal cancel-btn'>
+                            <a rel='modal:close'>Não</a>
+                        </div>
+                    </div>
                 </div>
 
-                <div id='confirm{$cont}' class='modal'>
+                <div id='confirm{$ordemId}' class='modal'>
                     <h1 class='modal-title'>Tem certeza que deseja confirmar a prisão de {$ordem->getNomeMeliante()}?</h1>
                     <div class='opt-btns'>
                         <div class='btn-modal confirm-btn'>
@@ -112,8 +126,6 @@ foreach ($ordens as $ordem) {
                     </div>
                 </div>
                 </div>";
-
-                    $cont++;
                     echo $template;
                 }
                 ?>

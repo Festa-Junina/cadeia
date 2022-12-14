@@ -275,19 +275,19 @@ class OrdemPrisao implements ActiveRecord
 
       $o->setidTurmaMeliante($resultado['idTurmaMeliante']);
       $o->setIdOrdem($resultado['idOrdem']);
-
-
-      if (isset($resultado['assumidaPor'])) {
-        $o->setAssumidaPor($resultado['assumidaPor']);
-      } else {
-        $o->setAssumidaPor(0);
-      }
       
-      if (isset($resultado["presoPor"])) {
-        $o->setPresoPor($resultado['presoPor']);
-      } else {
-        $o->setPresoPor(0);
-      }
+      $o->setAssumidaPor($resultado['assumidaPor']);
+      $o->setPresoPor($resultado['presoPor']);
+
+      // if (isset($resultado['assumidaPor'])) {
+      // } else {
+      //   $o->setAssumidaPor(0);
+      // }
+      
+      // if (isset($resultado["presoPor"])) {
+      // } else {
+      //   $o->setPresoPor(0);
+      // }
 
       $ordens[] = $o;
     }
