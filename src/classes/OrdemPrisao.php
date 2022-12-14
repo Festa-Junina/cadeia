@@ -190,14 +190,17 @@ class OrdemPrisao implements ActiveRecord
       $sql = "UPDATE ordemprisao SET 
           idTicket = '{$this->idTicket}',
           idTipoMeliante = '{$this->idTipoMeliante}',
-          idTurmaMeliante = '{$this->idTurmaMeliante}' ,
-          nomeMeliante = '{$this->nomeMeliante}' ,
-          descricaoMeliante = '{$this->descricaoMeliante}' ,
-          localVisto = '{$this->localVisto}' ,
-          nomeDenunciante = '{$this->nomeDenunciante}' ,
-          telefoneDenunciante = '{$this->telefoneDenunciante}' ,
-          idStatusOrdem = '{$this->idStatusOrdem}' ,
-          horaOrdem = '{$this->horaOrdem}'";
+          idTurmaMeliante = '{$this->idTurmaMeliante}',
+          nomeMeliante = '{$this->nomeMeliante}',
+          descricaoMeliante = '{$this->descricaoMeliante}',
+          localVisto = '{$this->localVisto}',
+          nomeDenunciante = '{$this->nomeDenunciante}',
+          telefoneDenunciante = '{$this->telefoneDenunciante}',
+          idStatusOrdem = '{$this->idStatusOrdem}',
+          horaOrdem = '{$this->horaOrdem}',
+          assumidaPor = '{$this->assumidaPor}',
+          presoPor = '{$this->presoPor}'
+          WHERE idOrdem = {$this->idOrdem}";
     } else {
       $sql = "INSERT INTO ordemprisao (idTicket, idTipoMeliante, nomeMeliante, descricaoMeliante, localVisto, nomeDenunciante, telefoneDenunciante, idStatusOrdem, horaOrdem) 
         VALUES (

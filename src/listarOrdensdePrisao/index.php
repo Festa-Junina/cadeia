@@ -117,7 +117,7 @@ $ordens = OrdemPrisao::findall();
                         <div class='btn-modal confirm-btn'>
                             <form action='confirmaPrisao.php' method='post'>
                                 <input type='hidden' name='idOrdemPrisao' value='{$ordem->getIdOrdem()}'>
-                                <input name='confirm' type='submit' value='Sim'>
+                                <input name='confirmar' type='submit' value='Sim'>
                             </form>
                         </div>
                         <div class='btn-modal cancel-btn'>
