@@ -11,11 +11,11 @@ class OrdemPrisao implements ActiveRecord
   private int $idOrdem;
   private int $idTicket;
   private int $idTipoMeliante;
-  private int $idTurmaMeliante;
+  private ?int $idTurmaMeliante;
   private int $idStatusOrdem;
   private int $horaOrdem;
-  private int $assumidaPor;
-  private int $presoPor;
+  private ?int $assumidaPor;
+  private ?int $presoPor;
 
   public function __construct(
     private string $nomeMeliante,
@@ -62,12 +62,12 @@ class OrdemPrisao implements ActiveRecord
   #endregion
 
   #region idTurmaMeliante
-  public function setIdTurmaMeliante(int $idTurmaMeliante): void
+  public function setIdTurmaMeliante(?int $idTurmaMeliante): void
   {
     $this->idTurmaMeliante = $idTurmaMeliante;
   }
 
-  public function getIdTurmaMeliante(): int
+  public function getIdTurmaMeliante(): int | null
   {
     return $this->idTurmaMeliante;
   }
@@ -158,24 +158,24 @@ class OrdemPrisao implements ActiveRecord
   #endregion
 
   #region assumidaPor
-  public function setAssumidaPor(int $assumidaPor): void
+  public function setAssumidaPor(?int $assumidaPor): void
   {
     $this->assumidaPor = $assumidaPor;
   }
 
-  public function getAssumidaPor(): int
+  public function getAssumidaPor(): int | null
   {
     return $this->assumidaPor;
   }
   #endregion
 
   #region presoPor
-  public function setPresoPor(int $presoPor): void
+  public function setPresoPor(?int $presoPor): void
   {
     $this->presoPor = $presoPor;
   }
 
-  public function getPresoPor(): int
+  public function getPresoPor(): int | null
   {
     return $this->presoPor;
   }
@@ -243,9 +243,10 @@ class OrdemPrisao implements ActiveRecord
     $p->setIdStatusOrdem($resultado[0]['idStatusOrdem']);
     $p->setHoraOrdem($resultado[0]['horaOrdem']);
 
-    // if ($resultado['idTurmaMeliante'] != 0) {
-    // }
-    $p->setIdTurmaMeliante(0);
+    if (isset($resultado['idTurmaMeliante'])) {
+      $p->setIdTipoMeliante($resultado[0]['idTurmaMeliante']);
+    } 
+    // $p->setIdTurmaMeliante(0);
     $p->setIdOrdem($resultado[0]['idOrdem']);
     $p->setAssumidaPor($resultado[0]['assumidaPor']);
     $p->setPresoPor($resultado[0]['presoPor']);
@@ -255,7 +256,7 @@ class OrdemPrisao implements ActiveRecord
   public static function findall(): array
   {
     $conexao = new MySQL();
-    $sql = "SELECT * FROM ordemPrisao";
+    $sql = "SELECT * FROM ordemPrisao ORDER BY 'ASC'";
     $resultados = $conexao->consulta($sql);
     $ordens = array();
     foreach ($resultados as $resultado) {
@@ -272,9 +273,7 @@ class OrdemPrisao implements ActiveRecord
       $o->setIdStatusOrdem($resultado['idStatusOrdem']);
       $o->setHoraOrdem($resultado['horaOrdem']);
 
-      // if ($resultado['idTurmaMeliante'] != 0) {
-      // }
-      $o->setIdTurmaMeliante(0);
+      $o->setidTurmaMeliante($resultado['idTurmaMeliante']);
       $o->setIdOrdem($resultado['idOrdem']);
 
 
