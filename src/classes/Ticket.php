@@ -5,17 +5,17 @@ require_once "../db/MySQL.php";
 
 class Ticket{
 
-
     public function __construct(private int $ticket){
     }
 
-    //ticket ------------------------------------------------
+
+    //ticket --------------------------------------------------------------
     public function getTicket():int{
         return $this->ticket;
     }
 
 
-    //autenticar ------------------------------------------------
+    //autenticar ----------------------------------------------------------
     public function autenticar():bool{
         $conexao = new MySQL();
 
@@ -25,22 +25,38 @@ class Ticket{
 
         if(!empty($ticketValido)){
             if($ticketValido['0']['valido'] == false){
-
-//echo"ticket ja utilizado"; 
-
                 return false;
             }
 
             $conexao->executa($sql);
-
             session_start();
             $_SESSION['idTicket'] = $ticketValido['0']['idTicket'];
             $_SESSION['ticket'] = $this->ticket;
             return true;
         }
-        
-//echo"ticket nao existe";  
-
         return false;
+    }
+
+
+    //visualizar ststus ordem ------------------------------------------------
+    public function findOrdem(){
+        $conexao = new MySQL();
+
+        $sql = "select ordemprisao.nomeMeliante, statusordem.nome as 'statusOrdem',
+        IF(ordemprisao.idStatusOrdem = 2, statusprisao.nome, 'Ainda não foi preso') as 'statusprisao',
+        IF(ordemprisao.idStatusOrdem = 2, time(SUBTIME(prisao.horaPrisao,CURRENT_TIME)), '00:00:00') as 'tempoPreso'
+        from ordemprisao
+        inner join statusordem on statusordem.idStatusOrdem = ordemprisao.idStatusOrdem
+        left join prisao on prisao.idOrdemPrisao = ordemprisao.idOrdem
+        left join statusprisao on statusprisao.idStatusPrisao = prisao.idStatusPrisao
+        where ordemprisao.idTicket = {$this->ticket}"; 
+
+        $status = $conexao->consulta($sql);
+
+        if(!empty($status)){
+            return $status['0'];
+        }else{
+            return false;
+        }
     }
 }
