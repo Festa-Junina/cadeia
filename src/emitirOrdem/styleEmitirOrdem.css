@@ -76,6 +76,7 @@ select{
 }
 textarea{
     resize: none;
+    outline: none;
     border-radius: 0.4rem;
     border: 2px solid var(--primaryVariant);
     padding: 0.5em;

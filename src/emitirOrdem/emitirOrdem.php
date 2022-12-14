@@ -3,6 +3,9 @@
 require_once "../db/MySQL.php";
 require_once "../classes/OrdemPrisao.php";
 session_start();
+if(!isset($_SESSION['idTicket'])){
+    header("location: validarTicket.php");
+}
 
 if (isset($_POST['submit'])) {
 
