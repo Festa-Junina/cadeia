@@ -99,7 +99,7 @@ class Carcereiro implements ActiveRecord{
         $conexao = new MySQL();
         $sql = "SELECT * FROM usuario WHERE idUsuario = {$idUsuario}";
         $resultado = $conexao->consulta($sql);
-        $p = new Carcereiro($resultado[0]['login'],$resultado[0]['senha'],$resultado[0]['telefone'],$resultado[0]['nome'],$resultado[0]['ativo']);
+        $p = new Carcereiro($resultado[0]['login'],$resultado[0]['senha'],$resultado[0]['telefone'],$resultado[0]['nome'],$resultado['idFuncao'],$resultado[0]['ativo']);
         $p->setIdUsuario($resultado[0]['idUsuario']);
         return $p;
     }
@@ -112,7 +112,7 @@ class Carcereiro implements ActiveRecord{
         $resultados = $conexao->consulta($sql);
         $carcereiro = array();
         foreach($resultados as $resultado){
-            $p = new Carcereiro($resultado['login'],$resultado['senha'],$resultado['telefone'],$resultado['nome'],$resultado['ativo']);
+            $p = new Carcereiro($resultado['login'],$resultado['senha'],$resultado['telefone'],$resultado['nome'],$resultado['idFuncao'],$resultado['ativo']);
             $p->setIdUsuario($resultado['idUsuario']);
             $carcereiro[] = $p;
         }
