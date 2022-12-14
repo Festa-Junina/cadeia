@@ -67,7 +67,7 @@ class OrdemPrisao implements ActiveRecord
     $this->idTurmaMeliante = $idTurmaMeliante;
   }
 
-  public function getIdTurmaMeliante(): int | null
+  public function getIdTurmaMeliante(): int | null 
   {
     return $this->idTurmaMeliante;
   }
@@ -186,19 +186,18 @@ class OrdemPrisao implements ActiveRecord
     $conexao = new MySQL();
 
 
-    if (isset($this->idTurmaMeliante)) {
-      $sql = "INSERT INTO ordemprisao (idTicket, idTipoMeliante, idTurmaMeliante, nomeMeliante, descricaoMeliante, localVisto, nomeDenunciante, telefoneDenunciante, idStatusOrdem, horaOrdem) 
-        VALUES (
-            '{$this->idTicket}',
-            '{$this->idTipoMeliante}',
-            '{$this->idTurmaMeliante}' ,
-            '{$this->nomeMeliante}' ,
-            '{$this->descricaoMeliante}' ,
-            '{$this->localVisto}' ,
-            '{$this->nomeDenunciante}' ,
-            '{$this->telefoneDenunciante}' ,
-              0 ,
-            CURRENT_TIMESTAMP())";
+    if (isset($this->idOrdem)) {
+      $sql = "UPDATE ordemprisao SET 
+          idTicket = '{$this->idTicket}',
+          idTipoMeliante = '{$this->idTipoMeliante}',
+          idTurmaMeliante = '{$this->idTurmaMeliante}' ,
+          nomeMeliante = '{$this->nomeMeliante}' ,
+          descricaoMeliante = '{$this->descricaoMeliante}' ,
+          localVisto = '{$this->localVisto}' ,
+          nomeDenunciante = '{$this->nomeDenunciante}' ,
+          telefoneDenunciante = '{$this->telefoneDenunciante}' ,
+          idStatusOrdem = '{$this->idStatusOrdem}' ,
+          horaOrdem = '{$this->horaOrdem}'";
     } else {
       $sql = "INSERT INTO ordemprisao (idTicket, idTipoMeliante, nomeMeliante, descricaoMeliante, localVisto, nomeDenunciante, telefoneDenunciante, idStatusOrdem, horaOrdem) 
         VALUES (
@@ -243,13 +242,27 @@ class OrdemPrisao implements ActiveRecord
     $p->setIdStatusOrdem($resultado[0]['idStatusOrdem']);
     $p->setHoraOrdem($resultado[0]['horaOrdem']);
 
-    if (isset($resultado['idTurmaMeliante'])) {
-      $p->setIdTipoMeliante($resultado[0]['idTurmaMeliante']);
-    } 
+    if (isset($resultado[0]['idTurmaMeliante'])) {
+      $p->setIdTurmaMeliante($resultado[0]['idTurmaMeliante']);
+    } else{
+      $p->setIdTurmaMeliante(null);
+    }
+
+    if (isset($resultado[0]['assumidaPor'])) {
+      $p->setAssumidaPor($resultado[0]['assumidaPor']);
+    } else{
+      $p->setAssumidaPor(null);
+    }
+
+    if (isset($resultado[0]['presoPor'])) {
+      $p->setPresoPor($resultado[0]['presoPor']);
+    } else{
+      $p->setPresoPor(null);
+    }
+    $p->setIdOrdem($resultado[0]['idOrdem']); 
     // $p->setIdTurmaMeliante(0);
-    $p->setIdOrdem($resultado[0]['idOrdem']);
-    $p->setAssumidaPor($resultado[0]['assumidaPor']);
-    $p->setPresoPor($resultado[0]['presoPor']);
+    // $p->setAssumidaPor($resultado[0]['assumidaPor']);
+    // $p->setPresoPor($resultado[0]['presoPor']);
     return $p;
   }
 
@@ -273,21 +286,30 @@ class OrdemPrisao implements ActiveRecord
       $o->setIdStatusOrdem($resultado['idStatusOrdem']);
       $o->setHoraOrdem($resultado['horaOrdem']);
 
-      $o->setidTurmaMeliante($resultado['idTurmaMeliante']);
+      if ($resultado['idTurmaMeliante'] !== 'undefined') {
+        $o->setidTurmaMeliante($resultado['idTurmaMeliante']);
+      } else{
+        $o->setidTurmaMeliante(null);
+      }
+
+      if (isset($resultado['assumidaPor'])) {
+        $o->setAssumidaPor($resultado['assumidaPor']);
+      } else{
+        $o->setAssumidaPor(null);
+      }
+
+      if (isset($resultado['presoPor'])) {
+        $o->setPresoPor($resultado['presoPor']);
+      } else{
+        $o->setPresoPor(null);
+      }
+
       $o->setIdOrdem($resultado['idOrdem']);
       
-      $o->setAssumidaPor($resultado['assumidaPor']);
-      $o->setPresoPor($resultado['presoPor']);
+      // $o->setAssumidaPor($resultado['assumidaPor']);
+      // $o->setPresoPor($resultado['presoPor']);
 
-      // if (isset($resultado['assumidaPor'])) {
-      // } else {
-      //   $o->setAssumidaPor(0);
-      // }
-      
-      // if (isset($resultado["presoPor"])) {
-      // } else {
-      //   $o->setPresoPor(0);
-      // }
+
 
       $ordens[] = $o;
     }

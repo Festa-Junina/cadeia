@@ -52,7 +52,7 @@ $ordens = OrdemPrisao::findall();
                     $tipoMeliante = TipoMeliante::find($ordem->getIdTipoMeliante());
                     $nomeTipoMeliante = strtolower($tipoMeliante->getNome());
                     $idMeliante = $tipoMeliante->getIdTipoMeliante();
-                    $time = date('i:s', $ordem->getHoraOrdem());
+                    $time = date('H:i:s', $ordem->getHoraOrdem());
                     $assumidoPor = "";
                     $presoPor = "";
                     $btnConfirmar =  "<div class='order-btn'><a href='#confirm{$ordemId}' rel='modal:open'><h2>Confirmar</h2></a></div>";
@@ -129,7 +129,7 @@ $ordens = OrdemPrisao::findall();
                     echo $template;
                 }
                 ?>
-                <div class="order">
+                <!-- <div class="order">
                     <div class="order-content">
                         <div class="order-header">
                             <h2>Nome do Meliante</h2>
@@ -148,7 +148,7 @@ $ordens = OrdemPrisao::findall();
 
                         <h4 class="responsible">Responsável: Kelvin😎</h4>
                         <!-- Modal -->
-                        <div id="tips1" class="modal">
+                        <!-- <div id="tips1" class="modal">
                             <p>Características do meliante aqui!</p>
                             <div class='btn-modal confirm-btn'>
                                 <form action='confirmaPrisao.php' method='post'>
@@ -164,7 +164,7 @@ $ordens = OrdemPrisao::findall();
                     <div class="order-btn">
                         <h2>Confirmar Prisão</h2>
                     </div>
-                </div>
+                </div> --> 
 
 
             </div>
