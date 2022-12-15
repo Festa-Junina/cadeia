@@ -54,7 +54,8 @@ public function findOrdem(){
     inner join statusordem on statusordem.idStatusOrdem = ordemprisao.idStatusOrdem
     left join prisao on prisao.idOrdemPrisao = ordemprisao.idOrdem
     left join statusprisao on statusprisao.idStatusPrisao = prisao.idStatusPrisao
-    where ordemprisao.idTicket = {$this->ticket}"; 
+    inner join ticket on ticket.idTicket = ordemprisao.idTicket
+    where ticket.ticket = {$this->ticket}";
 
     $status = $conexao->consulta($sql);
 
