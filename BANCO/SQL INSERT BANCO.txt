@@ -87,5 +87,5 @@ insert into ordemPrisao(idTicket, idStatusOrdem, idTipoMeliante, idTurmaMeliante
 (6, 2, 2, null, "Diogo Defante", "Youtuber, humorista, repórter doidão, humor escrachado e nonsense que faz pegadinhas e entrevistas inusitadas com quem passa nas ruas.", "Qatar", "Hamad bin Khalifa", "0800-999", 3, 2, current_time);
 
 
-insert into prisao(idOrdemPrisao, idStatusPrisao, quantidadePerguntasRespondidas, horaPrisao) values
-(2, 3, 1, current_time);
+insert into prisao(idOrdemPrisao, idStatusPrisao, quantidadePerguntasRespondidas, horaPrisao, atualizacaoStatus) values
+(2, 3, 1, current_time, current_time);
