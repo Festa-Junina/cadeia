@@ -13,38 +13,46 @@ $carcereiros = Carcereiro::findall();
     <title>Listar Carcereiros</title>
 </head>
 <body>
-    
-<hr>
-<h1>Listagem dos Carcereiros</h1>
-<hr>
-
-<table>
-    <tr>
-        <th>Nome</th>
-        <th>Telefone</th>
-        <th>Login</th>
-        <th class="linha"><img src="icons/ops.png" alt="">OPÇÕES</th>
-    </tr>
-    <?php
-    foreach($carcereiros as $carcereiro){
-        echo "<tr>";
-        echo "<td>{$carcereiro->getNome()}</td>";
-        echo "<td>{$carcereiro->getTelefone()}</td>";
-        echo "<td>{$carcereiro->getLogin()}</td>";
-        echo "<td>
-        <a href='editCarc.php?id={$carcereiro->getIdUsuario()}'><img src='icons/edita.png' alt=''>Editar</a>
-        <a href='excluirCarc.php?id={$carcereiro->getIdUsuario()}'><img src='icons/lixo.png' alt=''>Excluir</a> 
-    </td>";
-        echo "</tr>";
-    }
-    ?>
-</table>
-
+<div class="container-carcereiro">
+    <div class="title-carcereiro">
+        <hr>
+            <h1>Listagem dos Carcereiros</h1>
+        <hr>
+    </div>
 
     <div class="links" >
         <div class="add">
-            <a href="cadastrarCarc.php"><img src="icons/add.png" alt="">Cadastrar Carcereiro</a>
+            <a href="cadastrarCarc.php">Cadastrar Carcereiro</a>
         </div>
+    </div>
+    <div class="box-dados-carc">
+        <?php
+        foreach($carcereiros as $carcereiro){
+            echo "
+                <div class='box-all'>
+                <div class='centro'>
+                <div class='dados-carc'>
+                    <label class='labels'>Nome:</label>
+                    <p>{$carcereiro->getNome()}</p>
+                    
+                    <label class='labels'>Email:</label>
+                    <p class='email'>{$carcereiro->getLogin()}</p>
+                    
+                    <label class='labels'>Telefone:</label>
+                    <p>{$carcereiro->getTelefone()}</p>
+                
+                <div class='ops-carc'>
+                    <a href='editCarc.php?id={$carcereiro->getIdUsuario()}'>Editar</a>
+                    <a href='excluirCarc.php?id={$carcereiro->getIdUsuario()}'>Excluir</a>
+                    </div>
+                </div>
+                </div>
+                </div>
+            ";
+        }
+        ?>
+        
+    </div>
 </div>
 </body>
 </html>

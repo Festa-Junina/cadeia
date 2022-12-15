@@ -2,36 +2,67 @@
 body{
     font-family: Open Sans;
 }
-
-table, td, th {    
-    border: 1px solid #ddd;
-    text-align: left;
+.title-carcereiro h1{
+    display: flex;
+    text-align: center;
+    justify-content: center;
 }
-
-table {
-    border-collapse: collapse;
+.box-dados-carc{
+    flex-direction: column;
+    display: flex;
+    width: 100%;
+    justify-content: center;
+}
+.box-all{
+    flex-direction: column;
+    display: flex;
+    justify-content: center;
+    align-items: center ;
     width: 100%;
 }
-
-th, td {
-    padding: 15px;
+.dados-carc{
+    display: flex;
+    flex-direction: column;
+    min-width: 280px;
+    text-align: left;
+    padding: 1em 0.5em;
 }
+.dados-carc p{
+    margin-bottom: 2em;
+}
+.dados-carc a{
+    justify-content: center;
+}
+.centro{
+    display: flex;
+    justify-content: center;
 
-a{
-    border: solid white 1px;
+    
+    border: solid 1px rgb(97, 97, 97);
+    background-color: #e7e7e7;
+    border-radius: 5px;
+    margin-bottom: 2em;
+}
+.labels{
+    font-weight: bold;
+    font-size: 1.1em;
+}
+.email{
+    word-break: break-all;
+}
+.ops-carc a{
+    background-color: rgb(199, 199, 199);
+    border: solid 1px gray;
     color: black;
     padding: 3px;
     transition: 200ms;
     text-decoration: none;
-    font-family: "Jost";
+    font-family: Open Sans;
+    font-weight: bold;
+    border-radius: 5px;
 }
-
-a:hover{
-    border: solid black 1px;
-    color: black;
-    background-color: white;
-    padding: 3px;
-    box-shadow: 2px 2px 3px #9b9b9b;
+.ops-carc a:hover{
+    background-color: rgb(206, 206, 206);
 }
 .linha{
     text-decoration: underline;
@@ -42,46 +73,25 @@ a:hover{
     flex-direction: column;
 }
 
-div.as{
-    display: flex;
-    flex-direction: column;
-    width: 9%;
-}
-
-.as a{
-    border: solid black 1px;
-    margin: 2px;
-}
-
-.as a:hover{
-    background-color: rgb(223, 223, 223);
-    color: black;
-    border: solid black 1px;
-    margin: 2px;
-}
 .add{
     display: flex;
-    align-items: center;
-    text-align: center;
-}
-.add a{
-    background-color: 0;
-    color: black;
-}
-.add img{
-    margin-top: 0.2em;
-}
-
-h1{
-    text-align: center;
     justify-content: center;
+    text-align: center;
+    margin: 2em 0em;
     
 }
 
-input{
-    border: solid 1px;
-    margin: 5px;
-    align-items: center;
-    padding: 9px;
+.add a{
+    border: solid 1px rgb(255, 255, 255);
+    text-align: center;
+    background-color: rgb(209, 209, 209);
+    color: black;
+    text-decoration: none;
+    padding: 1em;
     border-radius: 5px;
+}
+.add a:hover{
+    border: solid 1px rgb(165, 165, 165);
+    
+    box-shadow: rgb(197, 197, 197) 3px 3px 3px ;
 }
