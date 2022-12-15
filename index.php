@@ -1,8 +1,6 @@
 <?php
 require_once __DIR__."/vendor/autoload.php";
-
 require_once __DIR__."/src/Carcereiro.php";
-
 $carcereiros = Carcereiro::findall();
 ?>
 <!DOCTYPE html>
@@ -54,5 +52,3 @@ $carcereiros = Carcereiro::findall();
 </div>
 </body>
 </html>
-
-

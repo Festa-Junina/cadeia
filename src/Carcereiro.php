@@ -1,4 +1,7 @@
 <?php
+require_once __DIR__."/ActiveRecord.php";
+require_once __DIR__."/MySQL.php";
+
 class Carcereiro implements ActiveRecord{
     
     
@@ -62,7 +65,6 @@ class Carcereiro implements ActiveRecord{
         $this->telefone = $telefone;
     }
     
-
     public function getTelefone(){
         return $this->telefone;
     }
