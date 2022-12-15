@@ -8,14 +8,18 @@ if (!isset($_SESSION["idUsuario"]) && $_SESSION["funcao"] != "Carcereiro") {
 }
 use classes\Detento;
 use classes\OrdemPrisao;
-$detento = Detento::find(1);
-// $detento::find(1);
-echo $detento->getIdPrisao();
-$ordemPrisao = OrdemPrisao::find($detento->getIdPrisao());
-var_dump($ordemPrisao);
+$detento = new Detento();
+if (isset($_GET['idDetento'])) {
+    $detento->setIdOrdemPrisao($_GET['idDetento']);
+}
+// echo $detento->getIdPrisao();
+$ordemPrisao = OrdemPrisao::find($detento->getIdOrdemPrisao());
+// var_dump($ordemPrisao);
+// echo $ordemPrisao->getNomeMeliante();
+// die();  
 // $detento->setIdPrisao($detento->getIdPrisao());
 // var_dump($detento);
-die();
+// die();
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -24,12 +28,12 @@ die();
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
-    <title>Detento João da Silva</title>
+    <title>Detento <?php echo $ordemPrisao->getNomeMeliante() ?></title>
 </head>
 <body>
 <div class="header">
         <div class="logo">
-            Detentos
+            <a href="../listarDetentos/">Detentos</a>
         </div>
         <div class="user">
             <p>Carcereiro</p>
@@ -45,7 +49,10 @@ die();
     <div class="visualizar-detento-container">
         <div class="visualizar-detento-area">
             <div class="visualizar-detento-nome">
-                <h1>João da Silva</h1>
+                <h1><?php echo $ordemPrisao->getNomeMeliante() ?></h1>
+            </div>
+            <div class="visualizar-detento-descricao">
+                <h2><?php echo $ordemPrisao->getDescricaoMeliante() ?></h2>
             </div>
         </div>
     </div>
