@@ -3,10 +3,11 @@ require_once("../../vendor/autoload.php");
 
 use classes\OrdemPrisao;
 use classes\TipoMeliante;
+use classes\Usuario;
 
 $ordens = OrdemPrisao::findall();
 // foreach ($ordens as $ordem) {
-//     var_dump($ordem->getIdTurmaMeliante());
+//     var_dump($ordem->getIdOrdem());
 // }
 ?>
 <!DOCTYPE html>
@@ -42,131 +43,89 @@ $ordens = OrdemPrisao::findall();
         </div>
 
         <div class="main-content">
-
             <div class="order-list">
-
                 <?php
                 foreach ($ordens as $ordem) {
-
                     $ordemId = $ordem->getIdOrdem();
+                    $nomeMeliante = $ordem->getNomeMeliante();
                     $tipoMeliante = TipoMeliante::find($ordem->getIdTipoMeliante());
                     $nomeTipoMeliante = strtolower($tipoMeliante->getNome());
-                    $idMeliante = $tipoMeliante->getIdTipoMeliante();
-                    $time = date('H:i:s', $ordem->getHoraOrdem());
+                    
                     $assumidoPor = "";
                     $presoPor = "";
-                    $btnConfirmar =  "<div class='order-btn'><a href='#confirm{$ordemId}' rel='modal:open'><h2>Confirmar</h2></a></div>";
+                    $btnPrisao =  "<div class='order-btn'><a href='#confirm{$ordemId}' rel='modal:open'><h2>Confirmar</h2></a></div>";
                     $btnResponsavel = "<div class='order-btn'><a href='#assumir{$ordemId}' rel='modal:open'><h2>Assumir</h2></a></div>";
+                    $time = date('H:i:s', $ordem->getHoraOrdem());
 
                     if (!is_null($ordem->getAssumidaPor())) {
-                        $assumidoPor = 'Teste';
+                        $assumidoPor = "Kelvin";
                         $btnResponsavel = "<div class='order-btn disabled'><h2>Assumido por {$assumidoPor}</h2></div>";
                     }
 
                     if(!is_null($ordem->getPresoPor())){
-                        $presoPor = 'Policial';
-                        $btnConfirmar = "<div class='order-btn disabled'><h2>Preso por {$presoPor}</h2></div>";
+                        $presoPor = 'Paulo';
+                        $btnResponsavel = !is_null($ordem->getAssumidaPor()) ? "<div class='order-btn disabled'><h2>Assumido por {$assumidoPor}</h2></div>" : "<div class='order-btn disabled'><h2>Assumir</h2></div>";
+                        $btnPrisao = "<div class='order-btn disabled'><h2>Preso por {$presoPor}</h2></div>";
                     }
 
+                    $template = "
+                    <div class='order'>
+                        <div class='order-content'>
+                            <div class='order-header'>
+                                <h2>{$nomeMeliante}</h2>
+                                <h3>{$time}</h3>
+                            </div>
+                            <div class='order-type'>
+                                <div class='ball' id='ball-{$nomeTipoMeliante}'></div>
+                                <p>{$nomeTipoMeliante}</p>
+                            </div>
+                            <h4>📌{$ordem->getLocalVisto()}</h4>
 
-                    $template = "<div class='order'>
-                    <div class='order-content'>
-                        <div class='order-header'>
-                            <h2>{$ordem->getNomeMeliante()}</h2>
-                            <h3>{$time}</h3>
+                            <a href='#tips{$ordemId}' rel='modal:open'>
+                                <p>&nbsp;Características</p>
+                            </a>
+                            <div id='tips{$ordemId}' class='modal'>
+                                <h1 class='modal-title'>Características de {$nomeMeliante}</h1>
+                                <p>{$ordem->getDescricaoMeliante()}
+                            </div>
                         </div>
-                        <div class='order-type'>
-                            <div class='ball' id='ball-{$nomeTipoMeliante}'></div>
-                            <p>{$nomeTipoMeliante}</p>
-                        </div>
-                        <h4>📌{$ordem->getLocalVisto()}</h4>
 
-                        <a href='#tips{$ordemId}' rel='modal:open'>
-                        <p>&nbsp;Características</p>
-                    </a>
-                    <div id='tips{$ordemId}' class='modal'>
-                        <h1 class='modal-title'>Características do Meliante</h1>
-                        <p>{$ordem->getDescricaoMeliante()}
-                        <br>
-                        {$ordem->getIdTurmaMeliante()}</p>
-
-                        
-                    </div>
-                </div>
-                {$btnResponsavel}
-                {$btnConfirmar}
+                        {$btnResponsavel}
+                        {$btnPrisao}
                 
-                <div id='assumir{$ordemId}' class='modal'>
-                    <h1 class='modal-title'>Tem certeza que deseja assumir a ordem de prisão de {$ordem->getNomeMeliante()}?</h1>
-                    <div class='opt-btns'>
-                        <div class='btn-modal confirm-btn'>
-                            <form action='assumirPrisao.php' method='post'>
-                                <input type='hidden' name='idOrdemPrisao' value='{$ordem->getIdOrdem()}'>
-                                <input name='assumir' type='submit' value='Sim'>
-                            </form>
+                        <div id='assumir{$ordemId}' class='modal'>
+                            <h1 class='modal-title'>Tem certeza que deseja assumir a ordem de prisão de {$nomeMeliante}?</h1>
+                            <div class='opt-btns'>
+                                <div class='btn-modal confirm-btn'>
+                                    <form action='assumirPrisao.php' method='post'>
+                                        <input type='hidden' name='idOrdemPrisao' value='{$ordemId}'>
+                                        <input name='assumir' type='submit' value='Sim'>
+                                    </form>
+                                </div>
+                                <div class='btn-modal cancel-btn'>
+                                    <a rel='modal:close'>Não</a>
+                                </div>
+                            </div>
                         </div>
-                        <div class='btn-modal cancel-btn'>
-                            <a rel='modal:close'>Não</a>
-                        </div>
-                    </div>
-                </div>
 
-                <div id='confirm{$ordemId}' class='modal'>
-                    <h1 class='modal-title'>Tem certeza que deseja confirmar a prisão de {$ordem->getNomeMeliante()}?</h1>
-                    <div class='opt-btns'>
-                        <div class='btn-modal confirm-btn'>
-                            <form action='confirmaPrisao.php' method='post'>
-                                <input type='hidden' name='idOrdemPrisao' value='{$ordem->getIdOrdem()}'>
-                                <input name='confirmar' type='submit' value='Sim'>
-                            </form>
+                        <div id='confirm{$ordemId}' class='modal'>
+                            <h1 class='modal-title'>Tem certeza que deseja confirmar a prisão de {$nomeMeliante}?</h1>
+                            <div class='opt-btns'>
+                                <div class='btn-modal confirm-btn'>
+                                    <form action='confirmaPrisao.php' method='post'>
+                                        <input type='hidden' name='idOrdemPrisao' value='{$ordemId}'>
+                                        <input name='confirmar' type='submit' value='Sim'>
+                                    </form>
+                                </div>
+                                <div class='btn-modal cancel-btn'>
+                                    <a rel='modal:close'>Não</a>
+                                </div>
+                            </div>
                         </div>
-                        <div class='btn-modal cancel-btn'>
-                            <a rel='modal:close'>Não</a>
-                        </div>
-                    </div>
-                </div>
-                </div>";
+                    </div>";
                     echo $template;
                 }
                 ?>
-                <!-- <div class="order">
-                    <div class="order-content">
-                        <div class="order-header">
-                            <h2>Nome do Meliante</h2>
-                            <h3>02:30</h3>
-                        </div>
-                        <div class="order-type">
-                            <div class="ball" id="ball1"></div>
-                            <p>Servidor</p>
-                        </div>
-                        <h4>Localização do meliante...</h4>
-
-                        <a href="#tips1" rel="modal:open">
-                            <p>&nbsp;Características</p>
-                        </a>
-
-
-                        <h4 class="responsible">Responsável: Kelvin😎</h4>
-                        <!-- Modal -->
-                        <!-- <div id="tips1" class="modal">
-                            <p>Características do meliante aqui!</p>
-                            <div class='btn-modal confirm-btn'>
-                                <form action='confirmaPrisao.php' method='post'>
-                                    <input type='hidden' name='idOrdemPrisao' value='{$ordem}'>
-                                    <input name='confirm' type='submit' value='Sim'>
-                                </form>
-                            </div>
-                            <div class='btn-modal cancel-btn'>
-                                <a rel='modal:close'>Não</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="order-btn">
-                        <h2>Confirmar Prisão</h2>
-                    </div>
-                </div> --> 
-
-
             </div>
         </div>
     </div>

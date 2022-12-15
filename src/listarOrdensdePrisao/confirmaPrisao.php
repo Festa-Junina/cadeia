@@ -14,13 +14,11 @@
         $ordem->save(); 
         var_dump($ordem);
         
-        $ordem2 = OrdemPrisao::find($_POST['idOrdemPrisao']);
-        var_dump($ordem2);
+        $prisao = new Prisao();
+        $prisao->setIdOrdemPrisao($_POST['idOrdemPrisao']);
+        $prisao->setIdStatusPrisao(0);
+        $prisao->setQuantidadePerguntasRespondidas(0);
+        $prisao->save();
 
-        // $prisao = new Prisao();
-        // $prisao->setIdOrdemPrisao($_POST['idOrdemPrisao']);
-        // $prisao->setIdStatusPrisao(0);
-        // $prisao->setQuantidadePerguntasRespondidas(0);
-        // $prisao->save();
-        // header('Location: index.php');
+        header('Location: index.php');
     }

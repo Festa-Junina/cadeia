@@ -5,7 +5,9 @@
     use classes\OrdemPrisao;
 
     if (isset($_POST['assumir'])) {
-        var_dump($_POST['idOrdemPrisao']);
-        
+        $ordem = OrdemPrisao::find($_POST['idOrdemPrisao']);
+        $ordem->setAssumidaPor(1);
+        $ordem->save();
+
         header('Location: index.php');
     }
