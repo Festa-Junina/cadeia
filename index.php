@@ -47,11 +47,9 @@ $carcereiros = Carcereiro::findall();
                     </div>
                 </div>
                 </div>
-                </div>
-            ";
+                </div>";
         }
         ?>
-        
     </div>
 </div>
 </body>

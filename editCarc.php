@@ -46,8 +46,6 @@ if(isset($_POST['botao'])){
                         <label for='telefone'>telefone</label>
                         <input name='telefone' id='telefone' value='{$carcereiro->getTelefone()}' type='text' required>
                     
-                        
-                    
                         <label for='ativo'>Ativo:</label>
                         <input name='ativo' id='ativo' value='{$carcereiro->getAtivo()}' type='text' required>
                     <input type='hidden' name='senha' value={$carcereiro->getSenha()} id='senha' required>
@@ -60,15 +58,10 @@ if(isset($_POST['botao'])){
                     </div>
                     </div>";
                 ?>
-                
             </form>
-            
-        
-    
-    
         </form>
-        </div>
     </div>
-    </div> 
+</div>
+</div> 
 </body>
 </html>

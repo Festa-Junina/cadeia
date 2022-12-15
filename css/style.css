@@ -67,20 +67,16 @@ body{
 .linha{
     text-decoration: underline;
 }
-
 .links{
     display: flex;
     flex-direction: column;
 }
-
 .add{
     display: flex;
     justify-content: center;
     text-align: center;
     margin: 2em 0em;
-    
 }
-
 .add a{
     border: solid 1px rgb(255, 255, 255);
     text-align: center;
@@ -95,15 +91,12 @@ body{
     box-shadow: rgb(197, 197, 197) 3px 3px 3px ;
 }
 
-
 /*editCarc----------*/
-
 .box-edit-carc{
     flex-direction: column;
     display: flex;
     width: 100%;
     justify-content: center;
-    
 }
 .box-edit{
     flex-direction: column;
@@ -111,7 +104,6 @@ body{
     justify-content: center;
     align-items: center ;
     width: 100%;
-
 }
 .edit-carc{
     display: flex;
@@ -138,6 +130,8 @@ body{
     border: gray 1px solid;
     margin-bottom: 2em;
     padding: 0px 5px;
+    font-family: Open Sans;
+    font-weight: bold;
 }
 input:focus{
     box-shadow: 0 0 0 0;
@@ -154,9 +148,9 @@ input:focus{
     align-items: center;
     justify-content: center;
     display: flex;
-    background: #cfcfcf;
-    border: solid 1px rgb(122, 122, 122);
-    color: black;
+    background: #3d9db3;
+    border: solid 1px rgb(22, 85, 128);
+    color: white;
     height: 2em;
     cursor: pointer;
     font-size: 1em;
@@ -176,9 +170,9 @@ input:focus{
     align-items: center;
     justify-content: center;
     display: flex;
-    background: #cfcfcf;
-    border: solid 1px rgb(122, 122, 122);
-    color: black;
+    background: #b33d3d;
+    border: solid 1px rgb(128, 22, 22);
+    color: white;
     height: 2em;
     cursor: pointer;
     font-size: 1em;
@@ -190,4 +184,27 @@ input:focus{
 .botaoCad a:hover{
     background: #bd6161;
     border: solid 1px #924b4b;
+}
+
+/*cadastrarCarc----------*/
+.botaoCad input{
+    width: 7em;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    background: #3d9db3;
+    border: solid 1px rgb(22, 85, 128);
+    color: white;
+    height: 2em;
+    cursor: pointer;
+    font-size: 1em;
+    font-weight: bold;
+    font-family: Open Sans;
+    cursor: pointer;
+    border-radius: 5px;
+    margin-bottom: 1em;
+}
+.botaoCad input:hover{
+    background: #61acbd;
+    border: solid 1px #4b8592;
 }
