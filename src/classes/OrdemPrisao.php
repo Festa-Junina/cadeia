@@ -85,7 +85,7 @@ class OrdemPrisao implements ActiveRecord
   #region nomeMeliante 
   public function setNomeMeliante(string $nomeMeliante): void
   {
-    $this->nomeMeliante = $nomeMeliante;
+    $this->nomeMeliante =  filter_var($nomeMeliante,FILTER_SANITIZE_STRING);
   }
 
   public function getNomeMeliante(): string
@@ -97,7 +97,7 @@ class OrdemPrisao implements ActiveRecord
   #region descricaoMeliante
   public function setDescricaoMeliante(string $descricaoMeliante): void
   {
-    $this->descricaoMeliante = $descricaoMeliante;
+    $this->descricaoMeliante =  filter_var($descricaoMeliante,FILTER_SANITIZE_STRING);
   }
 
   public function getDescricaoMeliante(): string
@@ -109,7 +109,7 @@ class OrdemPrisao implements ActiveRecord
   #region localVisto
   public function setLocalVisto(string $localVisto): void
   {
-    $this->localVisto = $localVisto;
+    $this->localVisto =  filter_var($localVisto,FILTER_SANITIZE_STRING);
   }
 
   public function getLocalVisto(): string
@@ -121,7 +121,7 @@ class OrdemPrisao implements ActiveRecord
   #region nomeDenunciante
   public function setNomeDenunciante(string $nomeDenunciante): void
   {
-    $this->nomeDenunciante = $nomeDenunciante;
+    $this->nomeDenunciante =  filter_var($nomeDenunciante,FILTER_SANITIZE_STRING);
   }
 
   public function getNomeDenunciante(): string
