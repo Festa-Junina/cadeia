@@ -168,6 +168,33 @@ class Detento implements ActiveRecord
 
     }
 
+    public static function ativaPergunta($id) : bool {
+        $conexao = new MySQL();
+        $sql = "SELECT TIMEDIFF(now(), horaPrisao) as tempo,idStatusPrisao from prisao where idOrdemPrisao = $id";
+        $res =  $conexao->consulta($sql);
+        $tempo = $res[0]['tempo'];
+        $status = $res[0]['idStatusPrisao'];
+        $cinco = strtotime(5);
+
+        if($tempo > $cinco && $status == 1 ){
+            $conexao = new MySQL();
+            $sql = "UPDATE prisao set idStatusPrisao = 2 where idOrdemPrisao = $id";
+            return $conexao->executa($sql);
+
+        }elseif ($tempo > $cinco && $status == 3 ){
+            $conexao = new MySQL();
+            $sql = "UPDATE prisao set idStatusPrisao = 4 where idOrdemPrisao = $id";
+            return $conexao->executa($sql);
+        }elseif ($tempo > $cinco && $status == 5 ){
+            $conexao = new MySQL();
+            $sql = "UPDATE prisao set idStatusPrisao = 6 where idOrdemPrisao = $id";
+            return $conexao->executa($sql);
+        }else{
+            return false;
+        }
+
+    }
+
 
 
 
