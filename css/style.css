@@ -1,0 +1,87 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300&display=swap');
+body{
+    font-family: Open Sans;
+}
+
+table, td, th {    
+    border: 1px solid #ddd;
+    text-align: left;
+}
+
+table {
+    border-collapse: collapse;
+    width: 100%;
+}
+
+th, td {
+    padding: 15px;
+}
+
+a{
+    border: solid white 1px;
+    color: black;
+    padding: 3px;
+    transition: 200ms;
+    text-decoration: none;
+    font-family: "Jost";
+}
+
+a:hover{
+    border: solid black 1px;
+    color: black;
+    background-color: white;
+    padding: 3px;
+    box-shadow: 2px 2px 3px #9b9b9b;
+}
+.linha{
+    text-decoration: underline;
+}
+
+.links{
+    display: flex;
+    flex-direction: column;
+}
+
+div.as{
+    display: flex;
+    flex-direction: column;
+    width: 9%;
+}
+
+.as a{
+    border: solid black 1px;
+    margin: 2px;
+}
+
+.as a:hover{
+    background-color: rgb(223, 223, 223);
+    color: black;
+    border: solid black 1px;
+    margin: 2px;
+}
+.add{
+    display: flex;
+    align-items: center;
+    text-align: center;
+}
+.add a{
+    background-color: 0;
+    color: black;
+}
+.add img{
+    margin-top: 0.2em;
+}
+
+h1{
+    text-align: center;
+    justify-content: center;
+    
+}
+
+input{
+    border: solid 1px;
+    margin: 5px;
+    align-items: center;
+    padding: 9px;
+    border-radius: 5px;
+}
