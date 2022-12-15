@@ -27,6 +27,7 @@ $policiais = Policial::findall();
                     <th>Nome</th>
                     <th>Email</th>
                     <th>Telefone</th>
+                    <th>Status</th>
                     <th>Ações</th>
                 </tr>
             </thead>
@@ -37,6 +38,7 @@ $policiais = Policial::findall();
                     echo "<td>{$policial->getNome()}</td>";
                     echo "<td>{$policial->getLogin()}</td>";
                     echo "<td>{$policial->getTelefone()}</td>";
+                    echo "<td>{$policial->getAtivo()}</td>";
                     echo "<td>
                             <a href='formEdit.php?id={$policial->getIdUsuario()}'>Editar</a>
                             <a href='excluir.php?id={$policial->getIdUsuario()}'>Excluir</a> 

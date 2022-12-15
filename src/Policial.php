@@ -69,18 +69,42 @@ class Policial implements ActiveRecord{
     }
 
     public function getAtivo():bool{
-        return $this->ativo;
+        if ($this->ativo == 1) {
+            return $this->ativo = 'Ativo';
+        }else{
+            return $this->ativo = 'Inativo';
+        }
+ 
+    }
+
+    public function existeUsuario($login){
+        $conexao = new MySQL();
+        $sql = "SELECT login FROM usuario WHERE login = '$login'";
+        $resultados = $conexao->consulta($sql);
+        $existem = count($resultados);
+        if(1 == $existem){
+            return true;
+        }
+        else{
+            return false;
+        }
     }
 
     public function save():bool{
         $conexao = new MySQL();
-        $this->senha = password_hash($this->senha,PASSWORD_BCRYPT); 
-        if(isset($this->idUsuario)){
-            $sql = "UPDATE usuario SET login = '{$this->login}', senha = '{$this->senha}', telefone = '{$this->telefone}', nome = '{$this->nome}', idFuncao = '{$this->idFuncao}', ativo = '{$this->ativo}' WHERE idUsuario = {$this->idUsuario}";
-        }else{
-            $sql = "INSERT INTO usuario (login,senha,telefone,nome,idFuncao,ativo) VALUES ('{$this->login}','{$this->senha}','{$this->telefone}', '{$this->nome}', '{$this->idFuncao}', '{$this->ativo}')";
+        $existe = $this->existeUsuario($this->login);
+        if (!$existe) {
+            $this->senha = password_hash($this->senha,PASSWORD_BCRYPT); 
+            if(isset($this->idUsuario)){
+                $sql = "UPDATE usuario SET login = '{$this->login}', senha = '{$this->senha}', telefone = '{$this->telefone}', nome = '{$this->nome}', idFuncao = '{$this->idFuncao}', ativo = '{$this->ativo}' WHERE idUsuario = {$this->idUsuario}";
+            }else{
+                $sql = "INSERT INTO usuario (login,senha,telefone,nome,idFuncao,ativo) VALUES ('{$this->login}','{$this->senha}','{$this->telefone}', '{$this->nome}', '{$this->idFuncao}', '{$this->ativo}')";
+            }
+            return $conexao->executa($sql);
+        } else{
+            return false;
         }
-        return $conexao->executa($sql);
+
     }
 
     public static function find($idUsuario):Policial{
