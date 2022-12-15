@@ -69,7 +69,7 @@ foreach ($detentos as $detento) {
                 echo "<div class=\"order\">";
                     echo "<div class=\"order-content\">";
 
-                    echo "<h2>{$ordem[0]->getNomeMeliante()}</h2>";
+                    echo "<a class=\"nome-detento\" href=\"../visualizarDetento/index.php?idDetento={$ordem[0]->getIdOrdem()}\"><h2>{$ordem[0]->getNomeMeliante()}</h2></a>";
 
                     echo "<div class=\"tipo-status\">";
                     echo "<div class=\"order-type\">";

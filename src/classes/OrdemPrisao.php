@@ -11,11 +11,11 @@ class OrdemPrisao implements ActiveRecord
   private int $idOrdem;
   private int $idTicket;
   private int $idTipoMeliante;
-  private int $idTurmaMeliante;
+  private ?int $idTurmaMeliante;
   private int $idStatusOrdem;
   private int $horaOrdem;
-  private int $assumidaPor;
-  private int $presoPor;
+  private ?int $assumidaPor;
+  private ?int $presoPor;
 
   public function __construct(
     private string $nomeMeliante,
@@ -62,12 +62,12 @@ class OrdemPrisao implements ActiveRecord
   #endregion
 
   #region idTurmaMeliante
-  public function setIdTurmaMeliante(int $idTurmaMeliante): void
+  public function setIdTurmaMeliante(?int $idTurmaMeliante): void
   {
     $this->idTurmaMeliante = $idTurmaMeliante;
   }
 
-  public function getIdTurmaMeliante(): int
+  public function getIdTurmaMeliante(): int | null 
   {
     return $this->idTurmaMeliante;
   }
@@ -158,24 +158,24 @@ class OrdemPrisao implements ActiveRecord
   #endregion
 
   #region assumidaPor
-  public function setAssumidaPor(int $assumidaPor): void
+  public function setAssumidaPor(?int $assumidaPor): void
   {
     $this->assumidaPor = $assumidaPor;
   }
 
-  public function getAssumidaPor(): int
+  public function getAssumidaPor(): int | null
   {
     return $this->assumidaPor;
   }
   #endregion
 
   #region presoPor
-  public function setPresoPor(int $presoPor): void
+  public function setPresoPor(?int $presoPor): void
   {
     $this->presoPor = $presoPor;
   }
 
-  public function getPresoPor(): int
+  public function getPresoPor(): int | null
   {
     return $this->presoPor;
   }
@@ -184,21 +184,26 @@ class OrdemPrisao implements ActiveRecord
   public function save(): bool
   {
     $conexao = new MySQL();
-
-
-    if (isset($this->idTurmaMeliante)) {
-      $sql = "INSERT INTO ordemprisao (idTicket, idTipoMeliante, idTurmaMeliante, nomeMeliante, descricaoMeliante, localVisto, nomeDenunciante, telefoneDenunciante, idStatusOrdem, horaOrdem) 
-        VALUES (
-            '{$this->idTicket}',
-            '{$this->idTipoMeliante}',
-            '{$this->idTurmaMeliante}' ,
-            '{$this->nomeMeliante}' ,
-            '{$this->descricaoMeliante}' ,
-            '{$this->localVisto}' ,
-            '{$this->nomeDenunciante}' ,
-            '{$this->telefoneDenunciante}' ,
-              0 ,
-            CURRENT_TIMESTAMP())";
+    $horaOrdemF = date("Y-m-d H:i:s", $this->horaOrdem);
+    if (!isset($this->idTurmaMeliante)) {
+        $this->idTurmaMeliante = null;
+    }
+    var_dump($this->idTurmaMeliante);
+    if (isset($this->idOrdem)) {
+      $sql = "UPDATE ordemprisao SET 
+          idTicket = '{$this->idTicket}',
+          idTipoMeliante = '{$this->idTipoMeliante}',
+          idTurmaMeliante = '{$this->idTurmaMeliante}',
+          nomeMeliante = '{$this->nomeMeliante}',
+          descricaoMeliante = '{$this->descricaoMeliante}',
+          localVisto = '{$this->localVisto}',
+          nomeDenunciante = '{$this->nomeDenunciante}',
+          telefoneDenunciante = '{$this->telefoneDenunciante}',
+          idStatusOrdem = '{$this->idStatusOrdem}',
+          horaOrdem = '{$horaOrdemF}',
+          assumidaPor = '{$this->assumidaPor}',
+          presoPor = '{$this->presoPor}'
+          WHERE idOrdem = {$this->idOrdem}";
     } else {
       $sql = "INSERT INTO ordemprisao (idTicket, idTipoMeliante, nomeMeliante, descricaoMeliante, localVisto, nomeDenunciante, telefoneDenunciante, idStatusOrdem, horaOrdem) 
         VALUES (
@@ -219,14 +224,6 @@ class OrdemPrisao implements ActiveRecord
     return $conexao->executa($sql);
   }
 
-
-
-
-
-
-
-
-
   public function delete(): bool
   {
     $conexao = new MySQL();
@@ -241,33 +238,46 @@ class OrdemPrisao implements ActiveRecord
     $resultado = $conexao->consulta($sql);
     $p = new OrdemPrisao(
       $resultado[0]['nomeMeliante'],
-        $resultado[0]['descricaoMeliante'],
-        $resultado[0]['localVisto'],
-        $resultado[0]['nomeDenunciante'],
-        $resultado[0]['telefoneDenunciante']
+      $resultado[0]['descricaoMeliante'],
+      $resultado[0]['localVisto'],
+      $resultado[0]['nomeDenunciante'],
+      $resultado[0]['telefoneDenunciante']
     );
     $p->setIdTicket($resultado[0]['idTicket']);
     $p->setIdTipoMeliante($resultado[0]['idTipoMeliante']);
     $p->setIdStatusOrdem($resultado[0]['idStatusOrdem']);
     $p->setHoraOrdem($resultado[0]['horaOrdem']);
 
-    // if ($resultado['idTurmaMeliante'] != 0) {
-    // }
-    $p->setIdTurmaMeliante(0);
-    $p->setIdOrdem($resultado[0]['idOrdem']);
-    $p->setAssumidaPor($resultado[0]['assumidaPor']);
-    $p->setPresoPor($resultado[0]['presoPor']);
+    if (isset($resultado[0]['idTurmaMeliante'])) {
+      $p->setIdTurmaMeliante($resultado[0]['idTurmaMeliante']);
+    } else{
+      $p->setIdTurmaMeliante(null);
+    }
+
+    if (isset($resultado[0]['assumidaPor'])) {
+      $p->setAssumidaPor($resultado[0]['assumidaPor']);
+    } else{
+      $p->setAssumidaPor(null);
+    }
+
+    if (isset($resultado[0]['presoPor'])) {
+      $p->setPresoPor($resultado[0]['presoPor']);
+    } else{
+      $p->setPresoPor(null);
+    }
+    $p->setIdOrdem($resultado[0]['idOrdem']); 
+    
     return $p;
   }
 
   public static function findall(): array
   {
     $conexao = new MySQL();
-    $sql = "SELECT * FROM ordemPrisao";
+    $sql = "SELECT * FROM ordemPrisao ORDER BY 'ASC'";
     $resultados = $conexao->consulta($sql);
-    $usuarios = array();
+    $ordens = array();
     foreach ($resultados as $resultado) {
-      $p = new OrdemPrisao(
+      $o = new OrdemPrisao(
         $resultado['nomeMeliante'],
         $resultado['descricaoMeliante'],
         $resultado['localVisto'],
@@ -275,24 +285,32 @@ class OrdemPrisao implements ActiveRecord
         $resultado['telefoneDenunciante']
       );
 
-      $p->setIdTicket($resultado['idTicket']);
-      $p->setIdTipoMeliante($resultado['idTipoMeliante']);
-      $p->setIdStatusOrdem($resultado['idStatusOrdem']);
-      $p->setHoraOrdem($resultado['horaOrdem']);
+      $o->setIdTicket($resultado['idTicket']);
+      $o->setIdTipoMeliante($resultado['idTipoMeliante']);
+      $o->setIdStatusOrdem($resultado['idStatusOrdem']);
+      $o->setHoraOrdem($resultado['horaOrdem']);
 
-      // if ($resultado['idTurmaMeliante'] != 0) {
-      // }
-      $p->setIdTurmaMeliante(0);
-      $p->setIdOrdem($resultado['idOrdem']);
-      $p->setAssumidaPor($resultado['assumidaPor']);
-      if (isset($resultado["presoPor"])) {
-          $p->setPresoPor($resultado['presoPor']);
-      } else {
-          $p->setPresoPor(0);
+      if (isset($resultado['idTurmaMeliante'])) {
+        $o->setidTurmaMeliante($resultado['idTurmaMeliante']);
+      } else{
+        $o->setidTurmaMeliante(null);
       }
 
-      $usuarios[] = $p;
+      if (isset($resultado['assumidaPor'])) {
+        $o->setAssumidaPor($resultado['assumidaPor']);
+      } else{
+        $o->setAssumidaPor(null);
+      }
+
+      if (isset($resultado['presoPor'])) {
+        $o->setPresoPor($resultado['presoPor']);
+      } else{
+        $o->setPresoPor(null);
+      }
+
+      $o->setIdOrdem($resultado['idOrdem']);      
+      $ordens[] = $o;
     }
-    return $usuarios;
+    return $ordens;
   }
 }
