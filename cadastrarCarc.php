@@ -31,8 +31,12 @@ if(isset($_POST['botao'])){
                         Nome: <input name='nome' type="text" required>
                         Email: <input name='login' type='email' required>
                         Senha: <input name='senha' type="password" required>
-                        Telefone: <input name='telefone' type="int" required>
-                        Ativo: <input name='ativo' type="int" required>
+                        Telefone: <input name='telefone' type="string" required>
+                        Status: <select name="ativo">
+                            <option value="1">Ativo</option>
+                            <option value="0">Inativo</option>
+                        </select>
+                        <br>
                     <div class="botaoCad">
                         <input type='submit' value="Cadastrar" name='botao'>
                         <a href='index.php'>Cancelar</a>

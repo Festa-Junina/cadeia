@@ -43,9 +43,16 @@ if(isset($_POST['botao'])){
                     
                         <label for='telefone'>telefone</label>
                         <input name='telefone' id='telefone' value='{$carcereiro->getTelefone()}' type='text' required>
-                    
-                        <label for='ativo'>Ativo:</label>
-                        <input name='ativo' id='ativo' value='{$carcereiro->getAtivo()}' type='text' required>
+
+
+                        <label for='ativo'>Status:</label>
+                        <select id='ativo' name='ativo' required>
+
+                        
+                        <option value='1'>Ativo</option>
+                        <option value='0'>Inativo</option>
+                    </select>
+                    <br>
                     <input type='hidden' name='senha' value={$carcereiro->getSenha()} id='senha' required>
                     <input name='id' value={$carcereiro->getIdUsuario()} type='hidden'>
                     <div class='botaoCad'>

@@ -82,7 +82,7 @@ class Carcereiro implements ActiveRecord{
         $conexao = new MySQL();
         $this->senha = password_hash($this->senha,PASSWORD_BCRYPT); 
         if(isset($this->idUsuario)){
-            $sql = "UPDATE usuario SET usuario.login = '{$this->login}', senha = '{$this->senha}', nome = '{$this->nome}', telefone = '{$this->telefone}', ativo = '{$this->ativo}' WHERE idUsuario = {$this->idUsuario}";
+            $sql = "UPDATE usuario SET usuario.login = '{$this->login}', senha = '{$this->senha}', nome = '{$this->nome}', telefone = '{$this->telefone}', ativo = '{$this->ativo}' WHERE idUsuario = '{$this->idUsuario}'";
         }else{
             $sql = "INSERT INTO usuario (idFuncao, login, senha, nome, telefone, ativo) VALUES (1,'{$this->login}', '{$this->senha}', '{$this->nome}', '{$this->telefone}', '{$this->ativo}')";
         }
@@ -92,13 +92,13 @@ class Carcereiro implements ActiveRecord{
     }
     public function delete():bool{
         $conexao = new MySQL();
-        $sql = "DELETE FROM usuario WHERE idUsuario = {$this->idUsuario}";
+        $sql = "UPDATE usuario SET ativo = 0 WHERE usuario.idUsuario = '{$this->idUsuario}'";
         return $conexao->executa($sql);
     }
 
     public static function find($idUsuario):Carcereiro{
         $conexao = new MySQL();
-        $sql = "SELECT * FROM usuario WHERE idUsuario = {$idUsuario}";
+        $sql = "SELECT * FROM usuario WHERE idUsuario = '{$idUsuario}'";
         $resultado = $conexao->consulta($sql);
         $p = new Carcereiro($resultado[0]['idFuncao'],$resultado[0]['login'],$resultado[0]['senha'],$resultado[0]['nome'],$resultado[0]['telefone'],$resultado[0]['ativo']);
         $p->setIdUsuario($resultado[0]['idUsuario']);
