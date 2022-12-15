@@ -70,10 +70,10 @@ insert into ticket(ticket, valido) values
 (6, true);
 
 
-insert into usuario(idFuncao, login, senha) values
-(0, "administrador@teste123.com", "teste123"),
-(1, "carcereiro@teste123.com", "teste123"),
-(2, "policial@teste123.com", "teste123");
+insert into usuario(idFuncao, login, senha, nome, telefone, ativo) values
+(0, "administrador@teste123.com", "teste123", "Fabio Bastian", "51 986254753", true),
+(1, "carcereiro@teste123.com", "teste123", "Murilo Mouthinho", "54 852547536", true),
+(2, "policial@teste123.com", "teste123", "Pedro Rhoden", "51 925634524", true);
 
 
 insert into pergunta(idCategoria, enunciado, resposta, alternativa1, alternativa2, alternativa3) values
@@ -82,10 +82,10 @@ insert into pergunta(idCategoria, enunciado, resposta, alternativa1, alternativa
 (1, "(FCC) A ocorrência de interferências ___ -nos a concluir que ___ uma relação profunda entre homem e sociedade que os ___ mutuamente dependentes", "leva, existe, torna", "levam, existe, tornam", "levam, existem, tornam", "levam, existem, torna");
 
 
-insert into ordemPrisao(idTicket, idStatusOrdem, idTipoMeliante, idTurmaMeliante, nomeMeliante, descricaoMeliante, localVisto, nomeDenunciante, telefoneDenunciante, horaOrdem) values
-(5, 0, 0, 0, "shaolin matador de porco", "menino forte, 1.80, moreno de 22 anos", "na sua casa", "Luisa Mell", "0800-776", current_time),
-(6, 2, 2, null, "Diogo Defante", "Youtuber, humorista, repórter doidão, humor escrachado e nonsense que faz pegadinhas e entrevistas inusitadas com quem passa nas ruas.", "Qatar", "Hamad bin Khalifa", "0800-999", current_time);
+insert into ordemPrisao(idTicket, idStatusOrdem, idTipoMeliante, idTurmaMeliante, nomeMeliante, descricaoMeliante, localVisto, nomeDenunciante, telefoneDenunciante, assumidaPor, presoPor, horaOrdem) values
+(5, 0, 0, 0, "shaolin matador de porco", "menino forte, 1.80, moreno de 22 anos", "na sua casa", "Luisa Mell", "0800-776", 3, null, current_time),
+(6, 2, 2, null, "Diogo Defante", "Youtuber, humorista, repórter doidão, humor escrachado e nonsense que faz pegadinhas e entrevistas inusitadas com quem passa nas ruas.", "Qatar", "Hamad bin Khalifa", "0800-999", 3, 2, current_time);
 
 
-insert into prisao(idOrdemPrisao, idStatusPrisao, quantidadePerguntasRespondidas, horaPrisao) values
-(2, 3, 1, current_time);
+insert into prisao(idOrdemPrisao, idStatusPrisao, quantidadePerguntasRespondidas, horaPrisao, atualizacaoStatus) values
+(2, 3, 1, current_time, current_time);

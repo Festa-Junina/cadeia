@@ -1,0 +1,62 @@
+body{
+    width: 100%;
+    height: 100vh;
+    color: var(--black);
+    background-color: var(--gray2);
+}
+.container{
+    margin: 0 auto;
+    width: 90%;
+    max-width: 480px;
+}
+.header{
+    position: sticky;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 10%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    color: var(--white);
+    background-color: var(--primary);
+}
+.container-header{
+    display: flex;
+    justify-content: space-between;
+}
+.main{
+    display: flex;
+    flex-direction: column;
+    padding: 1.5em 0em;
+    gap: 1em;
+}
+.button{
+    height: 3em;
+    color: var(--white);
+    background-color: var(--green);
+    display: flex;
+    border-radius: 5px;
+    align-items: center;
+    justify-content: center;
+    min-width: 120px;
+}
+
+
+/*DETALHES*/
+a{
+    color: initial;
+    text-decoration: none;
+}
+h1{
+    font-size: 2.8em;
+}
+p{
+    font-size: 1.8em;
+}
+.cadeia-img{
+    margin: auto;
+    display: block;
+    width: 100%;
+    max-width: 380px;
+}
