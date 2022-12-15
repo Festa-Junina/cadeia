@@ -6,77 +6,24 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="reset.css">
     <link rel="stylesheet" href="globalStyles.css">
+    <link rel="stylesheet" href="style.css">
     <title>Home</title>
-    <style>
-        body{
-            width: 100vw;
-            height: 100vh;
-            color: var(--gray);
-            background-color: var(--primary);
-        }
-        .container{
-            margin: 0 auto;
-            width: 90%;
-            max-width: 480px;
-        }
-        .header{
-            position: sticky;
-            left: 0;
-            top: 0;
-            width: 100%;
-            height: 10%;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-        }
-        .main{
-            display: flex;
-            height: 90%;
-            flex-direction: column;
-            justify-content: space-around;
-        }
-        .button{
-            height: 3em;
-            background-color: var(--green);
-            display: flex;
-            border-radius: 5px;
-            align-items: center;
-            justify-content: center;
-            min-width: 120px;
-        }
-        .button-header{
-            height: 2em;
-            background-color: var(--primaryVariant);
-        }
-        .link{
-            text-decoration: none;
-            color: var(--gray);
-        }
-        /*DETALHES*/
-        h1{
-            color: var(--white);
-        }
-    </style>
 </head>
-<body class="container">
+<body>
     <header class="header">
-        <div class="button button-header">
-            <a href="SaibaMais.html" class="link link-saibaMais">Saiba Mais</a>
-        </div>
-        <div class="button button-header">
-            <a href="src/login/index.php" class="link link-login">Login</a>
+        <div class="container container-header">
+            <a href="SaibaMais.html" class="button">Saiba Mais</a>
+            <a href="src/login/index.php" class="button">Login</a>
         </div>
     </header>
-    <main class="main">
+    <main class="main container">
         <h1>Olá, seja bem vindo(a)!</h1>
-        <span>Para prender alguém na cadeia preencha o código do ticket, avance para a proxima etapa e faça o mandato de prisão.</span>
-        <div class="button button-ordem">
-            <a href="src/emitirOrdem/validarTicket.php" class="link link-ordem">Emitir Nova Ordem de Prisão</a>
-        </div>
-        <div class="button button-ordem">
-            <a href="src/visualizarStatusOrdem/visuOrdem.php" class="link link-ordem">Acompanhar Ordem Já Existente</a>
-        </div>
-        
+        <p>
+            Para prender alguém na cadeia preencha o código do ticket, avance para a proxima etapa e faça o mandato de prisão.
+        </p>
+        <img src="cadeia.png" alt="ilustração cadeia" class="cadeia-img">
+        <a href="src/emitirOrdem/validarTicket.php" class="button">Emitir Nova Ordem de Prisão</a>
+        <a href="src/visualizarStatusOrdem/visuOrdem.php" class="button">Acompanhar Ordem Já Existente</a>
     </main>
 </body>
 </html>
