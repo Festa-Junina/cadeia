@@ -132,6 +132,7 @@ body{
 .order-header > h2{
     font-size: 130%;
     font-weight: bold;
+    text-transform: capitalize;
 }
 
 .order-content > a{
