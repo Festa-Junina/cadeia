@@ -184,6 +184,7 @@ foreach ($detentos as $detento) {
                     $minutes = round(abs($diff / 60), 0);
                     echo "</div>";
                     echo "<p style=\"text-align: right; font-size: 14px\">Preso há {$minutes} minutos</p>";
+
                 echo "</div>";
             }
 
