@@ -170,22 +170,28 @@ class Detento implements ActiveRecord
 
     public static function ativaPergunta($id) : bool {
         $conexao = new MySQL();
-        $sql = "SELECT TIMEDIFF(now(), horaPrisao) as tempo,idStatusPrisao from prisao where idOrdemPrisao = $id";
+        $sql = "SELECT idStatusPrisao, atualizacaostatus from prisao where idOrdemPrisao = $id";
         $res =  $conexao->consulta($sql);
-        $tempo = $res[0]['tempo'];
         $status = $res[0]['idStatusPrisao'];
-        $cinco = strtotime(5);
+        $atualizacaostatus = $res[0]['atualizacaostatus'];
+        date_default_timezone_set("America/Sao_Paulo");
+        $today = strtotime(date("Y-m-d H:i:s"));
+        $prison = strtotime($atualizacaostatus);
+        $diff = $today - $prison;
+        $minutes = round(abs($diff / 60), 0);
+        $minutosaguardo = 2;
+        echo $minutes;
 
-        if($tempo > $cinco && $status == 1 ){
+        if($minutes >= $minutosaguardo && $status == 1 ){
             $conexao = new MySQL();
             $sql = "UPDATE prisao set idStatusPrisao = 2 where idOrdemPrisao = $id";
             return $conexao->executa($sql);
 
-        }elseif ($tempo > $cinco && $status == 3 ){
+        }elseif ($minutes >= $minutosaguardo && $status == 3 ){
             $conexao = new MySQL();
             $sql = "UPDATE prisao set idStatusPrisao = 4 where idOrdemPrisao = $id";
             return $conexao->executa($sql);
-        }elseif ($tempo > $cinco && $status == 5 ){
+        }elseif ($minutes >= $minutosaguardo && $status == 5 ){
             $conexao = new MySQL();
             $sql = "UPDATE prisao set idStatusPrisao = 6 where idOrdemPrisao = $id";
             return $conexao->executa($sql);
