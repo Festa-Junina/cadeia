@@ -53,7 +53,8 @@ $ordens = OrdemPrisao::findall();
                         $presoPor = "";
                         $btnPrisao =  "<div class='order-btn disabled'><h2>Confirmar</h2></div>";
                         $btnResponsavel = "<div class='order-btn'><a href='#assumir{$ordemId}' rel='modal:open'><h2>Assumir</h2></a></div>";
-                        $time = date('H:i:s', $ordem->getHoraOrdem());
+                        $time = date('H:i', $ordem->getHoraOrdem());
+                        // $time = $ordem->getHoraOrdem();
     
                         if (!is_null($ordem->getAssumidaPor())) {
                             $assumidoPor = "Kelvin";
@@ -72,7 +73,10 @@ $ordens = OrdemPrisao::findall();
                             <div class='order-content'>
                                 <div class='order-header'>
                                     <h2>{$nomeMeliante}</h2>
-                                    <h3>{$time}</h3>
+                                    <div class='time'>
+                                        <h3>Criada à: </h3>
+                                        <h3>{$time}min</h3>
+                                    </div>
                                 </div>
                                 <div class='order-type'>
                                     <div class='ball' id='ball-{$nomeTipoMeliante}'></div>

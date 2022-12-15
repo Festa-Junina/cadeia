@@ -84,7 +84,7 @@ body{
 .order{
     /* width: fit-content; */
 
-    width: 285px;
+    width: 290px;
     padding: 1rem;
     display: flex;
     flex-direction: column;
@@ -137,6 +137,11 @@ body{
     font-size: 130%;
     font-weight: bold;
     text-transform: capitalize;
+}
+
+.order-header > .time{
+    display: flex;
+    flex-direction: column;
 }
 
 .order-content > a{

@@ -184,7 +184,6 @@ class OrdemPrisao implements ActiveRecord
   public function save(): bool
   {
     $conexao = new MySQL();
-    // $horaOrdemF = date("Y-m-d H:i:s", $this->horaOrdem);
     $idTurma = isset($this->idTurmaMeliante) ? $this->idTurmaMeliante : 'null';
     $assumidaPor = isset($this->assumidaPor) ? $this->assumidaPor : 'null';
     $presoPor = isset($this->presoPor) ? $this->presoPor : 'null';
@@ -216,7 +215,7 @@ class OrdemPrisao implements ActiveRecord
               0,
             CURRENT_TIMESTAMP())";
     }
-    var_dump($sql);
+
     session_destroy();
     // return true;
     // TRIGGER NO BANCO $sql = "UPDATE ticket SET valido = false WHERE idTicket = '{$this->idTicket}'";
