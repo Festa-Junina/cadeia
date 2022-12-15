@@ -1,5 +1,5 @@
 body{
-    width: 100%;
+    width: 100vw;
     height: 100vh;
     color: var(--black);
     background-color: var(--gray2);
@@ -21,39 +21,18 @@ body{
     color: var(--white);
     background-color: var(--primary);
 }
-.container-header{
-    display: flex;
-    justify-content: space-between;
-}
-
-.modal{
-    position: fixed;
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%, -50%);
-    background-color: var(--gray2);
-    padding: 1em;
-    z-index: 2;
-    border-radius: 5px;
-    box-shadow: 0 0 1em black;
-}
-.blur{
-    position: fixed;
-    background-color: rgba(0, 0, 0, 0.3);
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100vh;
-    z-index: 1;
-    backdrop-filter: blur(5px);
-}
-.hide{
-    display: none;
-}
 .main{
     display: flex;
     flex-direction: column;
-    padding: 1.5em 0em;
+    justify-content: space-between;
+    padding: 0.8em 0em;
+}
+.form{
+    height: 30%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
     gap: 1em;
 }
 .button{
@@ -66,21 +45,29 @@ body{
     justify-content: center;
     min-width: 120px;
 }
+/*Aplica para todos os input porem os inputs que são submit nao se aplica*/
+input:not(input[type="submit"]){
+    outline: none;
+    height: 2.3em;
+    padding: 0.5em;
+    border-radius: .4em;
+    border: 2px solid var(--primaryVariant);
+}
+.mensagemErro{
+    align-self: center;
+    color: var(--red);
+}
 
 
 /*DETALHES*/
+h2{
+    font-weight: bold;
+}
 a{
     color: initial;
     text-decoration: none;
 }
-h1{
-    font-size: 2.8em;
-}
-p{
-    font-size: 1.8em;
-}
-.cadeia-img{
-    margin: auto;
+.ticket-img{
     display: block;
     width: 100%;
     max-width: 380px;

@@ -1,9 +1,8 @@
 <?php
-namespace classes;
 
-use db\ActiveRecord;
-use db\MySQL;
-use enum;
+require_once "../db/MySQL.php";
+require_once "../db/ActiveRecord.php";
+
 
 class OrdemPrisao implements ActiveRecord
 {
@@ -12,7 +11,8 @@ class OrdemPrisao implements ActiveRecord
     private int $idTicket;	
     private int $idTipoMeliante;
     private int $idTurmaMeliante;	
-    private StatusOrdem $idStatusOrdem;	
+    private int $idStatusOrdem;	
+    private int $horaOrdem;
     
     public function __construct(
         private string $nomeMeliante,
@@ -20,7 +20,6 @@ class OrdemPrisao implements ActiveRecord
         private string $localVisto,
         private string $nomeDenunciante,
         private string $telefoneDenunciante,
-        private int $horaOrdem
   ) {
   }
   #region idOrdem
@@ -83,11 +82,10 @@ class OrdemPrisao implements ActiveRecord
   }
   #endregion
 
-
   #region nomeMeliante 
   public function setNomeMeliante(string $nomeMeliante): void
   {
-    $this->nomeMeliante = $nomeMeliante;
+    $this->nomeMeliante =  filter_var($nomeMeliante,FILTER_SANITIZE_STRING);
   }
 
   public function getNomeMeliante(): string
@@ -99,7 +97,7 @@ class OrdemPrisao implements ActiveRecord
   #region descricaoMeliante
   public function setDescricaoMeliante(string $descricaoMeliante): void
   {
-    $this->descricaoMeliante = $descricaoMeliante;
+    $this->descricaoMeliante =  filter_var($descricaoMeliante,FILTER_SANITIZE_STRING);
   }
 
   public function getDescricaoMeliante(): string
@@ -111,7 +109,7 @@ class OrdemPrisao implements ActiveRecord
   #region localVisto
   public function setLocalVisto(string $localVisto): void
   {
-    $this->localVisto = $localVisto;
+    $this->localVisto =  filter_var($localVisto,FILTER_SANITIZE_STRING);
   }
 
   public function getLocalVisto(): string
@@ -123,7 +121,7 @@ class OrdemPrisao implements ActiveRecord
   #region nomeDenunciante
   public function setNomeDenunciante(string $nomeDenunciante): void
   {
-    $this->nomeDenunciante = $nomeDenunciante;
+    $this->nomeDenunciante =  filter_var($nomeDenunciante,FILTER_SANITIZE_STRING);
   }
 
   public function getNomeDenunciante(): string
@@ -160,29 +158,49 @@ class OrdemPrisao implements ActiveRecord
   {
     $conexao = new MySQL();
 
-    $this->senha = password_hash($this->senha, PASSWORD_BCRYPT);
-    if (isset($this->id)) {
-      $sql = "UPDATE usuario SET 
-        nome = '{$this->nome}' ,
-        email = '{$this->email}',
-        senha = '{$this->senha}' ,
-        contato = '{$this->contato}' ,
-        tipo = '{$this->tipo}' ,
-        idCurso = '{$this->idCurso}' ,
-        fotoPerfil = 'noimage.png' WHERE id = {$this->id}";
-    } else {
-      $sql = "INSERT INTO usuario (nome,email,senha,contato,tipo,idCurso,fotoPerfil) 
-      VALUES (
-          '{$this->nome}',
-          '{$this->email}',
-          '{$this->senha}' ,
-          '{$this->contato}' ,
-          '{$this->tipo}' ,
-          '{$this->idCurso}' ,
-          'noimage.png')";
-    }
-    return $conexao->executa($sql);
+
+      if(isset($this->idTurmaMeliante)){
+        $sql = "INSERT INTO ordemprisao (idTicket, idTipoMeliante, idTurmaMeliante, nomeMeliante, descricaoMeliante, localVisto, nomeDenunciante, telefoneDenunciante, idStatusOrdem, horaOrdem) 
+        VALUES (
+            '{$this->idTicket}',
+            '{$this->idTipoMeliante}',
+            '{$this->idTurmaMeliante}' ,
+            '{$this->nomeMeliante}' ,
+            '{$this->descricaoMeliante}' ,
+            '{$this->localVisto}' ,
+            '{$this->nomeDenunciante}' ,
+            '{$this->telefoneDenunciante}' ,
+              0 ,
+            CURRENT_TIMESTAMP())";
+      }else{
+        $sql = "INSERT INTO ordemprisao (idTicket, idTipoMeliante, nomeMeliante, descricaoMeliante, localVisto, nomeDenunciante, telefoneDenunciante, idStatusOrdem, horaOrdem) 
+        VALUES (
+            '{$this->idTicket}',
+            '{$this->idTipoMeliante}',
+            '{$this->nomeMeliante}' ,
+            '{$this->descricaoMeliante}' ,
+            '{$this->localVisto}' ,
+            '{$this->nomeDenunciante}' ,
+            '{$this->telefoneDenunciante}' ,
+              0 ,
+            CURRENT_TIMESTAMP())";
+      }
+      
+      session_destroy();
+
+   // TRIGGER NO BANCO $sql = "UPDATE ticket SET valido = false WHERE idTicket = '{$this->idTicket}'";
+   
+   return $conexao->executa($sql);
+
   }
+  
+  
+
+
+
+
+
+  
 
   public function delete(): bool
   {
@@ -244,5 +262,7 @@ class OrdemPrisao implements ActiveRecord
       return false;
     }
   }
+  
+  
 
 }
