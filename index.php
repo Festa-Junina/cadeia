@@ -15,7 +15,7 @@ $carcereiros = Carcereiro::findall();
 <body>
     
 <hr>
-<h1>Página Inicial - Carcereiro</h1>
+<h1>Listagem dos Carcereiros</h1>
 <hr>
 
 <table>
@@ -23,6 +23,7 @@ $carcereiros = Carcereiro::findall();
         <th>Nome</th>
         <th>Telefone</th>
         <th>Login</th>
+        <th class="linha"><img src="icons/ops.png" alt="">OPÇÕES</th>
     </tr>
     <?php
     foreach($carcereiros as $carcereiro){
@@ -31,8 +32,8 @@ $carcereiros = Carcereiro::findall();
         echo "<td>{$carcereiro->getTelefone()}</td>";
         echo "<td>{$carcereiro->getLogin()}</td>";
         echo "<td>
-        <a href='editCarc.php?id={$carcereiro->getIdUsuario()}'>Editar</a>
-        <a href='excluirCarc.php?id={$carcereiro->getIdUsuario()}'>Excluir</a> 
+        <a href='editCarc.php?id={$carcereiro->getIdUsuario()}'><img src='icons/edita.png' alt=''>Editar</a>
+        <a href='excluirCarc.php?id={$carcereiro->getIdUsuario()}'><img src='icons/lixo.png' alt=''>Excluir</a> 
     </td>";
         echo "</tr>";
     }
@@ -41,8 +42,8 @@ $carcereiros = Carcereiro::findall();
 
 
     <div class="links" >
-        <div class="as">
-            <a href="cadastrarCarc.php">Cadastrar Carcereiro</a>
+        <div class="add">
+            <a href="cadastrarCarc.php"><img src="icons/add.png" alt="">Cadastrar Carcereiro</a>
         </div>
 </div>
 </body>
