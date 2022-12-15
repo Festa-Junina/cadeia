@@ -47,10 +47,13 @@ if(isset($_POST['botao'])){
 
                         <label for='ativo'>Status:</label>
                         <select id='ativo' name='ativo' required>
-
                         
+                        <option 
+
+
                         <option value='1'>Ativo</option>
                         <option value='0'>Inativo</option>
+                        
                     </select>
                     <br>
                     <input type='hidden' name='senha' value={$carcereiro->getSenha()} id='senha' required>
