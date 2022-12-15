@@ -79,7 +79,7 @@ $ordens = OrdemPrisao::findall();
                                 <div class='ball' id='ball-{$nomeTipoMeliante}'></div>
                                 <p>{$nomeTipoMeliante}</p>
                             </div>
-                            <h4>📌{$ordem->getLocalVisto()}</h4>
+                            <h4>📌 {$ordem->getLocalVisto()}</h4>
 
                             <a href='#tips{$ordemId}' rel='modal:open'>
                                 <p>&nbsp;Características</p>

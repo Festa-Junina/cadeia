@@ -140,7 +140,9 @@ body{
     color: var(--green);
     font-weight: 600;
     text-decoration: underline;
+    margin-top: .3rem;
 }
+
 
 .order-content > a::before{
     content: "+";
