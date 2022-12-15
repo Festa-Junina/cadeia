@@ -14,6 +14,7 @@ $detentos = Detento::findall();
 $ordens = array();
 
 foreach ($detentos as $detento) {
+    $test = Detento::ativaPergunta($detento->getIdOrdemPrisao());
     $ordens[] = array(
         OrdemPrisao::find($detento->getIdOrdemPrisao()),
         $detento
@@ -28,6 +29,7 @@ foreach ($detentos as $detento) {
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta http-equiv="refresh" content="30">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet"
           href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
@@ -65,6 +67,7 @@ foreach ($detentos as $detento) {
             $numero_detento = 0;
             foreach ($ordens as $ordem) {
                 $numero_detento += 1;
+                $test = Detento::ativaPergunta($ordem[1]->getIdOrdemPrisao());
 
                 echo "<div class=\"order\">";
                     echo "<div class=\"order-content\">";
