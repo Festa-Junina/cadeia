@@ -55,9 +55,6 @@ class Detento implements ActiveRecord
     }
     #endregion
 
-
-
-
     #region horaPrisao
     public function setHoraPrisao(string $horaPrisao): void
     {
@@ -104,14 +101,6 @@ class Detento implements ActiveRecord
         return $conexao->executa($sql);
 
     }
-
-
-
-
-
-
-
-
 
     public function delete(): bool
     {
@@ -174,13 +163,15 @@ class Detento implements ActiveRecord
         $res =  $conexao->consulta($sql);
         $status = $res[0]['idStatusPrisao'];
         $atualizacaostatus = $res[0]['atualizacaostatus'];
+
         date_default_timezone_set("America/Sao_Paulo");
         $today = strtotime(date("Y-m-d H:i:s"));
         $prison = strtotime($atualizacaostatus);
         $diff = $today - $prison;
         $minutes = round(abs($diff / 60), 0);
-        $minutosaguardo = 2;
-        echo $minutes;
+
+        // QUANTIDADE DE MINUTOS A ESPERAR PARA RESPONDER A PERGUNTA;
+        $minutosaguardo = 1;
 
         if($minutes >= $minutosaguardo && $status == 1 ){
             $conexao = new MySQL();
@@ -198,11 +189,12 @@ class Detento implements ActiveRecord
         }else{
             return false;
         }
-
     }
 
-
-
-
+    public static function updateStatus($idOrdemPrisao, $status) {
+        $conexao = new MySQL();
+        $sql = "UPDATE prisao set idStatusPrisao = {$status} where idOrdemPrisao = {$idOrdemPrisao}";
+        return $conexao->executa($sql);
+    }
 
 }
