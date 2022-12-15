@@ -104,7 +104,7 @@ CREATE TABLE prisao (
 
 DELIMITER $$
 CREATE TRIGGER tr_desvalidarTicket 
-AFTER INSERT ON ordemprisao
+AFTER INSERT ON ordemPrisao
  FOR EACH ROW 
 BEGIN
 	UPDATE ticket SET valido=false WHERE idTicket = NEW.idTicket;
