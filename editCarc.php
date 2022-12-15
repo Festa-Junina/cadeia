@@ -23,9 +23,7 @@ if(isset($_POST['botao'])){
 <body>
 <div class="container">   
     <div class="title-carcereiro">
-        <hr>
             <h1>Editar Carcereiro</h1>
-        <hr>
     </div>
     
     <div class="box-edit-carc">

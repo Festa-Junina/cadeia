@@ -20,9 +20,7 @@ if(isset($_POST['botao'])){
 <body>
 <div class="container">
     <div class="title-carcereiro">
-        <hr>
             <h1>Cadastrar Carcereiro</h1>
-        <hr>
     </div>
     <div class="box-cad-carc">
         <div class="div-form">

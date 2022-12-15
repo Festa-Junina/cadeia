@@ -15,9 +15,7 @@ $carcereiros = Carcereiro::findall();
 <body>
 <div class="container-carcereiro">
     <div class="title-carcereiro">
-        <hr>
             <h1>Listagem dos Carcereiros</h1>
-        <hr>
     </div>
 
     <div class="links" >

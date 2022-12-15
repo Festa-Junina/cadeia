@@ -1,10 +1,25 @@
 @import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300&display=swap');
-body{
+*{
+    margin: 0px;
+    padding: 0px;
+}
+html,body{
     font-family: Open Sans;
 }
 
 /*INDEX----------*/
+.title-carcereiro{
+    padding: 0.5em 0em;
+    margin: none;
+    display: flex;
+    background-color: rgb(223, 223, 223);
+    height: 5em;
+    align-items: center;
+    justify-content: center;
+    border-bottom: solid 1px rgb(0, 61, 0);
+}
 .title-carcereiro h1{
+    margin: 0em 2em;
     display: flex;
     text-align: center;
     justify-content: center;
