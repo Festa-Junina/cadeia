@@ -1,13 +1,11 @@
-
 <?php
-$carcereiro = 0;
 if(isset($_GET['id'])){
     require_once __DIR__."/src/Carcereiro.php";
     $carcereiro = Carcereiro::find($_GET['id']);
 }
 if(isset($_POST['botao'])){
     require_once __DIR__."/src/Carcereiro.php";
-    $carcereiro = new Carcereiro($_POST['login'],$_POST['senha'],$_POST['status'],$_POST['funcao']);
+    $carcereiro = new Carcereiro(1,$_POST['login'],$_POST['senha'],$_POST['nome'],$_POST['telefone'],$_POST['ativo']);
     $carcereiro->setIdUsuario($_POST['id']);
     $carcereiro->save();
     header("location: index.php");
@@ -19,44 +17,49 @@ if(isset($_POST['botao'])){
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.form.scss">
+    <link rel="stylesheet" href="css/style_carcereiro.css">
     <title>Editar Carcereiro</title>
 </head>
 <body>
-    <section>   
-        <div class="divTitulo">
-            <h1 class="titulo">Editar Carcereiro</h1><br>
-        </div>
-    </section>
-        <br>
-    <section class="formulario"> 
-        <div class="divform">
+<div class="container">   
+    <div class="title-carcereiro">
+            <h1>Editar Carcereiro</h1>
+    </div>
+    
+    <div class="box-edit-carc">
+     
+        <div class="div-form">
             <form class="formCad" action="editCarc.php" method="POST">
                 <?php
-                    echo "<label for='email'>E-mail:</label><br>";
-                    echo "<input name='login' id='login' value='{$carcereiro->getLogin()}' type='text' required>";
-                    echo "<br>";
-                    echo "<input name='id' value={$carcereiro->getIdUsuario()} type='hidden'>";
+                    echo "
+                    <div class='box-edit'>
+                    <div class='centro-edit'>
+                    <div class='edit-carc'>
+                        <label for='nome'>Nome:</label>
+                        <input name='nome' id='nome' value='{$carcereiro->getNome()}' type='text' required>
+
+                        <label for='email'>E-mail:</label>
+                        <input name='login' id='login' value='{$carcereiro->getLogin()}' type='text' required>
+                    
+                        <label for='telefone'>telefone</label>
+                        <input name='telefone' id='telefone' value='{$carcereiro->getTelefone()}' type='text' required>
+                    
+                        <label for='ativo'>Ativo:</label>
+                        <input name='ativo' id='ativo' value='{$carcereiro->getAtivo()}' type='text' required>
+                    <input type='hidden' name='senha' value={$carcereiro->getSenha()} id='senha' required>
+                    <input name='id' value={$carcereiro->getIdUsuario()} type='hidden'>
+                    <div class='botaoCad'>
+                    <button name='botao' value='Cadastrar'>Salvar</button>
+                    <a href='index.php'>Cancelar</a>
+                </div>
+                    </div>
+                    </div>
+                    </div>";
                 ?>
-                <label for='senha'>Senha:</label><br>
-                <input type='password' name='senha' id='senha' required><br>
-                <div class="selects">
-                    <label for="funcao">Função:</label><br>
-                    <select name="funcao" id="funcao">
-                        <option value="Carcereiro">Carcereiro</option>
-                    </select><br>
-                    <label for="status">Status:</label><br>
-                    <select name="status" id="status">
-                        <option value="Ativo">Ativo</option>
-                    </select><br>
-                </div>
-                <div class="botaoCad">
-                    <button name='botao' value='Cadastrar'>Cadastrar</button>
-                </div>
             </form>
-            <a href='index.php'>voltar ao inicio </a>
-        </div>
-    </section>
-    </form>
+        </form>
+    </div>
+</div>
+</div> 
 </body>
 </html>
