@@ -1,14 +1,14 @@
 
 <?php
 $carcereiro = 0;
-if(isset($_GET['id'])){
+if(isset($_GET['idUsuario'])){
     require_once __DIR__."/src/Carcereiro.php";
-    $carcereiro = Carcereiro::find($_GET['id']);
+    $carcereiro = Carcereiro::find($_GET['idUsuario']);
 }
 if(isset($_POST['botao'])){
     require_once __DIR__."/src/Carcereiro.php";
     $carcereiro = new Carcereiro($_POST['login'],$_POST['senha'],$_POST['status'],$_POST['funcao']);
-    $carcereiro->setIdUsuario($_POST['id']);
+    $carcereiro->setIdUsuario($_POST['idUsuario']);
     $carcereiro->save();
     header("location: index.php");
 }
@@ -36,7 +36,7 @@ if(isset($_POST['botao'])){
                     echo "<label for='email'>E-mail:</label><br>";
                     echo "<input name='login' id='login' value='{$carcereiro->getLogin()}' type='text' required>";
                     echo "<br>";
-                    echo "<input name='id' value={$carcereiro->getIdUsuario()} type='hidden'>";
+                    echo "<input name='idUsuario' value={$carcereiro->getIdUsuario()} type='hidden'>";
                 ?>
                 <label for='senha'>Senha:</label><br>
                 <input type='password' name='senha' id='senha' required><br>

@@ -8,11 +8,11 @@ class Carcereiro implements ActiveRecord{
     private int $idUsuario;
 
     public function __construct(
+        private int $idFuncao,
         private string $login,
         private string $senha,
         private string $nome,
         private  $telefone,
-        private int $idFuncao,
         private string $ativo){
     }
 
@@ -84,9 +84,10 @@ class Carcereiro implements ActiveRecord{
         if(isset($this->idUsuario)){
             $sql = "UPDATE usuario SET usuario.login = '{$this->login}', senha = '{$this->senha}', nome = '{$this->nome}', telefone = '{$this->telefone}', ativo = '{$this->ativo}' WHERE idUsuario = {$this->idUsuario}";
         }else{
-            $sql = "INSERT INTO usuario (idFuncao, login, senha, nome, telefone, ativo) VALUES (1,'{$this->login}', '{$this->senha}', '{$this->nome}', '{$this->telefone}', '{$this->telefone}', '{$this->ativo}')";
+            $sql = "INSERT INTO usuario (idFuncao, login, senha, nome, telefone, ativo) VALUES (1,'{$this->login}', '{$this->senha}', '{$this->nome}', '{$this->telefone}', '{$this->ativo}')";
         }
         return $conexao->executa($sql);
+
         
     }
     public function delete():bool{
@@ -99,7 +100,7 @@ class Carcereiro implements ActiveRecord{
         $conexao = new MySQL();
         $sql = "SELECT * FROM usuario WHERE idUsuario = {$idUsuario}";
         $resultado = $conexao->consulta($sql);
-        $p = new Carcereiro($resultado[0]['login'],$resultado[0]['senha'],$resultado[0]['telefone'],$resultado[0]['nome'],$resultado['idFuncao'],$resultado[0]['ativo']);
+        $p = new Carcereiro($resultado[0]['idFuncao'],$resultado[0]['login'],$resultado[0]['senha'],$resultado[0]['nome'],$resultado[0]['telefone'],$resultado[0]['ativo']);
         $p->setIdUsuario($resultado[0]['idUsuario']);
         return $p;
     }
@@ -112,7 +113,7 @@ class Carcereiro implements ActiveRecord{
         $resultados = $conexao->consulta($sql);
         $carcereiro = array();
         foreach($resultados as $resultado){
-            $p = new Carcereiro($resultado['login'],$resultado['senha'],$resultado['telefone'],$resultado['nome'],$resultado['idFuncao'],$resultado['ativo']);
+            $p = new Carcereiro($resultado['idFuncao'],$resultado['login'],$resultado['senha'],$resultado['nome'],$resultado['telefone'],$resultado['ativo']);
             $p->setIdUsuario($resultado['idUsuario']);
             $carcereiro[] = $p;
         }

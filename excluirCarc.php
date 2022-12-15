@@ -1,5 +1,6 @@
 <?php
 require_once __DIR__."/vendor/autoload.php";
-$carc = Carcereiro::find($_GET['codCarc']);
+require_once __DIR__."/src/Carcereiro.php";
+$carc = Carcereiro::find($_GET['id']);
 $carc->delete();
 header("location: index.php");

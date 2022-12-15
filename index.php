@@ -30,6 +30,10 @@ $carcereiros = Carcereiro::findall();
         echo "<td>{$carcereiro->getNome()}</td>";
         echo "<td>{$carcereiro->getTelefone()}</td>";
         echo "<td>{$carcereiro->getLogin()}</td>";
+        echo "<td>
+        <a href='editCarc.php?id={$carcereiro->getIdUsuario()}'>Editar</a>
+        <a href='excluirCarc.php?id={$carcereiro->getIdUsuario()}'>Excluir</a> 
+    </td>";
         echo "</tr>";
     }
     ?>
@@ -38,7 +42,7 @@ $carcereiros = Carcereiro::findall();
 
     <div class="links" >
         <div class="as">
-            <a href='cadastrarCarc.php'>Cadastrar Carcereiro</a>
+            <a href="cadastrarCarc.php">Cadastrar Carcereiro</a>
         </div>
 </div>
 </body>
