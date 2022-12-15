@@ -208,6 +208,8 @@ body{
 }
 .disabled:hover{
     background-color: gray;
+    cursor: initial;
+    user-select: none;
 }
 
 .opt-btns{
@@ -238,6 +240,10 @@ body{
 .opt-btns > .cancel-btn > a:hover{
     cursor: pointer;
 }
+
+
+
+
 
 @media screen and (max-width: 425px){
     .user > p{

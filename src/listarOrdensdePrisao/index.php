@@ -4,7 +4,6 @@ require_once("../../vendor/autoload.php");
 
 use classes\OrdemPrisao;
 use classes\TipoMeliante;
-use classes\Usuario;
 
 $ordens = OrdemPrisao::findall();
 ?>
@@ -52,13 +51,14 @@ $ordens = OrdemPrisao::findall();
                         
                         $assumidoPor = "";
                         $presoPor = "";
-                        $btnPrisao =  "<div class='order-btn'><a href='#confirm{$ordemId}' rel='modal:open'><h2>Confirmar</h2></a></div>";
+                        $btnPrisao =  "<div class='order-btn disabled'><h2>Confirmar</h2></div>";
                         $btnResponsavel = "<div class='order-btn'><a href='#assumir{$ordemId}' rel='modal:open'><h2>Assumir</h2></a></div>";
                         $time = date('H:i:s', $ordem->getHoraOrdem());
     
                         if (!is_null($ordem->getAssumidaPor())) {
                             $assumidoPor = "Kelvin";
                             $btnResponsavel = "<div class='order-btn disabled'><h2>Assumido por {$assumidoPor}</h2></div>";
+                            $btnPrisao =  "<div class='order-btn'><a href='#confirm{$ordemId}' rel='modal:open'><h2>Confirmar</h2></a></div>";
                         }
     
                         if(!is_null($ordem->getPresoPor())){
@@ -126,9 +126,9 @@ $ordens = OrdemPrisao::findall();
                     }
                 } else{
                     $template = "<div class='not-found'><h1 class='modal-title' >Nenhuma ordem de prisão encontrada</h4></div>";
+                    echo $template;
                 }
 
-                echo $template;
                 ?>
             </div>
         </div>
