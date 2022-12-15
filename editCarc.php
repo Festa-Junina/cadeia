@@ -1,14 +1,12 @@
-
 <?php
-$carcereiro = 0;
-if(isset($_GET['idUsuario'])){
+if(isset($_GET['id'])){
     require_once __DIR__."/src/Carcereiro.php";
-    $carcereiro = Carcereiro::find($_GET['idUsuario']);
+    $carcereiro = Carcereiro::find($_GET['id']);
 }
 if(isset($_POST['botao'])){
     require_once __DIR__."/src/Carcereiro.php";
-    $carcereiro = new Carcereiro($_POST['login'],$_POST['senha'],$_POST['status'],$_POST['funcao']);
-    $carcereiro->setIdUsuario($_POST['idUsuario']);
+    $carcereiro = new Carcereiro(1,$_POST['login'],$_POST['senha'],$_POST['nome'],$_POST['telefone'],$_POST['ativo']);
+    $carcereiro->setIdUsuario($_POST['id']);
     $carcereiro->save();
     header("location: index.php");
 }
@@ -28,7 +26,8 @@ if(isset($_POST['botao'])){
             <h1 class="titulo">Editar Carcereiro</h1><br>
         </div>
     </section>
-        <br>
+
+
     <section class="formulario"> 
         <div class="divform">
             <form class="formCad" action="editCarc.php" method="POST">
@@ -36,22 +35,19 @@ if(isset($_POST['botao'])){
                     echo "<label for='email'>E-mail:</label><br>";
                     echo "<input name='login' id='login' value='{$carcereiro->getLogin()}' type='text' required>";
                     echo "<br>";
-                    echo "<input name='idUsuario' value={$carcereiro->getIdUsuario()} type='hidden'>";
+                    echo "<label for='telefone'>telefone</label><br>";
+                    echo "<input name='telefone' id='telefone' value='{$carcereiro->getTelefone()}' type='text' required>";
+                    echo "<br>";
+                    echo "<label for='nome'>Nome:</label><br>";
+                    echo "<input name='nome' id='nome' value='{$carcereiro->getNome()}' type='text' required>";
+                    echo "<br>";
+                    echo "<label for='ativo'>Ativo:</label><br>";
+                    echo "<input name='ativo' id='ativo' value='{$carcereiro->getAtivo()}' type='text' required>";
+                    echo "<input type='hidden' name='senha' value={$carcereiro->getSenha()} id='senha' required><br>";
+                    echo "<input name='id' value={$carcereiro->getIdUsuario()} type='hidden'>";
                 ?>
-                <label for='senha'>Senha:</label><br>
-                <input type='password' name='senha' id='senha' required><br>
-                <div class="selects">
-                    <label for="funcao">Função:</label><br>
-                    <select name="funcao" id="funcao">
-                        <option value="Carcereiro">Carcereiro</option>
-                    </select><br>
-                    <label for="status">Status:</label><br>
-                    <select name="status" id="status">
-                        <option value="Ativo">Ativo</option>
-                    </select><br>
-                </div>
                 <div class="botaoCad">
-                    <button name='botao' value='Cadastrar'>Cadastrar</button>
+                    <button name='botao' value='Cadastrar'>Editar</button>
                 </div>
             </form>
             <a href='index.php'>voltar ao inicio </a>
