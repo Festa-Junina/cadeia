@@ -77,6 +77,10 @@ body{
     justify-content: center;
 }
 
+.not-found{
+    color: var(--primaryVariant);
+}
+
 .order{
     /* width: fit-content; */
 
