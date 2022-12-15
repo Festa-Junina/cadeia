@@ -69,12 +69,7 @@ class Policial implements ActiveRecord{
     }
 
     public function getAtivo():bool{
-        if ($this->ativo == 1) {
-            return $this->ativo = 'Ativo';
-        }else{
-            return $this->ativo = 'Inativo';
-        }
- 
+        return $this->ativo;
     }
 
     public function existeUsuario($login){
@@ -96,9 +91,17 @@ class Policial implements ActiveRecord{
         if (!$existe) {
             $this->senha = password_hash($this->senha,PASSWORD_BCRYPT); 
             if(isset($this->idUsuario)){
-                $sql = "UPDATE usuario SET login = '{$this->login}', senha = '{$this->senha}', telefone = '{$this->telefone}', nome = '{$this->nome}', idFuncao = '{$this->idFuncao}', ativo = '{$this->ativo}' WHERE idUsuario = {$this->idUsuario}";
+                $sql = "UPDATE usuario
+                 SET login = '{$this->login}', 
+                    senha = '{$this->senha}', 
+                    telefone = '{$this->telefone}', 
+                    nome = '{$this->nome}', 
+                    idFuncao = '{$this->idFuncao}', 
+                    ativo = '{$this->ativo}' 
+                    WHERE idUsuario = {$this->idUsuario}";
             }else{
-                $sql = "INSERT INTO usuario (login,senha,telefone,nome,idFuncao,ativo) VALUES ('{$this->login}','{$this->senha}','{$this->telefone}', '{$this->nome}', '{$this->idFuncao}', '{$this->ativo}')";
+                $sql = "INSERT INTO usuario (login,senha,telefone,nome,idFuncao,ativo) 
+                        VALUES ('{$this->login}','{$this->senha}','{$this->telefone}', '{$this->nome}', '{$this->idFuncao}', '{$this->ativo}')";
             }
             return $conexao->executa($sql);
         } else{
