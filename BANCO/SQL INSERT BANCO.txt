@@ -71,9 +71,9 @@ insert into ticket(ticket, valido) values
 
 
 insert into usuario(idFuncao, login, senha, nome, telefone, ativo) values
-(0, "administrador@teste123.com", "teste123", "51 986254753", "Fabio Bastian", true),
-(1, "carcereiro@teste123.com", "teste123", "54 852547536", "Murilo Mouthinho", true),
-(2, "policial@teste123.com", "teste123", "51 925634524", "Pedro Rhoden", true);
+(0, "administrador@teste123.com", "teste123", "Fabio Bastian", "51 986254753", true),
+(1, "carcereiro@teste123.com", "teste123", "Murilo Mouthinho", "54 852547536", true),
+(2, "policial@teste123.com", "teste123", "Pedro Rhoden", "51 925634524", true);
 
 
 insert into pergunta(idCategoria, enunciado, resposta, alternativa1, alternativa2, alternativa3) values
