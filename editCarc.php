@@ -17,42 +17,58 @@ if(isset($_POST['botao'])){
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.form.scss">
+    <link rel="stylesheet" href="css/style.css">
     <title>Editar Carcereiro</title>
 </head>
 <body>
-    <section>   
-        <div class="divTitulo">
-            <h1 class="titulo">Editar Carcereiro</h1><br>
-        </div>
-    </section>
-
-
-    <section class="formulario"> 
-        <div class="divform">
+<div class="container">   
+    <div class="title-carcereiro">
+        <hr>
+            <h1>Editar Carcereiro</h1>
+        <hr>
+    </div>
+    
+    <div class="box-edit-carc">
+     
+        <div class="div-form">
             <form class="formCad" action="editCarc.php" method="POST">
                 <?php
-                    echo "<label for='email'>E-mail:</label><br>";
-                    echo "<input name='login' id='login' value='{$carcereiro->getLogin()}' type='text' required>";
-                    echo "<br>";
-                    echo "<label for='telefone'>telefone</label><br>";
-                    echo "<input name='telefone' id='telefone' value='{$carcereiro->getTelefone()}' type='text' required>";
-                    echo "<br>";
-                    echo "<label for='nome'>Nome:</label><br>";
-                    echo "<input name='nome' id='nome' value='{$carcereiro->getNome()}' type='text' required>";
-                    echo "<br>";
-                    echo "<label for='ativo'>Ativo:</label><br>";
-                    echo "<input name='ativo' id='ativo' value='{$carcereiro->getAtivo()}' type='text' required>";
-                    echo "<input type='hidden' name='senha' value={$carcereiro->getSenha()} id='senha' required><br>";
-                    echo "<input name='id' value={$carcereiro->getIdUsuario()} type='hidden'>";
-                ?>
-                <div class="botaoCad">
-                    <button name='botao' value='Cadastrar'>Editar</button>
+                    echo "
+                    <div class='box-edit'>
+                    <div class='centro-edit'>
+                    <div class='edit-carc'>
+                        <label for='nome'>Nome:</label>
+                        <input name='nome' id='nome' value='{$carcereiro->getNome()}' type='text' required>
+
+                        <label for='email'>E-mail:</label>
+                        <input name='login' id='login' value='{$carcereiro->getLogin()}' type='text' required>
+                    
+                        <label for='telefone'>telefone</label>
+                        <input name='telefone' id='telefone' value='{$carcereiro->getTelefone()}' type='text' required>
+                    
+                        
+                    
+                        <label for='ativo'>Ativo:</label>
+                        <input name='ativo' id='ativo' value='{$carcereiro->getAtivo()}' type='text' required>
+                    <input type='hidden' name='senha' value={$carcereiro->getSenha()} id='senha' required>
+                    <input name='id' value={$carcereiro->getIdUsuario()} type='hidden'>
+                    <div class='botaoCad'>
+                    <button name='botao' value='Cadastrar'>Salvar</button>
+                    <a href='index.php'>Cancelar</a>
                 </div>
+                    </div>
+                    </div>
+                    </div>";
+                ?>
+                
             </form>
-            <a href='index.php'>voltar ao inicio </a>
+            
+        
+    
+    
+        </form>
         </div>
-    </section>
-    </form>
+    </div>
+    </div> 
 </body>
 </html>

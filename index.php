@@ -22,7 +22,7 @@ $carcereiros = Carcereiro::findall();
 
     <div class="links" >
         <div class="add">
-            <a href="cadastrarCarc.php">Cadastrar Carcereiro</a>
+            <a href="cadastrarCarc.php">+ Cadastrar Carcereiro</a>
         </div>
     </div>
     <div class="box-dados-carc">
