@@ -14,10 +14,11 @@
 <?php
 
     if(isset($_GET['success'])){
+        $ticket = $_GET['ticket'];
         echo "<div class='blur' id='blur'></div>
         <div class='modal' id='modal'>
             <h1>Sucesso!</h1>
-            <p>Sua ordem de prisão foi emitida com sucesso, lembre-se do seu ticket, pois com ele você pode acompanhar o andamento da ordem.</p>
+            <p>Sua ordem de prisão foi emitida com sucesso, lembre-se do seu numero de ticket <mark>$ticket</mark>, pois com ele você pode acompanhar o andamento da ordem.</p>
             <button class='button' id='closeModal'>Fechar</button>
         </div>";
     }
@@ -31,10 +32,10 @@
     </header>
     <main class="main container">
         <h1>Olá, seja bem vindo(a)!</h1>
-        <p>
+        <img src="cadeia.png" alt="ilustração cadeia" class="cadeia-img">
+        <p class="p-centro">
             Para prender alguém na cadeia preencha o código do ticket, avance para a próxima etapa e faça a ordem de prisão.
         </p>
-        <img src="cadeia.png" alt="ilustração cadeia" class="cadeia-img">
         <a href="src/emitirOrdem/validarTicket.php" class="button">Emitir Nova Ordem de Prisão</a>
         <a href="src/visualizarStatusOrdem/visuOrdem.php" class="button">Acompanhar Ordem Já Existente</a>
     </main>

@@ -194,14 +194,6 @@ class OrdemPrisao implements ActiveRecord
 
   }
   
-  
-
-
-
-
-
-  
-
   public function delete(): bool
   {
     $conexao = new MySQL();
@@ -263,6 +255,4 @@ class OrdemPrisao implements ActiveRecord
     }
   }
   
-  
-
 }

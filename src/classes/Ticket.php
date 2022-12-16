@@ -42,33 +42,29 @@ class Ticket{
         return false;
     }
 
+    //mostrar status ticket ------------------------------------------------
+    public function findOrdem(){
+        $conexao = new MySQL();
 
+        $sql = "select ordemprisao.nomeMeliante, statusordem.nome as 'statusOrdem',
+        IF(ordemprisao.idStatusOrdem = 2, statusprisao.nome, 'Ainda não foi preso') as 'statusprisao',
+        IF(ordemprisao.idStatusOrdem = 2, time(SUBTIME(prisao.horaPrisao,CURRENT_TIME)), '00:00:00') as 'tempoPreso'
+        from ordemprisao
+        inner join statusordem on statusordem.idStatusOrdem = ordemprisao.idStatusOrdem
+        left join prisao on prisao.idOrdemPrisao = ordemprisao.idOrdem
+        left join statusprisao on statusprisao.idStatusPrisao = prisao.idStatusPrisao
+        inner join ticket on ticket.idTicket = ordemprisao.idTicket
+        where ticket.ticket = {$this->ticket}";
 
+        $status = $conexao->consulta($sql);
 
+        if(!empty($status)){
 
-public function findOrdem(){
-    $conexao = new MySQL();
+            return $status['0'];
 
-    $sql = "select ordemprisao.nomeMeliante, statusordem.nome as 'statusOrdem',
-    IF(ordemprisao.idStatusOrdem = 2, statusprisao.nome, 'Ainda não foi preso') as 'statusprisao',
-    IF(ordemprisao.idStatusOrdem = 2, time(SUBTIME(prisao.horaPrisao,CURRENT_TIME)), '00:00:00') as 'tempoPreso'
-    from ordemprisao
-    inner join statusordem on statusordem.idStatusOrdem = ordemprisao.idStatusOrdem
-    left join prisao on prisao.idOrdemPrisao = ordemprisao.idOrdem
-    left join statusprisao on statusprisao.idStatusPrisao = prisao.idStatusPrisao
-    inner join ticket on ticket.idTicket = ordemprisao.idTicket
-    where ticket.ticket = {$this->ticket}";
+        }else{
 
-    $status = $conexao->consulta($sql);
-
-    if(!empty($status)){
-
-        return $status['0'];
-
-    }else{
-
-        return false;
+            return false;
+        }
     }
-}
-
 }

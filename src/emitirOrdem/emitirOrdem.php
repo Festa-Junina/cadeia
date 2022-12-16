@@ -108,7 +108,7 @@ if (isset($_POST['submit'])) {
                 <input type="tel" name="telefoneDenunciante" id="telefoneDenunciante" placeholder="(51) 9 98536256"     required>
 
                 <input type="submit" name="submit" value="Enviar" class="button">
-
+                
             </form>
         </div>
     </main>
