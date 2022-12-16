@@ -28,7 +28,7 @@ if(isset($_POST['submit'])){
         </div>
     </header>
     <main class="main container">
-        <a href="../../index.html" class='links'>🡄 Voltar à tela inicial</a>
+        <a href="../../index.php" class='links'>🡄 Voltar à tela inicial</a>
         <form action ="visuOrdem.php" method="post" class="form">
             <label for="ticket">Insira o Ticket para a Consulta</label>
             <input type="number" id="ticket" name="ticket" placeholder="XXXXXX" required>

@@ -9,6 +9,7 @@ turmaMeliante.disabled = true;
 function habilitaTurma(){
   if(tipoMeliante.value != 0){
     turmaMeliante.disabled = true;
+    turmaMeliante.value = "";
 }else{
     turmaMeliante.disabled = false;
 }}

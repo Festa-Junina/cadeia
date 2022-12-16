@@ -19,7 +19,7 @@
         </div>
     </header>
     <main class="main container">
-        <a href="../../index.html" class='links'>🡄 Voltar à tela inicial</a>
+        <a href="../../index.php" class='links'>🡄 Voltar à tela inicial</a>
         <form action="validarTicket.php" method="post" class="form">
             <?php 
             require_once "../classes/Ticket.php";

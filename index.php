@@ -23,19 +23,16 @@
     }
     ?>
 
-
-
-
     <header class="header">
         <div class="container container-header">
             <a href="SaibaMais.html" class="button">Saiba Mais</a>
-            <a href="src/login/index.php" class="button">Login</a>
+            <a href="src/login/index.php" class="button">Restrito</a>
         </div>
     </header>
     <main class="main container">
         <h1>Olá, seja bem vindo(a)!</h1>
         <p>
-            Para prender alguém na cadeia preencha o código do ticket, avance para a proxima etapa e faça o mandato de prisão.
+            Para prender alguém na cadeia preencha o código do ticket, avance para a próxima etapa e faça a ordem de prisão.
         </p>
         <img src="cadeia.png" alt="ilustração cadeia" class="cadeia-img">
         <a href="src/emitirOrdem/validarTicket.php" class="button">Emitir Nova Ordem de Prisão</a>

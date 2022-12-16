@@ -9,6 +9,7 @@ if(!isset($_SESSION['idTicket'])){
 
 if (isset($_POST['submit'])) {
 
+    $ticket = $_SESSION['ticket'];
     $ordemPrisao = new OrdemPrisao($_POST['nomeMeliante'], $_POST['descricaoMeliante'], $_POST['localVisto'], $_POST['nomeDenunciante'], $_POST['telefoneDenunciante']);
 
     $ordemPrisao->setIdTicket($_SESSION['idTicket']);
@@ -22,7 +23,7 @@ if (isset($_POST['submit'])) {
     $ordemPrisao->save();
 
     //mensagem de sucesso?
-    header("location: ../../index.php?success=yes");
+    header("location: ../../index.php?success=yes&ticket={$_SESSION['ticket']}");
 }
 
 ?>
@@ -54,8 +55,8 @@ if (isset($_POST['submit'])) {
     <main class="main">
         <div class='container container-main'>
             <section class="section">
-                <a href="../../index.html" class='links'>🡄 Voltar à tela inicial</a>
-                <p>Preencha todos os campos para efetuar um mandado de prisão.</p>
+                <a href="../../index.php" class='links'>🡄 Voltar à tela inicial</a>
+                <p>Preencha todos os campos para efetuar a ordem de prisão.</p>
             </section>
             
             <form action="emitirOrdem.php" method="post" class="form">
