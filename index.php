@@ -14,13 +14,23 @@
 <?php
 
     if(isset($_GET['success'])){
-        $ticket = $_GET['ticket'];
-        echo "<div class='blur' id='blur'></div>
-        <div class='modal' id='modal'>
-            <h1>Sucesso!</h1>
-            <p>Sua ordem de prisão foi emitida com sucesso, lembre-se do seu numero de ticket <mark>$ticket</mark>, pois com ele você pode acompanhar o andamento da ordem.</p>
-            <button class='button' id='closeModal'>Fechar</button>
-        </div>";
+        $passou = $_GET['success'];
+        if($passou == "yes"){
+            $ticket = $_GET['ticket'];
+            echo "<div class='blur' id='blur'></div>
+            <div class='modal' id='modal'>
+                <h1>Sucesso!</h1>
+                <p>Sua ordem de prisão foi emitida com sucesso, lembre-se do seu numero de ticket <mark>$ticket</mark>, pois    com ele você pode acompanhar o andamento da ordem.</p>
+                <button class='button' id='closeModal'>Fechar</button>
+            </div>";
+        }else{
+            echo "<div class='blur' id='blur'></div>
+            <div class='modal' id='modal'>
+                <h1>Cancelado</h1>
+                <p>A sua operação foi cancelado com sucesso, o seu ticket não foi utilizado</p>
+                <button class='button' id='closeModal'>Fechar</button>
+            </div>";
+        }
     }
     ?>
 

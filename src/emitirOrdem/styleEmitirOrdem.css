@@ -60,6 +60,15 @@ body{
     justify-content: center;
     min-width: 120px;
 }
+.button-div{
+    width: 80%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+.button-modifica{
+    background-color: var(--red);
+}
 /*Aplica para todos os input porem os inputs que são submit nao se aplica*/
 input:not(input[type="submit"]), select{
     font-family: "Mulish";

@@ -106,9 +106,10 @@ if (isset($_POST['submit'])) {
 
                 <label for="telefoneDenunciante">Seu telefone:</label>
                 <input type="tel" name="telefoneDenunciante" id="telefoneDenunciante" placeholder="(51) 9 98536256"     required>
-
-                <input type="submit" name="submit" value="Enviar" class="button">
-                
+                <div class="button-div">
+                    <a href="../../index.php?success=no" class="button button-modifica">Cancelar</a>
+                    <input type="submit" name="submit" value="Enviar" class="button">
+                </div>
             </form>
         </div>
     </main>
