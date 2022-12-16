@@ -1,5 +1,5 @@
-@import url("../../globalStyles.css");
-@import url("../../reset.css");
+@import "../../globalStyles.css";
+@import "../../reset.css";
 
 body{
     color: var(--white);
@@ -53,7 +53,7 @@ body{
     box-shadow: 0 0 10px var(--blackOpacity);
     padding: 15px 10px;
     border-radius: 10px;
-    width: 150px;    
+    width: 150px;
 }
 
 .user-opt > a{
@@ -91,7 +91,7 @@ body{
     border-radius: .6rem;
     border: 2px solid var(--primaryVariant);
     box-shadow: 0 0 8px var(--blackOpacity);
-    
+
 }
 
 .order-type{
@@ -130,14 +130,10 @@ body{
     content: "+";
 }
 
-.responsible{
-    padding: .3rem 0;
-}
-
 
 .ball{
-    width: 12px;
-    height: 12px;
+    width: 18px;
+    height: 18px;
     border-radius: 50%;
 }
 
@@ -158,6 +154,7 @@ body{
     text-align: center;
     border-radius: 8px;
     color: var(--white);
+    width: 100%;
 }
 
 .order-btn:hover{
@@ -172,6 +169,54 @@ body{
 
 .displayed{
     display: flex;
+}
+
+.questions-status {
+    display: flex;
+    background-color:var(--gray2);
+    padding: 7px;
+    border-radius: 15px;
+    width: fit-content;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 10px;
+    font-weight: bold;
+}
+
+.question-1, .question-2, .question-3 {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: #fff;
+}
+
+.acertou {
+    background-color: var(--primary);
+}
+.errou {
+    background-color: var(--red);
+}
+.pode-responder {
+    background-color: var(--yellow);
+    animation: blink-animation 0.5s steps(5, start) infinite;
+    -webkit-animation: blink-animation 0.5s steps(5, start) infinite;
+}
+@keyframes blink-animation {
+    to {
+        visibility: hidden;
+    }
+}
+@-webkit-keyframes blink-animation {
+    to {
+        visibility: hidden;
+    }
+}
+
+.tipo-status {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    padding: 10px 0;
 }
 
 @media screen and (max-width: 425px){

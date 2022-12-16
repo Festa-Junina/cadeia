@@ -1,4 +1,5 @@
 <?php
+
 namespace db;
 
 interface ActiveRecord{
