@@ -12,11 +12,11 @@ html,body{
     padding: 0.5em 0em;
     margin: none;
     display: flex;
-    background-color: rgb(223, 223, 223);
-    height: 5em;
+    background-color: #3CC47C;
+    height: 4em;
     align-items: center;
     justify-content: center;
-    border-bottom: solid 1px rgb(0, 61, 0);
+    border-bottom: solid 1px #104228;
 }
 .title-carcereiro h1{
     margin: 0em 2em;
@@ -25,7 +25,7 @@ html,body{
     justify-content: center;
 }
 .box-dados-carc{
-    flex-direction: column;
+    flex-direction: row;
     display: flex;
     width: 100%;
     justify-content: center;
