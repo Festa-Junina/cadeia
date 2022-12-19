@@ -1,9 +1,5 @@
-<?php
-
-?>
-
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -22,7 +18,7 @@
                         <input type="password" name="password" id="password" placeholder="Insira a sua senha" class="login-input">
                     </div>
                     <div class="recover-password-area">
-                        <a href="#">
+                        <a href="../login">
                             <span class="recover-password">Recuperar senha</span>
                         </a>
                     </div>

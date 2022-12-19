@@ -1,5 +1,5 @@
-@import url("../../globalStyles.css");
-@import url("../../reset.css");
+@import url("../assets/styles/globalStyles.css");
+@import url("../assets/styles/reset.css");
 
 body{
     color: var(--white);

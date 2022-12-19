@@ -1,6 +1,6 @@
 <?php
 
-require_once __DIR__ . "/../vendor/autoload.php";
+require_once __DIR__ . "/../../vendor/autoload.php";
 
 use classes\Usuario;
 
@@ -11,10 +11,10 @@ if (isset($_POST["button"])) {
     if ($user->authenticate()) {
 
         if ($_SESSION["funcao"] == "Carcereiro") {
-            header("location: ../src/listarDetentos");
+            header("location: ../listarDetentos");
         }
         elseif ($_SESSION["funcao"] == "Policial") {
-            header("location: ../src/listarOrdensdePrisao");
+            header("location: ../listarOrdensdePrisao");
         }
         elseif ($_SESSION["funcao"] == "Administrador") {
             header("location: index.php");

@@ -171,7 +171,7 @@ class Detento implements ActiveRecord
         $minutes = round(abs($diff / 60), 0);
 
         // QUANTIDADE DE MINUTOS A ESPERAR PARA RESPONDER A PERGUNTA;
-        $minutosaguardo = 1;
+        $minutosaguardo = 3;
 
         if($minutes >= $minutosaguardo && $status == 1 ){
             $conexao = new MySQL();

@@ -4,17 +4,21 @@ require_once __DIR__ . "/../../vendor/autoload.php";
 session_start();
 
 if (!isset($_SESSION["idUsuario"]) && $_SESSION["funcao"] != "Carcereiro") {
-    header("location: ../../login");
+    header("location: ../login");
 }
 
 use classes\Detento;
 use classes\OrdemPrisao;
 
 $detentos = Detento::findall();
+foreach ($detentos as $detento) {
+    Detento::ativaPergunta($detento->getIdOrdemPrisao());
+}
+
+$detentosAtualizados = Detento::findall();
 $ordens = array();
 
 foreach ($detentos as $detento) {
-    $test = Detento::ativaPergunta($detento->getIdOrdemPrisao());
     $ordens[] = array(
         OrdemPrisao::find($detento->getIdOrdemPrisao()),
         $detento
@@ -35,8 +39,8 @@ foreach ($detentos as $detento) {
           href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.css" />
-    <link rel="stylesheet" href="../../reset.css">
-    <link rel="stylesheet" href="../../globalStyles.css">
+    <link rel="stylesheet" href="../assets/styles/reset.css">
+    <link rel="stylesheet" href="../assets/styles/globalStyles.css">
     <title>Ordens de Prisão</title>
 </head>
 
@@ -53,7 +57,7 @@ foreach ($detentos as $detento) {
                 </span>
             <div class="user-opt">
                 <a href="#">Solturas</a>
-                <a href="../../login/logout.php">Sair</a>
+                <a href="../login/logout.php">Sair</a>
             </div>
         </div>
     </div>
