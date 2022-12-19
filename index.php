@@ -43,7 +43,7 @@
         <h1>Olá, seja bem vindo(a)!</h1>
         <img src="cadeia.png" alt="ilustração cadeia" class="cadeia-img">
         <p class="p-centro">
-            Para prender alguém na cadeia preencha o código do ticket, avance para a próxima etapa e faça a ordem de prisão.
+            Para prender alguém na cadeia preencha o código do <abbr title="Ticket seria o dinheiro que você utiliza para mandar prender alguém, ele pode ser adquirido nas brincadeiras de são joão e nas barraquinhas.">ticket</abbr>, avance para a próxima etapa e faça a ordem de prisão.
         </p>
         <a href="src/emitirOrdem/validarTicket.php" class="button">Emitir Nova Ordem de Prisão</a>
         <a href="src/visualizarStatusOrdem/visuOrdem.php" class="button">Acompanhar Ordem Já Existente</a>

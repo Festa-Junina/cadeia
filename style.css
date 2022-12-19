@@ -41,7 +41,7 @@ body{
     justify-content: center;
     min-width: 120px;
 }
-.modal{
+.modala{
     position: fixed;
     left: 50%;
     top: 50%;
@@ -96,4 +96,8 @@ p{
     display: block;
     width: 100%;
     max-width: 380px;
+}
+abbr{
+    text-decoration: none;
+    color: var(--darkGreen);
 }
