@@ -44,17 +44,20 @@ if(isset($_POST['botao'])){
                         <label for='telefone'>telefone</label>
                         <input name='telefone' id='telefone' value='{$carcereiro->getTelefone()}' type='tel' maxlength='14' data-js='phone' required>
 
-
                         <label for='ativo'>Status:</label>
-                        <select id='ativo' name='ativo' required>
-                        
-                        <option 
-
-
-                        <option value='1'>Ativo</option>
-                        <option value='0'>Inativo</option>
-                        
-                    </select>
+                        ";
+                        if ($carcereiro->getAtivo() == 1){
+                            echo "<select id='ativo' name='ativo' required>
+                                    <option value='1'>Ativo</option>
+                                    <option value='0'>Inativo</option>
+                                    </select>";
+                        }else {
+                            echo "<select id='ativo' name='ativo' required>
+                                    <option value='0'>Inativo</option>
+                                    <option value='1'>Ativo</option>
+                                    </select>";
+                        }
+                        echo "
                     <br>
                     <input type='hidden' name='senha' value={$carcereiro->getSenha()} id='senha' required>
                     <input name='id' value={$carcereiro->getIdUsuario()} type='hidden'>

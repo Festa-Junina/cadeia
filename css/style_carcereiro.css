@@ -83,7 +83,6 @@ html,body{
     padding: 3px;
     transition: 200ms;
     text-decoration: none;
-    font-family: Open Sans;
     font-weight: bold;
     border-radius: 5px;
     margin: 0em 0.5em;
@@ -210,7 +209,6 @@ input:focus{
     cursor: pointer;
     font-size: 1em;
     font-weight: bold;
-    font-family: Open Sans;
     cursor: pointer;
     border-radius: 5px;
     margin-bottom: 1em;
@@ -232,13 +230,20 @@ input:focus{
     cursor: pointer;
     font-size: 1em;
     font-weight: bold;
-    font-family: Open Sans;
     cursor: pointer;
     border-radius: 5px;
 }
 .botaoCad a:hover{
     background: #bd6161;
     border: solid 1px #924b4b;
+}
+.edit-carc select{
+    height: 2.5em;
+    border-radius: 5px;
+    -webkit-appearance: none;
+    padding: 0px 5px;
+    font-family: Open Sans;
+    font-weight: bold;
 }
 
 /*cadastrarCarc----------*/
@@ -254,7 +259,6 @@ input:focus{
     cursor: pointer;
     font-size: 1em;
     font-weight: bold;
-    font-family: Open Sans;
     cursor: pointer;
     border-radius: 5px;
     margin-bottom: 1em;
