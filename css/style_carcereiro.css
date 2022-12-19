@@ -1,10 +1,11 @@
 @import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300&display=swap');
+@import url("../globalStyles.css");
 *{
     margin: 0px;
     padding: 0px;
 }
 html,body{
-    font-family: Open Sans;
+    font-family: 'Mulish';
 }
 
 /*INDEX----------*/
@@ -19,23 +20,24 @@ html,body{
     border-bottom: solid 1px #104228;
 }
 .title-carcereiro h1{
-    margin: 0em 2em;
     display: flex;
     text-align: center;
     justify-content: center;
 }
 .box-dados-carc{
-    flex-direction: row;
     display: flex;
-    width: 100%;
+    flex-wrap: wrap;
+    gap: 3rem;
     justify-content: center;
 }
 .box-all{
-    flex-direction: column;
-    display: flex;
-    justify-content: center;
     align-items: center ;
-    width: 100%;
+    width: 285px;
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: .8rem;
 }
 .dados-carc{
     display: flex;
@@ -51,12 +53,14 @@ html,body{
     justify-content: center;
 }
 .centro{
+    color: var(--black);
     display: flex;
     justify-content: center;
-    border: solid 1px rgb(97, 97, 97);
-    background-color: #e7e7e7;
-    border-radius: 5px;
-    margin-bottom: 2em;
+    border: 2px solid var(--primaryVariant);
+    background-color: var(--withe);
+    border-radius: .6rem;
+    margin-bottom: 0.5em;
+    box-shadow: 0 0 8px var(--blackOpacity);
 }
 .labels{
     font-weight: bold;
