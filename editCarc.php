@@ -35,6 +35,9 @@ if(isset($_POST['botao'])){
                     <div class='box-edit'>
                     <div class='centro-edit'>
                     <div class='edit-carc'>
+                    <div class='delete'>
+                        <a href='excluirCarc.php?id={$carcereiro->getIdUsuario()}'>Excluir<img src='icons/delete_ico.png'></a>
+                    </div>
                         <label for='nome'>Nome:</label>
                         <input name='nome' id='nome' value='{$carcereiro->getNome()}' type='text' required>
 

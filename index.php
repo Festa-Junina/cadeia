@@ -50,16 +50,14 @@ $carcereiros = Carcereiro::findall();
                     echo "
                 <div class='ops-carc'>
                     <a class='admit' href='admitirCarc.php?id={$carcereiro->getIdUsuario()}'><img src='icons/admit_ico.png'>Contratar</a>
-                    <a class='demit' href='excluirCarc.php?id={$carcereiro->getIdUsuario()}'><img src='icons/desativar_ico.png'>Demitir</a>
+                    <a class='demit' href='demitirCarc.php?id={$carcereiro->getIdUsuario()}'><img src='icons/desativar_ico.png'>Demitir</a>
                     </div>
                 </div>
                 </div>
                 </div>";
-            
         }
         ?>
     </div>
 </div>
-
 </body>
 </html>

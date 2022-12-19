@@ -92,6 +92,11 @@ class Carcereiro implements ActiveRecord{
     }
     public function delete():bool{
         $conexao = new MySQL();
+        $sql = "DELETE FROM usuario WHERE idUsuario = {$this->idUsuario}";
+        return $conexao->executa($sql);
+    }
+    public function demitir():bool{
+        $conexao = new MySQL();
         $sql = "UPDATE usuario SET ativo = 0 WHERE usuario.idUsuario = '{$this->idUsuario}'";
         return $conexao->executa($sql);
     }

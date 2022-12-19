@@ -86,7 +86,6 @@ html,body{
     font-weight: bold;
     border-radius: 5px;
     margin: 0em 0.5em;
-    
 }
 .ops-carc-edit{
     margin-right: 1em;
@@ -100,6 +99,9 @@ html,body{
     display: flex;
     text-decoration: none;
 }
+.ops-carc-edit a:hover{
+    text-decoration: underline;
+}
 .ops-carc-edit img{
     margin-left: 0.1em;
     margin-top: 0.2em;
@@ -112,7 +114,6 @@ html,body{
     color: black;
     transition: 200ms;
     border-radius: 5px;
-    
 }
 .edit:hover{
     cursor: pointer;
@@ -190,6 +191,25 @@ html,body{
     justify-content: center;
     align-items: center ;
     width: 100%;
+}
+.delete{
+    display: flex;
+    justify-content: right;
+}
+.delete a{
+    flex-direction: row;
+    display: flex;
+    text-decoration: none;
+    color: black;
+}
+.delete a:hover{
+    text-decoration: underline;
+}
+.delete img{
+    margin-left: 0.1em;
+    margin-top: 0.2em;
+    width: 1em;
+    height: 1em;
 }
 .edit-carc{
     display: flex;
