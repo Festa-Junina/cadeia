@@ -38,6 +38,9 @@ $carcereiros = Carcereiro::findall();
                     
                     <label class='labels'>Telefone:</label>
                     <p>{$carcereiro->getTelefone()}</p>
+
+                    <label class='labels'>Situação:</label>
+                    <p>{$carcereiro->getAtivo()}</p>
                 
                 <div class='ops-carc'>
                     <a href='editCarc.php?id={$carcereiro->getIdUsuario()}'>Editar</a>
