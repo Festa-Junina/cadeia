@@ -92,7 +92,7 @@ CREATE TABLE prisao (
     idStatusPrisao INT not null,
     horaPrisao TIMESTAMP not null,
     quantidadePerguntasRespondidas INT not null,
-    atualizacaoStatus TIMESTAMP not null,
+    atualizacaoStatus TIMESTAMP not null default CURRENT_TIMESTAMP,
     FOREIGN key (idOrdemPrisao) REFERENCES
     ordemPrisao(idOrdem),
     FOREIGN key (idStatusPrisao) REFERENCES
