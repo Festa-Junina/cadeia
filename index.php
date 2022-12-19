@@ -12,7 +12,6 @@
 <body>
 
 <?php
-
     if(isset($_GET['success'])){
         $passou = $_GET['success'];
         if($passou == "yes"){
@@ -20,7 +19,7 @@
             echo "<div class='blur' id='blur'></div>
             <div class='modal' id='modal'>
                 <h1>Sucesso!</h1>
-                <p>Sua ordem de prisão foi emitida com sucesso, lembre-se do seu numero de ticket <mark>$ticket</mark>, pois    com ele você pode acompanhar o andamento da ordem.</p>
+                <p>Sua ordem de prisão foi emitida com sucesso, lembre-se do seu numero de ticket <mark>$ticket</mark>, pois com ele você pode acompanhar o andamento da ordem.</p>
                 <button class='button' id='closeModal'>Fechar</button>
             </div>";
         }else{

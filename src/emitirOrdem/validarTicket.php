@@ -1,5 +1,3 @@
-
-
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -21,7 +19,8 @@
     <main class="main container">
         <a href="../../index.php" class='links'>🡄 Voltar à tela inicial</a>
         <form action="validarTicket.php" method="post" class="form">
-            <?php 
+            <?php
+            ini_set ( 'display_errors' , 1); error_reporting (E_ALL);
             require_once "../classes/Ticket.php";
             if(isset($_POST['submit'])){
                 $ticket = new Ticket($_POST['ticket']);

@@ -2,7 +2,6 @@
 
 require_once "../classes/Ticket.php";
 
-
 if(isset($_POST['submit'])){
     $ticket = new Ticket($_POST['ticket']);
     $resultado = $ticket->findOrdem();    
@@ -39,7 +38,6 @@ if(isset($_POST['submit'])){
 
         if(isset($resultado)){
             if($resultado != false){
-
                 echo "
                     <div class='statusOrdem'>
                         <h2>Nome Meliante</h2>

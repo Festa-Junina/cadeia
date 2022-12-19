@@ -70,6 +70,11 @@ body{
 .hide{
     display: none;
 }
+mark{
+    font-weight: bold;
+    background-color: initial;
+    color: var(--darkGreen);
+}
 
 
 /*DETALHES*/
