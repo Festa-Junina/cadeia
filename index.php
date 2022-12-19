@@ -29,6 +29,9 @@ $carcereiros = Carcereiro::findall();
                 <div class='box-all'>
                 <div class='centro'>
                 <div class='dados-carc'>
+                <div class='ops-carc-edit'>
+                    <a class='edit' href='editCarc.php?id={$carcereiro->getIdUsuario()}'>Editar<img src='icons/edit_ico.png'></a>
+                </div>
                     <label class='labels'>Nome:</label>
                     <p>{$carcereiro->getNome()}</p>
                     
@@ -46,7 +49,7 @@ $carcereiros = Carcereiro::findall();
                     }
                     echo "
                 <div class='ops-carc'>
-                    <a class='edit' href='editCarc.php?id={$carcereiro->getIdUsuario()}'><img src='icons/edit_ico.png'>Editar</a>
+                    <a class='admit' href='admitirCarc.php?id={$carcereiro->getIdUsuario()}'><img src='icons/admit_ico.png'>Contratar</a>
                     <a class='demit' href='excluirCarc.php?id={$carcereiro->getIdUsuario()}'><img src='icons/desativar_ico.png'>Demitir</a>
                     </div>
                 </div>

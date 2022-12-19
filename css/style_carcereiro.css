@@ -44,7 +44,7 @@ html,body{
     flex-direction: column;
     min-width: 280px;
     text-align: left;
-    padding: 1em 0.5em;
+    padding: 0em 0.5em 1em 0.5em;
 }
 .dados-carc p{
     margin-bottom: 2em;
@@ -76,11 +76,11 @@ html,body{
     justify-content: center;
 }
 .ops-carc a{
-    width: 30%;
+    width: 32%;
     background-color: rgb(228, 228, 228);
     border: solid 1px rgb(199, 199, 199);
     color: black;
-    padding: 3px;
+    padding: 5px;
     transition: 200ms;
     text-decoration: none;
     font-weight: bold;
@@ -88,9 +88,39 @@ html,body{
     margin: 0em 0.5em;
     
 }
+.ops-carc-edit{
+    margin-right: 1em;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: right;
+}
+.ops-carc-edit a{
+    flex-direction: row;
+    display: flex;
+    text-decoration: none;
+}
+.ops-carc-edit img{
+    margin-left: 0.1em;
+    margin-top: 0.2em;
+    width: 1em;
+    height: 1em;
+}
+.edit{
+    margin-top: 0.5em;
+    width: 8%;
+    color: black;
+    transition: 200ms;
+    border-radius: 5px;
+    
+}
 .edit:hover{
+    cursor: pointer;
+    border-radius: 3px;
+}
+.admit:hover{
     border: solid 1px rgb(255, 255, 255);
-    background-color: rgb(170, 224, 163);
+    background-color: rgb(163, 224, 168);
 }
 .demit:hover{
     border: solid 1px rgb(255, 255, 255);

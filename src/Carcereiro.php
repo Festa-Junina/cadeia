@@ -95,6 +95,11 @@ class Carcereiro implements ActiveRecord{
         $sql = "UPDATE usuario SET ativo = 0 WHERE usuario.idUsuario = '{$this->idUsuario}'";
         return $conexao->executa($sql);
     }
+    public function admitir():bool{
+        $conexao = new MySQL();
+        $sql = "UPDATE usuario SET ativo = 1 WHERE usuario.idUsuario = '{$this->idUsuario}'";
+        return $conexao->executa($sql);
+    }
 
     public static function find($idUsuario):Carcereiro{
         $conexao = new MySQL();
