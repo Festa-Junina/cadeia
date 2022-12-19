@@ -17,7 +17,6 @@ $carcereiros = Carcereiro::findall();
     <div class="title-carcereiro">
             <h1>Listagem dos Carcereiros</h1>
     </div>
-
     <div class="links" >
         <div class="add">
             <a href="cadastrarCarc.php">+ Cadastrar Carcereiro</a>
@@ -38,13 +37,17 @@ $carcereiros = Carcereiro::findall();
                     
                     <label class='labels'>Telefone:</label>
                     <p>{$carcereiro->getTelefone()}</p>
-
-                    <label class='labels'>Situação:</label>
-                    <p>{$carcereiro->getAtivo()}</p>
-                
+                    
+                    <label class='labels'>Situação:</label>";
+                    if ($carcereiro->getAtivo() == 1){
+                        echo "<div class='balls'><div class='ball-ativo'></div><p>Ativo</p></div>";
+                    }else {
+                        echo "<div class='balls'><div class='ball-inativo'></div><p>Inativo</p></div>";
+                    }
+                    echo "
                 <div class='ops-carc'>
-                    <a href='editCarc.php?id={$carcereiro->getIdUsuario()}'>Editar</a>
-                    <a href='excluirCarc.php?id={$carcereiro->getIdUsuario()}'>Excluir</a>
+                    <a class='edit' href='editCarc.php?id={$carcereiro->getIdUsuario()}'><img src='icons/edit_ico.png'>Editar</a>
+                    <a class='demit' href='excluirCarc.php?id={$carcereiro->getIdUsuario()}'><img src='icons/desativar_ico.png'>Demitir</a>
                     </div>
                 </div>
                 </div>

@@ -42,7 +42,7 @@ if(isset($_POST['botao'])){
                         <input name='login' id='login' value='{$carcereiro->getLogin()}' type='text' required>
                     
                         <label for='telefone'>telefone</label>
-                        <input name='telefone' id='telefone' value='{$carcereiro->getTelefone()}' type='text' required>
+                        <input name='telefone' id='telefone' value='{$carcereiro->getTelefone()}' type='tel' maxlength='14' data-js='phone' required>
 
 
                         <label for='ativo'>Status:</label>
@@ -70,6 +70,24 @@ if(isset($_POST['botao'])){
         </form>
     </div>
 </div>
-</div> 
+</div>
+<script>
+    const formato = {
+phone (value) {
+  return value
+    .replace(/\D/g, '')
+    .replace(/(\d{2})(\d)/, '($1)$2')
+    .replace(/(\d{4})(\d)/, '$1-$2')
+    .replace(/(\d{4})-(\d)(\d{4})/, '$1$2-$3')
+    .replace(/(-\d{4})\d+?$/, '$1')
+}
+}
+document.querySelectorAll('input').forEach(($input) => {
+const field = $input.dataset.js
+$input.addEventListener('input', (e) => {
+  e.target.value = formato[field](e.target.value)
+}, false)
+})
+</script>  
 </body>
 </html>

@@ -31,7 +31,7 @@ if(isset($_POST['botao'])){
                         Nome: <input name='nome' type="text" required>
                         Email: <input name='login' type='email' required>
                         Senha: <input name='senha' type="password" required>
-                        Telefone: <input name='telefone' type="string" required>
+                        Telefone: <input name='telefone' type="tel" maxlength="14" data-js="phone" required>
                         Status: <select name="ativo">
                             <option value="1">Ativo</option>
                             <option value="0">Inativo</option>
@@ -47,6 +47,24 @@ if(isset($_POST['botao'])){
     </form>
 </div>
 </div>
-</div>    
+</div>
+<script>
+    const formato = {
+phone (value) {
+  return value
+    .replace(/\D/g, '')
+    .replace(/(\d{2})(\d)/, '($1)$2')
+    .replace(/(\d{4})(\d)/, '$1-$2')
+    .replace(/(\d{4})-(\d)(\d{4})/, '$1$2-$3')
+    .replace(/(-\d{4})\d+?$/, '$1')
+}
+}
+document.querySelectorAll('input').forEach(($input) => {
+const field = $input.dataset.js
+$input.addEventListener('input', (e) => {
+  e.target.value = formato[field](e.target.value)
+}, false)
+})
+</script>  
 </body>
 </html>

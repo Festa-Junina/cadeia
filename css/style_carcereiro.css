@@ -8,7 +8,7 @@ html,body{
     font-family: 'Mulish';
 }
 
-/*INDEX----------*/
+/*INDEX/listarCarc----------*/
 .title-carcereiro{
     padding: 0.5em 0em;
     margin: none;
@@ -69,9 +69,16 @@ html,body{
 .email{
     word-break: break-all;
 }
+.ops-carc{
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
 .ops-carc a{
-    background-color: rgb(199, 199, 199);
-    border: solid 1px gray;
+    width: 30%;
+    background-color: rgb(228, 228, 228);
+    border: solid 1px rgb(199, 199, 199);
     color: black;
     padding: 3px;
     transition: 200ms;
@@ -79,9 +86,14 @@ html,body{
     font-family: Open Sans;
     font-weight: bold;
     border-radius: 5px;
+    margin: 0em 0.5em;
+    
 }
-.ops-carc a:hover{
-    background-color: rgb(206, 206, 206);
+.edit:hover{
+    background-color: rgb(170, 224, 163);
+}
+.demit:hover{
+    background-color: rgb(224, 163, 163);
 }
 .linha{
     text-decoration: underline;
@@ -108,6 +120,30 @@ html,body{
 .add a:hover{
     border: solid 1px rgb(165, 165, 165);
     box-shadow: rgb(197, 197, 197) 3px 3px 3px ;
+}
+.balls{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    text-align: center;
+    margin-bottom: 2em;
+}
+.balls p{
+    margin: 0;
+}
+.ball-ativo{
+    width: 1em;
+    height: 1em;
+    border-radius: 50%;
+    background-color: rgb(2, 190, 27);
+    margin-right: 0.3em;
+}
+.ball-inativo{
+    width: 1em;
+    height: 1em;
+    border-radius: 50%;
+    background-color: rgb(221, 0, 0);
+    margin-right: 0.3em;
 }
 
 /*editCarc----------*/
