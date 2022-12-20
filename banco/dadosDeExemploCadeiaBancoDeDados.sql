@@ -1,3 +1,10 @@
+
+/*
+
+SCRIPT COM OS DADOS DE EXEMPLO USADOS PARA TESTE;
+
+*/
+
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
 SET time_zone = "+00:00";
@@ -17,10 +24,10 @@ INSERT INTO `ordemprisao` (`idOrdem`, `idTicket`, `idTipoMeliante`, `idTurmaMeli
 (1, 5, 0, 0, 0, 'shaolin matador de porco', 'menino forte, 1.80, moreno de 22 anos', 'na sua casa', 'Luisa Mell', '0800-776', 3, NULL, '2022-12-20 03:22:03'),
 (2, 6, 2, NULL, 2, 'Diogo Defante', 'Youtuber, humorista, repórter doidão, humor escrachado e nonsense que faz pegadinhas e entrevistas inusitadas com quem passa nas ruas.', 'Qatar', 'Hamad bin Khalifa', '0800-999', 3, 2, '2022-12-20 03:22:03');
 
-INSERT INTO `pergunta` (`idPergunta`, `idCategoria`, `enunciado`, `resposta`, `alternativa1`, `alternativa2`, `alternativa3`) VALUES
-(1, 8, 'Quem veio primeiro ?', 'A galinha', 'O ovo', 'O galo', 'O pinto'),
-(2, 0, 'Quanto é 1 + 1 ?', '2', '3', '1', '11'),
-(3, 1, '(FCC) A ocorrência de interferências ___ -nos a concluir que ___ uma relação profunda entre homem e sociedade que os ___ mutuamente dependentes', 'leva, existe, torna', 'levam, existe, tornam', 'levam, existem, tornam', 'levam, existem, torna');
+INSERT INTO `pergunta` (`idPergunta`, `idCategoria`, `enunciado`, `alternativaA`, `alternativaB`, `alternativaC`, `alternativaD`, `alternativaCorreta`) VALUES
+(1, 8, 'Quem veio primeiro ?', 'A galinha', 'O ovo', 'O galo', 'O pinto', 'A'),
+(2, 0, 'Quanto é 1 + 1 ?', '2', '3', '1', '11', 'A'),
+(3, 1, '(FCC) A ocorrência de interferências ___ -nos a concluir que ___ uma relação profunda entre homem e sociedade que os ___ mutuamente dependentes', 'leva, existe, torna', 'levam, existe, tornam', 'levam, existem, tornam', 'levam, existem, torna', 'A');
 
 INSERT INTO `perguntacategoria` (`idCategoria`, `nome`) VALUES
 (0, 'Matemática'),
@@ -38,7 +45,7 @@ INSERT INTO `perguntacategoria` (`idCategoria`, `nome`) VALUES
 (12, 'IFRS');
 
 INSERT INTO `prisao` (`idPrisao`, `idOrdemPrisao`, `idStatusPrisao`, `horaPrisao`, `quantidadePerguntasRespondidas`, `atualizacaoStatus`) VALUES
-(1, 2, 3, '2022-12-20 03:22:03', 1, '2022-12-20 03:22:03');
+(1, 2, 2, '2022-12-20 03:22:03', 0, '2022-12-20 23:17:30');
 
 INSERT INTO `statusordem` (`idStatusOrdem`, `nome`) VALUES
 (0, 'Aberto'),
@@ -53,7 +60,8 @@ INSERT INTO `statusprisao` (`idStatusPrisao`, `nome`) VALUES
 (4, 'Aguardando Resposta 2'),
 (5, 'Aguardando Pergunta 3'),
 (6, 'Aguardando Resposta 3'),
-(7, 'Respondeu Corretamente');
+(7, 'Respondeu Corretamente'),
+(8, 'Errou a última');
 
 INSERT INTO `ticket` (`idTicket`, `ticket`, `valido`) VALUES
 (1, 0, 1),
@@ -87,7 +95,10 @@ INSERT INTO `turmameliante` (`idTurmaMeliante`, `nome`) VALUES
 (14, 'TA-3'),
 (15, 'TA-4');
 
-/* A SENHA DOS USUÁRIOS É O PRÓPRIO E-MAIL CADASTRADO NOS EXEMPLOS ABAIXO */;
+/*
+A SENHA DOS USUÁRIOS FICCIONAIS É O PRÓPRIO E-MAIL CADASTRADO;
+*/
+
 INSERT INTO `usuario` (`idUsuario`, `idFuncao`, `login`, `senha`, `nome`, `telefone`, `ativo`) VALUES
 (1, 0, 'administrador@teste123.com', '$2y$10$dpFX4m8TcIMDzOf.JKK.kOp2ReRpkEkJZnW1aWCPOG42kUtEpfQ4.', 'Fabio Bastian', '51 986254753', 1),
 (2, 1, 'carcereiro@teste123.com', '$2y$10$6taM2xMERpsDChnj6PROVu.L2lOJ6AVg77QICpQhHSQGmXu1YVN0W', 'Murilo Mouthinho', '54 852547536', 1),

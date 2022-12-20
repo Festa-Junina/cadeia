@@ -1,3 +1,9 @@
+/*
+
+SCRIPT SQL COM A ESTRUTURA DO BANCO DE DADOS `cadeia-app`;
+
+*/
+
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
 SET time_zone = "+00:00";
@@ -49,10 +55,11 @@ CREATE TABLE IF NOT EXISTS `pergunta` (
   `idPergunta` int(11) NOT NULL AUTO_INCREMENT,
   `idCategoria` int(11) NOT NULL,
   `enunciado` varchar(200) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `resposta` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `alternativa1` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `alternativa2` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `alternativa3` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `alternativaA` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `alternativaB` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `alternativaC` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `alternativaD` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `alternativaCorreta` char(1) COLLATE utf8mb4_unicode_ci DEFAULT 'A',
   PRIMARY KEY (`idPergunta`),
   KEY `idCategoria` (`idCategoria`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
