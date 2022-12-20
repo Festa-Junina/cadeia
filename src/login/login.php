@@ -17,7 +17,7 @@ if (isset($_POST["button"])) {
             header("location: ../listarOrdensdePrisao");
         }
         elseif ($_SESSION["funcao"] == "Administrador") {
-            header("location: index.php");
+            header("location: ../admin");
         }
 
     } else {

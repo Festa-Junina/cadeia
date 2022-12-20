@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -30,7 +30,7 @@
         </div>
         <footer class="login-page-footer">
             <div class="footer-login-util-area">
-                <h1 class="login-page-footer-text">Feito pelo 3º ano do curso Técnico em Informática de 2022</h1>
+                <h1 class="login-page-footer-text">Feito pelo 3º ano do curso Técnico em Informática de 2022.</h1>
             </div>
         </footer>
     </div>

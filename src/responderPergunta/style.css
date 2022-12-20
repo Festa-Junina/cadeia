@@ -9,6 +9,8 @@ body {
     flex-direction: column;
     row-gap: 25px;
     max-width: 400px;
+    margin-bottom: 40px;
+    padding: 8px;
 }
 .area-responder-pergunta .descricao-pergunta {
     border: 2px solid #3CC47C;
@@ -68,6 +70,7 @@ span::before {
     min-height: 14px;
     margin: 4px;
     border-radius: 50%;
+    font-weight: bold;
 }
 #button {
     background-color: #104228;
@@ -92,6 +95,7 @@ span::before {
     padding: 10px;
     border-radius: 8px;
     border: 2px solid #d75b5b;
+    margin: 8px;
 }
 .tempo-restante>#timer {
     font-weight: bold;

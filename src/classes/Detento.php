@@ -209,9 +209,10 @@ class Detento implements ActiveRecord
         }
     }
 
-    public static function updateStatus($idOrdemPrisao, $status) {
+    public function updateStatus($status) {
         $conexao = new MySQL();
-        $sql = "UPDATE prisao set idStatusPrisao = {$status} where idOrdemPrisao = {$idOrdemPrisao}";
+        $qtdeP = $this->quantidadePerguntasRespondidas + 1;
+        $sql = "UPDATE prisao set idStatusPrisao = {$status}, quantidadePerguntasRespondidas = {$qtdeP} where idPrisao = {$this->idPrisao}";
         return $conexao->executa($sql);
     }
 

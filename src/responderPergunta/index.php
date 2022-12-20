@@ -57,21 +57,32 @@ $statusDetento = $detentoSelecionado->getIdStatusPrisao();
     </div>
 </div>
 
-<p class="tempo-restante">Tempo restante para responder a pergunta: <span id="timer">00:10</span></p>
+<?php
+
+use classes\Pergunta;
+
+$pergunta = Pergunta::sorteioPergunta();
+$categoria = $pergunta->getNomeCategoria();
+
+?>
+
+<?php echo "" ?>
+
+<p class="tempo-restante">Tempo restante para responder a pergunta: <span id="timer">05:00</span></p>
 
 <div class="area-responder-pergunta">
     <p class="nome-detento">Nome do detento: <?php echo $ordemPrisao->getNomeMeliante() ?></p>
 
     <div class="descricao-pergunta">
-        <p class="nome-categoria">Categoria da pergunta</p>
+        <p class="nome-categoria"><?php echo $categoria ?></p>
 
-        <p class="enunciado">Enunciado da pergunta enunciado da pergunta enunciado da pergunta enunciado da pergunta enunciado da pergunta enunciado da pergunta enunciado da pergunta enunciado da pergunta enunciado da pergunta enunciado da pergunta enunciado da pergunta enunciado da pergunta enunciado da pergunta enunciado da pergunta:</p>
+        <p class="enunciado"><?php echo $pergunta->getEnunciado() ?></p>
     </div>
 
     <form action="resposta.php" method="post">
         <?php
 
-        echo "<input name='idPergunta' value='1' type='hidden'>";
+        echo "<input name='idPergunta' value='{$pergunta->getIdPergunta()}' type='hidden'>";
         echo "<input id='idDetento' name='idDetento' value='{$detentoSelecionado->getIdPrisao()}' type='hidden'>";
 
         ?>
@@ -79,22 +90,22 @@ $statusDetento = $detentoSelecionado->getIdStatusPrisao();
         <div class="alternativas">
             <label>
                 <input type="radio" name='resposta' value='A'>
-                <span id="A">Alternativa A</span>
+                <span id="A"><?php echo $pergunta->getAlternativaA() ?></span>
             </label>
 
             <label>
                 <input type="radio" name='resposta' value='B'>
-                <span id="B">Alternativa B</span>
+                <span id="B"><?php echo $pergunta->getAlternativaB() ?></span>
             </label>
 
             <label>
                 <input type="radio" name='resposta' value='C'>
-                <span id="C">Alternativa C</span>
+                <span id="C"><?php echo $pergunta->getAlternativaC() ?></span>
             </label>
 
             <label>
                 <input type="radio" name='resposta' value='D'>
-                <span id="D">Alternativa D</span>
+                <span id="D"><?php echo $pergunta->getAlternativaD() ?></span>
             </label>
         </div>
 
