@@ -1,11 +1,6 @@
 <?php
-require_once __DIR__ . "/../../vendor/autoload.php";
 
-session_start();
-
-if (!isset($_SESSION["idUsuario"]) && $_SESSION["funcao"] != "Administrador") {
-    header("location: ../login");
-}
+require_once "../login/sessions/sessaoAdmin.php";
 
 ?>
 
@@ -86,7 +81,7 @@ if (!isset($_SESSION["idUsuario"]) && $_SESSION["funcao"] != "Administrador") {
                     <h2>Cadastro de Carcereiros</h2>
                 </div>
 
-                <a href="../listarPoliciais">
+                <a href="../listarCarcereiros">
                     <div class="order-btn">
                         <h2>Acessar</h2>
                     </div>
