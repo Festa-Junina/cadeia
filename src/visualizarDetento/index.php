@@ -8,18 +8,17 @@ if (!isset($_SESSION["idUsuario"]) && $_SESSION["funcao"] != "Carcereiro") {
 }
 use classes\Detento;
 use classes\OrdemPrisao;
+use classes\TipoMeliante;
+use classes\Turma;
 $detento = new Detento();
 if (isset($_GET['idDetento'])) {
     $detento->setIdOrdemPrisao($_GET['idDetento']);
 }
 // echo $detento->getIdPrisao();
 $ordemPrisao = OrdemPrisao::find($detento->getIdOrdemPrisao());
-// var_dump($ordemPrisao);
-// echo $ordemPrisao->getNomeMeliante();
-// die();  
-// $detento->setIdPrisao($detento->getIdPrisao());
-// var_dump($detento);
-// die();
+// $turma = Turma::find($ordemPrisao->getIdTurmaMeliante())->getTurma();
+
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -52,7 +51,15 @@ $ordemPrisao = OrdemPrisao::find($detento->getIdOrdemPrisao());
                 <h1><?php echo $ordemPrisao->getNomeMeliante() ?></h1>
             </div>
             <div class="visualizar-detento-descricao">
-                <h2><?php echo $ordemPrisao->getDescricaoMeliante() ?></h2>
+                <p><strong>Descrição: </strong><?php echo $ordemPrisao->getDescricaoMeliante() ?></p>
+                <p><strong>Tipo do meliante: </strong><?php echo TipoMeliante::find($ordemPrisao->getIdTipoMeliante())->getNome();?></p>
+                <?php
+                if (is_null($ordemPrisao->getIdTurmaMeliante())) {
+                    echo "<p><strong>Turma do meliante:</strong> O detento não possui uma turma pois não estuda no IFRS!</p>";
+                } else {
+                    echo "<p><strong>Turma do meliante:</strong>".Turma::find($ordemPrisao->getIdTurmaMeliante())->getTurma()."</p>";
+                }
+                ?>
             </div>
         </div>
     </div>
