@@ -71,8 +71,6 @@ foreach ($detentos as $detento) {
             $numero_detento = 0;
             foreach ($ordens as $ordem) {
                 $numero_detento += 1;
-                $test = Detento::ativaPergunta($ordem[1]->getIdOrdemPrisao());
-
                 echo "<div class=\"order\">";
                     echo "<div class=\"order-content\">";
 
@@ -168,7 +166,7 @@ foreach ($detentos as $detento) {
                         $status_p3 == "pode-responder"
                     ) {
                         echo "<div class=\"order-btn\">";
-                        echo "<h2>Responder</h2>";
+                        echo "<h2><a href='../responderPergunta/?id={$detento->getIdOrdemPrisao()}'>Responder</a></h2>";
                         echo "</div>";
                     }
 

@@ -16,7 +16,6 @@ body {
     display: flex;
     justify-content: space-between;
     padding: 0 2.5rem 0 3rem;
-    padding: 0 2.5rem 0 3rem;
     align-items: center;
     user-select: none;
 }
@@ -135,6 +134,10 @@ body {
     border-radius: 8px;
     color: var(--white);
     width: 100%;
+}
+a {
+    text-decoration: none;
+    color: #fff;
 }
 .order-btn:hover {
     cursor: pointer;

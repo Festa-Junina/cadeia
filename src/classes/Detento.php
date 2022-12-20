@@ -13,6 +13,7 @@ class Detento implements ActiveRecord
     private int $idStatusPrisao;
     private string $horaPrisao;
     private int $quantidadePerguntasRespondidas;
+    private string $atualizacaoStatus;
 
     public function __construct(
     ) {
@@ -157,6 +158,24 @@ class Detento implements ActiveRecord
 
     }
 
+    public static function findByOrdemDePrisao($idOrdemPrisao): Detento
+    {
+        $connection = new MySQL();
+        $sql = "SELECT idPrisao, idOrdemPrisao, idStatusPrisao, horaPrisao, quantidadePerguntasRespondidas, atualizacaoStatus FROM prisao WHERE idOrdemPrisao = {$idOrdemPrisao}";
+        $resultados = $connection->consulta($sql);
+
+        $detento = new Detento();
+
+        $detento->setIdPrisao($resultados[0]["idPrisao"]);
+        $detento->setIdOrdemPrisao($resultados[0]["idOrdemPrisao"]);
+        $detento->setIdStatusPrisao($resultados[0]["idStatusPrisao"]);
+        $detento->setHoraPrisao($resultados[0]["horaPrisao"]);
+        $detento->setQuantidadePerguntasRespondidas($resultados[0]["quantidadePerguntasRespondidas"]);
+        $detento->setAtualizacaoStatus($resultados[0]["atualizacaoStatus"]);
+
+        return $detento;
+    }
+
     public static function ativaPergunta($id) : bool {
         $conexao = new MySQL();
         $sql = "SELECT idStatusPrisao, atualizacaostatus from prisao where idOrdemPrisao = $id";
@@ -170,7 +189,6 @@ class Detento implements ActiveRecord
         $diff = $today - $prison;
         $minutes = round(abs($diff / 60), 0);
 
-        // QUANTIDADE DE MINUTOS A ESPERAR PARA RESPONDER A PERGUNTA;
         $minutosaguardo = 3;
 
         if($minutes >= $minutosaguardo && $status == 1 ){
@@ -195,6 +213,16 @@ class Detento implements ActiveRecord
         $conexao = new MySQL();
         $sql = "UPDATE prisao set idStatusPrisao = {$status} where idOrdemPrisao = {$idOrdemPrisao}";
         return $conexao->executa($sql);
+    }
+
+    public function getAtualizacaoStatus(): string
+    {
+        return $this->atualizacaoStatus;
+    }
+
+    public function setAtualizacaoStatus(string $atualizacaoStatus): void
+    {
+        $this->atualizacaoStatus = $atualizacaoStatus;
     }
 
 }

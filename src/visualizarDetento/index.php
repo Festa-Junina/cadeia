@@ -17,6 +17,9 @@ if (isset($_GET['idDetento'])) {
 
 $ordemPrisao = OrdemPrisao::find($detento->getIdOrdemPrisao());
 
+$detentoSelecionado = Detento::findByOrdemDePrisao($ordemPrisao->getIdOrdem());
+$statusDetento = $detentoSelecionado->getIdStatusPrisao();
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -35,7 +38,7 @@ $ordemPrisao = OrdemPrisao::find($detento->getIdOrdemPrisao());
 <body>
 <div class="header">
         <div class="logo">
-            <a href="../listarDetentos/">Detentos</a>
+            <a href="../listarDetentos/">Visualizar Detento</a>
         </div>
         <div class="user">
             <p>Carcereiro</p>
@@ -58,8 +61,14 @@ $ordemPrisao = OrdemPrisao::find($detento->getIdOrdemPrisao());
             </div>
 
             <div class="botoes-acoes-detento">
-                <a href="" class="liberar">Liberar</a>
-                <a href="" class="liberar">Responder pergunta</a>
+                <?php
+                if ($statusDetento != 7) {
+                    echo "<a href='' class='liberar'>Liberar</a>";
+                    if ($statusDetento == 2 || $statusDetento == 4 || $statusDetento == 6) {
+                        echo "<a href='../responderPergunta' class='responder'>Responder pergunta</a>";
+                    }
+                }
+                ?>
             </div>
         </div>
     </div>
