@@ -145,10 +145,10 @@ class OrdemPrisao implements ActiveRecord
   }
   #endregion
 
-  #region telefoneDenunciante
+  #region horaOrdem
   public function setHoraOrdem(string $horaOrdem): void
   {
-    $this->horaOrdem = time();
+    $this->horaOrdem = strtotime($horaOrdem);
   }
 
   public function getHoraOrdem(): int

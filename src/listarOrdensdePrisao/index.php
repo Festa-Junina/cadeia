@@ -4,6 +4,7 @@ require_once("../../vendor/autoload.php");
 
 use classes\OrdemPrisao;
 use classes\TipoMeliante;
+date_default_timezone_set('America/Sao_Paulo');
 
 $ordens = OrdemPrisao::findall();
 ?>
@@ -53,9 +54,18 @@ $ordens = OrdemPrisao::findall();
                         $presoPor = "";
                         $btnPrisao =  "<div class='order-btn disabled'><h2>Confirmar</h2></div>";
                         $btnResponsavel = "<div class='order-btn'><a href='#assumir{$ordemId}' rel='modal:open'><h2>Assumir</h2></a></div>";
-                        $time = date('H:i', $ordem->getHoraOrdem());
+                        // $timeOrdem = date('H:i', $ordem->getHoraOrdem());
+                        $timeOrdem = $ordem->getHoraOrdem();
+                        $time = date('H:i', (time() - $timeOrdem));
                         // $time = $ordem->getHoraOrdem();
-    
+                        $timer = "
+                            <div class='time'>
+                                <h3>Criada à: </h3>
+                                <h3>{$time}min</h3>
+                            </div>
+                        ";
+
+
                         if (!is_null($ordem->getAssumidaPor())) {
                             $assumidoPor = "Kelvin";
                             $btnResponsavel = "<div class='order-btn disabled'><h2>Assumido por {$assumidoPor}</h2></div>";
@@ -66,6 +76,7 @@ $ordens = OrdemPrisao::findall();
                             $presoPor = 'Paulo';
                             $btnResponsavel = !is_null($ordem->getAssumidaPor()) ? "<div class='order-btn disabled'><h2>Assumido por {$assumidoPor}</h2></div>" : "<div class='order-btn disabled'><h2>Assumir</h2></div>";
                             $btnPrisao = "<div class='order-btn disabled'><h2>Preso por {$presoPor}</h2></div>";
+                            $timer ='';
                         }
     
                         $template = "
@@ -73,10 +84,7 @@ $ordens = OrdemPrisao::findall();
                             <div class='order-content'>
                                 <div class='order-header'>
                                     <h2>{$nomeMeliante}</h2>
-                                    <div class='time'>
-                                        <h3>Criada à: </h3>
-                                        <h3>{$time}min</h3>
-                                    </div>
+                                    {$timer}
                                 </div>
                                 <div class='order-type'>
                                     <div class='ball' id='ball-{$nomeTipoMeliante}'></div>
