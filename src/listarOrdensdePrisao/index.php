@@ -54,9 +54,11 @@ $ordens = OrdemPrisao::findall();
                         $presoPor = "";
                         $btnPrisao =  "<div class='order-btn disabled'><h2>Confirmar</h2></div>";
                         $btnResponsavel = "<div class='order-btn'><a href='#assumir{$ordemId}' rel='modal:open'><h2>Assumir</h2></a></div>";
-                        // $timeOrdem = date('H:i', $ordem->getHoraOrdem());
+
                         $timeOrdem = $ordem->getHoraOrdem();
                         $time = date('H:i', (time() - $timeOrdem));
+
+
                         // $time = $ordem->getHoraOrdem();
                         $timer = "
                             <div class='time'>
