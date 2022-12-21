@@ -41,7 +41,7 @@ $carcereiros = Carcereiro::findall();
                     <label class='labels'>Telefone:</label>
                     <p>{$carcereiro->getTelefone()}</p>
                     
-                    <label class='labels'>Situação:</label>";
+                    <label class='labels'>Status:</label>";
                     if ($carcereiro->getAtivo() == 1){
                         echo "<div class='balls'><div class='ball-ativo'></div><p>Ativo</p></div>";
                     }else {
