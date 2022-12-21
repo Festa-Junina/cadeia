@@ -1,11 +1,5 @@
 <?php
-require_once __DIR__ . "/../../vendor/autoload.php";
-
-session_start();
-
-if (!isset($_SESSION["idUsuario"]) && $_SESSION["funcao"] != "Carcereiro") {
-    header("location: ../login");
-}
+require_once "../login/sessions/sessaoCarcereiro.php";
 
 use classes\Detento;
 use classes\OrdemPrisao;
@@ -98,7 +92,7 @@ foreach ($detentos as $detento) {
                     echo "<p>{$tipo_detento}</p>";
                     echo "</div>";
 
-                    // Tipos de status da prisão (que maluquice isso aqui kkkkkkkkkk[cada k uma lágrima]);
+                    // Tipos de status da prisão;
                     // id 0 - Ativo
                     // id 1 - Aguardando Pergunta 1
                     // id 2 - Aguardando Resposta 1
@@ -107,6 +101,7 @@ foreach ($detentos as $detento) {
                     // id 5 - Aguardando Pergunta 3
                     // id 6 - Aguardando Resposta 3
                     // id 7 - Respondeu Corretamente
+                    // id 8 - Errou a última Pergunta
                     $status_p1 = "";
                     $status_p2 = "";
                     $status_p3 = "";
@@ -144,6 +139,11 @@ foreach ($detentos as $detento) {
                             $status_p3 = "acertou";
                         }
                     }
+                    elseif ($ordem[1]->getIdStatusPrisao() == 8) {
+                        $status_p1 = "errou";
+                        $status_p2 = "errou";
+                        $status_p3 = "errou";
+                    }
 
                     echo "<div class=\"questions-status\">";
                         echo "<div class=\"question-1 {$status_p1}\"></div>";
@@ -173,7 +173,8 @@ foreach ($detentos as $detento) {
                     if (
                         $status_p1 == "acertou" ||
                         $status_p2 == "acertou" ||
-                        $status_p3 == "acertou"
+                        $status_p3 == "acertou" ||
+                        $status_p3 == "errou"
                     ) {
                         echo "<div class=\"order-btn\">";
                         echo "<h2>Liberar</h2>";
