@@ -59,16 +59,15 @@ td {
     line-height: 2;
 }
 td,tr, th {
-    border: 1px solid #154341;
+    border: 2px solid #165735;
     color: #121212;
 }
 form {
     display: flex;
     flex-direction: column;
-    border: 2px solid ;
     padding: 20px;
     width: 300px;
-    border: 2px solid #3CC47C;
+    border: 1px solid #3CC47C;
     border-radius: 8px;
     background-color: #f0f0f0;
 }

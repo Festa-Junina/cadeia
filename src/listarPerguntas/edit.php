@@ -2,13 +2,33 @@
 
 require_once "../login/sessions/sessaoAdmin.php";
 
+use classes\Pergunta;
+use classes\Categoria;
+
+if (isset($_POST["button"])) {
+    $pergunta = new Pergunta(
+            $_POST["idCategoria"],
+            $_POST["enunciado"],
+            $_POST["altA"],
+            $_POST["altB"],
+            $_POST["altC"],
+            $_POST["altD"],
+            $_POST["correta"]
+    );
+    $pergunta->setIdPergunta($_POST["idPergunta"]);
+
+    $pergunta->save();
+
+    header("location: ../listarPerguntas");
+}
+
 if (!isset($_GET["id"])) {
     header("location: ../listarPerguntas");
 }
 
-use classes\Pergunta;
-
 $pergunta = Pergunta::find($_GET["id"]);
+$categorias = Categoria::findall();
+
 ?>
 
 <!DOCTYPE html>
@@ -54,45 +74,75 @@ $pergunta = Pergunta::find($_GET["id"]);
         <h2>Editar Pergunta</h2>
         <div class="questions">
             <form method="post" action="edit.php" class="card-question">
+                <input type="hidden" name="idPergunta" value="<?php echo $pergunta->getIdPergunta() ?>" required>
                 <label>
                     <p>Categoria</p>
-                    <select name="categoria" class="categories">
-                        <option selected value=""></option>
+                    <select name="idCategoria" class="categories" required>
+                        <option disabled selected>Escolha...</option>
+                        <?php
+
+                        if (count($categorias) > 0) {
+                            foreach ($categorias as $categoria) {
+                                $selected = "";
+
+                                if ($categoria->getIdCategoria() == $pergunta->getIdCategoria()) {
+                                    $selected = "selected";
+                                }
+
+                                echo "<option {$selected} value='{$categoria->getIdCategoria()}'>{$categoria->getNome()}</option>";
+                            }
+                        }
+
+                        ?>
                     </select>
                 </label>
 
                 <label>
                     <p>Enunciado</p>
-                    <textarea name="enunciado" rows="10" class="enunciado" ><?php echo $pergunta->getEnunciado() ?></textarea>
+                    <textarea name="enunciado" rows="10" class="enunciado" required><?php echo $pergunta->getEnunciado() ?></textarea>
                 </label>
 
                 <label>
                     <p>Alternativa A</p>
-                    <textarea name="altA" rows="2" class="enunciado"></textarea>
+                    <textarea name="altA" rows="2" class="enunciado" required><?php echo $pergunta->getAlternativaA() ?></textarea>
                 </label>
 
                 <label>
                     <p>Alternativa B</p>
-                    <textarea name="altB" rows="2" class="enunciado"></textarea>
+                    <textarea name="altB" rows="2" class="enunciado" required><?php echo $pergunta->getAlternativaB() ?></textarea>
                 </label>
 
                 <label>
                     <p>Alternativa C</p>
-                    <textarea name="altC" rows="2" class="enunciado"></textarea>
+                    <textarea name="altC" rows="2" class="enunciado" required><?php echo $pergunta->getAlternativaC() ?></textarea>
                 </label>
 
                 <label>
                     <p>Alternativa D</p>
-                    <textarea name="altD" rows="2" class="enunciado"></textarea>
+                    <textarea name="altD" rows="2" class="enunciado" required><?php echo $pergunta->getAlternativaD() ?></textarea>
                 </label>
 
                 <label>
                     <p>Alternativa Correta</p>
-                    <select name="correta" class="categories">
-                        <option value="A">A</option>
-                        <option value="B">B</option>
-                        <option value="C">C</option>
-                        <option value="D">D</option>
+                    <select name="correta" class="categories" required>
+                        <?php
+
+                        $alternativas = array("A","B","C","D");
+
+                        foreach ($alternativas as $alternativa) {
+                            $selected = "";
+                            if ($alternativa == $pergunta->getAlternativaCorreta()) {
+                                $selected = "selected";
+                            }
+                            echo "<option {$selected} value='{$alternativa}'>{$alternativa}</option>";
+                        }
+
+                        ?>
+
+                        <!-- <option value="A">A</option>-->
+                        <!-- <option value="B">B</option>-->
+                        <!-- <option value="C">C</option>-->
+                        <!-- <option value="D">D</option>-->
                     </select>
                 </label>
 

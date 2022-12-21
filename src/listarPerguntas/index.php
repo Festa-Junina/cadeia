@@ -3,6 +3,7 @@
 require_once "../login/sessions/sessaoAdmin.php";
 
 use classes\Pergunta;
+use classes\Categoria;
 
 $perguntas = Pergunta::findall();
 
@@ -24,6 +25,11 @@ $perguntas = Pergunta::findall();
     <link rel="stylesheet" href="../assets/styles/globalStyles.css">
     <link rel="stylesheet" href="../listarPoliciais/styles.css">
     <link rel="stylesheet" href="styles.css">
+    <style>
+        .card-question {
+            width: 100%;
+        }
+    </style>
     <title>Perguntas</title>
 </head>
 
@@ -53,16 +59,31 @@ $perguntas = Pergunta::findall();
         </div>
 
         <div class="questions">
-            <div class="card-question">
-                <p class="category">Categoria</p>
+            <?php
 
-                <p class="description">Enunciado enunciado enunciado enunciado enunciado enunciado enunciado enunciado enunciado enunciado enunciado enunciado enunciado enunciado enunciado enunciado enunciado enunciado enunciado enunciado enunciado enunciado enunciado enunciado enunciado enunciado enunciado enunciado enunciado enunciado enunciado enunciado enunciado enunciado enunciado enunciado enunciado enunciado enunciado enunciado enunciado enunciado enunciado enunciado enunciado enunciado enunciado enunciado enunciado enunciado enunciado enunciado enunciado enunciado enunciado enunciado enunciado enunciado enunciado enunciado enunciado enunciado enunciado enunciado enunciado enunciado.</p>
+            if (count($perguntas) > 0) {
+                foreach ($perguntas as $pergunta) {
+                    echo '<div class="card-question">';
 
-                <div class="actions-question">
-                    <a class="edit-question" href="edit.php?id=1">Editar</a>
-                    <a class="remove-question" href="">Excluir</a>
-                </div>
-            </div>
+                    echo "<a href='view.php?id={$pergunta->getIdPergunta()}' class='view'></a>";
+
+                    $categoria = Categoria::findNomeCategoriaPeloId($pergunta->getIdCategoria());
+                    echo "<p class='category'>{$categoria}</p>";
+
+                    echo "<p class='description'>{$pergunta->getEnunciado()}</p>";
+
+                    echo '<div class="actions-question">';
+                        echo "<a class='edit-question' href='edit.php?id={$pergunta->getIdPergunta()}'>Editar</a>";
+                        echo "<a class='remove-question' href='delete.php?id={$pergunta->getIdPergunta()}'>Excluir</a>";
+                    echo '</div>';
+
+                    echo '</div>';
+                }
+            } else {
+                echo "<h2 style='color: #090909'>Sem perguntas cadastradas...</h2>";
+            }
+
+            ?>
         </div>
     </div>
 </div>
