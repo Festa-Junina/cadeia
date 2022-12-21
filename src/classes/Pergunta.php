@@ -135,7 +135,7 @@ class Pergunta implements ActiveRecord
     public static function findall(): array
     {
         $connection = new MySQL();
-        $sql = "SELECT * FROM `pergunta`";
+        $sql = "SELECT * FROM `pergunta` ORDER BY idPergunta DESC";
         $results = $connection->consulta($sql);
         
         $perguntas = array();
