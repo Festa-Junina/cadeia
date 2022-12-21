@@ -4,7 +4,7 @@ require_once "../login/sessions/sessaoAdmin.php";
 
 use classes\Usuario;
 
-$policias = Usuario::findallPoliciais();
+$policias = Usuario::findallPorFuncao("Policial");
 
 ?>
 
@@ -59,22 +59,24 @@ $policias = Usuario::findallPoliciais();
                 <th>Opções</th>
             </tr>
             <?php
-            foreach ($policias as $policia) {
-                echo "<tr>";
-                echo "<td>{$policia->getNome()} </td>";
-                echo "<td>{$policia->getLogin()}</td>";
-                echo "<td>{$policia->getTelefone()}</td>";
-                if ($policia->getAtivo()) {
-                    echo "<td>Sim</td>";
-                } else {
-                    echo "<td>Não</td>";
+                if (count($policias) > 0) {
+                    foreach ($policias as $policia) {
+                        echo "<tr>";
+                        echo "<td>{$policia->getNome()} </td>";
+                        echo "<td>{$policia->getLogin()}</td>";
+                        echo "<td>{$policia->getTelefone()}</td>";
+                        if ($policia->getAtivo()) {
+                            echo "<td>Sim</td>";
+                        } else {
+                            echo "<td>Não</td>";
+                        }
+                        echo "<td class='opts'>".
+                                "<a href='edit.php?id={$policia->getIdUsuario()}'>editar</a> ".
+                                "<a href='delete.php?id={$policia->getIdUsuario()}'>excluir</a> ".
+                                "</td>";
+                        echo "</tr>";
+                    }
                 }
-                echo "<td class='opts'>".
-                        "<a href='edit.php?id={$policia->getIdUsuario()}'>editar</a> ".
-                        "<a href='delete.php?id={$policia->getIdUsuario()}'>excluir</a> ".
-                        "</td>";
-                echo "</tr>";
-            }
             ?>
         </table>
     </div>

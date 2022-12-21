@@ -88,7 +88,7 @@ $policia = Usuario::find($_GET["id"]);
 
             <label>
                 <p>Telefone</p>
-                <input type="tel" name="telefone" value="<?php echo $policia->getTelefone() ?>" required>
+                <input type="tel" name="telefone" value="<?php echo $policia->getTelefone() ?>"  id='tel' maxlength="15" minlength="15" required onChange="contactSeparators()">
             </label>
 
             <label>
@@ -119,6 +119,7 @@ $policia = Usuario::find($_GET["id"]);
         $('.user-opt').toggleClass('displayed');
     });
 </script>
+<script src='tel.js'></script>
 </body>
 
 </html>
