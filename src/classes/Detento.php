@@ -4,6 +4,7 @@ namespace classes;
 
 use db\ActiveRecord;
 use db\MySQL;
+use classes\OrdemPrisao;
 
 class Detento implements ActiveRecord
 {
@@ -125,10 +126,49 @@ class Detento implements ActiveRecord
         $u->setQuantidadePerguntasRespondidas($resultado[0]['quantidadePerguntasRespondidas']);
         return $u;
     }
+
     public static function findall(): array
     {
         $conexao = new MySQL();
         $sql = "SELECT * FROM prisao";
+        $resultados = $conexao->consulta($sql);
+        $prisoes = array();
+        foreach ($resultados as $resultado) {
+            $u = new Detento(
+            );
+            $u->setIdPrisao($resultado['idPrisao']);
+            $u->setIdOrdemPrisao($resultado['idOrdemPrisao']);
+            $u->setIdStatusPrisao($resultado['idStatusPrisao']);
+            $u->setHoraPrisao($resultado['horaPrisao']);
+            $u->setQuantidadePerguntasRespondidas($resultado['quantidadePerguntasRespondidas']);
+            $prisoes[] = $u;
+        }
+        return $prisoes;
+    }
+
+    public static function findallPresos(): array
+    {
+        $conexao = new MySQL();
+        $sql = "select * from prisao p join ordemprisao o on o.idStatusOrdem = (select sto.idStatusOrdem as statusOrdem from statusordem sto where sto.nome = 'Preso') and p.idOrdemPrisao=o.idOrdem;";
+        $resultados = $conexao->consulta($sql);
+        $prisoes = array();
+        foreach ($resultados as $resultado) {
+            $u = new Detento(
+            );
+            $u->setIdPrisao($resultado['idPrisao']);
+            $u->setIdOrdemPrisao($resultado['idOrdemPrisao']);
+            $u->setIdStatusPrisao($resultado['idStatusPrisao']);
+            $u->setHoraPrisao($resultado['horaPrisao']);
+            $u->setQuantidadePerguntasRespondidas($resultado['quantidadePerguntasRespondidas']);
+            $prisoes[] = $u;
+        }
+        return $prisoes;
+    }
+
+    public static function findallLiberados(): array
+    {
+        $conexao = new MySQL();
+        $sql = "select * from prisao p join ordemprisao o on o.idStatusOrdem = (select sto.idStatusOrdem as statusOrdem from statusordem sto where sto.nome = 'Liberado') and p.idOrdemPrisao=o.idOrdem;";
         $resultados = $conexao->consulta($sql);
         $prisoes = array();
         foreach ($resultados as $resultado) {
@@ -224,6 +264,16 @@ class Detento implements ActiveRecord
     public function setAtualizacaoStatus(string $atualizacaoStatus): void
     {
         $this->atualizacaoStatus = $atualizacaoStatus;
+    }
+
+    public function liberar(): bool
+    {
+        $ordemPrisao = OrdemPrisao::find($this->idOrdemPrisao);
+
+        // Status 3 = Liberado
+        $ordemPrisao->setIdStatusOrdem(3);
+        
+        return $ordemPrisao->save();
     }
 
 }

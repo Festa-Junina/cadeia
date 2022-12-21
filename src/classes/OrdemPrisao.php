@@ -216,7 +216,7 @@ class OrdemPrisao implements ActiveRecord
             CURRENT_TIMESTAMP())";
     }
 
-    session_destroy();
+    //session_destroy();
     // return true;
     // TRIGGER NO BANCO $sql = "UPDATE ticket SET valido = false WHERE idTicket = '{$this->idTicket}'";
     return $conexao->executa($sql);
