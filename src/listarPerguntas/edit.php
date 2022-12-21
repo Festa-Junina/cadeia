@@ -2,10 +2,13 @@
 
 require_once "../login/sessions/sessaoAdmin.php";
 
+if (!isset($_GET["id"])) {
+    header("location: ../listarPerguntas");
+}
+
 use classes\Pergunta;
 
-$perguntas = Pergunta::findall();
-
+$pergunta = Pergunta::find($_GET["id"]);
 ?>
 
 <!DOCTYPE html>
@@ -48,21 +51,53 @@ $perguntas = Pergunta::findall();
     </div>
 
     <div class="main-content">
-        <div class='new-button-area'>
-            <a href='new.php'>Nova Pergunta</a>
-        </div>
-
+        <h2>Editar Pergunta</h2>
         <div class="questions">
-            <div class="card-question">
-                <p class="category">Categoria</p>
+            <form method="post" action="edit.php" class="card-question">
+                <label>
+                    <p>Categoria</p>
+                    <select name="categoria" class="categories">
+                        <option selected value=""></option>
+                    </select>
+                </label>
 
-                <p class="description">Enunciado enunciado enunciado enunciado enunciado enunciado enunciado enunciado enunciado enunciado enunciado enunciado enunciado enunciado enunciado enunciado enunciado enunciado enunciado enunciado enunciado enunciado enunciado enunciado enunciado enunciado enunciado enunciado enunciado enunciado enunciado enunciado enunciado enunciado enunciado enunciado enunciado enunciado enunciado enunciado enunciado enunciado enunciado enunciado enunciado enunciado enunciado enunciado enunciado enunciado enunciado enunciado enunciado enunciado enunciado enunciado enunciado enunciado enunciado enunciado enunciado enunciado enunciado enunciado enunciado enunciado.</p>
+                <label>
+                    <p>Enunciado</p>
+                    <textarea name="enunciado" rows="10" class="enunciado" ><?php echo $pergunta->getEnunciado() ?></textarea>
+                </label>
 
-                <div class="actions-question">
-                    <a class="edit-question" href="edit.php?id=1">Editar</a>
-                    <a class="remove-question" href="">Excluir</a>
-                </div>
-            </div>
+                <label>
+                    <p>Alternativa A</p>
+                    <textarea name="altA" rows="2" class="enunciado"></textarea>
+                </label>
+
+                <label>
+                    <p>Alternativa B</p>
+                    <textarea name="altB" rows="2" class="enunciado"></textarea>
+                </label>
+
+                <label>
+                    <p>Alternativa C</p>
+                    <textarea name="altC" rows="2" class="enunciado"></textarea>
+                </label>
+
+                <label>
+                    <p>Alternativa D</p>
+                    <textarea name="altD" rows="2" class="enunciado"></textarea>
+                </label>
+
+                <label>
+                    <p>Alternativa Correta</p>
+                    <select name="correta" class="categories">
+                        <option value="A">A</option>
+                        <option value="B">B</option>
+                        <option value="C">C</option>
+                        <option value="D">D</option>
+                    </select>
+                </label>
+
+                <input type="submit" name="button" value="Salvar">
+            </form>
         </div>
     </div>
 </div>
