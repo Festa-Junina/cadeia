@@ -1,5 +1,5 @@
 <?php
 
-require_once "../login/sessions/sessaoAdmin.php";
+require "../login/sessions/sessaoAdmin.php";
 
-echo "Listagem de carcereiros";
+echo "Listagem de Carcereiros";

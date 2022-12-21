@@ -2,9 +2,18 @@
 
 require_once "../login/sessions/sessaoAdmin.php";
 
+if (!isset($_GET["id"])) {
+    header("location: ../listarPolicias");
+}
+
+if (isset($_POST["button"])) {
+    var_dump($_POST);
+    die();
+}
+
 use classes\Usuario;
 
-$policias = Usuario::findallPoliciais();
+$policia = Usuario::find($_GET["id"]);
 
 ?>
 
@@ -44,33 +53,39 @@ $policias = Usuario::findallPoliciais();
     </div>
 
     <div class="main-content">
-        <table>
-            <tr>
-                <th>Nome</th>
-                <th>Login</th>
-                <th>Telefone</th>
-                <th>Ativo</th>
-                <th>Opções</th>
-            </tr>
-            <?php
-            foreach ($policias as $policia) {
-                echo "<tr>";
-                echo "<td>{$policia->getNome()} </td>";
-                echo "<td>{$policia->getLogin()}</td>";
-                echo "<td>{$policia->getTelefone()}</td>";
-                if ($policia->getAtivo()) {
-                    echo "<td>Sim</td>";
-                } else {
-                    echo "<td>Não</td>";
-                }
-                echo "<td class='opts'>".
-                        "<a href='edit.php?id={$policia->getIdUsuario()}'>editar</a> ".
-                        "<a href='delete.php?id={$policia->getIdUsuario()}'>excluir</a> ".
-                        "</td>";
-                echo "</tr>";
-            }
-            ?>
-        </table>
+        <form method="post" action="edit.php">
+            <label>
+                <p>Nome</p>
+                <input type="text" name="nome" value="<?php echo $policia->getNome() ?>">
+            </label>
+
+            <label>
+                <p>Login</p>
+                <input type="text" name="login" value="<?php echo $policia->getLogin() ?>">
+            </label>
+
+            <label>
+                <p>Telefone</p>
+                <input type="tel" name="telefone" value="<?php echo $policia->getTelefone() ?>">
+            </label>
+
+            <label>
+                <p>Ativo</p>
+                <select name="ativo">
+                    <?php
+                    if ($policia->getAtivo()) {
+                        echo "<option selected value='1'>Sim</option>";
+                        echo "<option value='0'>Não</option>";
+                    } else {
+                        echo "<option value='1'>Sim</option>";
+                        echo "<option selected value='0'>Não</option>";
+                    }
+                    ?>
+                </select>
+            </label>
+
+            <input type="submit" name="button" value="Salvar">
+        </form>
     </div>
 </div>
 

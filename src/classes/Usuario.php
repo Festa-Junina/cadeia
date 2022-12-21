@@ -10,7 +10,7 @@ class Usuario implements  ActiveRecord
     private int $idFuncao;
     private string $login;
     private string $senha;
-    private  string $nome;
+    private string $nome;
     private string $telefone;
     private bool $ativo;
 
@@ -47,8 +47,8 @@ class Usuario implements  ActiveRecord
         return $this->idUsuario;
     }
 
-    public function setNome(int $idNome): void {
-        $this->nome = $idNome;
+    public function setNome(string $nome): void {
+        $this->nome = $nome;
     }
 
     public function getNome(): string {
@@ -74,6 +74,11 @@ class Usuario implements  ActiveRecord
 
     public function setTelefone(string $telefone): void {
         $this->telefone = $telefone;
+    }
+
+    public function getTelefone(): string
+    {
+        return $this->telefone;
     }
 
 
@@ -164,6 +169,31 @@ class Usuario implements  ActiveRecord
         return $users;
     }
 
+    public static function findallPoliciais(): array
+    {
+        $connection = new MySQL();
+        $sql = "SELECT * FROM usuario WHERE idFuncao = (SELECT idFuncao FROM funcao F WHERE F.nome = 'Policial')";
+        $results = $connection->consulta($sql);
+        $users = array();
+
+        foreach($results as $result) {
+            $user = new Usuario();
+            $user->constructorCreate(
+                    $result['idFuncao'],
+                    $result['login'],
+                    $result['senha'],
+                    $result['nome'],
+                    $result['telefone'],
+                    $result['ativo']
+
+            );
+            $user->setIdUsuario($result['idUsuario']);
+            $users[] = $user;
+        }
+
+        return $users;
+    }
+
     public function authenticate(): bool
     {
         $connection = new MySQL();
@@ -190,7 +220,7 @@ class Usuario implements  ActiveRecord
         }
     }
 
-    public function existeUsuario($login) : bool{
+    public function existeUsuario($login) : bool {
         $conexao = new MySQL();
         $sql = "SELECT login FROM usuario WHERE login = '$login'";
         $resultados = $conexao->consulta($sql);
