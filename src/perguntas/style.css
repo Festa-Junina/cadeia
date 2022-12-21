@@ -1,0 +1,199 @@
+@import url("globalStyles.css");
+@import url('https://fonts.googleapis.com/css2?family=Mulish&display=swap');
+@import url(reset.css);
+
+body{
+    color: var(--black);
+    background-color: var(--gray);
+    font-family: 'Mulish', sans-serif;
+
+}
+
+table{
+    color: var(--black);
+    border: 2px solid black;
+}
+
+td,tr{
+    border: 2px solid black;
+    justify-content: center;
+    text-align: center;
+    padding: 10px;
+}
+
+a{
+    text-decoration: none;
+    color: inherit;
+}
+
+.row {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.options{
+    align-items: center;
+    justify-content: center;
+}
+
+.card {
+    border-radius: 5px;
+    box-shadow: 7px 7px 13px 0px rgba(50, 50, 50, 0.22);
+    padding: 30px;
+    margin: 20px;
+    width: 400px;
+    transition: all 0.3s ease-out;
+    background-color: var(--white);
+    color: var(--black);
+    justify-content: center;
+    align-items: center;
+}
+
+.buttom{
+    border-radius: 5px;
+    border-width: 2px;
+    border-color: black;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    cursor: pointer;
+  }
+
+.card p {
+    color: #a3a5ae;
+    font-size: 16px;
+  }
+.card h2{
+    font-size: 20px;
+}
+.card h3{
+    font-weight: bold;
+}
+
+.card {
+    border-style: solid;
+    border-color: black;
+}
+
+
+.container{
+    width: 100%;
+    height: 100vh;
+    font-family: 'Mulish', sans-serif;
+    color: var(--black);
+}
+
+.header{
+    width: 100%;
+    height: 80px;
+    background-color: #3CC47C;
+    display: flex;
+    justify-content: space-between;
+    padding: 0 2.5rem 0 3rem;
+    align-items: center;
+}
+
+.logo,
+.user{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.logo{
+    font-size: 150%;
+    font-weight: 900;
+}
+
+.user{
+    gap: .5rem;
+    position: relative;
+}
+
+.user > p{
+    font-size: 120%;
+}
+.user:hover{
+    cursor: pointer;
+}
+.user-opt{
+    display: none;
+    flex-direction: column;
+    position: absolute;
+    right: -30px;
+    top: 27px;
+    background-color: var(--green);
+    box-shadow: 0 0 10px var(--blackOpacity);
+    padding: 15px 10px;
+    border-radius: 10px;
+    width: 150px;    
+}
+
+.user-opt > a{
+    text-decoration: none;
+    color: var(--white);
+    margin-bottom: 7px;
+}
+
+.user-opt :last-child{
+    margin: 0;
+}
+
+.main-content{
+    padding: 80px 4rem 4rem 4rem;
+    align-items: center;
+    color: var(--black);
+}
+
+
+
+.ball{
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+}
+
+#ball1{
+    background-color: var(--blue);
+}
+#ball2{
+    background-color: var(--red);
+}
+#ball3{
+    background-color: var(--yellow);
+}
+
+.order-btn{
+    background-color: var(--green);
+    margin-top: .7rem;
+    padding: .35rem;
+    text-align: center;
+    border-radius: 8px;
+    color: var(--white);
+}
+
+.order-btn:hover{
+    cursor: pointer;
+    background-color: var(--darkGreen);
+}
+
+
+.modal{
+    color: var(--black);
+}
+
+.displayed{
+    display: flex;
+}
+
+@media screen and (max-width: 425px){
+    .user > p{
+        display: none;
+    }
+
+    .order{
+        width: 285px;
+    }
+}
