@@ -1,32 +1,29 @@
 <?php
 
-namespace classes;
+require_once "../db/MySQL.php";
+require_once "../db/ActiveRecord.php";
 
-use db\ActiveRecord;
-use db\MySQL;
 
 class OrdemPrisao implements ActiveRecord
 {
 
-  private int $idOrdem;
-  private int $idTicket;
-  private int $idTipoMeliante;
-  private ?int $idTurmaMeliante;
-  private int $idStatusOrdem;
-  private int $horaOrdem;
-  private ?int $assumidaPor;
-  private ?int $presoPor;
-
-  public function __construct(
-    private string $nomeMeliante,
-    private string $descricaoMeliante,
-    private string $localVisto,
-    private string $nomeDenunciante,
-    private string $telefoneDenunciante,
+    private int $idOrdem;	
+    private int $idTicket;	
+    private int $idTipoMeliante;
+    private int $idTurmaMeliante;	
+    private int $idStatusOrdem;	
+    private int $horaOrdem;
+    
+    public function __construct(
+        private string $nomeMeliante,
+        private string $descricaoMeliante,	
+        private string $localVisto,
+        private string $nomeDenunciante,
+        private string $telefoneDenunciante,
   ) {
   }
   #region idOrdem
-  public function setIdOrdem(int $idOrdem): void
+  public function setIdOrdem(int $ididOrdem): void
   {
     $this->idOrdem = $idOrdem;
   }
@@ -62,12 +59,12 @@ class OrdemPrisao implements ActiveRecord
   #endregion
 
   #region idTurmaMeliante
-  public function setIdTurmaMeliante(?int $idTurmaMeliante): void
+  public function setIdTurmaMeliante(int $idTurmaMeliante): void
   {
     $this->idTurmaMeliante = $idTurmaMeliante;
   }
 
-  public function getIdTurmaMeliante(): int | null 
+  public function getIdTurmaMeliante(): int
   {
     return $this->idTurmaMeliante;
   }
@@ -88,7 +85,7 @@ class OrdemPrisao implements ActiveRecord
   #region nomeMeliante 
   public function setNomeMeliante(string $nomeMeliante): void
   {
-    $this->nomeMeliante = $nomeMeliante;
+    $this->nomeMeliante =  filter_var($nomeMeliante,FILTER_SANITIZE_STRING);
   }
 
   public function getNomeMeliante(): string
@@ -100,7 +97,7 @@ class OrdemPrisao implements ActiveRecord
   #region descricaoMeliante
   public function setDescricaoMeliante(string $descricaoMeliante): void
   {
-    $this->descricaoMeliante = $descricaoMeliante;
+    $this->descricaoMeliante =  filter_var($descricaoMeliante,FILTER_SANITIZE_STRING);
   }
 
   public function getDescricaoMeliante(): string
@@ -112,7 +109,7 @@ class OrdemPrisao implements ActiveRecord
   #region localVisto
   public function setLocalVisto(string $localVisto): void
   {
-    $this->localVisto = $localVisto;
+    $this->localVisto =  filter_var($localVisto,FILTER_SANITIZE_STRING);
   }
 
   public function getLocalVisto(): string
@@ -124,7 +121,7 @@ class OrdemPrisao implements ActiveRecord
   #region nomeDenunciante
   public function setNomeDenunciante(string $nomeDenunciante): void
   {
-    $this->nomeDenunciante = $nomeDenunciante;
+    $this->nomeDenunciante =  filter_var($nomeDenunciante,FILTER_SANITIZE_STRING);
   }
 
   public function getNomeDenunciante(): string
@@ -157,53 +154,26 @@ class OrdemPrisao implements ActiveRecord
   }
   #endregion
 
-  #region assumidaPor
-  public function setAssumidaPor(?int $assumidaPor): void
-  {
-    $this->assumidaPor = $assumidaPor;
-  }
-
-  public function getAssumidaPor(): int | null
-  {
-    return $this->assumidaPor;
-  }
-  #endregion
-
-  #region presoPor
-  public function setPresoPor(?int $presoPor): void
-  {
-    $this->presoPor = $presoPor;
-  }
-
-  public function getPresoPor(): int | null
-  {
-    return $this->presoPor;
-  }
-  #endregion
-
   public function save(): bool
   {
     $conexao = new MySQL();
-    $idTurma = isset($this->idTurmaMeliante) ? $this->idTurmaMeliante : 'null';
-    $assumidaPor = isset($this->assumidaPor) ? $this->assumidaPor : 'null';
-    $presoPor = isset($this->presoPor) ? $this->presoPor : 'null';
-    
 
-    if (isset($this->idOrdem)) {
-      $sql = "UPDATE ordemprisao SET 
-          idTipoMeliante = '{$this->idTipoMeliante}',
-          idTurmaMeliante = {$idTurma},
-          idStatusOrdem = '{$this->idStatusOrdem}',
-          nomeMeliante = '{$this->nomeMeliante}',
-          descricaoMeliante = '{$this->descricaoMeliante}',
-          localVisto = '{$this->localVisto}',
-          nomeDenunciante = '{$this->nomeDenunciante}',
-          telefoneDenunciante = '{$this->telefoneDenunciante}',
-          assumidaPor = {$assumidaPor},
-          presoPor = {$presoPor}
-          WHERE idOrdem = {$this->idOrdem}";
-    } else {
-      $sql = "INSERT INTO ordemprisao (idTicket, idTipoMeliante, nomeMeliante, descricaoMeliante, localVisto, nomeDenunciante, telefoneDenunciante, idStatusOrdem, horaOrdem) 
+
+      if(isset($this->idTurmaMeliante)){
+        $sql = "INSERT INTO ordemPrisao (idTicket, idTipoMeliante, idTurmaMeliante, nomeMeliante, descricaoMeliante, localVisto, nomeDenunciante, telefoneDenunciante, idStatusOrdem, horaOrdem) 
+        VALUES (
+            '{$this->idTicket}',
+            '{$this->idTipoMeliante}',
+            '{$this->idTurmaMeliante}' ,
+            '{$this->nomeMeliante}' ,
+            '{$this->descricaoMeliante}' ,
+            '{$this->localVisto}' ,
+            '{$this->nomeDenunciante}' ,
+            '{$this->telefoneDenunciante}' ,
+              0 ,
+            CURRENT_TIMESTAMP())";
+      }else{
+        $sql = "INSERT INTO ordemPrisao (idTicket, idTipoMeliante, nomeMeliante, descricaoMeliante, localVisto, nomeDenunciante, telefoneDenunciante, idStatusOrdem, horaOrdem) 
         VALUES (
             '{$this->idTicket}',
             '{$this->idTipoMeliante}',
@@ -212,104 +182,77 @@ class OrdemPrisao implements ActiveRecord
             '{$this->localVisto}' ,
             '{$this->nomeDenunciante}' ,
             '{$this->telefoneDenunciante}' ,
-              0,
+              0 ,
             CURRENT_TIMESTAMP())";
-    }
+      }
+      
+      session_destroy();
 
-    //session_destroy();
-    // return true;
-    // TRIGGER NO BANCO $sql = "UPDATE ticket SET valido = false WHERE idTicket = '{$this->idTicket}'";
-    return $conexao->executa($sql);
+   // TRIGGER NO BANCO $sql = "UPDATE ticket SET valido = false WHERE idTicket = '{$this->idTicket}'";
+   
+   return $conexao->executa($sql);
+
   }
-
+  
   public function delete(): bool
   {
     $conexao = new MySQL();
-    $sql = "DELETE FROM ordemPrisao WHERE idOrdem = {$this->idOrdem}";
+    $sql = "DELETE FROM usuario WHERE id = {$this->id}";
     return $conexao->executa($sql);
   }
 
-  public static function find($idOrdem): OrdemPrisao
+  public static function find($id): OrdemPrisao
   {
     $conexao = new MySQL();
-    $sql = "SELECT * FROM ordemprisao WHERE idOrdem = {$idOrdem}";
+    $sql = "SELECT * FROM usuario WHERE id = {$id}";
     $resultado = $conexao->consulta($sql);
-    $p = new OrdemPrisao(
-      $resultado[0]['nomeMeliante'],
-      $resultado[0]['descricaoMeliante'],
-      $resultado[0]['localVisto'],
-      $resultado[0]['nomeDenunciante'],
-      $resultado[0]['telefoneDenunciante']
+    $u = new Usuario(
+      $resultado[0]['email'],
+      $resultado[0]['senha']
     );
-    $p->setIdTicket($resultado[0]['idTicket']);
-    $p->setIdTipoMeliante($resultado[0]['idTipoMeliante']);
-    $p->setIdStatusOrdem($resultado[0]['idStatusOrdem']);
-    $p->setHoraOrdem($resultado[0]['horaOrdem']);
-
-    if (!is_null($resultado[0]['idTurmaMeliante'])) {
-      $p->setIdTurmaMeliante($resultado[0]['idTurmaMeliante']);
-    } else{
-      $p->setIdTurmaMeliante(null);
-    }
-
-    if (!is_null($resultado[0]['assumidaPor'])) {
-      $p->setAssumidaPor($resultado[0]['assumidaPor']);
-    } else{
-      $p->setAssumidaPor(null);
-    }
-
-    if (!is_null($resultado[0]['presoPor'])) {
-      $p->setPresoPor($resultado[0]['presoPor']);
-    } else{
-      $p->setPresoPor(null);
-    }
-
-    $p->setIdOrdem($resultado[0]['idOrdem']); 
-    
-    return $p;
+    $u->setNome($resultado[0]['nome']);
+    $u->setContato($resultado[0]['contato']);
+    $u->setTipo($resultado[0]['tipo']);
+    $u->setId($resultado[0]['id']);
+    $u->setIdCurso($resultado[0]['idCurso']);
+    return $u;
   }
-
   public static function findall(): array
   {
     $conexao = new MySQL();
-    $sql = "SELECT * FROM ordemPrisao ORDER BY 'ASC'";
+    $sql = "SELECT * FROM usuario";
     $resultados = $conexao->consulta($sql);
-    $ordens = array();
+    $usuarios = array();
     foreach ($resultados as $resultado) {
-      $o = new OrdemPrisao(
-        $resultado['nomeMeliante'],
-        $resultado['descricaoMeliante'],
-        $resultado['localVisto'],
-        $resultado['nomeDenunciante'],
-        $resultado['telefoneDenunciante']
+      $p = new Usuario(
+        $resultado[0]['nome'],
+        $resultado[0]['email'],
+        $resultado[0]['senha'],
+        $resultado[0]['contato'],
+        $resultado[0]['tipo']
       );
-
-      $o->setIdTicket($resultado['idTicket']);
-      $o->setIdTipoMeliante($resultado['idTipoMeliante']);
-      $o->setIdStatusOrdem($resultado['idStatusOrdem']);
-      $o->setHoraOrdem($resultado['horaOrdem']);
-
-      if (isset($resultado['idTurmaMeliante'])) {
-        $o->setidTurmaMeliante($resultado['idTurmaMeliante']);
-      } else{
-        $o->setidTurmaMeliante(null);
-      }
-
-      if (isset($resultado['assumidaPor'])) {
-        $o->setAssumidaPor($resultado['assumidaPor']);
-      } else{
-        $o->setAssumidaPor(null);
-      }
-
-      if (isset($resultado['presoPor'])) {
-        $o->setPresoPor($resultado['presoPor']);
-      } else{
-        $o->setPresoPor(null);
-      }
-
-      $o->setIdOrdem($resultado['idOrdem']);      
-      $ordens[] = $o;
+      $p->setId($resultado['id']);
+      $p->setIdCurso($resultado['idCurso']);
+      $usuarios[] = $p;
     }
-    return $ordens;
+    return $usuarios;
   }
+
+  public function authenticate(): bool
+  {
+    $conexao = new MySQL();
+    $sql = "SELECT id,nome,email,senha,tipo FROM usuario WHERE email = '{$this->email}'";
+    $resultados = $conexao->consulta($sql);
+    if (password_verify($this->senha, $resultados[0]['senha'])) {
+      session_start();
+      $_SESSION['idUsuario'] = $resultados[0]['id'];
+      $_SESSION['email'] = $resultados[0]['email'];
+      $_SESSION['nome'] = $resultados[0]['nome'];
+      $_SESSION['tipo'] = $resultados[0]['tipo'];
+      return true;
+    } else {
+      return false;
+    }
+  }
+  
 }
