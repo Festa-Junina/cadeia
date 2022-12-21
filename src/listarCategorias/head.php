@@ -6,7 +6,8 @@
 <link rel="stylesheet" href="../assets/styles/reset.css">
 <link rel="stylesheet" href="../assets/styles/globalStyles.css">
 <style>
-    h4 {color: #000; font-size: 20px}
+    label, h4 { color: #000; }
+    h4 { font-size: 20px }
     .user-opt { z-index: 4 }
     .header { width: 100% }
 </style>
