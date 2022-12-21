@@ -1,15 +1,17 @@
 <?php
-session_start();
+require_once "../login/sessions/sessaoAdmin.php";
+
+$conn = "";
 require 'dbcon.php';
 
 if(isset($_GET['idCategoria']))
 {
 
-    $query = "DELETE FROM categoria WHERE idCategoria = {$_GET['idCategoria']}";
+    $query = "DELETE FROM perguntacategoria WHERE idCategoria = {$_GET['idCategoria']}";
 
-    $query_run = mysqli_query($con, $query);
+    $query_run = mysqli_query($conn, $query);
 
-    if($query_run)
+    if ($query_run)
     {
         $_SESSION['mensagem'] = "A categoria foi excluida com sucesso";
         header("Location: index.php");
@@ -25,11 +27,11 @@ if(isset($_GET['idCategoria']))
 
 if(isset($_POST['editarcategoria']))
 {
-    $nome = mysqli_real_escape_string($con, $_POST['categ_nome']);
+    $nome = mysqli_real_escape_string($conn, $_POST['categ_nome']);
     
-    $query = "UPDATE categoria SET categ_nome = '{$nome}' WHERE idCategoria = {$_POST['idCategoria']}";
+    $query = "UPDATE perguntacategoria SET nome = '{$nome}' WHERE idCategoria = {$_POST['idCategoria']}";
 
-    $query_run = mysqli_query($con, $query);
+    $query_run = mysqli_query($conn, $query);
 
     if($query_run)
     {
@@ -48,11 +50,11 @@ if(isset($_POST['editarcategoria']))
 
 if(isset($_POST['cadastrarcategoria']))
 {
-    $nome = mysqli_real_escape_string($con, $_POST['categ_nome']);
+    $nome = mysqli_real_escape_string($conn, $_POST['categ_nome']);
        
-    $query = "INSERT INTO categoria (categ_nome) VALUES ('$nome')";
-    
-    $query_run = mysqli_query($con, $query);
+    $query = "INSERT INTO perguntacategoria (nome) VALUES ('$nome')";
+
+    $query_run = mysqli_query($conn, $query);
     if($query_run)
     {
         $_SESSION['mensagem'] = "A categoria foi cadastrada com sucesso!";
@@ -66,4 +68,3 @@ if(isset($_POST['cadastrarcategoria']))
         exit(0);
     }
 }
-?>

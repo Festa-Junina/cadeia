@@ -1,5 +1,5 @@
 <?php
-session_start();
+require_once "../login/sessions/sessaoAdmin.php";
 ?>
 
 <!doctype html>
@@ -8,11 +8,13 @@ session_start();
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
-
+    <?php require "head.php" ?>
     <title>Cadastrar categoria.</title>
 </head>
 <body>
-  
+
+<?php require "header.php" ?>
+
     <div class="container mt-5">
 
         <?php include('mensagem.php'); ?>
@@ -43,5 +45,6 @@ session_start();
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+<?php require "bottomScript.php" ?>
 </body>
 </html>

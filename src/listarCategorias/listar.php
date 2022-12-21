@@ -1,4 +1,7 @@
 <?php
+require_once "../login/sessions/sessaoAdmin.php";
+
+$conn = "";
 require 'dbcon.php';
 ?>
 <!doctype html>
@@ -7,11 +10,11 @@ require 'dbcon.php';
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
-
+      <?php require "head.php" ?>
     <title>Categorias</title>
 </head>
 <body>
-
+<?php require "header.php" ?>
     <div class="container mt-5">
 
         <div class="row">
@@ -27,9 +30,9 @@ require 'dbcon.php';
                         <?php
                         if(isset($_GET['idCategoria']))
                         {
-                            $idCategoria = mysqli_real_escape_string($con, $_GET['idCategoria']);
-                            $query = "SELECT idCategoria, categ_nome FROM perguntacategoria";
-                            $query_run = mysqli_query($con, $query);
+                            $idCategoria = mysqli_real_escape_string($conn, $_GET['idCategoria']);
+                            $query = "SELECT idCategoria, nome FROM perguntacategoria";
+                            $query_run = mysqli_query($conn, $query);
 
                             if(mysqli_num_rows($query_run) > 0)
                             {
@@ -58,5 +61,6 @@ require 'dbcon.php';
     </div>
     
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+<?php require "bottomScript.php" ?>
 </body>
 </html>

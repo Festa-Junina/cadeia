@@ -1,5 +1,7 @@
 <?php
-session_start();
+require_once "../login/sessions/sessaoAdmin.php";
+
+$conn = "";
 require 'dbcon.php';
 ?>
 
@@ -9,11 +11,11 @@ require 'dbcon.php';
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
-
+      <?php require "head.php" ?>
     <title>Editar categoria</title>
 </head>
 <body>
-  
+<?php require "header.php" ?>
     <div class="container mt-5">
 
         <?php include('mensagem.php'); ?>
@@ -31,9 +33,9 @@ require 'dbcon.php';
                         <?php
                         if(isset($_GET['idCategoria']))
                         {
-                            $idCategoria = mysqli_real_escape_string($con, $_GET['idCategoria']);
-                            $query = "SELECT * FROM categoria WHERE idCategoria = {$_GET['idCategoria']}";
-                            $query_run = mysqli_query($con, $query);
+                            $idCategoria = mysqli_real_escape_string($conn, $_GET['idCategoria']);
+                            $query = "SELECT * FROM perguntacategoria WHERE idCategoria = {$_GET['idCategoria']}";
+                            $query_run = mysqli_query($conn, $query);
 
                             if(mysqli_num_rows($query_run) > 0)
                             {
@@ -44,7 +46,7 @@ require 'dbcon.php';
 
                                     <div class="mb-3">
                                         <label>Nome</label>
-                                        <input type="text" name="categ_nome" value="<?=$categoria['categ_nome'];?>" class="form-control">
+                                        <input type="text" name="categ_nome" value="<?=$categoria['nome'];?>" class="form-control">
                                     </div>
                                     <div class="mb-3">
                                         
@@ -69,5 +71,6 @@ require 'dbcon.php';
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+<?php require "bottomScript.php" ?>
 </body>
 </html>

@@ -1,4 +1,5 @@
 <?php
+    require_once "../login/sessions/sessaoAdmin.php";
     if(isset($_SESSION['mensagem'])) :
 ?>
 
