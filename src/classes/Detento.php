@@ -4,6 +4,7 @@ namespace classes;
 
 use db\ActiveRecord;
 use db\MySQL;
+use classes\OrdemPrisao;
 
 class Detento implements ActiveRecord
 {
@@ -11,8 +12,9 @@ class Detento implements ActiveRecord
     private int $idOrdemPrisao;
     private int $idPrisao;
     private int $idStatusPrisao;
-    private int $horaPrisao;
+    private string $horaPrisao;
     private int $quantidadePerguntasRespondidas;
+    private string $atualizacaoStatus;
 
     public function __construct(
     ) {
@@ -55,16 +57,13 @@ class Detento implements ActiveRecord
     }
     #endregion
 
-
-
-
     #region horaPrisao
     public function setHoraPrisao(string $horaPrisao): void
     {
-        $this->horaPrisao = time();
+        $this->horaPrisao = $horaPrisao;
     }
 
-    public function getHoraPrisao(): int
+    public function getHoraPrisao(): string
     {
         return $this->horaPrisao;
     }
@@ -105,14 +104,6 @@ class Detento implements ActiveRecord
 
     }
 
-
-
-
-
-
-
-
-
     public function delete(): bool
     {
         $conexao = new MySQL();
@@ -135,10 +126,49 @@ class Detento implements ActiveRecord
         $u->setQuantidadePerguntasRespondidas($resultado[0]['quantidadePerguntasRespondidas']);
         return $u;
     }
+
     public static function findall(): array
     {
         $conexao = new MySQL();
         $sql = "SELECT * FROM prisao";
+        $resultados = $conexao->consulta($sql);
+        $prisoes = array();
+        foreach ($resultados as $resultado) {
+            $u = new Detento(
+            );
+            $u->setIdPrisao($resultado['idPrisao']);
+            $u->setIdOrdemPrisao($resultado['idOrdemPrisao']);
+            $u->setIdStatusPrisao($resultado['idStatusPrisao']);
+            $u->setHoraPrisao($resultado['horaPrisao']);
+            $u->setQuantidadePerguntasRespondidas($resultado['quantidadePerguntasRespondidas']);
+            $prisoes[] = $u;
+        }
+        return $prisoes;
+    }
+
+    public static function findallPresos(): array
+    {
+        $conexao = new MySQL();
+        $sql = "select * from prisao p join ordemprisao o on o.idStatusOrdem = (select sto.idStatusOrdem as statusOrdem from statusordem sto where sto.nome = 'Preso') and p.idOrdemPrisao=o.idOrdem;";
+        $resultados = $conexao->consulta($sql);
+        $prisoes = array();
+        foreach ($resultados as $resultado) {
+            $u = new Detento(
+            );
+            $u->setIdPrisao($resultado['idPrisao']);
+            $u->setIdOrdemPrisao($resultado['idOrdemPrisao']);
+            $u->setIdStatusPrisao($resultado['idStatusPrisao']);
+            $u->setHoraPrisao($resultado['horaPrisao']);
+            $u->setQuantidadePerguntasRespondidas($resultado['quantidadePerguntasRespondidas']);
+            $prisoes[] = $u;
+        }
+        return $prisoes;
+    }
+
+    public static function findallLiberados(): array
+    {
+        $conexao = new MySQL();
+        $sql = "select * from prisao p join ordemprisao o on o.idStatusOrdem = (select sto.idStatusOrdem as statusOrdem from statusordem sto where sto.nome = 'Liberado') and p.idOrdemPrisao=o.idOrdem;";
         $resultados = $conexao->consulta($sql);
         $prisoes = array();
         foreach ($resultados as $resultado) {
@@ -168,8 +198,82 @@ class Detento implements ActiveRecord
 
     }
 
+    public static function findByOrdemDePrisao($idOrdemPrisao): Detento
+    {
+        $connection = new MySQL();
+        $sql = "SELECT idPrisao, idOrdemPrisao, idStatusPrisao, horaPrisao, quantidadePerguntasRespondidas, atualizacaoStatus FROM prisao WHERE idOrdemPrisao = {$idOrdemPrisao}";
+        $resultados = $connection->consulta($sql);
 
+        $detento = new Detento();
 
+        $detento->setIdPrisao($resultados[0]["idPrisao"]);
+        $detento->setIdOrdemPrisao($resultados[0]["idOrdemPrisao"]);
+        $detento->setIdStatusPrisao($resultados[0]["idStatusPrisao"]);
+        $detento->setHoraPrisao($resultados[0]["horaPrisao"]);
+        $detento->setQuantidadePerguntasRespondidas($resultados[0]["quantidadePerguntasRespondidas"]);
+        $detento->setAtualizacaoStatus($resultados[0]["atualizacaoStatus"]);
 
+        return $detento;
+    }
+
+    public static function ativaPergunta($id) : bool {
+        $conexao = new MySQL();
+        $sql = "SELECT idStatusPrisao, atualizacaostatus from prisao where idOrdemPrisao = $id";
+        $res =  $conexao->consulta($sql);
+        $status = $res[0]['idStatusPrisao'];
+        $atualizacaostatus = $res[0]['atualizacaostatus'];
+
+        date_default_timezone_set("America/Sao_Paulo");
+        $today = strtotime(date("Y-m-d H:i:s"));
+        $prison = strtotime($atualizacaostatus);
+        $diff = $today - $prison;
+        $minutes = round(abs($diff / 60), 0);
+
+        $minutosaguardo = 1;
+
+        if($minutes >= $minutosaguardo && $status == 1 ){
+            $conexao = new MySQL();
+            $sql = "UPDATE prisao set idStatusPrisao = 2 where idOrdemPrisao = $id";
+            return $conexao->executa($sql);
+
+        }elseif ($minutes >= $minutosaguardo && $status == 3 ){
+            $conexao = new MySQL();
+            $sql = "UPDATE prisao set idStatusPrisao = 4 where idOrdemPrisao = $id";
+            return $conexao->executa($sql);
+        }elseif ($minutes >= $minutosaguardo && $status == 5 ){
+            $conexao = new MySQL();
+            $sql = "UPDATE prisao set idStatusPrisao = 6 where idOrdemPrisao = $id";
+            return $conexao->executa($sql);
+        }else{
+            return false;
+        }
+    }
+
+    public function updateStatus($status) {
+        $conexao = new MySQL();
+        $qtdeP = $this->quantidadePerguntasRespondidas + 1;
+        $sql = "UPDATE prisao set idStatusPrisao = {$status}, quantidadePerguntasRespondidas = {$qtdeP} where idPrisao = {$this->idPrisao}";
+        return $conexao->executa($sql);
+    }
+
+    public function getAtualizacaoStatus(): string
+    {
+        return $this->atualizacaoStatus;
+    }
+
+    public function setAtualizacaoStatus(string $atualizacaoStatus): void
+    {
+        $this->atualizacaoStatus = $atualizacaoStatus;
+    }
+
+    public function liberar(): bool
+    {
+        $ordemPrisao = OrdemPrisao::find($this->idOrdemPrisao);
+
+        // Status 3 = Liberado
+        $ordemPrisao->setIdStatusOrdem(3);
+        
+        return $ordemPrisao->save();
+    }
 
 }

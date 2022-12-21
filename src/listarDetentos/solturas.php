@@ -4,12 +4,7 @@ require_once "../login/sessions/sessaoCarcereiro.php";
 use classes\Detento;
 use classes\OrdemPrisao;
 
-$detentos = Detento::findall();
-foreach ($detentos as $detento) {
-    Detento::ativaPergunta($detento->getIdOrdemPrisao());
-}
-
-$detentosAtualizados = Detento::findallPresos();
+$detentosAtualizados = Detento::findallLiberados();
 $ordens = array();
 
 foreach ($detentosAtualizados as $detento) {
@@ -35,23 +30,24 @@ foreach ($detentosAtualizados as $detento) {
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.css" />
     <link rel="stylesheet" href="../assets/styles/reset.css">
     <link rel="stylesheet" href="../assets/styles/globalStyles.css">
-    <link rel="shortcut icon" href="https://cdn-icons-png.flaticon.com/512/534/534102.png" type="image/png">
     <title>Ordens de Prisão</title>
 </head>
 
 <body>
 <div class="container">
     <div class="header">
-        <div class="logo">
-            Detentos
-        </div>
+        <a href='../listarDetentos'>
+            <div class="logo">
+                Detentos liberados
+            </div>
+        </a>
         <div class="user">
             <p>Carcereiro</p>
             <span class="material-symbols-outlined">
                     local_police
                 </span>
             <div class="user-opt">
-                <a href="solturas.php">Solturas</a>
+                <a href="#">Solturas</a>
                 <a href="../login/logout.php">Sair</a>
             </div>
         </div>
@@ -161,28 +157,7 @@ foreach ($detentosAtualizados as $detento) {
                         echo "<div id=\"tips{$numero_detento}\" class=\"modal\">";
                             echo "<p>{$ordem[0]->getDescricaoMeliante()}</p>";
                         echo "</div>";
-    
-    
-                        if (
-                            $status_p1 == "pode-responder" ||
-                            $status_p2 == "pode-responder" ||
-                            $status_p3 == "pode-responder"
-                        ) {
-                            echo "<div class=\"order-btn\">";
-                            echo "<h2><a href='../responderPergunta/?id={$ordem[1]->getIdOrdemPrisao()}'>Responder</a></h2>";
-                            echo "</div>";
-                        }
-    
-                        if (
-                            $status_p1 == "acertou" ||
-                            $status_p2 == "acertou" ||
-                            $status_p3 == "acertou" ||
-                            $status_p3 == "errou"
-                        ) {
-                            echo "<div class=\"order-btn\">";
-                            echo "<h2><a href='liberar.php?idDetento={$ordem[1]->getIdPrisao()}'>Liberar</a></h2>";
-                            echo "</div>";
-                        }
+
     
                         // Tempo preso;
                         date_default_timezone_set("America/Sao_Paulo");
@@ -197,7 +172,7 @@ foreach ($detentosAtualizados as $detento) {
                     echo "</div>";
                 }
             } else {
-                echo "<h2 style='color: #090909'>Sem detentos...</h2>";
+                echo "<h2 style='color: #090909'>Sem liberados...</h2>";
             }
 
             ?>

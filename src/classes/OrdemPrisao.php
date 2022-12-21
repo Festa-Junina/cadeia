@@ -17,49 +17,49 @@ class OrdemPrisao implements ActiveRecord
   private ?int $assumidaPor;
   private ?int $presoPor;
 
-  public function __construct(
-    private string $nomeMeliante,
-    private string $descricaoMeliante,
-    private string $localVisto,
-    private string $nomeDenunciante,
-    private string $telefoneDenunciante,
-  ) {
-  }
-  #region idOrdem
-  public function setIdOrdem(int $idOrdem): void
-  {
-    $this->idOrdem = $idOrdem;
-  }
+    public function __construct(
+            private string $nomeMeliante,
+            private string $descricaoMeliante,
+            private string $localVisto,
+            private string $nomeDenunciante,
+            private string $telefoneDenunciante,
+    ) {
+    }
+    #region idOrdem
+    public function setIdOrdem(int $idOrdem): void
+    {
+        $this->idOrdem = $idOrdem;
+    }
 
-  public function getIdOrdem(): int
-  {
-    return $this->idOrdem;
-  }
-  #endregion
+    public function getIdOrdem(): int
+    {
+        return $this->idOrdem;
+    }
+    #endregion
 
-  #region idTicket
-  public function setIdTicket(int $idTicket): void
-  {
-    $this->idTicket = $idTicket;
-  }
+    #region idTicket
+    public function setIdTicket(int $idTicket): void
+    {
+        $this->idTicket = $idTicket;
+    }
 
-  public function getIdTicket(): int
-  {
-    return $this->idTicket;
-  }
-  #endregion
+    public function getIdTicket(): int
+    {
+        return $this->idTicket;
+    }
+    #endregion
 
-  #region idTipoMeliante
-  public function setIdTipoMeliante(int $idTipoMeliante): void
-  {
-    $this->idTipoMeliante = $idTipoMeliante;
-  }
+    #region idTipoMeliante
+    public function setIdTipoMeliante(int $idTipoMeliante): void
+    {
+        $this->idTipoMeliante = $idTipoMeliante;
+    }
 
-  public function getIdTipoMeliante(): int
-  {
-    return $this->idTipoMeliante;
-  }
-  #endregion
+    public function getIdTipoMeliante(): int
+    {
+        return $this->idTipoMeliante;
+    }
+    #endregion
 
   #region idTurmaMeliante
   public function setIdTurmaMeliante(?int $idTurmaMeliante): void
@@ -73,77 +73,77 @@ class OrdemPrisao implements ActiveRecord
   }
   #endregion
 
-  #region idStatusOrdem
-  public function setIdStatusOrdem(int $idStatusOrdem): void
-  {
-    $this->idStatusOrdem = $idStatusOrdem;
-  }
+    #region idStatusOrdem
+    public function setIdStatusOrdem(int $idStatusOrdem): void
+    {
+        $this->idStatusOrdem = $idStatusOrdem;
+    }
 
-  public function getIdStatusOrdem(): int
-  {
-    return $this->idStatusOrdem;
-  }
-  #endregion
+    public function getIdStatusOrdem(): int
+    {
+        return $this->idStatusOrdem;
+    }
+    #endregion
 
-  #region nomeMeliante 
-  public function setNomeMeliante(string $nomeMeliante): void
-  {
-    $this->nomeMeliante = $nomeMeliante;
-  }
+    #region nomeMeliante
+    public function setNomeMeliante(string $nomeMeliante): void
+    {
+        $this->nomeMeliante = $nomeMeliante;
+    }
 
-  public function getNomeMeliante(): string
-  {
-    return $this->nomeMeliante;
-  }
-  #endregion
+    public function getNomeMeliante(): string
+    {
+        return $this->nomeMeliante;
+    }
+    #endregion
 
-  #region descricaoMeliante
-  public function setDescricaoMeliante(string $descricaoMeliante): void
-  {
-    $this->descricaoMeliante = $descricaoMeliante;
-  }
+    #region descricaoMeliante
+    public function setDescricaoMeliante(string $descricaoMeliante): void
+    {
+        $this->descricaoMeliante = $descricaoMeliante;
+    }
 
-  public function getDescricaoMeliante(): string
-  {
-    return $this->descricaoMeliante;
-  }
-  #endregion
+    public function getDescricaoMeliante(): string
+    {
+        return $this->descricaoMeliante;
+    }
+    #endregion
 
-  #region localVisto
-  public function setLocalVisto(string $localVisto): void
-  {
-    $this->localVisto = $localVisto;
-  }
+    #region localVisto
+    public function setLocalVisto(string $localVisto): void
+    {
+        $this->localVisto = $localVisto;
+    }
 
-  public function getLocalVisto(): string
-  {
-    return $this->localVisto;
-  }
-  #endregion
+    public function getLocalVisto(): string
+    {
+        return $this->localVisto;
+    }
+    #endregion
 
-  #region nomeDenunciante
-  public function setNomeDenunciante(string $nomeDenunciante): void
-  {
-    $this->nomeDenunciante = $nomeDenunciante;
-  }
+    #region nomeDenunciante
+    public function setNomeDenunciante(string $nomeDenunciante): void
+    {
+        $this->nomeDenunciante = $nomeDenunciante;
+    }
 
-  public function getNomeDenunciante(): string
-  {
-    return $this->nomeDenunciante;
-  }
-  #endregion
+    public function getNomeDenunciante(): string
+    {
+        return $this->nomeDenunciante;
+    }
+    #endregion
 
-  #region telefoneDenunciante
-  public function setTelefoneDenunciante(string $telefoneDenunciante): void
-  {
-    $this->telefoneDenunciante = $telefoneDenunciante;
-  }
+    #region telefoneDenunciante
+    public function setTelefoneDenunciante(string $telefoneDenunciante): void
+    {
+        $this->telefoneDenunciante = $telefoneDenunciante;
+    }
 
-  public function getTelefoneDenunciante(): string
-  {
-    return $this->telefoneDenunciante;
-  }
-  #endregion
+    public function getTelefoneDenunciante(): string
+    {
+        return $this->telefoneDenunciante;
+    }
+    #endregion
 
   #region horaOrdem
   public function setHoraOrdem(string $horaOrdem): void
@@ -151,11 +151,11 @@ class OrdemPrisao implements ActiveRecord
     $this->horaOrdem = strtotime($horaOrdem);
   }
 
-  public function getHoraOrdem(): int
-  {
-    return $this->horaOrdem;
-  }
-  #endregion
+    public function getHoraOrdem(): int
+    {
+        return $this->horaOrdem;
+    }
+    #endregion
 
   #region assumidaPor
   public function setAssumidaPor(?int $assumidaPor): void
@@ -214,102 +214,102 @@ class OrdemPrisao implements ActiveRecord
             '{$this->telefoneDenunciante}' ,
               0,
             CURRENT_TIMESTAMP())";
+        }
+
+        //session_destroy();
+        // return true;
+        // TRIGGER NO BANCO $sql = "UPDATE ticket SET valido = false WHERE idTicket = '{$this->idTicket}'";
+        return $conexao->executa($sql);
     }
 
-    session_destroy();
-    // return true;
-    // TRIGGER NO BANCO $sql = "UPDATE ticket SET valido = false WHERE idTicket = '{$this->idTicket}'";
-    return $conexao->executa($sql);
-  }
-
-  public function delete(): bool
-  {
-    $conexao = new MySQL();
-    $sql = "DELETE FROM ordemPrisao WHERE idOrdem = {$this->idOrdem}";
-    return $conexao->executa($sql);
-  }
-
-  public static function find($idOrdem): OrdemPrisao
-  {
-    $conexao = new MySQL();
-    $sql = "SELECT * FROM ordemprisao WHERE idOrdem = {$idOrdem}";
-    $resultado = $conexao->consulta($sql);
-    $p = new OrdemPrisao(
-      $resultado[0]['nomeMeliante'],
-      $resultado[0]['descricaoMeliante'],
-      $resultado[0]['localVisto'],
-      $resultado[0]['nomeDenunciante'],
-      $resultado[0]['telefoneDenunciante']
-    );
-    $p->setIdTicket($resultado[0]['idTicket']);
-    $p->setIdTipoMeliante($resultado[0]['idTipoMeliante']);
-    $p->setIdStatusOrdem($resultado[0]['idStatusOrdem']);
-    $p->setHoraOrdem($resultado[0]['horaOrdem']);
-
-    if (!is_null($resultado[0]['idTurmaMeliante'])) {
-      $p->setIdTurmaMeliante($resultado[0]['idTurmaMeliante']);
-    } else{
-      $p->setIdTurmaMeliante(null);
+    public function delete(): bool
+    {
+        $conexao = new MySQL();
+        $sql = "DELETE FROM ordemPrisao WHERE idOrdem = {$this->idOrdem}";
+        return $conexao->executa($sql);
     }
 
-    if (!is_null($resultado[0]['assumidaPor'])) {
-      $p->setAssumidaPor($resultado[0]['assumidaPor']);
-    } else{
-      $p->setAssumidaPor(null);
+    public static function find($idOrdem): OrdemPrisao
+    {
+        $conexao = new MySQL();
+        $sql = "SELECT * FROM ordemprisao WHERE idOrdem = {$idOrdem}";
+        $resultado = $conexao->consulta($sql);
+        $p = new OrdemPrisao(
+                $resultado[0]['nomeMeliante'],
+                $resultado[0]['descricaoMeliante'],
+                $resultado[0]['localVisto'],
+                $resultado[0]['nomeDenunciante'],
+                $resultado[0]['telefoneDenunciante']
+        );
+        $p->setIdTicket($resultado[0]['idTicket']);
+        $p->setIdTipoMeliante($resultado[0]['idTipoMeliante']);
+        $p->setIdStatusOrdem($resultado[0]['idStatusOrdem']);
+        $p->setHoraOrdem($resultado[0]['horaOrdem']);
+
+        if (!is_null($resultado[0]['idTurmaMeliante'])) {
+            $p->setIdTurmaMeliante($resultado[0]['idTurmaMeliante']);
+        } else{
+            $p->setIdTurmaMeliante(null);
+        }
+
+        if (!is_null($resultado[0]['assumidaPor'])) {
+            $p->setAssumidaPor($resultado[0]['assumidaPor']);
+        } else{
+            $p->setAssumidaPor(null);
+        }
+
+        if (!is_null($resultado[0]['presoPor'])) {
+            $p->setPresoPor($resultado[0]['presoPor']);
+        } else{
+            $p->setPresoPor(null);
+        }
+
+        $p->setIdOrdem($resultado[0]['idOrdem']);
+
+        return $p;
     }
 
-    if (!is_null($resultado[0]['presoPor'])) {
-      $p->setPresoPor($resultado[0]['presoPor']);
-    } else{
-      $p->setPresoPor(null);
+    public static function findall(): array
+    {
+        $conexao = new MySQL();
+        $sql = "SELECT * FROM ordemPrisao ORDER BY 'ASC'";
+        $resultados = $conexao->consulta($sql);
+        $ordens = array();
+        foreach ($resultados as $resultado) {
+            $o = new OrdemPrisao(
+                    $resultado['nomeMeliante'],
+                    $resultado['descricaoMeliante'],
+                    $resultado['localVisto'],
+                    $resultado['nomeDenunciante'],
+                    $resultado['telefoneDenunciante']
+            );
+
+            $o->setIdTicket($resultado['idTicket']);
+            $o->setIdTipoMeliante($resultado['idTipoMeliante']);
+            $o->setIdStatusOrdem($resultado['idStatusOrdem']);
+            $o->setHoraOrdem($resultado['horaOrdem']);
+
+            if (isset($resultado['idTurmaMeliante'])) {
+                $o->setidTurmaMeliante($resultado['idTurmaMeliante']);
+            } else{
+                $o->setidTurmaMeliante(null);
+            }
+
+            if (isset($resultado['assumidaPor'])) {
+                $o->setAssumidaPor($resultado['assumidaPor']);
+            } else{
+                $o->setAssumidaPor(null);
+            }
+
+            if (isset($resultado['presoPor'])) {
+                $o->setPresoPor($resultado['presoPor']);
+            } else{
+                $o->setPresoPor(null);
+            }
+
+            $o->setIdOrdem($resultado['idOrdem']);
+            $ordens[] = $o;
+        }
+        return $ordens;
     }
-
-    $p->setIdOrdem($resultado[0]['idOrdem']); 
-    
-    return $p;
-  }
-
-  public static function findall(): array
-  {
-    $conexao = new MySQL();
-    $sql = "SELECT * FROM ordemPrisao ORDER BY 'ASC'";
-    $resultados = $conexao->consulta($sql);
-    $ordens = array();
-    foreach ($resultados as $resultado) {
-      $o = new OrdemPrisao(
-        $resultado['nomeMeliante'],
-        $resultado['descricaoMeliante'],
-        $resultado['localVisto'],
-        $resultado['nomeDenunciante'],
-        $resultado['telefoneDenunciante']
-      );
-
-      $o->setIdTicket($resultado['idTicket']);
-      $o->setIdTipoMeliante($resultado['idTipoMeliante']);
-      $o->setIdStatusOrdem($resultado['idStatusOrdem']);
-      $o->setHoraOrdem($resultado['horaOrdem']);
-
-      if (isset($resultado['idTurmaMeliante'])) {
-        $o->setidTurmaMeliante($resultado['idTurmaMeliante']);
-      } else{
-        $o->setidTurmaMeliante(null);
-      }
-
-      if (isset($resultado['assumidaPor'])) {
-        $o->setAssumidaPor($resultado['assumidaPor']);
-      } else{
-        $o->setAssumidaPor(null);
-      }
-
-      if (isset($resultado['presoPor'])) {
-        $o->setPresoPor($resultado['presoPor']);
-      } else{
-        $o->setPresoPor(null);
-      }
-
-      $o->setIdOrdem($resultado['idOrdem']);      
-      $ordens[] = $o;
-    }
-    return $ordens;
-  }
 }
