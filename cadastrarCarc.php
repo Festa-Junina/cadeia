@@ -39,7 +39,7 @@ if(isset($_POST['botao'])){
                         <br>
                     <div class="botaoCad">
                         <input type='submit' value="Cadastrar" name='botao'>
-                        <a href='index.php'>Cancelar</a>
+                        <a href='listarCarc.php'>Cancelar</a>
                     </div>
                 </div>
             </div>

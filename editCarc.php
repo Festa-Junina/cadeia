@@ -66,7 +66,7 @@ if(isset($_POST['botao'])){
                     <input name='id' value={$carcereiro->getIdUsuario()} type='hidden'>
                     <div class='botaoCad'>
                     <button name='botao' value='Cadastrar'>Salvar</button>
-                    <a href='index.php'>Cancelar</a>
+                    <a href='listarCarc.php'>Cancelar</a>
                 </div>
                     </div>
                     </div>
