@@ -167,10 +167,10 @@ class Usuario implements  ActiveRecord
         return $users;
     }
 
-    public static function findallPoliciais(): array
+    public static function findallPorFuncao(string $funcao): array
     {
         $connection = new MySQL();
-        $sql = "SELECT * FROM usuario WHERE idFuncao = (SELECT idFuncao FROM funcao F WHERE F.nome = 'Policial')";
+        $sql = "SELECT * FROM usuario WHERE idFuncao = (SELECT idFuncao FROM funcao F WHERE F.nome = '$funcao')";
         $results = $connection->consulta($sql);
         $users = array();
 
