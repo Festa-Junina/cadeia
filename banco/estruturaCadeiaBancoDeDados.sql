@@ -65,7 +65,7 @@ CREATE TABLE IF NOT EXISTS `pergunta` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 CREATE TABLE IF NOT EXISTS `perguntacategoria` (
-  `idCategoria` int(11) NOT NULL,
+  `idCategoria` int(11) NOT NULL AUTO_INCREMENT,
   `nome` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
   PRIMARY KEY (`idCategoria`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
@@ -137,7 +137,7 @@ ALTER TABLE `ordemprisao`
   ADD CONSTRAINT `ordemprisao_ibfk_6` FOREIGN KEY (`presoPor`) REFERENCES `usuario` (`idUsuario`);
 
 ALTER TABLE `pergunta`
-  ADD CONSTRAINT `pergunta_ibfk_1` FOREIGN KEY (`idCategoria`) REFERENCES `perguntacategoria` (`idCategoria`);
+  ADD CONSTRAINT `perguntaCategoria` FOREIGN KEY (`idCategoria`) REFERENCES `perguntacategoria` (`idCategoria`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 ALTER TABLE `prisao`
   ADD CONSTRAINT `prisao_ibfk_1` FOREIGN KEY (`idOrdemPrisao`) REFERENCES `ordemprisao` (`idOrdem`),

@@ -1,10 +1,3 @@
-
-/*
-
-SCRIPT COM OS DADOS DE EXEMPLO USADOS PARA TESTE;
-
-*/
-
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
 SET time_zone = "+00:00";
@@ -25,27 +18,27 @@ INSERT INTO `ordemprisao` (`idOrdem`, `idTicket`, `idTipoMeliante`, `idTurmaMeli
 (2, 6, 2, NULL, 2, 'Diogo Defante', 'Youtuber, humorista, repórter doidão, humor escrachado e nonsense que faz pegadinhas e entrevistas inusitadas com quem passa nas ruas.', 'Qatar', 'Hamad bin Khalifa', '0800-999', 3, 2, '2022-12-20 03:22:03');
 
 INSERT INTO `pergunta` (`idPergunta`, `idCategoria`, `enunciado`, `alternativaA`, `alternativaB`, `alternativaC`, `alternativaD`, `alternativaCorreta`) VALUES
-(1, 8, 'Quem veio primeiro ?', 'A galinha', 'O ovo', 'O galo', 'O pinto', 'A'),
-(2, 0, 'Quanto é 1 + 1 ?', '2', '3', '1', '11', 'A'),
-(3, 1, '(FCC) A ocorrência de interferências ___ -nos a concluir que ___ uma relação profunda entre homem e sociedade que os ___ mutuamente dependentes', 'leva, existe, torna', 'levam, existe, tornam', 'levam, existem, tornam', 'levam, existem, torna', 'A');
+(1, 9, 'Quem veio primeiro ?', 'A galinha', 'O ovo', 'O galo', 'O pinto', 'A'),
+(2, 1, 'Quanto é 1 + 1 ?', '2', '3', '1', '11', 'A'),
+(3, 2, '(FCC) A ocorrência de interferências ___ -nos a concluir que ___ uma relação profunda entre homem e sociedade que os ___ mutuamente dependentes', 'leva, existe, torna', 'levam, existe, tornam', 'levam, existem, tornam', 'levam, existem, torna', 'A');
 
 INSERT INTO `perguntacategoria` (`idCategoria`, `nome`) VALUES
-(0, 'Matemática'),
-(1, 'Português'),
-(2, 'Biologia'),
-(3, 'Física'),
-(4, 'História'),
-(5, 'Inglês'),
-(6, 'Química'),
-(7, 'Informática'),
-(8, 'Lógica'),
-(9, 'Filosofia'),
-(10, 'Sociologia'),
-(11, 'Geografia'),
-(12, 'IFRS');
+(1, 'Matemática'),
+(2, 'Português'),
+(3, 'Biologia'),
+(4, 'Física'),
+(5, 'História'),
+(6, 'Inglês'),
+(7, 'Química'),
+(8, 'Informática'),
+(9, 'Lógica'),
+(10, 'Filosofia'),
+(11, 'Sociologia'),
+(12, 'Geografia'),
+(13, 'IFRS');
 
 INSERT INTO `prisao` (`idPrisao`, `idOrdemPrisao`, `idStatusPrisao`, `horaPrisao`, `quantidadePerguntasRespondidas`, `atualizacaoStatus`) VALUES
-(1, 2, 2, '2022-12-20 03:22:03', 0, '2022-12-20 23:17:30');
+(1, 2, 4, '2022-12-20 03:22:03', 1, '2022-12-21 01:21:52');
 
 INSERT INTO `statusordem` (`idStatusOrdem`, `nome`) VALUES
 (0, 'Aberto'),
