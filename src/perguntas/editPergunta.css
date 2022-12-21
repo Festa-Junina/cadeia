@@ -1,0 +1,53 @@
+@import url("./globalStyles.css");
+@import url('https://fonts.googleapis.com/css2?family=Mulish&display=swap');
+
+body{
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    font-family: 'Mulish', sans-serif;
+    color: var(--black);
+}
+
+form{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    gap: .5rem;
+    margin-bottom: 2rem;
+}
+
+input{
+    outline: none;
+    border-radius: 5px;
+}
+
+.submit{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.submit > input{
+    background-color: var(--primary);
+    border: none;
+    border-radius: .2rem;
+    padding: .4rem;
+    font-size: 120%;
+}
+
+.submit > input:hover{
+    cursor: pointer;
+}
+
+.form-group{
+    display: flex;
+    flex-direction: column;
+    gap: .2rem;
+    border-radius: 15px;
+}
