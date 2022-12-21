@@ -10,6 +10,7 @@ use classes\Usuario;
 
 $policia = Usuario::find($_GET["id"]);
 
-$policia->delete();
+$policia->setAtivo(0);
+$policia->save();
 
 header("location: ../listarPoliciais");

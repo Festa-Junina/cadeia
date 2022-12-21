@@ -72,7 +72,7 @@ $policias = Usuario::findallPorFuncao("Policial");
                         }
                         echo "<td class='opts'>".
                                 "<a href='edit.php?id={$policia->getIdUsuario()}'>editar</a> ".
-                                "<a href='delete.php?id={$policia->getIdUsuario()}'>excluir</a> ".
+                                "<a href='desativar.php?id={$policia->getIdUsuario()}'>desativar</a> ".
                                 "</td>";
                         echo "</tr>";
                     }

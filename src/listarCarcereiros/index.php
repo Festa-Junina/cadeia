@@ -72,7 +72,7 @@ $carcereiros = Usuario::findallPorFuncao("Carcereiro");
                         }
                         echo "<td class='opts'>".
                                 "<a href='edit.php?id={$carcereiro->getIdUsuario()}'>editar</a> ".
-                                "<a href='delete.php?id={$carcereiro->getIdUsuario()}'>excluir</a> ".
+                                "<a href='desativar.php?id={$carcereiro->getIdUsuario()}'>desativar</a> ".
                                 "</td>";
                         echo "</tr>";
                     }

@@ -10,6 +10,7 @@ use classes\Usuario;
 
 $carcereiro = Usuario::find($_GET["id"]);
 
-$carcereiro->delete();
+$carcereiro->setAtivo(0);
+$carcereiro->save();
 
 header("location: ../listarCarcereiros");

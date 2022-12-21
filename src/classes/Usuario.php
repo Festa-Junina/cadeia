@@ -238,4 +238,5 @@ class Usuario implements  ActiveRecord
 
         return false;
     }
+
 }
