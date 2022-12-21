@@ -55,7 +55,7 @@ class Usuario implements  ActiveRecord
         return $this->nome;
     }
 
-    public function setAtivo(int $ativo): void {
+    public function setAtivo(bool $ativo): void {
         $this->ativo = $ativo;
     }
 
@@ -101,27 +101,25 @@ class Usuario implements  ActiveRecord
     public function save(): bool
     {
         $connection = new MySQL();
-        $existe = $this->existeUsuario($this->login);
+        $senha = password_hash($this->senha, PASSWORD_BCRYPT);
+        $ativo = intval($this->ativo);
 
-       if(!$existe){
-        $this->senha = password_hash($this->senha,PASSWORD_BCRYPT);
-        if(isset($this->idUsuario)){
-            $sql = "UPDATE usuario SET login = '{$this->login}', senha = '{$this->senha}', idFuncao = '{$this->idFuncao}', telefone = '{$this->telefone}', nome = '{$this->nome}', ativo = '{$this->ativo}' WHERE idUsuario = {$this->idUsuario}";
-        }else{
-            $sql = "INSERT INTO usuario (idFuncao,login, senha, telefone,nome,ativo) VALUES ('{$this->idFuncao}','{$this->login}','{$this->senha}','{$this->telefone}','{$this->nome}','{$this->ativo}')";
+        if (isset($this->idUsuario)) {
+            // Update
+            $sql = "UPDATE `usuario` SET `login`='{$this->login}',`senha`='{$senha}',`nome`='{$this->nome}',`telefone`='{$this->telefone}',`ativo`={$ativo} WHERE `idUsuario` = {$this->idUsuario}";
+        } else {
+            // Create
+            $sql = "INSERT INTO usuario (idFuncao,login,senha,nome,telefone,ativo) VALUES ({$this->idFuncao},'{$this->login}','{$senha}','{$this->nome}','{$this->telefone}',{$ativo})";
         }
+        
         return $connection->executa($sql);
-    }else{
-           return false;
-       }
     }
 
     public function delete(): bool
     {
         $connection = new MySQL();
         $sql = "DELETE FROM usuario WHERE idUsuario = {$this->idUsuario}";
-
-
+        
         return $connection->executa($sql);
     }
 
@@ -194,6 +192,14 @@ class Usuario implements  ActiveRecord
         return $users;
     }
 
+    public static function findIdFuncaoPeloNomeDaFuncao(string $nomeFuncao): int
+    {
+        $connection = new MySQL();
+        $sql = "select f.idFuncao as idFuncao from funcao f where f.nome = '{$nomeFuncao}';";
+        $res = $connection->consulta($sql);
+        return $res[0]["idFuncao"];
+    }
+
     public function authenticate(): bool
     {
         $connection = new MySQL();
@@ -220,16 +226,16 @@ class Usuario implements  ActiveRecord
         }
     }
 
-    public function existeUsuario($login) : bool {
+    public static function existeLogin($login): bool
+    {
         $conexao = new MySQL();
-        $sql = "SELECT login FROM usuario WHERE login = '$login'";
+        $sql = "select count(1) as qtde from usuario where login = '{$login}'";
         $resultados = $conexao->consulta($sql);
-        $existem = count($resultados);
-        if(1 == $existem){
+        
+        if ($resultados[0]["qtde"]) {
             return true;
-        }
-        else{
-            return false;
-        }
+        } 
+
+        return false;
     }
 }

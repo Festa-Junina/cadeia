@@ -29,21 +29,27 @@ $policias = Usuario::findallPoliciais();
 <body>
 <div class="container">
     <div class="header">
-        <div class="logo">
-            Policiais
-        </div>
+        <a href="../listarPoliciais">
+            <div class="logo">
+                Policiais
+            </div>
+        </a>
         <div class="user">
             <p>Administrador</p>
             <span class="material-symbols-outlined">
                     local_police
                 </span>
             <div class="user-opt">
+                <a href="../admin">Página Inicial</a>
                 <a href="../login/logout.php">Sair</a>
             </div>
         </div>
     </div>
 
     <div class="main-content">
+        <div class='new-button-area'>
+            <a href='new.php'>Novo Policial</a>
+        </div>
         <table>
             <tr>
                 <th>Nome</th>

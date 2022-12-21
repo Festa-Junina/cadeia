@@ -5,27 +5,22 @@ require_once "../login/sessions/sessaoAdmin.php";
 use classes\Usuario;
 
 if (isset($_POST["button"])) {
-    $policia = new Usuario();
-    $policia->constructorCreate(
-        $_POST["idFuncao"],
-        $_POST["login"],
-        $_POST["senha"],
-        $_POST["nome"],
-        $_POST["telefone"],
-        boolval($_POST["ativo"])
-    );
-    $policia->setIdUsuario($_POST["idUsuario"]);
-
-    $policia->save();
-
-    header("location: ../listarPoliciais");
+    if (Usuario::existeLogin($_POST["login"])) {
+        echo "<script>alert('Já existe um usuário com o Login informado.');</script>";
+    } else {
+        $policia = new Usuario();
+        $policia->constructorCreate(
+            $_POST["idFuncao"],
+            $_POST["login"],
+            $_POST["senha"],
+            $_POST["nome"],
+            $_POST["telefone"],
+            boolval($_POST["ativo"])
+        );
+        $policia->save();
+        header("location: ../listarPoliciais");
+    }
 }
-
-if (!isset($_GET["id"])) {
-    header("location: ../listarPoliciais");
-}
-
-$policia = Usuario::find($_GET["id"]);
 
 ?>
 
@@ -65,20 +60,19 @@ $policia = Usuario::find($_GET["id"]);
             </div>
         </div>
     </div>
-
+    
     <div class="main-content">
-        <h2>Editar policial</h2>
-        <form method="post" action="edit.php">
-            <input type='hidden' name='idUsuario' value='<?php echo $policia->getIdUsuario() ?>'>
+        <h2>Novo policial</h2>
+        <form method="post" action="new.php">
             <input type='hidden' name='idFuncao' value='<?php echo Usuario::findIdFuncaoPeloNomeDaFuncao("Policial") ?>'>
             <label>
                 <p>Nome</p>
-                <input type="text" name="nome" value="<?php echo $policia->getNome() ?>" required>
+                <input type="text" name="nome" required>
             </label>
 
             <label>
                 <p>Login</p>
-                <input type="text" name="login" value="<?php echo $policia->getLogin() ?>" required>
+                <input type="text" name="login" required>
             </label>
             
             <label>
@@ -88,21 +82,14 @@ $policia = Usuario::find($_GET["id"]);
 
             <label>
                 <p>Telefone</p>
-                <input type="tel" name="telefone" value="<?php echo $policia->getTelefone() ?>" required>
+                <input type="tel" name="telefone" id='tel' value="" maxlength="15" minlength="15" required onChange="contactSeparators()">
             </label>
 
             <label>
                 <p>Ativo</p>
                 <select name="ativo" required>
-                    <?php
-                    if ($policia->getAtivo()) {
-                        echo "<option selected value='1'>Sim</option>";
-                        echo "<option value='0'>Não</option>";
-                    } else {
-                        echo "<option value='1'>Sim</option>";
-                        echo "<option selected value='0'>Não</option>";
-                    }
-                    ?>
+                    <option selected value='1'>Sim</option>
+                    <option value='0'>Não</option>
                 </select>
             </label>
 
@@ -118,6 +105,37 @@ $policia = Usuario::find($_GET["id"]);
     $('.user').on("click", function () {
         $('.user-opt').toggleClass('displayed');
     });
+</script>
+
+<script>
+    function mascara(o, f) {
+        v_obj = o;
+        v_fun = f;
+
+        setTimeout("execmascara()", 1);
+    }
+    
+    function execmascara() {
+        v_obj.value = v_fun(v_obj.value);
+    }
+
+    function mtel(v) {
+        v = v.replace(/\D/g,"");
+        v = v.replace(/^(\d{2})(\d)/g,"($1) $2");
+        v = v.replace(/(\d)(\d{4})$/,"$1-$2");
+
+        return v;
+    }
+
+    function id(el) {
+        return document.getElementById(el);
+    }
+
+    window.onload = function() {
+        id('tel').onkeyup = function() {
+            mascara(this, mtel);
+        }
+    }
 </script>
 </body>
 
