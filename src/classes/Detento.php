@@ -189,7 +189,7 @@ class Detento implements ActiveRecord
         $diff = $today - $prison;
         $minutes = round(abs($diff / 60), 0);
 
-        $minutosaguardo = 3;
+        $minutosaguardo = 1;
 
         if($minutes >= $minutosaguardo && $status == 1 ){
             $conexao = new MySQL();
