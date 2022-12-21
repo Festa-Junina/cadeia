@@ -1,12 +1,6 @@
 <?php
 
-require_once __DIR__ . "/../../vendor/autoload.php";
-
-session_start();
-
-if (!isset($_SESSION["idUsuario"]) && $_SESSION["funcao"] != "Carcereiro") {
-    header("location: ../../login");
-}
+require_once "../login/sessions/sessaoCarcereiro.php";
 
 if (!isset($_GET["id"])) {
     header("location: ../listarDetentos");
@@ -66,9 +60,7 @@ $categoria = $pergunta->getNomeCategoria();
 
 ?>
 
-<?php echo "" ?>
-
-<p class="tempo-restante">Tempo restante para responder a pergunta: <span id="timer">05:00</span></p>
+<p class="tempo-restante">Tempo restante para responder a pergunta: <span id="timer">01:00</span></p>
 
 <div class="area-responder-pergunta">
     <p class="nome-detento">Nome do detento: <?php echo $ordemPrisao->getNomeMeliante() ?></p>

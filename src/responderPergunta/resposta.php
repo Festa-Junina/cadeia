@@ -1,11 +1,5 @@
 <?php
-require_once __DIR__ . "/../../vendor/autoload.php";
-
-session_start();
-
-if (!isset($_SESSION["idUsuario"]) && $_SESSION["funcao"] != "Carcereiro") {
-    header("location: ../../login");
-}
+require_once "../login/sessions/sessaoCarcereiro.php";
 
 if (!isset($_POST["idDetento"])) {
     header("location: ../listarDetentos");
@@ -32,7 +26,7 @@ if ($respostaDadaPeloDetento == $pergunta->getAlternativaCorreta()) {
     } elseif ($statusDetento == 4) {
         $proximoStatus = 5;
     } elseif ($statusDetento == 6) {
-        $proximoStatus = 7;
+        $proximoStatus = 8;
     }
 
     $detento->updateStatus($proximoStatus);
