@@ -1,0 +1,102 @@
+.main-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 10px;
+}
+.main-content>h2 {
+    color: #090909;
+    font-size: 20px;
+    font-weight: bold;
+    padding: 20px;
+}
+.new-button-area {
+    width: 100%;
+    padding: 0 100px;
+    display: flex;
+    justify-content: right;
+}
+.new-button-area a {
+    text-decoration: none;
+    color: #fff;
+    background-color: #104228;
+    padding: 20px 35px;
+    border-radius: 12px;
+}
+.new-button-area a:hover {
+    background-color: #165735;
+}
+a, td, th {
+    font-size: 1.2rem;
+    padding: .6rem .5rem;
+}
+table {
+    border-collapse: collapse;
+    width: 80%;
+    margin: 2rem 0;
+}
+table a {
+    text-decoration: none;
+    color: #fff;
+    padding: .3rem;
+    background-color: #165735;
+    border-radius: 4px;
+}
+th {
+    font-weight: bolder;
+    background-color: #008a390c;
+}
+td {
+    font-weight: 400;
+}
+.opts {
+    text-align: center;
+}
+.opts :nth-child(2) {
+    background-color: #7a2222;
+}
+.opts a {
+    line-height: 2;
+}
+td,tr, th {
+    border: 2px solid #165735;
+    color: #121212;
+}
+form {
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    width: 300px;
+    border: 1px solid #3CC47C;
+    border-radius: 8px;
+    background-color: #f0f0f0;
+}
+form p {
+    color: #090909;
+    padding: 4px 0;
+}
+form input, select {
+    font-family: "Mulish", sans-serif;
+    font-size: 14px;
+    width: 100%;
+    border: 1px solid #3CC47C;
+    border-radius: 4px;
+    padding: 4px 2px;
+    margin-bottom: 5px;
+}
+form input[type='submit'] {
+    background-color: #104228;
+    color: #fff;
+    font-weight: bold;
+    border: none;
+    margin-top: 10px;
+    padding: 10px 0;
+}
+form input[type='submit']:hover {
+    background-color: #165735;
+    cursor: pointer;
+}
+.header a {
+    text-decoration: none;
+    color: #fff;
+}

@@ -21,14 +21,19 @@ body{
     color: var(--white);
     background-color: var(--primary);
 }
-.container-header{
-    display: flex;
-    justify-content: space-between;
-}
 .main{
     display: flex;
     flex-direction: column;
-    padding: 1.5em 0em;
+    justify-content: space-between;
+    padding: 0.8em 0em;
+}
+.form{
+    height: 30%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+    padding: 0.8em 0em;
     gap: 1em;
 }
 .button{
@@ -41,21 +46,29 @@ body{
     justify-content: center;
     min-width: 120px;
 }
+/*Aplica para todos os input porem os inputs que são submit nao se aplica*/
+input:not(input[type="submit"]){
+    outline: none;
+    height: 2.3em;
+    padding: 0.5em;
+    border-radius: .4em;
+    border: 2px solid var(--primaryVariant);
+}
+.mensagemErro{
+    align-self: center;
+    color: var(--red);
+}
 
 
 /*DETALHES*/
+h2{
+    font-weight: bold;
+}
 a{
     color: initial;
     text-decoration: none;
 }
-h1{
-    font-size: 2.8em;
-}
-p{
-    font-size: 1.8em;
-}
-.cadeia-img{
-    margin: auto;
+.ticket-img{
     display: block;
     width: 100%;
     max-width: 380px;

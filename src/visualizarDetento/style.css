@@ -1,4 +1,4 @@
-@import '../../globalStyles.css';
+@import '../assets/styles/globalStyles.css';
 * {
     padding: 0;
     margin: 0;
@@ -12,6 +12,7 @@
     justify-content: space-between;
     padding: 0 2.5rem 0 3rem;
     align-items: center;
+    user-select: none;
 }
 
 .logo,
@@ -24,9 +25,9 @@
     font-size: 150%;
     font-weight: 900;
 }
-.logo a {
+.logo a, .user {
     text-decoration: none;
-    color: black;
+    color: #ffffff;
 }
 .user{
     gap: .5rem;
@@ -51,7 +52,9 @@
     border-radius: 10px;
     width: 150px;
 }
-
+.displayed {
+    display: flex;
+}
 .user-opt > a{
     text-decoration: none;
     color: var(--white);
@@ -79,6 +82,24 @@
 }
 .visualizar-detento-descricao {
     margin-top: 20px;
+}
+.botoes-acoes-detento {
+    display: flex;
+    column-gap: 4rem;
+    width: 100%;
+    justify-content: center;
+    padding-top: 3rem;
+}
+.botoes-acoes-detento a {
+    text-decoration: none;
+    color: #EDEDED;
+    background-color: #165735;
+    padding: 5px 8px;
+    border-radius: 8px;
+}
+.botoes-acoes-detento a:hover {
+    background-color: #104228;
+    cursor: pointer;
 }
 .visualizar-detento-descricao p {
     padding: 10px 0;

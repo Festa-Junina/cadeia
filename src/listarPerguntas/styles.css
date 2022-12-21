@@ -1,0 +1,168 @@
+.questions {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    row-gap: 20px;
+    padding: 20px 15%;
+    box-sizing: border-box;
+    width: 100%;
+}
+.questions .card-question {
+    position: relative;
+    background-color: #f0f0f0;
+    padding: 20px 20px 4px 20px;
+    border: 2px solid #3CC47C;
+    border-radius: 8px;
+    max-width: 700px;
+}
+.questions .card-question .category,
+.questions .card-question .description {
+    color: #090909;
+}
+.questions .card-question .category {
+    font-weight: bold;
+    opacity: 0.8;
+    padding-bottom: 12px;
+}
+.questions .card-question .description {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    line-clamp: 3;
+    -webkit-box-orient: vertical;
+}
+.questions .card-question .actions-question {
+    display: flex;
+    justify-content: right;
+    column-gap: 12px;
+    padding: 12px 0;
+}
+.questions .card-question .actions-question a {
+    text-decoration: none;
+    color: #fff;
+    background-color: #104228;
+    font-size: 15px;
+    border-radius: 8px;
+    padding: 10px 20px;
+}
+.questions .card-question .actions-question a:hover {
+    background-color: #165735;
+}
+.questions .card-question .actions-question a.remove-question {
+    background-color: #7a2222;
+}
+.questions .card-question .actions-question a.remove-question:hover {
+    background-color: #d75b5b;
+}
+textarea.enunciado {
+    box-sizing: border-box;
+    border: 1px solid #3CC47C;
+    border-radius: 8px;
+    width: 100%;
+    resize: vertical;
+    padding: 5px;
+    font-size: 14px;
+    font-family: "Mulish", sans-serif;
+}
+.questions form textarea:focus {
+    background-color: #fff;
+}
+.questions .card-question .view {
+    background-image: url("https://cdn-icons-png.flaticon.com/512/2763/2763995.png");
+    background-repeat: no-repeat;
+    background-size: 25px 25px;
+    position: absolute;
+    top: 2px;
+    right: 2px;
+    width: 25px;
+    height: 25px;
+    filter: invert(22%) sepia(82%) saturate(418%) hue-rotate(96deg) brightness(96%) contrast(89%);
+}
+.card-view {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    background-color: #f0f0f0;
+    padding: 20px 20px 4px 20px;
+    border: 2px solid #3CC47C;
+    border-radius: 8px;
+    max-width: 700px;
+    min-width: 400px;
+    color: #090909;
+    font-size: 17px;
+}
+.card-view .category,
+.card-view .description {
+    padding-bottom: 20px;
+}
+.card-view .actions-question {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+}
+.card-view .actions-question a {
+    background-color: #165735;
+    border-radius: 8px;
+    font-weight: bold;
+    font-size: 16px;
+    text-decoration: none;
+    color: #fff;
+    padding: 12px 20px;
+    margin-bottom: 12px;
+}
+.card-view .actions-question a.remove-question {
+    background-color: #7a2222;
+}
+.card-view .actions-question a:hover {
+    opacity: 0.7;
+}
+.alts {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+    grid-column-gap: 25px;
+    grid-row-gap: 25px;
+    margin: 20px 0;
+}
+.alts p {
+    box-sizing: border-box;
+    padding: 8px 10px;
+    background-color: #EDEDED;
+    border: 2px solid #3CC47C;
+    border-radius: 4px;
+    line-height: 1.6;
+}
+#A::before {
+    content: 'A';
+}
+#B::before {
+    content: 'B';
+}
+#C::before {
+    content: 'C';
+}
+#D::before {
+    content: 'D';
+}
+.alts p::before,
+.correta-view::before {
+    background-color: #165735;
+    color: #fff;
+    padding: 4px 8px;
+    border-radius: 45%;
+    font-weight: bold;
+    margin-right: 5px;
+    margin-bottom: 5px;
+}
+.type-info {
+    font-weight: bold;
+}
+form.card-question {
+    width: 550px;
+}
+@media (max-width: 940px) {
+    form.card-question {
+        width: 100%;
+    }
+}

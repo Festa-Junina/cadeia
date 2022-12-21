@@ -1,0 +1,105 @@
+body{
+    width: 100%;
+    height: 100vh;
+    color: var(--black);
+    background-color: var(--gray2);
+}
+.container{
+    margin: 0 auto;
+    width: 90%;
+    max-width: 480px;
+}
+.header{
+    position: sticky;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 10%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    color: var(--white);
+    background-color: var(--primary);
+}
+.main{
+    display: flex;
+    height: 85%;
+    flex-direction: column;
+    padding: 0.8em 0em;
+    gap: 2em;
+}
+.flex_row{
+    display: flex;
+    align-items: center;
+    gap:1em;
+}
+.form{
+    height: 30%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+    gap: 1em;
+}
+.statusOrdem{
+    height: 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 0.8em 0em;
+    gap: 1em;
+    border: 2px solid var(--primaryVariant);
+    border-radius: 5px;
+    background-color: var(--white);
+}
+.button{
+    height: 3em;
+    color: var(--white);
+    background-color: var(--green);
+    display: flex;
+    border-radius: 5px;
+    align-items: center;
+    justify-content: center;
+    min-width: 120px;
+}
+/*Aplica para todos os input porem os inputs que são submit nao se aplica*/
+input:not(input[type="submit"]){
+    outline: none;
+    height: 2.3em;
+    padding: 0.5em;
+    border-radius: .4em;
+    border: 2px solid var(--primaryVariant);
+}
+.mensagemErro{
+    align-self: center;
+    color: var(--red);
+}
+
+
+/*DETALHES*/
+h2{
+    font-weight: bold;
+}
+a{
+    color: initial;
+    text-decoration: none;
+}
+span{
+    margin-bottom: 0.2em;
+}
+
+.ball{
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+}
+
+#ball1{
+    background-color: var(--blue);
+}
+#ball2{
+    background-color: var(--red);
+}
+#ball3{
+    background-color: var(--yellow);
+}

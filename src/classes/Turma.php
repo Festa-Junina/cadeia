@@ -12,7 +12,7 @@ class Turma
     ) { }
 
     #region idTurma
-    public function setIdTurma(?int $idTturma): void
+    public function setIdTurma(?int $idTurma): void
     {
         $this->idTurma = $idTurma;
     }

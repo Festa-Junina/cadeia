@@ -9,5 +9,3 @@ interface ActiveRecord{
     public static function find($id):Object;
     public static function findall():array;
 }
-
-?>

@@ -1,14 +1,11 @@
-<?php
-
-?>
-
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
+    <link rel="shortcut icon" href="https://cdn-icons-png.flaticon.com/512/534/534102.png" type="image/png">
     <title>Login</title>
 </head>
 <body>
@@ -22,7 +19,7 @@
                         <input type="password" name="password" id="password" placeholder="Insira a sua senha" class="login-input">
                     </div>
                     <div class="recover-password-area">
-                        <a href="#">
+                        <a href="../login">
                             <span class="recover-password">Recuperar senha</span>
                         </a>
                     </div>
@@ -34,7 +31,7 @@
         </div>
         <footer class="login-page-footer">
             <div class="footer-login-util-area">
-                <h1 class="login-page-footer-text">Feito pelo 3º ano do curso Técnico em Informática de 2022</h1>
+                <h1 class="login-page-footer-text">Feito pelo 3º ano do curso Técnico em Informática de 2022.</h1>
             </div>
         </footer>
     </div>

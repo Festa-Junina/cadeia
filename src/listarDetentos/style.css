@@ -1,17 +1,15 @@
-@import "../../globalStyles.css";
-@import "../../reset.css";
+@import "../assets/styles/globalStyles.css";
+@import "../assets/styles/reset.css";
 
-body{
+body {
     color: var(--white);
     background-color: var(--gray);
 }
-
-.container{
+.container {
     width: 100%;
     height: 100vh;
 }
-
-.header{
+.header {
     width: 100%;
     height: 80px;
     background-color: var(--primary);
@@ -19,31 +17,28 @@ body{
     justify-content: space-between;
     padding: 0 2.5rem 0 3rem;
     align-items: center;
+    user-select: none;
 }
-
-.logo,
-.user{
+.logo, .user {
     display: flex;
     justify-content: center;
     align-items: center;
 }
-.logo{
+.logo {
     font-size: 150%;
     font-weight: 900;
 }
-
-.user{
+.user {
     gap: .5rem;
     position: relative;
 }
-
-.user > p{
+.user > p {
     font-size: 120%;
 }
-.user:hover{
+.user:hover {
     cursor: pointer;
 }
-.user-opt{
+.user-opt {
     display: none;
     flex-direction: column;
     position: absolute;
@@ -55,31 +50,25 @@ body{
     border-radius: 10px;
     width: 150px;
 }
-
-.user-opt > a{
+.user-opt > a {
     text-decoration: none;
     color: var(--white);
     margin-bottom: 7px;
 }
-
-.user-opt :last-child{
+.user-opt :last-child {
     margin: 0;
 }
-
 .main-content{
     padding: 80px 4rem 4rem 4rem;
 }
-
 .order-list{
     display: flex;
     flex-wrap: wrap;
     gap: 3rem;
     justify-content: center;
 }
-
-.order{
+.order {
     /* width: fit-content; */
-
     width: 285px;
     padding: 1rem;
     display: flex;
@@ -91,10 +80,8 @@ body{
     border-radius: .6rem;
     border: 2px solid var(--primaryVariant);
     box-shadow: 0 0 8px var(--blackOpacity);
-
 }
-
-.order-type{
+.order-type {
     display: flex;
     background-color:var(--gray2);
     padding: 7px;
@@ -105,49 +92,41 @@ body{
     gap: 5px;
     font-weight: bold;
 }
-
-
-.order-content{
+.order-content {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
     gap: .4rem;
 }
-
-.order-content > h2{
+.order-content > h2 {
     font-size: 130%;
     font-weight: bold;
 }
-.order-content > a{
+.order-content > a {
     display: flex;
     align-items: center;
     color: var(--green);
     font-weight: 600;
     text-decoration: underline;
 }
-
-.order-content > a::before{
+.order-content > a::before {
     content: "+";
 }
-
-
-.ball{
+.ball {
     width: 18px;
     height: 18px;
     border-radius: 50%;
 }
-
-#ball1{
+#ball1 {
     background-color: var(--blue);
 }
-#ball2{
+#ball2 {
     background-color: var(--red);
 }
-#ball3{
+#ball3 {
     background-color: var(--yellow);
 }
-
-.order-btn{
+.order-btn {
     background-color: var(--green);
     margin-top: .7rem;
     padding: .35rem;
@@ -156,21 +135,20 @@ body{
     color: var(--white);
     width: 100%;
 }
-
-.order-btn:hover{
+a {
+    text-decoration: none;
+    color: #fff;
+}
+.order-btn:hover {
     cursor: pointer;
     background-color: var(--darkGreen);
 }
-
-
-.modal{
+.modal {
     color: var(--black);
 }
-
-.displayed{
+.displayed {
     display: flex;
 }
-
 .questions-status {
     display: flex;
     background-color:var(--gray2);
@@ -182,14 +160,12 @@ body{
     gap: 10px;
     font-weight: bold;
 }
-
 .question-1, .question-2, .question-3 {
     width: 20px;
     height: 20px;
     border-radius: 50%;
     background: #fff;
 }
-
 .acertou {
     background-color: var(--primary);
 }
@@ -211,20 +187,23 @@ body{
         visibility: hidden;
     }
 }
-
+a.nome-detento {
+    text-decoration: none;
+}
+a.nome-detento::before {
+    content: '';
+}
 .tipo-status {
     display: flex;
     width: 100%;
     justify-content: space-between;
     padding: 10px 0;
 }
-
 @media screen and (max-width: 425px){
-    .user > p{
+    .user > p {
         display: none;
     }
-
-    .order{
+    .order {
         width: 285px;
     }
 }
