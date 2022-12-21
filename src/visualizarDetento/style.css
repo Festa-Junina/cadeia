@@ -78,7 +78,7 @@
     padding-top: 50px;
 }
 .visualizar-detento-nome {
-    /* margin-bottom: 20px; */
+    font-size: 25px;
 }
 .visualizar-detento-descricao {
     margin-top: 20px;
@@ -100,4 +100,8 @@
 .botoes-acoes-detento a:hover {
     background-color: #104228;
     cursor: pointer;
+}
+.visualizar-detento-descricao p {
+    padding: 10px 0;
+    font-size: 20px;
 }

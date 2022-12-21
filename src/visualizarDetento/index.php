@@ -3,6 +3,8 @@ require_once "../login/sessions/sessaoCarcereiro.php";
 
 use classes\Detento;
 use classes\OrdemPrisao;
+use classes\TipoMeliante;
+use classes\Turma;
 
 $detento = new Detento();
 if (!isset($_GET['idDetento'])) {
@@ -15,6 +17,8 @@ $ordemPrisao = OrdemPrisao::find($detento->getIdOrdemPrisao());
 $detentoSelecionado = Detento::findByOrdemDePrisao($ordemPrisao->getIdOrdem());
 $statusDetento = $detentoSelecionado->getIdStatusPrisao();
 
+// $turma = Turma::find($ordemPrisao->getIdTurmaMeliante())->getTurma();
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -24,10 +28,10 @@ $statusDetento = $detentoSelecionado->getIdStatusPrisao();
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet"
           href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
-    <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.css" />
     <link rel="stylesheet" href="../assets/styles/reset.css">
     <link rel="stylesheet" href="../assets/styles/globalStyles.css">
+    <link rel="stylesheet" href="style.css">
     <title>Detento <?php echo $ordemPrisao->getNomeMeliante() ?></title>
 </head>
 <body>
@@ -52,7 +56,15 @@ $statusDetento = $detentoSelecionado->getIdStatusPrisao();
                 <h1><?php echo $ordemPrisao->getNomeMeliante() ?></h1>
             </div>
             <div class="visualizar-detento-descricao">
-                <h2><?php echo $ordemPrisao->getDescricaoMeliante() ?></h2>
+                <p><strong>Descrição: </strong><?php echo $ordemPrisao->getDescricaoMeliante() ?></p>
+                <p><strong>Tipo do meliante: </strong><?php echo TipoMeliante::find($ordemPrisao->getIdTipoMeliante())->getNome();?></p>
+                <?php
+                if (is_null($ordemPrisao->getIdTurmaMeliante())) {
+                    echo "<p><strong>Turma do meliante:</strong> O detento não possui uma turma pois não estuda no IFRS!</p>";
+                } else {
+                    echo "<p><strong>Turma do meliante:</strong>".Turma::find($ordemPrisao->getIdTurmaMeliante())->getTurma()."</p>";
+                }
+                ?>
             </div>
 
             <div class="botoes-acoes-detento">

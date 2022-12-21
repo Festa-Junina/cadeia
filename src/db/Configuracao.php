@@ -1,5 +1,7 @@
 <?php
 
+// Veja "../../banco/estruturaCadeiaBancoDeDados.sql";
+
 define("HOST","localhost");
 define("USUARIO","aluno"); // Definido como aluno pois será o usuário que irá acessar o MySQL.
 define("SENHA","aluno");
