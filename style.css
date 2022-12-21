@@ -41,7 +41,7 @@ body{
     justify-content: center;
     min-width: 120px;
 }
-.modala{
+.modal{
     position: fixed;
     left: 50%;
     top: 50%;
@@ -77,16 +77,21 @@ mark{
 }
 
 
+.detalheNovaOrdem details{
+    cursor: pointer;
+    text-decoration: none;
+    display: inline;
+}
 /*DETALHES*/
 a{
     color: initial;
     text-decoration: none;
 }
 h1{
-    font-size: 2.8em;
+    font-size: 2em;
 }
-p{
-    font-size: 1.8em;
+h2{
+    font-size: 1.2em;
 }
 .p-centro{
     text-align: center;
@@ -100,4 +105,16 @@ p{
 abbr{
     text-decoration: none;
     color: var(--darkGreen);
+}
+ol{
+    list-style: inside;
+    list-style-type: decimal;
+}
+ul{
+    list-style: inside;
+    list-style-type: disc;
+    margin-left: 1em;
+}
+li{
+    margin-bottom: 0.5em;
 }

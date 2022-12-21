@@ -28,6 +28,11 @@ body{
     padding: 0.8em 0em;
     gap: 2em;
 }
+.flex_row{
+    display: flex;
+    align-items: center;
+    gap:1em;
+}
 .form{
     height: 30%;
     display: flex;
@@ -41,7 +46,8 @@ body{
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: space-around;
+    padding: 0.8em 0em;
+    gap: 1em;
     border: 2px solid var(--primaryVariant);
     border-radius: 5px;
     background-color: var(--white);
@@ -77,4 +83,23 @@ h2{
 a{
     color: initial;
     text-decoration: none;
+}
+span{
+    margin-bottom: 0.2em;
+}
+
+.ball{
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+}
+
+#ball1{
+    background-color: var(--blue);
+}
+#ball2{
+    background-color: var(--red);
+}
+#ball3{
+    background-color: var(--yellow);
 }

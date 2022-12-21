@@ -43,13 +43,29 @@ if(isset($_POST['submit'])){
                         <h2>Nome Meliante</h2>
                         <span>{$resultado['nomeMeliante']}</span>
                         <h2>Status Ordem</h2>
-                        <span>{$resultado['statusOrdem']}</span>
-                        <h2>Status Prisão</h2>
-                        <span>{$resultado['statusprisao']}</span>
-                        <h2>Tempo Prisão</h2>
-                        <span>{$resultado['tempoPreso']}</span>
-                    </div>        
-                ";
+                        
+                        <div class='flex_row'>";
+
+                        
+
+                        if($resultado['statusOrdem'] == "Preso"){
+                            echo "<div class='ball' id='ball2'></div>";
+                       }else if($resultado['statusOrdem'] == "Perseguição") {
+                            echo "<div class='ball' id='ball1'></div>";
+                       }else{
+                            echo "<div class='ball' id='ball3'></div>";
+                        }
+
+                        echo "<span>{$resultado['statusOrdem']}</span>
+                        </div>";
+
+                        if($resultado['statusprisao'] != "Ainda não foi preso"){
+                           echo "<h2>Status Prisão</h2>";
+                            echo "<span>{$resultado['statusprisao']}</span>
+                            <h2>Tempo Prisão</h2> 
+                            <span>{$resultado['tempoPreso']}</span>";
+                        }
+                echo "</div>";
     
             }else{
                 echo "<span class='mensagemErro'>Ticket inválido</span>";

@@ -41,12 +41,29 @@
     </header>
     <main class="main container">
         <h1>Olá, seja bem vindo(a)!</h1>
-        <img src="cadeia.png" alt="ilustração cadeia" class="cadeia-img">
-        <p class="p-centro">
-            Para prender alguém na cadeia preencha o código do <abbr title="Ticket seria o dinheiro que você utiliza para mandar prender alguém, ele pode ser adquirido nas brincadeiras de são joão e nas barraquinhas.">ticket</abbr>, avance para a próxima etapa e faça a ordem de prisão.
-        </p>
-        <a href="src/emitirOrdem/validarTicket.php" class="button">Emitir Nova Ordem de Prisão</a>
-        <a href="src/visualizarStatusOrdem/visuOrdem.php" class="button">Acompanhar Ordem Já Existente</a>
+
+        <h2>Como emitir uma nova ordem de prisão, paso a paso:</h2>
+        <ol>
+            <li>Vá em Emitir Nova Ordem de Prisão;</li>
+            <li>Valide o seu ticket o inserindo;</li>
+            <li>Preencha o formulário para emissão de umanova ordem de prisão, lembrando que todos oscampos são obrigatórios;</li>
+            <li>Envie o formulário e aguarde a confirmaçãonesta página;</li>
+            <li>Em caso de erro verifique o ticket, se oerro persistir contate o administradoradmCadeia@adm.com</li>
+        </ol>
+        <details class="detalheNovaOrdem">
+            <summary>
+                Perguntas frequentes
+            </summary>
+            <ul>
+                <li>Como eu posso adquirir o ticket ?</li>
+                <li>Estou tendo problemas com a validação do ticket, o que devo fazer ?</li>
+                <li>Estou tendo problemas com o formulario, o que devo fazer ?</li>
+            </ul>
+        </details>
+
+        
+        <a href="src/emitirOrdem/validarTicket.php" class="button">Quero emitir Nova Ordem de Prisão</a>
+    <a href="src/visualizarStatusOrdem/visuOrdem.php" class="button">Quero acompanhar Ordem Já Existente</a>
     </main>
     <script src="script.js"></script>
 
