@@ -1,10 +1,12 @@
-<?php 
+<?php
 
-require_once "../classes/Ticket.php";
+require_once "../../vendor/autoload.php";
+
+use classes\Ticket;
 
 if(isset($_POST['submit'])){
     $ticket = new Ticket($_POST['ticket']);
-    $resultado = $ticket->findOrdem();    
+    $resultado = $ticket->findOrdem();
 }
 ?>
 
@@ -14,8 +16,8 @@ if(isset($_POST['submit'])){
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../../reset.css">
-    <link rel="stylesheet" href="../../globalStyles.css">
+    <link rel="stylesheet" href="../assets/styles/reset.css">
+    <link rel="stylesheet" href="../assets/styles/globalStyles.css">
     <link rel="stylesheet" href="style.css">
     <title>Visualizar Ordem de Prisão</title>
 

@@ -1,12 +1,20 @@
+<?php
+
+require_once "../../vendor/autoload.php";
+
+use classes\Ticket;
+
+?>
+
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../../reset.css">
+    <link rel="stylesheet" href="../assets/styles/reset.css">
     <link rel="stylesheet" href="styleValidarTicket.css">
-    <link rel="stylesheet" href="../../globalStyles.css">
+    <link rel="stylesheet" href="../assets/styles/globalStyles.css">
     <title>Insira seu Ticket</title>
 
     </head>
@@ -21,7 +29,7 @@
         <form action="validarTicket.php" method="post" class="form">
             <?php
             ini_set ( 'display_errors' , 1); error_reporting (E_ALL);
-            require_once "../classes/Ticket.php";
+
             if(isset($_POST['submit'])){
                 $ticket = new Ticket($_POST['ticket']);
                 if($ticket->autenticar()){

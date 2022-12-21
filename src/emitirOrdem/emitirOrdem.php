@@ -1,7 +1,10 @@
 <?php
 
-require_once "../db/MySQL.php";
-require_once "../classes/OrdemPrisao.php";
+require_once "../../vendor/autoload.php";
+
+use classes\OrdemPrisao;
+use db\MySQL;
+
 session_start();
 if(!isset($_SESSION['idTicket'])){
     header("location: validarTicket.php");
@@ -36,9 +39,9 @@ if (isset($_POST['submit'])) {
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../../reset.css">
+    <link rel="stylesheet" href="../assets/styles/reset.css">
     <link rel="stylesheet" href="styleEmitirOrdem.css">
-    <link rel="stylesheet" href="../../globalStyles.css">
+    <link rel="stylesheet" href="../assets/styles/globalStyles.css">
     <title>Emitir Ordem de Prisão</title>
 
 </head>
@@ -121,7 +124,7 @@ if (isset($_POST['submit'])) {
     <script>
         //Mascara TEL
         $(document).ready(function() {
-            $('#telefoneDenunciante').mask('(99) 9 9999-9999');
+            $('#telefoneDenunciante').mask('(99) 99999-9999');
         });
     </script>
 </body>

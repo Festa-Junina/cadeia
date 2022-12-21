@@ -1,9 +1,10 @@
 <?php
 
+namespace classes;
 
-require_once "../db/MySQL.php";
+use db\MySQL;
 
-class Ticket{
+class Ticket {
 
 
     public function __construct(private int $ticket){

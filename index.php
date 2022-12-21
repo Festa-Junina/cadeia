@@ -4,9 +4,9 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="reset.css">
-    <link rel="stylesheet" href="globalStyles.css">
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="src/assets/styles/reset.css">
+    <link rel="stylesheet" href="src/assets/styles/globalStyles.css">
+    <link rel="stylesheet" href="src/assets/styles/style.css">
     <title>Home</title>
 </head>
 <body>
@@ -35,8 +35,8 @@
 
     <header class="header">
         <div class="container container-header">
-            <a href="SaibaMais.html" class="button">Saiba Mais</a>
-            <a href="src/login/index.php" class="button">Restrito</a>
+            <a href="saibaMais.html" class="button">Saiba Mais</a>
+            <a href="src/login" class="button">Restrito</a>
         </div>
     </header>
     <main class="main container">
