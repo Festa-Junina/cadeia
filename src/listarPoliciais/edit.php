@@ -44,6 +44,7 @@ $policia = Usuario::find($_GET["id"]);
     <link rel="stylesheet" href="../assets/styles/reset.css">
     <link rel="stylesheet" href="../assets/styles/globalStyles.css">
     <link rel="stylesheet" href="styles.css">
+    <link rel="shortcut icon" href="https://cdn-icons-png.flaticon.com/512/534/534102.png" type="image/png">
     <title>Policiais</title>
 </head>
 

@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="src/assets/styles/reset.css">
     <link rel="stylesheet" href="src/assets/styles/globalStyles.css">
     <link rel="stylesheet" href="src/assets/styles/style.css">
+    <link rel="shortcut icon" href="https://cdn-icons-png.flaticon.com/512/534/534102.png" type="image/png">
     <title>Home</title>
 </head>
 <body>
@@ -65,7 +66,7 @@
         <a href="src/emitirOrdem/validarTicket.php" class="button">Quero emitir Nova Ordem de Prisão</a>
     <a href="src/visualizarStatusOrdem/visuOrdem.php" class="button">Quero acompanhar Ordem Já Existente</a>
     </main>
-    <script src="script.js"></script>
+    <script src="src/emitirOrdem/modal.js"></script>
 
 </body>
 </html>
