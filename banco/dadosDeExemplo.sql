@@ -15,7 +15,8 @@ INSERT INTO `funcao` (`idFuncao`, `nome`) VALUES
 
 INSERT INTO `ordemprisao` (`idOrdem`, `idTicket`, `idTipoMeliante`, `idTurmaMeliante`, `idStatusOrdem`, `nomeMeliante`, `descricaoMeliante`, `localVisto`, `nomeDenunciante`, `telefoneDenunciante`, `assumidaPor`, `presoPor`, `horaOrdem`) VALUES
 (1, 5, 0, 0, 0, 'shaolin matador de porco', 'menino forte, 1.80, moreno de 22 anos', 'na sua casa', 'Luisa Mell', '0800-776', 3, NULL, '2022-12-20 03:22:03'),
-(2, 6, 2, NULL, 2, 'Diogo Defante', 'Youtuber, humorista, repórter doidão, humor escrachado e nonsense que faz pegadinhas e entrevistas inusitadas com quem passa nas ruas.', 'Qatar', 'Hamad bin Khalifa', '0800-999', 3, 2, '2022-12-20 03:22:03');
+(2, 6, 2, NULL, 2, 'Diogo Defante', 'Youtuber, humorista, repórter doidão, humor escrachado e nonsense que faz pegadinhas e entrevistas inusitadas com quem passa nas ruas.', 'Qatar', 'Hamad bin Khalifa', '0800-999', 3, 2, '2022-12-21 06:28:32'),
+(3, 4, 2, NULL, 2, 'Magno Carlos', 'Magnânimo.', 'Cordilheira.', 'Jesus', '(51) 99181-7878', 3, 3, '2022-12-21 06:28:36');
 
 INSERT INTO `pergunta` (`idPergunta`, `idCategoria`, `enunciado`, `alternativaA`, `alternativaB`, `alternativaC`, `alternativaD`, `alternativaCorreta`) VALUES
 (1, 9, 'Quem veio primeiro ?', 'A galinha', 'O ovo', 'O galo', 'O pinto', 'A'),
@@ -38,12 +39,14 @@ INSERT INTO `perguntacategoria` (`idCategoria`, `nome`) VALUES
 (13, 'IFRS');
 
 INSERT INTO `prisao` (`idPrisao`, `idOrdemPrisao`, `idStatusPrisao`, `horaPrisao`, `quantidadePerguntasRespondidas`, `atualizacaoStatus`) VALUES
-(1, 2, 4, '2022-12-20 03:22:03', 1, '2022-12-21 01:21:52');
+(1, 2, 2, '2022-12-21 06:15:00', 0, '2022-12-21 06:31:02'),
+(2, 3, 2, '2022-12-21 06:28:07', 0, '2022-12-21 06:31:21');
 
 INSERT INTO `statusordem` (`idStatusOrdem`, `nome`) VALUES
 (0, 'Aberto'),
 (1, 'Perseguição'),
-(2, 'Preso');
+(2, 'Preso'),
+(3, 'Liberado');
 
 INSERT INTO `statusprisao` (`idStatusPrisao`, `nome`) VALUES
 (0, 'Ativo'),
@@ -88,14 +91,12 @@ INSERT INTO `turmameliante` (`idTurmaMeliante`, `nome`) VALUES
 (14, 'TA-3'),
 (15, 'TA-4');
 
-/*
-A SENHA DOS USUÁRIOS FICCIONAIS É O PRÓPRIO E-MAIL CADASTRADO;
-*/
-
+-- A SENHA É O PRÓPRIO LOGIN
 INSERT INTO `usuario` (`idUsuario`, `idFuncao`, `login`, `senha`, `nome`, `telefone`, `ativo`) VALUES
 (1, 0, 'administrador@teste123.com', '$2y$10$dpFX4m8TcIMDzOf.JKK.kOp2ReRpkEkJZnW1aWCPOG42kUtEpfQ4.', 'Fabio Bastian', '51 986254753', 1),
-(2, 1, 'carcereiro@teste123.com', '$2y$10$6taM2xMERpsDChnj6PROVu.L2lOJ6AVg77QICpQhHSQGmXu1YVN0W', 'Murilo Mouthinho', '54 852547536', 1),
-(3, 2, 'policial@teste123.com', '$2y$10$dvRDZjobgg8T62YV4mO1Kuq0oxOe0WiIggWOs4elT96ZtajYHsSKW', 'Pedro Rhoden', '51 925634524', 1);
+(2, 1, 'carcereiro@teste123.com', '$2y$10$gRo4dwQ4Tptakt.WeO2ZtuFNF5nVBK9MXtsPA19IRfmMk3i9y.slO', 'Murilo Mouthinho', '(54) 85254-7536', 1),
+(3, 2, 'policial@teste123.com', '$2y$10$Y8Rmi68j8NEjP5v18A.wIe.bTqkgL4YV0h4bvKRzHS8P6955ha3um', 'Pedro Rhoden', '(51) 9993-0586', 1),
+(10, 1, 'carcereiro', '$2y$10$9Ureuxs.Co1/Ah1hu.WEKuNuNwkzWsYfzK/brRScnvf8n.2m9iZhq', 'carcereiro', '(11) 11111-1111', 1);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
