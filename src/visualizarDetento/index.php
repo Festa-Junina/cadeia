@@ -1,20 +1,15 @@
 <?php
-require_once __DIR__ . "/../../vendor/autoload.php";
-
-session_start();
-
-if (!isset($_SESSION["idUsuario"]) && $_SESSION["funcao"] != "Carcereiro") {
-    header("location: ../../login");
-}
+require_once "../login/sessions/sessaoCarcereiro.php";
 
 use classes\Detento;
 use classes\OrdemPrisao;
 
 $detento = new Detento();
-if (isset($_GET['idDetento'])) {
-    $detento->setIdOrdemPrisao($_GET['idDetento']);
+if (!isset($_GET['idDetento'])) {
+    header("location: ../listarDetentos");
 }
 
+$detento->setIdOrdemPrisao($_GET['idDetento']);
 $ordemPrisao = OrdemPrisao::find($detento->getIdOrdemPrisao());
 
 $detentoSelecionado = Detento::findByOrdemDePrisao($ordemPrisao->getIdOrdem());
@@ -62,11 +57,11 @@ $statusDetento = $detentoSelecionado->getIdStatusPrisao();
 
             <div class="botoes-acoes-detento">
                 <?php
-                if ($statusDetento != 7) {
+                if ($statusDetento == 7 || $statusDetento == 8) {
                     echo "<a href='' class='liberar'>Liberar</a>";
-                    if ($statusDetento == 2 || $statusDetento == 4 || $statusDetento == 6) {
-                        echo "<a href='../responderPergunta' class='responder'>Responder pergunta</a>";
-                    }
+                }
+                if ($statusDetento == 2 || $statusDetento == 4 || $statusDetento == 6) {
+                    echo "<a href='../responderPergunta?id={$detento->getIdOrdemPrisao()}' class='responder'>Responder pergunta</a>";
                 }
                 ?>
             </div>
