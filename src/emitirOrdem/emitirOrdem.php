@@ -39,6 +39,7 @@ if (isset($_POST['submit'])) {
     <link rel="stylesheet" href="../../reset.css">
     <link rel="stylesheet" href="styleEmitirOrdem.css">
     <link rel="stylesheet" href="../../globalStyles.css">
+    <link rel="shortcut icon" href="../../favicon.ico" type="image/x-icon">
     <title>Emitir Ordem de Prisão</title>
 
 </head>

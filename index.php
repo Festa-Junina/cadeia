@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="reset.css">
     <link rel="stylesheet" href="globalStyles.css">
     <link rel="stylesheet" href="style.css">
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
     <title>Home</title>
 </head>
 <body>
@@ -35,35 +36,44 @@
 
     <header class="header">
         <div class="container container-header">
-            <a href="SaibaMais.html" class="button">Saiba Mais</a>
-            <a href="src/login/index.php" class="button">Restrito</a>
+            <div class="criador">
+                <img src="icone.png" alt="" class="img-icone">
+                <h1>Alcatraz IFRS</h1>
+            </div>
+            <a href="SaibaMais.html" class="button button-header">Saiba Mais</a>
+            <a href="src/login/index.php" class="button button-header">Restrito</a>
         </div>
     </header>
     <main class="main container">
-        <h1>Olá, seja bem vindo(a)!</h1>
-
+        <h1 class="h1-index">Olá, seja bem vindo(a)!</h1>
         <h2>Como emitir uma nova ordem de prisão, paso a paso:</h2>
         <ol>
-            <li>Vá em Emitir Nova Ordem de Prisão;</li>
+            <li>Vá em Quero Emitir Nova Ordem de Prisão;</li>
             <li>Valide o seu ticket o inserindo;</li>
-            <li>Preencha o formulário para emissão de umanova ordem de prisão, lembrando que todos oscampos são obrigatórios;</li>
-            <li>Envie o formulário e aguarde a confirmaçãonesta página;</li>
-            <li>Em caso de erro verifique o ticket, se oerro persistir contate o administradoradmCadeia@adm.com</li>
+            <li>Preencha o formulário para emissão de uma nova ordem de prisão, lembrando que todos os campos são obrigatórios;</li>
+            <li>Envie o formulário e aguarde a confirmação nesta página;</li>
+            <li>Lembre se do seu ticket, pois ele será necessário na hora que você quiser consultar como está o andamento da sua ordem de prisão;</li>
+            <li>Em caso de erro verifique o ticket, se o erro persistir contate o administrador@adm.com</li>
         </ol>
+
         <details class="detalheNovaOrdem">
             <summary>
-                Perguntas frequentes
+                Perguntas Frequentes
             </summary>
             <ul>
                 <li>Como eu posso adquirir o ticket ?</li>
+                <p>Os tickets são entregues aos alunos da instituição ao início da festa, mas poderão ser adquiridos por meio das atividades de São João nas barraquinhas.</p>
                 <li>Estou tendo problemas com a validação do ticket, o que devo fazer ?</li>
+                <p>Em caso de problemas com a validação do ticket, revise se foi digitado corretamente, verifique se este ticket já não foi usado anteriormente o pesquisando no Quero acompanhar uma Ordem já existente, tente validar outros tickets, se o problema persistir contate o administrador em administrador@adm.com.</p>
                 <li>Estou tendo problemas com o formulario, o que devo fazer ?</li>
+                <p>Em caso de problemas com o formulário verifique se todos os campos estão preenchidos corretamente, lembrando que todos os campos são obrigatórios, se o problema persistir atualize a página, não se preocupe pois se a ordem não for criada o seu ticket não será utilizado.</p>
+                <li>Estou tendo problemas na hora de consultar uma Ordem de Prisão, o que devo fazer ?</li>
+                <p>Em caso de problemas na hora de consultar uma Ordem de Prisão já existente, revise se o ticket digitado está correto, lembrando que para consultar uma Prisão no ticket digitado antes você deve ter emitido uma Ordem de Prisão neste ticket, atualiza a página, se o problema persistir contate o administrador em administrador@adm.com.</p>
             </ul>
         </details>
 
-        
         <a href="src/emitirOrdem/validarTicket.php" class="button">Quero emitir Nova Ordem de Prisão</a>
-    <a href="src/visualizarStatusOrdem/visuOrdem.php" class="button">Quero acompanhar Ordem Já Existente</a>
+        <a href="src/visualizarStatusOrdem/visuOrdem.php" class="button">Quero acompanhar Ordem já existente</a>
     </main>
     <script src="script.js"></script>
 

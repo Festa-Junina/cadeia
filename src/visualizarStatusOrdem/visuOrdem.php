@@ -17,6 +17,7 @@ if(isset($_POST['submit'])){
     <link rel="stylesheet" href="../../reset.css">
     <link rel="stylesheet" href="../../globalStyles.css">
     <link rel="stylesheet" href="style.css">
+    <link rel="shortcut icon" href="../../favicon.ico" type="image/x-icon">
     <title>Visualizar Ordem de Prisão</title>
 
 </head>

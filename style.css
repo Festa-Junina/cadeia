@@ -24,6 +24,7 @@ body{
 .container-header{
     display: flex;
     justify-content: space-between;
+    align-items: center;
 }
 .main{
     display: flex;
@@ -40,6 +41,10 @@ body{
     align-items: center;
     justify-content: center;
     min-width: 120px;
+}
+.button-header{
+    width: 28%;
+    min-width: initial;
 }
 .modal{
     position: fixed;
@@ -75,32 +80,45 @@ mark{
     background-color: initial;
     color: var(--darkGreen);
 }
-
-
 .detalheNovaOrdem details{
     cursor: pointer;
     text-decoration: none;
     display: inline;
+}
+.criador{
+    display: flex;
+    width: 35%;
+    align-items: center;
+    justify-content: center;
+}
+.img-icone{
+    display: block;
+    
+    max-width: 40%;
 }
 /*DETALHES*/
 a{
     color: initial;
     text-decoration: none;
 }
-h1{
-    font-size: 2em;
-}
 h2{
     font-size: 1.2em;
+}
+.p-saibaMais{
+    font-size: 1.5em;
+}
+.h1-saibaMais{
+    font-size: 2em;
+    text-align: center;
+}
+.h1-index{
+    font-size: 2em;
 }
 .p-centro{
     text-align: center;
 }
-.cadeia-img{
-    margin: auto;
-    display: block;
-    width: 100%;
-    max-width: 380px;
+p{
+    margin-bottom: 0.8em;
 }
 abbr{
     text-decoration: none;
@@ -116,5 +134,8 @@ ul{
     margin-left: 1em;
 }
 li{
+    margin-bottom: 0.5em;
+}
+summary{
     margin-bottom: 0.5em;
 }

@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="../../reset.css">
     <link rel="stylesheet" href="styleValidarTicket.css">
     <link rel="stylesheet" href="../../globalStyles.css">
+    <link rel="shortcut icon" href="../../favicon.ico" type="image/x-icon">
     <title>Insira seu Ticket</title>
 
     </head>
