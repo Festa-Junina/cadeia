@@ -3,8 +3,8 @@
 // Veja "../../banco/estruturaCadeiaBancoDeDados.sql";
 
 define("HOST","localhost");
-define("USUARIO","aluno"); // Definido como aluno pois será o usuário que irá acessar o MySQL.
-define("SENHA","aluno");
+define("USUARIO","root"); // Definido como aluno pois será o usuário que irá acessar o MySQL.
+define("SENHA","");
 define("BANCO","cadeia-app");
 
 // Em caso que no banco de desenvolvimento não esteja criado o usuário aluno, execute o seguinte script:

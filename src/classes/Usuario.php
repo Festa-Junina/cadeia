@@ -96,7 +96,11 @@ class Usuario implements  ActiveRecord
     public function getFuncao(): int {
         return $this->idFuncao;
     }
-
+    public function admitir():bool{
+        $conexao = new MySQL();
+        $sql = "UPDATE usuario SET ativo = 1 WHERE usuario.idUsuario = '{$this->idUsuario}'";
+        return $connection->executa($sql);
+    }
 
     public function save(): bool
     {
