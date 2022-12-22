@@ -49,15 +49,15 @@ if(isset($_POST['submit'])){
 
                         
 
-                        if($resultado['statusOrdem'] == "Preso"){
+                        if($resultado['statusordem'] == "Preso"){
                             echo "<div class='ball' id='ball2'></div>";
-                       }else if($resultado['statusOrdem'] == "Perseguição") {
+                       }else if($resultado['statusordem'] == "Perseguição") {
                             echo "<div class='ball' id='ball1'></div>";
                        }else{
                             echo "<div class='ball' id='ball3'></div>";
                         }
 
-                        echo "<span>{$resultado['statusOrdem']}</span>
+                        echo "<span>{$resultado['statusordem']}</span>
                         </div>";
 
                         if($resultado['statusprisao'] != "Ainda não foi preso"){
