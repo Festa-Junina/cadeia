@@ -63,13 +63,16 @@ $prisoes = OrdemPrisao::findallPresos();
                         $currentDate = new DateTime(date('H:i:s'));
 
                         $dateF = date_diff($currentDate, $timeOrdem);
-                        $time = ($dateF->format('%H') == '00' ? '': $dateF->format('%Hh')) . 
-                                ($dateF->format('%I') == '00' ? '' : $dateF->format('%Imin'));
-                                
-                        // $time = $ordem->getHoraOrdem();
+                        $time = $dateF->format('%H') == '00' && $dateF->format('%I') == '00' ? 'Criada agora mesmo' : 
+                                (
+                                    'Criada à: ' .
+                                    ($dateF->format('%H') == '00' ? '' : $dateF->format('%Hh')) . 
+                                    ($dateF->format('%I') == '00' ? '' : $dateF->format('%Imin'))
+                                );
+
+
                         $timer = "
                             <div class='time'>
-                                <h3>Criada à: </h3>
                                 <h3>{$time}</h3>
                             </div>
                         ";
