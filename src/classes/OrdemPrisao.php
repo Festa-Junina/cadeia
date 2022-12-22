@@ -272,7 +272,51 @@ class OrdemPrisao implements ActiveRecord
     public static function findall(): array
     {
         $conexao = new MySQL();
-        $sql = "SELECT * FROM ordemPrisao ORDER BY 'ASC'";
+        $sql = "SELECT * FROM ordemPrisao  WHERE presoPor IS NULL ORDER BY 'ASC'";
+        $resultados = $conexao->consulta($sql);
+        $ordens = array();
+        foreach ($resultados as $resultado) {
+            $o = new OrdemPrisao(
+                    $resultado['nomeMeliante'],
+                    $resultado['descricaoMeliante'],
+                    $resultado['localVisto'],
+                    $resultado['nomeDenunciante'],
+                    $resultado['telefoneDenunciante']
+            );
+
+            $o->setIdTicket($resultado['idTicket']);
+            $o->setIdTipoMeliante($resultado['idTipoMeliante']);
+            $o->setIdStatusOrdem($resultado['idStatusOrdem']);
+            $o->setHoraOrdem($resultado['horaOrdem']);
+
+            if (isset($resultado['idTurmaMeliante'])) {
+                $o->setidTurmaMeliante($resultado['idTurmaMeliante']);
+            } else{
+                $o->setidTurmaMeliante(null);
+            }
+
+            if (isset($resultado['assumidaPor'])) {
+                $o->setAssumidaPor($resultado['assumidaPor']);
+            } else{
+                $o->setAssumidaPor(null);
+            }
+
+            if (isset($resultado['presoPor'])) {
+                $o->setPresoPor($resultado['presoPor']);
+            } else{
+                $o->setPresoPor(null);
+            }
+
+            $o->setIdOrdem($resultado['idOrdem']);
+            $ordens[] = $o;
+        }
+        return $ordens;
+    }
+
+    public static function findallPresos(): array
+    {
+        $conexao = new MySQL();
+        $sql = "SELECT * FROM ordemPrisao WHERE presoPor IS NOT NULL ORDER BY 'ASC'";
         $resultados = $conexao->consulta($sql);
         $ordens = array();
         foreach ($resultados as $resultado) {

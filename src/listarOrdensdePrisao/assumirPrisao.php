@@ -1,13 +1,12 @@
 <?php
-    require_once("../assets/utils/restrita.php");
-    require_once("../../vendor/autoload.php");
+    require_once("../login/sessions/sessaoPolicial.php");
 
     use classes\OrdemPrisao;
 
     if (isset($_POST['assumir'])) {
-        $ordem = OrdemPrisao::find($_POST['idOrdemPrisao']);
-        $ordem->setAssumidaPor(1);
-        $ordem->save();
 
+        $ordem = OrdemPrisao::find($_POST['idOrdemPrisao']);
+        $ordem->setAssumidaPor($_SESSION['idUsuario']);
+        $ordem->save();
         header('Location: index.php');
     }
