@@ -35,6 +35,9 @@ if(isset($_POST['botao'])){
                     <div class='box-edit'>
                     <div class='centro-edit'>
                     <div class='edit-carc'>
+                    <div class='delete'>
+                        <a href='excluirCarc.php?id={$carcereiro->getIdUsuario()}'>Excluir<img src='icons/delete_ico.png'></a>
+                    </div>
                         <label for='nome'>Nome:</label>
                         <input name='nome' id='nome' value='{$carcereiro->getNome()}' type='text' required>
 
@@ -42,15 +45,28 @@ if(isset($_POST['botao'])){
                         <input name='login' id='login' value='{$carcereiro->getLogin()}' type='text' required>
                     
                         <label for='telefone'>telefone</label>
-                        <input name='telefone' id='telefone' value='{$carcereiro->getTelefone()}' type='text' required>
-                    
-                        <label for='ativo'>Ativo:</label>
-                        <input name='ativo' id='ativo' value='{$carcereiro->getAtivo()}' type='text' required>
+                        <input name='telefone' id='telefone' value='{$carcereiro->getTelefone()}' type='tel' maxlength='14' data-js='phone' required>
+
+                        <label for='ativo'>Status:</label>
+                        ";
+                        if ($carcereiro->getAtivo() == 1){
+                            echo "<select id='ativo' name='ativo' required>
+                                    <option value='1'>Ativo</option>
+                                    <option value='0'>Inativo</option>
+                                    </select>";
+                        }else {
+                            echo "<select id='ativo' name='ativo' required>
+                                    <option value='0'>Inativo</option>
+                                    <option value='1'>Ativo</option>
+                                    </select>";
+                        }
+                        echo "
+                    <br>
                     <input type='hidden' name='senha' value={$carcereiro->getSenha()} id='senha' required>
                     <input name='id' value={$carcereiro->getIdUsuario()} type='hidden'>
                     <div class='botaoCad'>
                     <button name='botao' value='Cadastrar'>Salvar</button>
-                    <a href='index.php'>Cancelar</a>
+                    <a href='listarCarc.php'>Cancelar</a>
                 </div>
                     </div>
                     </div>
@@ -60,6 +76,24 @@ if(isset($_POST['botao'])){
         </form>
     </div>
 </div>
-</div> 
+</div>
+<script>
+    const formato = {
+phone (value) {
+  return value
+    .replace(/\D/g, '')
+    .replace(/(\d{2})(\d)/, '($1)$2')
+    .replace(/(\d{4})(\d)/, '$1-$2')
+    .replace(/(\d{4})-(\d)(\d{4})/, '$1$2-$3')
+    .replace(/(-\d{4})\d+?$/, '$1')
+}
+}
+document.querySelectorAll('input').forEach(($input) => {
+const field = $input.dataset.js
+$input.addEventListener('input', (e) => {
+  e.target.value = formato[field](e.target.value)
+}, false)
+})
+</script>  
 </body>
 </html>

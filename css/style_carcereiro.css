@@ -1,48 +1,51 @@
 @import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300&display=swap');
+@import url("../globalStyles.css");
 *{
     margin: 0px;
     padding: 0px;
 }
 html,body{
-    font-family: Open Sans;
+    font-family: 'Mulish';
 }
 
-/*INDEX----------*/
+/*INDEX/listarCarc----------*/
 .title-carcereiro{
     padding: 0.5em 0em;
     margin: none;
     display: flex;
-    background-color: rgb(223, 223, 223);
-    height: 5em;
+    background-color: #3CC47C;
+    height: 4em;
     align-items: center;
-    justify-content: center;
-    border-bottom: solid 1px rgb(0, 61, 0);
+    justify-content: left;
 }
 .title-carcereiro h1{
-    margin: 0em 2em;
+    color: white;
+    margin-left: 2em;
     display: flex;
     text-align: center;
     justify-content: center;
 }
 .box-dados-carc{
-    flex-direction: column;
     display: flex;
-    width: 100%;
+    flex-wrap: wrap;
+    gap: 3rem;
     justify-content: center;
 }
 .box-all{
-    flex-direction: column;
-    display: flex;
-    justify-content: center;
     align-items: center ;
-    width: 100%;
+    width: 285px;
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: .8rem;
 }
 .dados-carc{
     display: flex;
     flex-direction: column;
     min-width: 280px;
     text-align: left;
-    padding: 1em 0.5em;
+    padding: 0em 0.5em 1em 0.5em;
 }
 .dados-carc p{
     margin-bottom: 2em;
@@ -51,12 +54,14 @@ html,body{
     justify-content: center;
 }
 .centro{
+    color: var(--black);
     display: flex;
     justify-content: center;
-    border: solid 1px rgb(97, 97, 97);
-    background-color: #e7e7e7;
-    border-radius: 5px;
-    margin-bottom: 2em;
+    border: 2px solid var(--primaryVariant);
+    background-color: var(--withe);
+    border-radius: .6rem;
+    margin-bottom: 0.5em;
+    box-shadow: 8px 8px 8px var(--blackOpacity);
 }
 .labels{
     font-weight: bold;
@@ -65,19 +70,63 @@ html,body{
 .email{
     word-break: break-all;
 }
+.ops-carc{
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
 .ops-carc a{
-    background-color: rgb(199, 199, 199);
-    border: solid 1px gray;
+    width: 32%;
+    background-color: rgb(228, 228, 228);
+    border: solid 1px rgb(199, 199, 199);
     color: black;
-    padding: 3px;
+    padding: 5px;
     transition: 200ms;
     text-decoration: none;
-    font-family: Open Sans;
     font-weight: bold;
     border-radius: 5px;
+    margin: 0em 0.5em;
 }
-.ops-carc a:hover{
-    background-color: rgb(206, 206, 206);
+.ops-carc-edit{
+    margin-right: 1em;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: right;
+}
+.ops-carc-edit a{
+    flex-direction: row;
+    display: flex;
+    text-decoration: none;
+}
+.ops-carc-edit a:hover{
+    text-decoration: underline;
+}
+.ops-carc-edit img{
+    margin-left: 0.1em;
+    margin-top: 0.2em;
+    width: 1em;
+    height: 1em;
+}
+.edit{
+    margin-top: 0.5em;
+    width: 8%;
+    color: black;
+    transition: 200ms;
+    border-radius: 5px;
+}
+.edit:hover{
+    cursor: pointer;
+    border-radius: 3px;
+}
+.admit:hover{
+    border: solid 1px rgb(255, 255, 255);
+    background-color: rgb(163, 224, 168);
+}
+.demit:hover{
+    border: solid 1px rgb(255, 255, 255);
+    background-color: rgb(224, 163, 163);
 }
 .linha{
     text-decoration: underline;
@@ -95,15 +144,39 @@ html,body{
 .add a{
     border: solid 1px rgb(255, 255, 255);
     text-align: center;
-    background-color: rgb(209, 209, 209);
-    color: black;
+    background-color: var(--green);
+    color: #fafafafa;
     text-decoration: none;
     padding: 1em;
     border-radius: 5px;
 }
 .add a:hover{
-    border: solid 1px rgb(165, 165, 165);
-    box-shadow: rgb(197, 197, 197) 3px 3px 3px ;
+    border: solid 1px var(--primaryVariant);
+    box-shadow: var(--blackOpacity) 3px 3px 3px ;
+}
+.balls{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    text-align: center;
+    margin-bottom: 2em;
+}
+.balls p{
+    margin: 0;
+}
+.ball-ativo{
+    width: 1em;
+    height: 1em;
+    border-radius: 50%;
+    background-color: rgb(2, 190, 27);
+    margin-right: 0.3em;
+}
+.ball-inativo{
+    width: 1em;
+    height: 1em;
+    border-radius: 50%;
+    background-color: rgb(221, 0, 0);
+    margin-right: 0.3em;
 }
 
 /*editCarc----------*/
@@ -119,6 +192,25 @@ html,body{
     justify-content: center;
     align-items: center ;
     width: 100%;
+}
+.delete{
+    display: flex;
+    justify-content: right;
+}
+.delete a{
+    flex-direction: row;
+    display: flex;
+    text-decoration: none;
+    color: black;
+}
+.delete a:hover{
+    text-decoration: underline;
+}
+.delete img{
+    margin-left: 0.1em;
+    margin-top: 0.2em;
+    width: 1em;
+    height: 1em;
 }
 .edit-carc{
     display: flex;
@@ -163,21 +255,21 @@ input:focus{
     align-items: center;
     justify-content: center;
     display: flex;
-    background: #3d9db3;
-    border: solid 1px rgb(22, 85, 128);
-    color: white;
+    background-color: rgb(228, 228, 228);
+    border: solid 1px rgb(199, 199, 199);
+    color: black;
     height: 2em;
     cursor: pointer;
     font-size: 1em;
     font-weight: bold;
-    font-family: Open Sans;
     cursor: pointer;
     border-radius: 5px;
     margin-bottom: 1em;
+    font-family: Open Sans, sans-serif;
 }
 .botaoCad button:hover{
-    background: #61acbd;
-    border: solid 1px #4b8592;
+    background: #83bcce;
+    border: solid 1px #638d97;
 }
 .botaoCad a{  
     width: 7em;
@@ -185,20 +277,28 @@ input:focus{
     align-items: center;
     justify-content: center;
     display: flex;
-    background: #b33d3d;
-    border: solid 1px rgb(128, 22, 22);
-    color: white;
+    background-color: rgb(228, 228, 228);
+    border: solid 1px rgb(199, 199, 199);
+    color: black;
     height: 2em;
     cursor: pointer;
     font-size: 1em;
     font-weight: bold;
-    font-family: Open Sans;
     cursor: pointer;
     border-radius: 5px;
+    font-family: Open Sans, sans-serif;
 }
 .botaoCad a:hover{
-    background: #bd6161;
-    border: solid 1px #924b4b;
+    background: #cf7979;
+    border: solid 1px #965d5d;
+}
+.edit-carc select{
+    height: 2.7em;
+    border-radius: 5px;
+    -webkit-appearance: none;
+    padding: 0px 5px;
+    font-family: Open Sans;
+    font-weight: bold;
 }
 
 /*cadastrarCarc----------*/
@@ -207,19 +307,18 @@ input:focus{
     align-items: center;
     justify-content: center;
     display: flex;
-    background: #3d9db3;
-    border: solid 1px rgb(22, 85, 128);
-    color: white;
+    background-color: rgb(228, 228, 228);
+    border: solid 1px rgb(199, 199, 199);
+    color: black;
     height: 2em;
     cursor: pointer;
     font-size: 1em;
     font-weight: bold;
-    font-family: Open Sans;
     cursor: pointer;
     border-radius: 5px;
     margin-bottom: 1em;
 }
 .botaoCad input:hover{
-    background: #61acbd;
-    border: solid 1px #4b8592;
+    background: #83bcce;
+    border: solid 1px #638d97;
 }
