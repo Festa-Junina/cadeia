@@ -46,14 +46,14 @@ class Ticket{
     public function findOrdem(){
         $conexao = new MySQL();
 
-        $sql = "select ordemPrisao.nomeMeliante, statusOrdem.nome as 'statusOrdem',
-        IF(ordemPrisao.idStatusOrdem = 2, statusPrisao.nome, 'Ainda não foi preso') as 'statusprisao',
-        IF(ordemPrisao.idStatusOrdem = 2, time(SUBTIME(prisao.horaPrisao,CURRENT_TIME)), '00:00:00') as 'tempoPreso'
-        from ordemPrisao
-        inner join statusOrdem on statusOrdem.idStatusOrdem = ordemPrisao.idStatusOrdem
-        left join prisao on prisao.idOrdemPrisao = ordemPrisao.idOrdem
-        left join statusPrisao on statusPrisao.idStatusPrisao = prisao.idStatusPrisao
-        inner join ticket on ticket.idTicket = ordemPrisao.idTicket
+        $sql = "select ordemprisao.nomeMeliante, statusordem.nome as 'statusordem',
+        IF(ordemprisao.idStatusOrdem = 2, statusprisao.nome, 'Ainda não foi preso') as 'statusprisao',
+        IF(ordemprisao.idStatusOrdem = 2, time(SUBTIME(prisao.horaPrisao,CURRENT_TIME)), '00:00:00') as 'tempoPreso'
+        from ordemprisao
+        inner join statusordem on statusordem.idStatusOrdem = ordemprisao.idStatusOrdem
+        left join prisao on prisao.idOrdemPrisao = ordemprisao.idOrdem
+        left join statusprisao on statusprisao.idStatusPrisao = prisao.idStatusPrisao
+        inner join ticket on ticket.idTicket = ordemprisao.idTicket
         where ticket.ticket = {$this->ticket}";
 
         $status = $conexao->consulta($sql);

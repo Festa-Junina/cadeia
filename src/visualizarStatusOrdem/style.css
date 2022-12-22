@@ -42,7 +42,6 @@ body{
     gap: 1em;
 }
 .statusOrdem{
-    height: 50%;
     display: flex;
     flex-direction: column;
     align-items: center;

@@ -93,8 +93,8 @@ mark{
 }
 .img-icone{
     display: block;
-    
     max-width: 40%;
+    margin-right: 5px;
 }
 /*DETALHES*/
 a{

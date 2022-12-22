@@ -71,7 +71,7 @@ if (isset($_POST['submit'])) {
 
                     <?php
                     $conexao = new MySQL();
-                    $sql = "SELECT * FROM tipoMeliante";
+                    $sql = "SELECT * FROM tipomeliante";
                     $tiposMeliantes = $conexao->consulta($sql);
                     foreach ($tiposMeliantes as $tipo) {
                         echo "<option value='{$tipo['idTipoMeliante']}'> {$tipo['nome']} </option>";
@@ -86,7 +86,7 @@ if (isset($_POST['submit'])) {
 
                     <?php
                     $conexao = new MySQL();
-                    $sql = "SELECT * FROM turmaMeliante";
+                    $sql = "SELECT * FROM turmameliante";
                     $turmaMeliantes = $conexao->consulta($sql);
                     foreach ($turmaMeliantes as $turma) {
                         echo "<option value='{$turma['idTurmaMeliante']}'> {$turma['nome']} </option>";
@@ -106,7 +106,7 @@ if (isset($_POST['submit'])) {
                 <input type="text" name="nomeDenunciante" id="nomeDenunciante" placeholder="ex: Elías dos Anjos" required>
 
                 <label for="telefoneDenunciante">Seu telefone:</label>
-                <input type="tel" name="telefoneDenunciante" id="telefoneDenunciante" placeholder="ex: (51) 9 8047-4373" required>
+                <input type="tel" name="telefoneDenunciante" id="telefoneDenunciante" placeholder="ex: (99) 9 9999-9999" required>
                 <div class="button-div">
                     <a href="../../index.php?success=no" class="button button-modifica">Cancelar</a>
                     <input type="submit" name="submit" value="Enviar" class="button">

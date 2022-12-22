@@ -160,7 +160,7 @@ class OrdemPrisao implements ActiveRecord
 
 
       if(isset($this->idTurmaMeliante)){
-        $sql = "INSERT INTO ordemPrisao (idTicket, idTipoMeliante, idTurmaMeliante, nomeMeliante, descricaoMeliante, localVisto, nomeDenunciante, telefoneDenunciante, idStatusOrdem, horaOrdem) 
+        $sql = "INSERT INTO ordemprisao (idTicket, idTipoMeliante, idTurmaMeliante, nomeMeliante, descricaoMeliante, localVisto, nomeDenunciante, telefoneDenunciante, idStatusOrdem, horaOrdem) 
         VALUES (
             '{$this->idTicket}',
             '{$this->idTipoMeliante}',
@@ -173,7 +173,7 @@ class OrdemPrisao implements ActiveRecord
               0 ,
             CURRENT_TIMESTAMP())";
       }else{
-        $sql = "INSERT INTO ordemPrisao (idTicket, idTipoMeliante, nomeMeliante, descricaoMeliante, localVisto, nomeDenunciante, telefoneDenunciante, idStatusOrdem, horaOrdem) 
+        $sql = "INSERT INTO ordemprisao (idTicket, idTipoMeliante, nomeMeliante, descricaoMeliante, localVisto, nomeDenunciante, telefoneDenunciante, idStatusOrdem, horaOrdem) 
         VALUES (
             '{$this->idTicket}',
             '{$this->idTipoMeliante}',
