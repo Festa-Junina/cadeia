@@ -34,7 +34,10 @@ $prisoes = OrdemPrisao::findallPresos();
                 Ordens de Prisão
             </div>
             <div class="user">
-                <p>Policial</p>
+                <?php
+                    $user = Usuario::find($_SESSION['idUsuario'])->getNome();
+                    echo "<p>{$user}</p>";
+                ?>
                 <span class="material-symbols-outlined">
                     local_police
                 </span>
