@@ -70,7 +70,6 @@ $prisoes = OrdemPrisao::findallPresos();
                                     ($dateF->format('%I') == '00' ? '' : $dateF->format('%Imin'))
                                 );
 
-
                         $timer = "
                             <div class='time'>
                                 <h3>{$time}</h3>
