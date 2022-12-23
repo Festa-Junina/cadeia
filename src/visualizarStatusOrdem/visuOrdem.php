@@ -1,5 +1,4 @@
 <?php 
-
 require_once "../classes/Ticket.php";
 
 if(isset($_POST['submit'])){
@@ -36,7 +35,6 @@ if(isset($_POST['submit'])){
         </form>
 
         <?php 
-
         if(isset($resultado)){
             if($resultado != false){
                 echo "
@@ -44,10 +42,7 @@ if(isset($_POST['submit'])){
                         <h2>Nome Meliante</h2>
                         <span>{$resultado['nomeMeliante']}</span>
                         <h2>Status Ordem</h2>
-                        
                         <div class='flex_row'>";
-
-                        
 
                         if($resultado['statusordem'] == "Preso"){
                             echo "<div class='ball' id='ball2'></div>";

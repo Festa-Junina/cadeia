@@ -1,5 +1,4 @@
 <?php
-
 require_once "../db/MySQL.php";
 require_once "../classes/OrdemPrisao.php";
 session_start();
@@ -28,10 +27,8 @@ if (isset($_POST['submit'])) {
 
 ?>
 
-
 <!DOCTYPE html>
 <html lang="pt-br">
-
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -43,7 +40,6 @@ if (isset($_POST['submit'])) {
     <title>Emitir Ordem de Prisão</title>
 
 </head>
-
 <body >
     <header class="header">
         <div class="container container-header">

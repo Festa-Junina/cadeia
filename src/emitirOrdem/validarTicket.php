@@ -10,7 +10,7 @@
     <link rel="shortcut icon" href="../../favicon.ico" type="image/x-icon">
     <title>Insira seu Ticket</title>
 
-    </head>
+</head>
 <body>
     <header class="header">
         <div class="container">
@@ -20,6 +20,7 @@
     <main class="main container">
         <a href="../../index.php" class='links'>🡄 Voltar à tela inicial</a>
         <form action="validarTicket.php" method="post" class="form">
+
             <?php
             ini_set ( 'display_errors' , 1); error_reporting (E_ALL);
             require_once "../classes/Ticket.php";

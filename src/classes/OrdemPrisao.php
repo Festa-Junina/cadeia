@@ -158,7 +158,6 @@ class OrdemPrisao implements ActiveRecord
   {
     $conexao = new MySQL();
 
-
       if(isset($this->idTurmaMeliante)){
         $sql = "INSERT INTO ordemprisao (idTicket, idTipoMeliante, idTurmaMeliante, nomeMeliante, descricaoMeliante, localVisto, nomeDenunciante, telefoneDenunciante, idStatusOrdem, horaOrdem) 
         VALUES (
@@ -254,5 +253,4 @@ class OrdemPrisao implements ActiveRecord
       return false;
     }
   }
-  
 }

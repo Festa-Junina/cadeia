@@ -20,7 +20,7 @@
             echo "<div class='blur' id='blur'></div>
             <div class='modal' id='modal'>
                 <h1 class='h1-index'>Sucesso!</h1>
-                <p>Sua ordem de prisão foi emitida com sucesso, lembre-se do seu numero de ticket <mark>$ticket</mark>, pois com ele você pode acompanhar o andamento da ordem.</p>
+                <p>Sua ordem de prisão foi emitida com sucesso, lembre-se do seu número de ticket <mark>$ticket</mark>, pois com ele você pode acompanhar o andamento da ordem.</p>
                 <button class='button' id='closeModal'>Fechar</button>
             </div>";
         }else{
@@ -45,7 +45,7 @@
         </div>
     </header>
     <main class="main container">
-        <h1 class="h1-index">Olá, seja bem vindo(a)!</h1>
+        <h1 class="h1-index">Olá, seja bem-vindo(a)!</h1>
         <h2>Como emitir uma nova ordem de prisão, passo a passo:</h2>
         <ol>
             <li>Vá em Quero Emitir Nova Ordem de Prisão;</li>
@@ -65,7 +65,7 @@
                 <p>Os tickets são entregues aos alunos da instituição ao início da festa, mas poderão ser adquiridos por meio das atividades de São João nas barraquinhas.</p>
                 <li>Estou tendo problemas com a validação do ticket, o que devo fazer ?</li>
                 <p>Revise se foi digitado corretamente, verifique se este ticket já não foi usado anteriormente o pesquisando no Quero acompanhar uma Ordem já existente, tente validar outros tickets, se o problema persistir contate o administrador em administrador@adm.com.</p>
-                <li>Estou tendo problemas com o formulario, o que devo fazer ?</li>
+                <li>Estou tendo problemas com o formulário, o que devo fazer ?</li>
                 <p>Verifique se todos os campos estão preenchidos corretamente, lembrando que todos os campos são obrigatórios, se o problema persistir atualize a página, não se preocupe pois se a ordem não for criada o seu ticket não será utilizado.</p>
                 <li>Estou tendo problemas na hora de consultar uma Ordem de Prisão, o que devo fazer ?</li>
                 <p>Revise se o ticket digitado está correto, lembrando que para consultar uma Prisão no ticket digitado antes você deve ter emitido uma Ordem de Prisão neste ticket, atualiza a página, se o problema persistir contate o administrador em administrador@adm.com.</p>
