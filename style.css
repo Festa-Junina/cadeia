@@ -1,0 +1,141 @@
+body {
+    width: 100%;
+    height: 100vh;
+    color: var(--black);
+    background-color: var(--gray2);
+}
+.container {
+    margin: 0 auto;
+    width: 90%;
+    max-width: 480px;
+}
+.header {
+    position: sticky;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 10%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    color: var(--white);
+    background-color: var(--primary);
+}
+.container-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.main {
+    display: flex;
+    flex-direction: column;
+    padding: 1.5em 0em;
+    gap: 1em;
+}
+.button {
+    height: 3em;
+    color: var(--white);
+    background-color: var(--green);
+    display: flex;
+    border-radius: 5px;
+    align-items: center;
+    justify-content: center;
+    min-width: 120px;
+}
+.button-header {
+    width: 28%;
+    min-width: initial;
+}
+.modal {
+    position: fixed;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    background-color: var(--gray2);
+    padding: 1em;
+    z-index: 2;
+    border-radius: 5px;
+    box-shadow: 0 0 1em black;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    gap: 1em;
+    text-align: center;
+}
+.blur {
+    position: fixed;
+    background-color: rgba(0, 0, 0, 0.3);
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    z-index: 1;
+    backdrop-filter: blur(5px);
+}
+.hide {
+    display: none;
+}
+mark {
+    font-weight: bold;
+    background-color: initial;
+    color: var(--darkGreen);
+}
+.detalheNovaOrdem details {
+    cursor: pointer;
+    text-decoration: none;
+    display: inline;
+}
+.criador {
+    display: flex;
+    width: 35%;
+    align-items: center;
+    justify-content: center;
+}
+.img-icone {
+    display: block;
+    max-width: 40%;
+    margin-right: 5px;
+}
+/*DETALHES*/
+a {
+    color: initial;
+    text-decoration: none;
+}
+h2 {
+    font-size: 1.2em;
+}
+.p-saibaMais {
+    font-size: 1.5em;
+}
+.h1-saibaMais {
+    font-size: 2em;
+    text-align: center;
+}
+.h1-index {
+    font-size: 2em;
+}
+.p-centro {
+    text-align: center;
+}
+p {
+    margin-bottom: 0.8em;
+}
+abbr {
+    text-decoration: none;
+    color: var(--darkGreen);
+}
+ol {
+    list-style: inside;
+    list-style-type: decimal;
+}
+ul {
+    list-style: inside;
+    list-style-type: disc;
+    margin-left: 1em;
+}
+li {
+    margin-bottom: 0.5em;
+}
+summary {
+    margin-bottom: 0.5em;
+}
