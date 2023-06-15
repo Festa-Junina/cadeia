@@ -12,7 +12,7 @@ if (isset($_POST['confirmar'])) {
 
     $prisao = new Prisao();
     $prisao->setIdOrdemPrisao($_POST['idOrdemPrisao']);
-    $prisao->setIdStatusPrisao(0);
+    $prisao->setIdStatusPrisao(1);
     $prisao->setQuantidadePerguntasRespondidas(0);
     $prisao->save();
 

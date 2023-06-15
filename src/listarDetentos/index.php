@@ -179,9 +179,19 @@ foreach ($detentosAtualizados as $detento) {
                             $status_p3 == "acertou" ||
                             $status_p3 == "errou"
                         ) {
+
                             echo "<div class=\"order-btn\">";
                             echo "<h2><a href='liberar.php?idDetento={$ordem[1]->getIdPrisao()}'>Liberar</a></h2>";
                             echo "</div>";
+
+                        }
+                        if (
+                                $status_p1 == "errou" and $status_p3 != ("errou")
+                        ) {
+                            echo "<div class=\"order-btn\">";
+                            echo "<h2><a href='liberar.php?idDetento={$ordem[1]->getIdPrisao()}'>Fiança</a></h2>";
+                            echo "</div>";
+
                         }
     
                         // Tempo preso;

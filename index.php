@@ -38,7 +38,7 @@
         <div class="container container-header">
             <div class="criador">
                 <img src="src/assets/images/icone.png" alt="" class="img-icone">
-                <h1>Alcatraz IFRS</h1>
+                <h1>Cadeia IFRS TI 4</h1>
             </div>
             <a href="saibaMais.html" class="button button-header">Saiba Mais</a>
             <a href="src/login/index.php" class="button button-header">Restrito</a>
@@ -53,7 +53,7 @@
             <li>Preencha o formulário para emissão de uma nova ordem de prisão, lembrando que todos os campos são obrigatórios;</li>
             <li>Envie o formulário e aguarde a confirmação nesta página;</li>
             <li>Lembre se do seu ticket, pois ele será necessário na hora que você quiser consultar como está o andamento da sua ordem de prisão;</li>
-            <li>Em caso de erro verifique o ticket, se o erro persistir contate o administrador@adm.com</li>
+            <li>Em caso de erro verifique o ticket, se o erro persistir contate o 4 ano de TI</li>
         </ol>
 
         <details class="detalheNovaOrdem">
@@ -64,11 +64,11 @@
                 <li>Como eu posso adquirir o ticket ?</li>
                 <p>Os tickets são entregues aos alunos da instituição ao início da festa, mas poderão ser adquiridos por meio das atividades de São João nas barraquinhas.</p>
                 <li>Estou tendo problemas com a validação do ticket, o que devo fazer ?</li>
-                <p>Revise se foi digitado corretamente, verifique se este ticket já não foi usado anteriormente o pesquisando no Quero acompanhar uma Ordem já existente, tente validar outros tickets, se o problema persistir contate o administrador em administrador@adm.com.</p>
+                <p>Revise se foi digitado corretamente, verifique se este ticket já não foi usado anteriormente o pesquisando no Quero acompanhar uma Ordem já existente, tente validar outros tickets, se o problema persistir contate o 4 ano de TI.</p>
                 <li>Estou tendo problemas com o formulário, o que devo fazer ?</li>
                 <p>Verifique se todos os campos estão preenchidos corretamente, lembrando que todos os campos são obrigatórios, se o problema persistir atualize a página, não se preocupe pois se a ordem não for criada o seu ticket não será utilizado.</p>
                 <li>Estou tendo problemas na hora de consultar uma Ordem de Prisão, o que devo fazer ?</li>
-                <p>Revise se o ticket digitado está correto, lembrando que para consultar uma Prisão no ticket digitado antes você deve ter emitido uma Ordem de Prisão neste ticket, atualiza a página, se o problema persistir contate o administrador em administrador@adm.com.</p>
+                <p>Revise se o ticket digitado está correto, lembrando que para consultar uma Prisão no ticket digitado antes você deve ter emitido uma Ordem de Prisão neste ticket, atualiza a página, se o problema persistir contate o 4 ano de TI.</p>
             </ul>
         </details>
 

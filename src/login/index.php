@@ -19,13 +19,13 @@
                         <input type="password" name="password" id="password" placeholder="Insira a sua senha" class="login-input">
                     </div>
                     <div class="recover-password-area">
-                        <a href="../login">
-                            <span class="recover-password">Recuperar senha</span>
-                        </a>
+
+                        <a href="../../" class="recover-password-area">voltar</a>
                     </div>
                     <div class="form-submit-button">
                         <input type="submit" value="Enviar" name="button" id="button" class="submit-button">
                     </div>
+
                 </form>
             </div>
         </div>
