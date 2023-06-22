@@ -49,7 +49,7 @@ class Ticket {
 
         $sql = "select ordemPrisao.nomeMeliante, statusOrdem.nome as 'statusOrdem',
         IF(ordemPrisao.idStatusOrdem = 2, statusPrisao.nome, 'Ainda não foi preso') as 'statusprisao',
-        IF(ordemPrisao.idStatusOrdem = 2, time(SUBTIME(prisao.horaPrisao,CURRENT_TIME)), '00:00:00') as 'tempoPreso'
+        IF(ordemPrisao.idStatusOrdem = 2, time(TIMEDIFF(now(),prisao.horaPrisao)),'00:00' ) as 'tempoPreso'
         from ordemPrisao
         inner join statusOrdem on statusOrdem.idStatusOrdem = ordemPrisao.idStatusOrdem
         left join prisao on prisao.idOrdemPrisao = ordemPrisao.idOrdem
